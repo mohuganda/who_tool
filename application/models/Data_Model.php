@@ -12,13 +12,31 @@ CLass Data_Model extends CI_Model
     return  $this->db->get('facilities')->result();
     }
 
-    public function hwsearch($personId) 
+    public function hwsearch($district,$searchTerm)) 
     {
+        $query=$this->db->query("SELECT CONCAT(
+            COALESCE(surname,'','')
+            ,' ',
+            COALESCE(firstname,'','')
+            ,' ',
+            COALESCE(othername,'','')
+        ) AS fullname, job_id, job,facility_id,facility, telephone from 
+        ihrisdata where district_id='$district' and (surname='$searchTerm' OR firstname='$searchTerm')");
+        $result=$query->result();
+    
     return $data;
     }
-    public function chwsearch($personId) 
+    public function chwsearch($facility,$searchTerm) 
     {
-    return $data;
+        $query=$this->db->query("SELECT CONCAT(
+            COALESCE(surname,'','')
+            ,' ',
+            COALESCE(firstname,'','')
+            ,' ',
+            COALESCE(othername,'','')
+        ) AS fullname, job_id, job,facility_id,facility, telephone from 
+        ihrisdata2 where facility_id='$facility' and (surname='$searchTerm' OR firstname='$searchTerm'));
+        $result=$query->result();
     }
     public function create() 
     {
