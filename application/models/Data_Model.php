@@ -20,5 +20,17 @@ CLass Data_Model extends CI_Model
     {
     return $data;
     }
+    public function create() 
+    {
+        $insert=$this->db->insert('records', $data);
+        if($insert){
+        echo "Saved";
+        }
+        else{
+
+        echo "Failed";
+        }
+    return $data;
+    }
         
 }

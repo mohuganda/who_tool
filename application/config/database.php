@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '172.27.1.111',
-	'username' => 'manageatt',
-	'password' => 'manage123',
-	'database' => 'mohattendance',
+	'hostname' => '172.27.1.109',
+	'username' => 'ihris_manage',
+	'password' => 'managi123',
+	'database' => 'ihris_updates',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
