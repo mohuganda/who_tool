@@ -59,7 +59,7 @@ Class Data extends REST_Controller
     public function create_post(){
         $data=json_decode($this->input->post());
         $response = $this->dataHandler->create($data);
-    $this->response($response,REST_Controller::HTTP_OK)); 
+    $this->response($response,REST_Controller::HTTP_OK); 
     }
     
 }
