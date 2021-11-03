@@ -35,7 +35,7 @@ Class Data extends REST_Controller
     public function facilities_get(){
         $results = $this->dataHandler->facilities();
 
-    $this->response($results,REST_Controller::HTTP_OK));
+    $this->response($results,REST_Controller::HTTP_OK);
 
     }
     public function districts_get(){
