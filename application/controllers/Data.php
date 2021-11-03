@@ -43,6 +43,13 @@ Class Data extends REST_Controller
     $this->response($results);
         
     }
+    public function forms(){
+        $results = $this->dataHandler->forms();
+    $this->response($results);
+    public function fields($fields){
+        $results = $this->dataHandler->fields($fields);
+    $this->response($results);
+    }
     public function create_post(){
         $data=json_decode($this->input->post());
         $results = $this->dataHandler->create($data);
