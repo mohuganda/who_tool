@@ -53,7 +53,7 @@ Class Data extends REST_Controller
         $form_id = $this->input->post('form_id');
         $form_id = json_decode($form_id);
         $results = $this->dataHandler->fields($form_id);
-    $this->response($form_id,REST_Controller::HTTP_OK));
+    $this->response($form_id,REST_Controller::HTTP_OK);
     }
 
     public function create_post(){
