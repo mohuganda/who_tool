@@ -16,17 +16,20 @@ Class Data extends REST_Controller
     public function hwsearch_post() 
 
     {
-        $type=$this->input->post('hwtype');
-        $district=$this->input->post('district_id');
-        $facility=$this->input->post('facility_id');
-        $searchTerm=$this->input->post('searchterm');
+        $post = file_get_contents('php://input');
+        $type = json_decode($post)->worker_type;
+        $district_id = json_decode($post)->district_id;
+        $facility=json_decode($post)->facility_id;
+        $searchTerm=json_decode($post)->searchTerm;
+
         if($type="CHW") {
+            //name
             $results = $this->dataHandler->chwsearch($facility,$searchTerm);
-        $this->response($results);
+        $this->response($results,REST_Controller::HTTP_OK);
         }
-        else if($type="HW"){
+        else if($type="MHW"){
             $results = $this->dataHandler->hwsearch($district,$searchTerm);
-        $this->response($results);
+        $this->response($results,REST_Controller::HTTP_OK);
         }
         else{
      $this->response($response,REST_Controller::HTTP_NOT_FOUND);
