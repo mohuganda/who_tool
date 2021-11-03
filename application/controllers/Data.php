@@ -29,18 +29,18 @@ Class Data extends REST_Controller
         $this->response($results);
         }
         else{
-     $this->response($response, 400);
+     $this->response($response,REST_Controller::HTTP_NOT_FOUND);
         }
     }
     public function facilities_get(){
         $results = $this->dataHandler->facilities();
 
-    $this->response($results);
+    $this->response($results,REST_Controller::HTTP_OK));
 
     }
     public function districts_get(){
         $results = $this->dataHandler->districts();
-    $this->response($results);
+    $this->response($results,REST_Controller::HTTP_OK);
         
     }
     //get forms
@@ -49,16 +49,17 @@ Class Data extends REST_Controller
     $this->response($results);
     }
     //get form fields
-    public function fields_get(){
-        $form_id=json_decode($this->input->post())->form;
+    public function fields_post(){
+        $form_id = $this->input->post('form_id');
+        $form_id = json_decode($form_id);
         $results = $this->dataHandler->fields($form_id);
-    $this->response($results);
+    $this->response($form_id,REST_Controller::HTTP_OK));
     }
 
     public function create_post(){
         $data=json_decode($this->input->post());
-        $results = $this->dataHandler->create($data);
-    $this->response($results); 
+        $response = $this->dataHandler->create($data);
+    $this->response($response,REST_Controller::HTTP_OK)); 
     }
     
 }
