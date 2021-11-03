@@ -2,12 +2,12 @@
 
 CLass Data_Model extends CI_Model
 {
-    public function districts($personId) 
+    public function districts() 
     {
     return  $this->db->get('districts')->result();
     }
 
-    public function facilities($personId) 
+    public function facilities() 
     {
     return  $this->db->get('facilities')->result();
     }
