@@ -49,17 +49,16 @@ Class Data extends REST_Controller
     $this->response($results);
     }
     //get form fields
-    public function fields_post(){
-        $form_id = $this->input->post('form_id');
-        $form_id = json_decode($form_id);
+    public function fields_post($form_id){
         $results = $this->dataHandler->fields($form_id);
-    $this->response($form_id,REST_Controller::HTTP_OK);
+        $this->response($results,REST_Controller::HTTP_OK);
     }
 
     public function create_post(){
-        $data=json_decode($this->input->post());
-        $response = $this->dataHandler->create($data);
-    $this->response($response,REST_Controller::HTTP_OK); 
+        $post = file_get_contents('php://input');
+        $data = json_decode($post);
+       // $response = $this->dataHandler->create($data);
+    $this->response($data,REST_Controller::HTTP_OK); 
     }
     
 }
