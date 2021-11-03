@@ -11,7 +11,7 @@ Class Data extends REST_Controller
         $this->load->model('Data_Model', 'dataHandler');
     }
     public function index_get(){
-        echo json_encode("Jambo");
+        //echo json_encode("Jambo");
     }
     public function hwsearch_post() 
 
@@ -32,7 +32,7 @@ Class Data extends REST_Controller
      $this->response($response, 400);
         }
     }
-    public function faciities_get(){
+    public function facilities_get(){
         $results = $this->dataHandler->facilities();
 
     $this->response($results);
