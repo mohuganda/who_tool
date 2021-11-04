@@ -41,6 +41,12 @@ Class Data extends REST_Controller
     $this->response($results,REST_Controller::HTTP_OK);
 
     }
+    public function jobs_get(){
+        $results = $this->dataHandler->jobs();
+
+    $this->response($results,REST_Controller::HTTP_OK);
+
+    }
     public function districts_get(){
         $results = $this->dataHandler->districts();
     $this->response($results,REST_Controller::HTTP_OK);

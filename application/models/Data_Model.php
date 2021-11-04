@@ -6,6 +6,10 @@ CLass Data_Model extends CI_Model
     {
     return  $this->db->get('districts')->result();
     }
+    public function jobs() 
+    {
+    return  $this->db->get('jobs')->result();
+    }
 
     public function facilities() 
     {
