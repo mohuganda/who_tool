@@ -77,8 +77,10 @@ Class Data extends REST_Controller
     $this->response($data,REST_Controller::HTTP_OK); 
     }
     public function headers(){
-       $header = header("Access-Control-Allow-Origin: *");
-    return $header;
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+    
     }
     
 }
