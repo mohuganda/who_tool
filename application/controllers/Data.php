@@ -52,7 +52,7 @@ Class Data extends REST_Controller
     $this->response($results);
     }
     //get form fields
-    public function fields_post($form_id){
+    public function fields_get($form_id){
         $results = $this->dataHandler->fields($form_id);
         $this->response($results,REST_Controller::HTTP_OK);
     }

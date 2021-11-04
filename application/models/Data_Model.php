@@ -26,13 +26,7 @@ CLass Data_Model extends CI_Model
     // search term is surname o firstname
     public function hwsearch($district,$searchTerm) 
     {
-        $query=$this->db->query("SELECT CONCAT(
-            COALESCE(surname,'','')
-            ,' ',
-            COALESCE(firstname,'','')
-            ,' ',
-            COALESCE(othername,'','')
-        ) AS fullname, job_id, job,facility_id,facility, telephone from 
+        $query=$this->db->query("SELECT ihris_pid,surname,firstname,othername,job_id, job,facility_id,facility, telephone from 
         ihrisdata where district_id='$district_id' and (surname like '$searchTerm%' OR firstname'$searchTerm%')");
         $result=$query->result();
     
@@ -40,13 +34,7 @@ CLass Data_Model extends CI_Model
     }
     public function chwsearch($facility,$searchTerm) 
     {
-        $query=$this->db->query("SELECT CONCAT(
-            COALESCE(surname,'','')
-            ,' ',
-            COALESCE(firstname,'','')
-            ,' ',
-            COALESCE(othername,'','')
-        ) AS fullname, job_id, job,facility_id,facility, telephone from 
+        $query=$this->db->query("SELECT ihris_pid,surname,firstname,othername,, job_id, job,facility_id,facility, telephone from 
         ihrisdata2 where facility_id='$facility_id' and (surname='$searchTerm' OR firstname='$searchTerm')");
         $result=$query->result();
     }
