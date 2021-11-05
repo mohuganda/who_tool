@@ -36,9 +36,7 @@ Class Data extends REST_Controller
             $results = $this->dataHandler->hwsearch($district,$searchTerm);
         $this->response($results,REST_Controller::HTTP_OK);
         }
-        else{
-     $this->response($response,REST_Controller::HTTP_NOT_FOUND);
-        }
+      
     }
     public function facilities_get(){
         $results = $this->dataHandler->facilities();
