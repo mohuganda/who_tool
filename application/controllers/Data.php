@@ -5,17 +5,18 @@ require APPPATH . 'libraries/REST_Controller.php';
 
 Class Data extends REST_Controller 
 {
-    public function __construct($config = 'rest')
+    public function __construct()
 
     {
         
         header('Access-Control-Allow-Origin: *');
-        header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
         header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-        $method = $_SERVER['REQUEST_METHOD'];
-        if($method == "OPTIONS") {
-        die();
-        }
+        header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+      
+        // $method = $_SERVER['REQUEST_METHOD'];
+        // if($method == "OPTIONS") {
+        // die();
+        // }
         parent::__construct();
         $this->load->model('Data_Model', 'dataHandler');
        
@@ -79,9 +80,6 @@ Class Data extends REST_Controller
        // $response = $this->dataHandler->create($data);
     $this->response($data,REST_Controller::HTTP_OK); 
     }
-    public function headers(){
-       $header = header("Access-Control-Allow-Origin: *");
-    return $header;
-    }
+ 
     
 }
