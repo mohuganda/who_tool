@@ -30,16 +30,16 @@ Class Data extends REST_Controller
 
 
 
-        // if($type="CHW" && $facility="") {
-        //     //name
-        //     $results = $this->dataHandler->chwsearch($facility,$searchTerm);
-        // $this->response($results,REST_Controller::HTTP_OK);
-        // }
-        // else
-        // ($type="MHW" && $district=""){
-        //     $results = $this->dataHandler->hwsearch($district,$searchTerm);
+        if($type="CHW" && $facility="") {
+            //name
+            $results = $this->dataHandler->chwsearch($facility,$searchTerm);
+        $this->response($results,REST_Controller::HTTP_OK);
+        }
+        else
+        ($type="MHW" && $district=""){
+            $results = $this->dataHandler->hwsearch($district,$searchTerm);
         $this->response($post,REST_Controller::HTTP_OK);
-         //}
+         }
       
     }
     public function facilities_get(){
