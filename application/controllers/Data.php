@@ -1,6 +1,5 @@
 <?php 
-header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Methods: GET,POST, OPTIONS");
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'libraries/REST_Controller.php';
@@ -11,7 +10,7 @@ Class Data extends REST_Controller
 
     {
         
-        header('Access-Control-Allow-Origin: *');
+        //header('Access-Control-Allow-Origin: *');
         // header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
         parent::__construct();
         $this->load->model('Data_Model', 'dataHandler');
@@ -35,8 +34,7 @@ Class Data extends REST_Controller
             $results = $this->dataHandler->chwsearch($facility,$searchTerm);
         $this->response($results,REST_Controller::HTTP_OK);
         }
-        else
-        ($type="MHW" && $district=""){
+        else if  ($type="MHW" && $district=""){
             $results = $this->dataHandler->hwsearch($district,$searchTerm);
         $this->response($results,REST_Controller::HTTP_OK);
         }
