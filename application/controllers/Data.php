@@ -5,12 +5,11 @@ require APPPATH . 'libraries/REST_Controller.php';
 
 Class Data extends REST_Controller 
 {
-    public function __construct($config = 'rest')
+    public function __construct()
 
     {
         
-        header('Access-Control-Allow-Origin: *');
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+       
         parent::__construct();
         $this->load->model('Data_Model', 'dataHandler');
        
