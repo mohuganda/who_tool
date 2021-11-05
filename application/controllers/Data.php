@@ -27,12 +27,12 @@ Class Data extends REST_Controller
         $facility=json_decode($post)->facility_id;
         $searchTerm=json_decode($post)->searchTerm;
 
-        if($type="CHW") {
+        if($type="CHW" && $facility="") {
             //name
             $results = $this->dataHandler->chwsearch($facility,$searchTerm);
         $this->response($results,REST_Controller::HTTP_OK);
         }
-        else if($type="MHW"){
+        else if($type="MHW" && $district=""){
             $results = $this->dataHandler->hwsearch($district,$searchTerm);
         $this->response($results,REST_Controller::HTTP_OK);
         }
