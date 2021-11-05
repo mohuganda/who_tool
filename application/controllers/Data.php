@@ -11,8 +11,6 @@ Class Data extends REST_Controller
         
         header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-     //   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
-        
         parent::__construct();
         $this->load->model('Data_Model', 'dataHandler');
        
@@ -30,8 +28,6 @@ Class Data extends REST_Controller
         $facility=$post->facility_id;
         $searchTerm=$post->searchTerm;
 
-
-
         if($type="CHW" && $facility="") {
             //name
             $results = $this->dataHandler->chwsearch($facility,$searchTerm);
@@ -40,8 +36,8 @@ Class Data extends REST_Controller
         else
         ($type="MHW" && $district=""){
             $results = $this->dataHandler->hwsearch($district,$searchTerm);
-        $this->response($post,REST_Controller::HTTP_OK);
-         }
+        $this->response($results,REST_Controller::HTTP_OK);
+        }
       
     }
     public function facilities_get(){
