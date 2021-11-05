@@ -21,21 +21,25 @@ Class Data extends REST_Controller
     public function hwsearch_post() 
 
     {
-        $post = file_get_contents('php://input');
-        $type = json_decode($post)->worker_type;
-        $district_id = json_decode($post)->district_id;
-        $facility=json_decode($post)->facility_id;
-        $searchTerm=json_decode($post)->searchTerm;
+        $post = json_decode(file_get_contents('php://input'));
 
-        if($type="CHW" && $facility="") {
-            //name
-            $results = $this->dataHandler->chwsearch($facility,$searchTerm);
-        $this->response($results,REST_Controller::HTTP_OK);
-        }
-        else if($type="MHW" && $district=""){
-            $results = $this->dataHandler->hwsearch($district,$searchTerm);
-        $this->response($results,REST_Controller::HTTP_OK);
-        }
+        $type = $post->worker_type;
+        $district_id = $post->district_id;
+        $facility=$post->facility_id;
+        $searchTerm=$post->searchTerm;
+
+
+
+        // if($type="CHW" && $facility="") {
+        //     //name
+        //     $results = $this->dataHandler->chwsearch($facility,$searchTerm);
+        // $this->response($results,REST_Controller::HTTP_OK);
+        // }
+        // else
+        // ($type="MHW" && $district=""){
+        //     $results = $this->dataHandler->hwsearch($district,$searchTerm);
+        $this->response($post,REST_Controller::HTTP_OK);
+         //}
       
     }
     public function facilities_get(){
