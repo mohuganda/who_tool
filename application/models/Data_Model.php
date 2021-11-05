@@ -31,7 +31,7 @@ CLass Data_Model extends CI_Model
     public function hwsearch($district,$searchTerm) 
     {
         $query=$this->db->query("SELECT ihris_pid,surname,firstname,othername,job_id, job,facility_id,facility, telephone from 
-        ihrisdata where district_id='$district_id' and (surname like '$searchTerm%' OR firstname'$searchTerm%')");
+        ihrisdata where district='$district_id' and (surname like '$searchTerm%' OR firstname'$searchTerm%')");
         $result=$query->result();
     
     return $data;
@@ -39,7 +39,7 @@ CLass Data_Model extends CI_Model
     public function chwsearch($facility,$searchTerm) 
     {
         $query=$this->db->query("SELECT ihris_pid,surname,firstname,othername,, job_id, job,facility_id,facility, telephone from 
-        ihrisdata2 where facility_id='$facility_id' and (surname='$searchTerm' OR firstname='$searchTerm')");
+        ihrisdata2 where facility='$facility_id' and (surname='$searchTerm' OR firstname='$searchTerm')");
         $result=$query->result();
     }
     public function create() 
