@@ -22,7 +22,7 @@ CLass Data_Model extends CI_Model
 
     public function fields($form_id) 
     {
-           if(!empty($form_id){
+           if(!empty($form_id)){
            $this->db->where("form_id",$form_id);
            }
            $this->db->order_by("display", "ASC");
