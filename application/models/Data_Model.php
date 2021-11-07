@@ -48,11 +48,11 @@ CLass Data_Model extends CI_Model
     {
         $insert=$this->db->insert('records', $data);
         if($insert){
-        echo "Saved";
+        $data= "Saved";
         }
         else{
 
-        echo "Failed";
+        $data= "Failed";
         }
     return $data;
     }

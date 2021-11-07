@@ -65,7 +65,6 @@ Class Data extends REST_Controller
     }
     //get form fields
     public function fields_get($form_id=FALSE){
-        header('Access-Control-Allow-Origin: *');
         $results = $this->dataHandler->fields($form_id);
         $this->response($results,REST_Controller::HTTP_OK);
     }
