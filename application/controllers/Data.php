@@ -84,7 +84,7 @@ Class Data extends REST_Controller
         $post = file_get_contents('php://input');
         $post_key = json_decode($post)->key;
         $status = $this->dataHandler->auth($post_key);
-      return $status;
+        $this->response($status,REST_Controller::HTTP_OK); 
     }
     
 }
