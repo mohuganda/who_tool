@@ -46,6 +46,7 @@ CLass Data_Model extends CI_Model
     }
     public function create() 
     {
+
         $insert=$this->db->insert('records', $data);
         if($insert){
         $data= "Saved";
@@ -53,6 +54,19 @@ CLass Data_Model extends CI_Model
         else{
 
         $data= "Failed";
+        }
+    return $data;
+    }
+    public function auth($key) 
+    {
+
+        $rows=$this->db->query("SELECT * from mobile_auth where key='$key' and status=1")->num_rows();
+        if($query>0){
+        $data= 1;
+        }
+        else{
+
+        $data= 0;
         }
     return $data;
     }
