@@ -80,11 +80,9 @@ Class Data extends REST_Controller
       // $header = header("Access-Control-Allow-Origin: *");
     return $header;
     }
-    public function auth_post(){
-        $post = file_get_contents('php://input');
-        $authkey = json_decode($post)->authkey;
+    public function auth_get($authkey){
         $status = $this->dataHandler->auth($authkey);
-        $this->response($post,REST_Controller::HTTP_OK); 
+        $this->response($authkey,REST_Controller::HTTP_OK); 
     }
     
 }
