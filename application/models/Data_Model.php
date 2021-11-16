@@ -61,7 +61,7 @@ CLass Data_Model extends CI_Model
     {
 
         $rows=$this->db->query("SELECT * from mobile_auth where auth_key='$key' and status=1")->num_rows();
-        if($query>0){
+        if($rows>0){
         $data= 1;
         }
         else{
