@@ -47,7 +47,7 @@ CLass Data_Model extends CI_Model
     public function create() 
     {
 
-        $insert=$this->db->insert('records', $data);
+        $insert=$this->db->replace('records_json', $data);
         if($insert){
         $data= "Saved";
         }
@@ -60,13 +60,13 @@ CLass Data_Model extends CI_Model
     public function auth($key) 
     {
 
-        $rows=$this->db->query("SELECT * from mobile_auth where auth_key='$key' and status='1'")->num_rows();
-        if($rows>0){
-        $data= 1;
+        $row=$this->db->query("SELECT * from mobile_auth where auth_key='$key' and status='1'")->num_rows();
+        if($row>0){
+        array("person"=>$row->row()->id,"status"=>1);
         }
         else{
 
-        $data= 0;
+        $data= array("status"=0);
         }
     return $data;
     }
