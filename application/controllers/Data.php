@@ -72,8 +72,8 @@ Class Data extends REST_Controller
     public function create_post(){
         $post = file_get_contents('php://input');
         $data = json_decode($post);
-       // $response = $this->dataHandler->create($data);
-    $this->response($data,REST_Controller::HTTP_OK); 
+        $response = $this->dataHandler->create($data);
+    $this->response($response,REST_Controller::HTTP_OK); 
     }
     
     public function headers(){
