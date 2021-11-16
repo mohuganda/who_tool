@@ -82,7 +82,7 @@ Class Data extends REST_Controller
     }
     public function auth_get($authkey){
         $status = $this->dataHandler->auth($authkey);
-        $this->response($authkey,REST_Controller::HTTP_OK); 
+        $this->response($status,REST_Controller::HTTP_OK); 
     }
     
 }
