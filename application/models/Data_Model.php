@@ -49,11 +49,11 @@ CLass Data_Model extends CI_Model
 
         $insert=$this->db->replace('records_json', $data);
         if($insert){
-        $message= array("message"="Saved","status"=>1);
+        $message= array("message"=>"Saved","status"=>1);
         }
         else{
 
-            $message= array("message"="Failed","status"=>0);
+            $message= array("message"=>"Failed","status"=>0);
         }
     return $data;
     }
