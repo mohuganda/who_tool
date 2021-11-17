@@ -44,9 +44,10 @@ CLass Data_Model extends CI_Model
         ihrisdata2 where facility='$facility_id' and (surname='$searchTerm' OR firstname='$searchTerm')");
         $result=$query->result();
     }
-    public function create($data) 
+    public function create($data,$post) 
     {
-        $insert=$this->db->replace('records_json', $data);
+       // $insert=$this->db->replace('records_json', $data);
+        $insert=$this->db->replace('records', $post);
         if($insert){
         $message= array("message"=>"Saved","status"=>'1');
         }
@@ -60,6 +61,7 @@ CLass Data_Model extends CI_Model
     {
 
         $row=$this->db->query("SELECT * from mobile_auth where auth_key='$key' and status='1'");
+        
         if($row->num_rows()>0){
         $data=array("person"=>$row->row()->id,"status"=>1);
         }
