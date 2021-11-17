@@ -74,7 +74,7 @@ Class Data extends REST_Controller
         $data = json_decode($post);
         $data_reference = json_decode($post)->reference;
         $insert=array('reference'=>$data_reference,'data'=>$data);
-        $response = $this->dataHandler->create($data);
+        $response = $this->dataHandler->create($insert);
     $this->response($response,REST_Controller::HTTP_OK); 
     }
     
