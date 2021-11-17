@@ -44,16 +44,16 @@ CLass Data_Model extends CI_Model
         ihrisdata2 where facility='$facility_id' and (surname='$searchTerm' OR firstname='$searchTerm')");
         $result=$query->result();
     }
-    public function create() 
+    public function create($data) 
     {
 
         $insert=$this->db->replace('records_json', $data);
         if($insert){
-        $data= "Saved";
+        $message= array("message"="Saved","status"=>1);
         }
         else{
 
-        $data= "Failed";
+            $message= array("message"="Failed","status"=>0);
         }
     return $data;
     }
