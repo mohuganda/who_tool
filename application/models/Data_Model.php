@@ -47,7 +47,7 @@ CLass Data_Model extends CI_Model
     public function create($data,$post) 
     {
         $insert2=$this->db->replace('records_json', $data);
-        $insert=$this->db->replace('records', $post);
+        $insert=$this->db->replace('records', "$post");
         if($insert){
         $message= array("message"=>"Saved","status"=>'1');
         }
