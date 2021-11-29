@@ -25,7 +25,7 @@ CLass Data_Model extends CI_Model
            if(!empty($form_id)){
            $this->db->where("form_id",$form_id);
            }
-           $this->db->order_by("display", "ASC");
+           $this->db->order_by("position", "ASC");
      $data=$this->db->get('fields')->result();
      return $data;
     }
