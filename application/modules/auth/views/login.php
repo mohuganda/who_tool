@@ -488,7 +488,7 @@ $(window).on('resize', function(){
     </div>
 
   
-      <h2 style="margin: 0 auto !imporntant;">HRM LOGIN </h2>
+      <h2 style="margin: 0 auto !imporntant;">WHO LOGIN </h2>
       
     </div>
     
