@@ -8,11 +8,11 @@
 
     <title>HRM Attend | Login</title>
 
-    <!-- <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
+     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <link href="<?php echo base_url(); ?>assets/css/animate.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet"> -->
+    <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet"> 
 
 
 <style>
@@ -356,8 +356,8 @@ input[type=submit]  {
 	color: #fff;
   line-height: 40px;
   text-align: center;
-  background-color: #303030;
-  border: 1px #f8f8c6 solid;
+  background-color: #006cb5;
+  border: 1px #006cb5 solid;
 	opacity: 1;
 	cursor: pointer;
 }
@@ -517,6 +517,7 @@ $(window).on('resize', function(){
   </div>
  
 </div>
+<div class=
 
 <div class='icon-credits'> <a href="http://health.go.ug" title="MOH" target="_blank">Ministry of Health <?php echo date('Y');?></a></div>
 
