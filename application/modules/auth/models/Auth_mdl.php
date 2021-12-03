@@ -142,19 +142,8 @@ public function count_Users($key=FALSE){
 
 
 public function addUser($postdata){
-	$distid=$postdata['district_id'];
-	$facid=$postdata['facility_id'];
 	
-	//get district
-	$distname=$this->db->query("SELECT distinct district from ihrisdata where district_id='$distid'");
-    $distn=$distname->row()->district;
-	//get facility
-	$facname=$this->db->query("SELECT distinct facility from ihrisdata where facility_id='$facid'");
-    $facn=$facname->row()->facility;
-	$postdata['password']=md5($this->password);
-	$postdata['facility']=$facn;
-	$postdata['department']=$postdata['department_id'];
-	$postdata['district']=$distn;
+	
 
 	$postdata['status']=1;
 	$qry=$this->db->insert($this->table,$postdata);
@@ -176,31 +165,11 @@ public function addUser($postdata){
 
 public function updateUser($postdata){
 
-	$distid=$postdata['district_id'];
-	$facdata=$postdata['facility_id'];
-	$depid=$postdata['user_id'];
-
-	//get district
-	$distname=$this->db->query("SELECT distinct district from ihrisdata where district_id='$distid'");
-    $distn=$distname->row()->district;
-	//get facility
-	$facd=explode("_",$facdata);
-
-        $fac_id=$facd[0];
-        $facility=$facd[1]; 
-	$facname=$this->db->query("SELECT distinct facility from ihrisdata where facility_id='$fac_id'");
-    $facn=$facname->row()->facility;
 
 
 	$savedata=array(
 		"name"=>$postdata['name'],
-		"district"=>$distn,
-		"district_id"=>$postdata['district_id'],
-		"facility_id"=>$fac_id,
-		"facility"=>$facn,
 		'email'=>$postdata['email'],
-		"department"=>$postdata['department_id'],
-		"department_id"=>$postdata['department_id'],
 		"role"=>$postdata['role']
 
 
