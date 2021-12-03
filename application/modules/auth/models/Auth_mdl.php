@@ -39,22 +39,14 @@ public function loginChecker($postdata){
  
 	else{
  
-		$newuser=$this->checkNewUser($username); //check wther person id exists
- 
-		if($newuser){ //check if new user was added
- 
-			return "new";
-		}
-		else{
- 
-			return "failed";
-		}
+	return "failed";
+		
  
 	}
 
 
-	  }
-	  else{
+	}
+	else{
 
 
 		//login using email
@@ -79,18 +71,11 @@ public function loginChecker($postdata){
 	
 	   else{
 	
-		   $newuser=$this->checkNewUser($username); //check wther person id exists
-	
-		   if($newuser){ //check if new user was added
-	
-			   return "new";
-		   }
-		   else{
-	
-			   return "failed";
-		   }
-	
+		
+	    return "failed";
 	   }
+	
+	   
 
 
 	  }
@@ -99,47 +84,6 @@ public function loginChecker($postdata){
 
 }
 
-public function checkNewUser($personid){
-
-	$newpid='person|'.trim($personid);
-
-	$this->db->select('ihris_pid,surname,firstname,facility_id,department_id,department,facility,district,district_id');
-	$this->db->where('ihris_pid',$newpid);
-	$this->db->or_where('ipps',$personid);
-
-	$query=$this->db->get('ihrisdata');
-
-	$rows=$query->num_rows();
-
-	if($rows>0){
-
-		$userRow= $query->row();
-		$newUser=array(
-			"username"=>$personid,
-			"name"=>$userRow->firstname." ".$userRow->surname,
-			"facility_id"=>$userRow->facility_id,
-			"department_id"=>$userRow->department_id,
-			"department"=>$userRow->department,
-			"facility"=>$userRow->facility,
-			"ihris_pid"=>$userRow->ihris_pid,
-			"district"=>$userRow->district,
-			"district_id"=>$userRow->district_id,
-			"password"=>md5($this->password),
-			"role"=>"17",
-			"status"=>"0"
-
-		   );
-		$res=$this->db->insert($this->table,$newUser);
-
-		return true;
-	 }
-
-	else{
-
-		return false;
-	  }
-
-	}
 
 public function unlock($pass){
 
