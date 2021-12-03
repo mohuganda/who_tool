@@ -56,7 +56,7 @@ $variables=Modules::run("svariables/getSettings");
                     <div class="col-sm-4">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label>Username</label>
+                        <label>Username /Passcode</label>
                         <input type="text" required name="username"  autocomplete="off" class="form-control" placeholder="Username"  required/>
                       </div>
                     </div>
@@ -73,42 +73,7 @@ $variables=Modules::run("svariables/getSettings");
                         <input type="email" required name="email"  class="form-control" placeholder="Email"  />
                       </div>
                     </div>
-                    <div class="col-sm-4" style="display:none;">
-                      <div class="form-group">
-                        <label>District</label>
-                    <select onChange="getFacs($(this).val());" name="district_id"  class="form-control select2 sdistrict" style="width:100%;">
-                    <option value="" disabled selected>DISTRICT</option>
-                    <?php  foreach($districts as $district): 
-                                  ?>
-                    <option value="<?php echo $district->district_id; ?>"><?php echo $district->district; ?></option>
-                                <?php endforeach; ?>
-                    </select>
-                  
-                      </div>
-                    </div>
-
-                    <div class="col-sm-4" style="display:none;">
-                      <div class="form-group">
-                        <label>Facility</label>
-                        <select id="facility" onChange="getDeps($(this).val());" name="facility_id" class="form-control select2 sfacility" style="width:100%;" >
-                    
-                            <option value="" disabled selected>FACILITY</option>
-              
-
-                    </select>
-                 
-                   
-                      </div>
-                    </div>
-                    <div class="col-sm-4" style="display:none;">
-                      <div class="form-group">
-                        <label>Department</label>
-                        <select id="department" name="department_id"   class="form-control select2 sdepartment" style="width:100%;">
-                    <option value="" disabled selected>DEPARTMENT</option>
-                 
-                </select>
-              
-                      </div>
+                
                     </div>
 
 

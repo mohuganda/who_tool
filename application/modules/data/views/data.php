@@ -44,7 +44,7 @@
              $datas = Modules::run('data/data2');
              foreach($datas as $dt): 
              $staff=json_decode($dt->data); 
-             $this->db->replace('report',$staff);
+             
              ?>
            
 

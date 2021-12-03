@@ -52,10 +52,18 @@ class Data extends MX_Controller {
 		$datas = $this->data_model->getData2();
 	return $datas;
 	}
+	public function cache_report(){
+		$this->create_report();
+		$datas=$this->data2();
+		foreach($datas as $dt): 
+			$staff=json_decode($dt->data); 
+			$this->db->replace('report',$staff);
+		endforeach;
+	}
 	function create_report(){
 		
 		$this->load->dbforge();
-		$query=$this->dbforge->drop_table('report');
+		//$query=$this->dbforge->drop_table('report');
 		
         $data=$this->db->query("SELECT form_field, data_type as type, db_constraint as 'constraint', db_unique as 'unique' from fields")->result();
 		$fields=array();
