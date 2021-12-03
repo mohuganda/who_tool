@@ -89,22 +89,20 @@ class Auth extends MX_Controller {
 			);
 
 			//print_r($userdata);
-//$this->checkerUser($userdata);
+     $this->checkerUser($userdata);
 
 		}
 
 		else{
-
-
            $msg=$this->session->set_flashdata('msg',"Login Failed, Wrong credentials");
      
-        }
+      
       
 
 		redirect("auth");
 		}
 		
-	
+	}
 
 	public function checkerUser($userdata){
 
