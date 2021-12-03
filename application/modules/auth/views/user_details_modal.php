@@ -34,7 +34,7 @@
                     <?php endforeach; ?>
                 </select>
               </div>
-              <div class="col-md-12" style="margin: 0 auto">
+              <div class="col-md-12" style="margin: 0 auto" style="display:none;">
                 <strong style="margin-right: 1em;">District </strong> 
                 <select onchange="getFacs($(this).val());" name="district_id"  class="form-control select2 sditrict" style="width:100%;">
           
@@ -66,6 +66,7 @@
                         <?php echo $user->department_id; ?>
                 </option>
                 </select>
+                </div>
         
              
             
@@ -74,7 +75,7 @@
                    <button type="submit"  data-toggle="modal" class="btn btn-info">Save Changes</button>
                   
           
-             </div>
+            
             <div class="modal-footer">
 
                 </div>
