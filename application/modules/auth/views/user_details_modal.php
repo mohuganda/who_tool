@@ -34,39 +34,7 @@
                     <?php endforeach; ?>
                 </select>
               </div>
-              <div class="col-md-12" style="margin: 0 auto" style="display:none;">
-                <strong style="margin-right: 1em;">District </strong> 
-                <select onchange="getFacs($(this).val());" name="district_id"  class="form-control select2 sditrict" style="width:100%;">
-          
-                    <?php  foreach($districts as $district): 
-                                  ?>
-                    <option value="<?php echo $district->district_id; ?>" <?php if($user->district==$district->district){ echo "selected";} ?> ><?php echo $district->district; ?></option>
-                                <?php endforeach; ?>
-                    </select>
-                   
-                    <br>
-                <strong style="margin-right: 1em;">Facility</strong> 
-                <select onchange="getDeps($(this).val());" name="facility_id" class="form-control select2 sfacility" style="width:100%;" >
-              
          
-                    <option value="<?php echo $user->facility_id; ?>" >
-                        <?php echo $user->facility; ?>
-      
-                </option>
-           
-
-            </select>
-         
-
-                <br><br>
-                <strong style="margin-right: 1em;">Department </strong> 
-                <select name="department_id"  class="form-control select2 sdepartment" style="width:100%;">
-                    
-                <option value="<?php echo $user->department_id; ?>" >
-                        <?php echo $user->department_id; ?>
-                </option>
-                </select>
-                </div>
         
              
             
