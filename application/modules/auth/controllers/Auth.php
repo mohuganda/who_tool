@@ -136,16 +136,7 @@ class Auth extends MX_Controller {
       	}
 
       }
-    public function enrollers()
-	   {
-		
-      $data['module']="auth";
-      $data['view']="enrollers";
-      $data['title']="Enrollers";
-
-		 echo Modules::run("templates/main",$data);
-		
-		 }
+  
 	
        public function isLegal(){
 
