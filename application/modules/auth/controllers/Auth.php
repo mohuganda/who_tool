@@ -89,16 +89,13 @@ class Auth extends MX_Controller {
 			);
 
 			//print_r($userdata);
-			$this->checkerUser($userdata);
+//$this->checkerUser($userdata);
 
 		}
 
 		else{
 
 
-      if($person=="new"){
-          $msg=$this->session->set_flashdata('msg',"First time access detected, Contact the Admin for Activation");
-        } else{
            $msg=$this->session->set_flashdata('msg',"Login Failed, Wrong credentials");
      
         }
@@ -107,7 +104,7 @@ class Auth extends MX_Controller {
 		redirect("auth");
 		}
 		
-	}
+	
 
 	public function checkerUser($userdata){
 
@@ -141,8 +138,17 @@ class Auth extends MX_Controller {
       	}
 
       }
+    public function enrollers()
+	   {
+		
+      $data['module']="auth";
+      $data['view']="enrollers";
+      $data['title']="Enrollers";
 
-
+		 echo Modules::run("templates/main",$data);
+		
+		 }
+	
        public function isLegal(){
 
         date_default_timezone_set("Africa/Kampala");

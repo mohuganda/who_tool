@@ -1,9 +1,9 @@
 </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer" style="background: #1d80b9; color:#fff; margin-bottom: 0px !important;" >
+  <footer class="footer">
              
-                    <div class="col-m-3">
+                    <div class="col-md-3">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/USAID-Identity.svg" style="width:100px; height:20px; ">
                     <div>
                     <div class="col-md-5">

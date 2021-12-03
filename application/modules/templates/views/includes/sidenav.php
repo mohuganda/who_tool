@@ -94,13 +94,9 @@
                              <li class="nav-item">
                                 <a href="<?php echo base_url()?>forms" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                Forms</a>
+                                Form - Fields</a>
                                 </li>
-                                <li class="nav-item">
-                                <a href="<?php echo base_url()?>forms/fields" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                Fields</a>
-                                </li>
+                              
                             
 
 
@@ -163,6 +159,12 @@
                 <a href="<?php echo base_url();?>auth/users" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage User</p>
+                </a>
+                 </li>
+                 <li class="nav-item">
+                <a href="<?php echo base_url();?>auth/enrollers" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Enrollers</p>
                 </a>
                  </li>
                  <li class="nav-item">

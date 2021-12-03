@@ -60,7 +60,7 @@ CLass Data_Model extends CI_Model
     public function auth($key) 
     {
 
-        $row=$this->db->query("SELECT * from mobile_auth where auth_key='$key' and status='1'");
+        $row=$this->db->query("SELECT * from users where username='$key' and status='1'");
         
         if($row->num_rows()>0){
         $data=array("person"=>$row->row()->id,"status"=>1);

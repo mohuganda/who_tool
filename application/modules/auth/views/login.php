@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>HRM Attend | Login</title>
+    <title>iHRIS UPDATE TOOL | Login</title>
 
      <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -14,7 +14,6 @@
 
 
 <style>
-@import 'https://fonts.googleapis.com/css?family=Open+Sans|Quicksand:400,700';
 
 /*--------------------
 General Style
@@ -27,22 +26,17 @@ General Style
 
 body,
 html {
-  height: 100%;
-  font-family: 'Quicksand', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
 }
 
 body {
-  background: linear-gradient( 90deg
-, rgb(56 54 54) 0%, rgb(27 131 173) 100%);
-  background: #006cb5;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 100%;
-  height: 100vh;
-  overflow-x: hidden;
-  text-rendering: optimizeLegibility;
+    background: #6da8d1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
 }
 
 /*--------------------
@@ -148,25 +142,23 @@ Login Box
 	float: left;
 	z-index: 1;
   
-  -webkit-border-radius: 6px 6px 0 0;
-     -moz-border-radius: 6px 6px 0 0;
-          border-radius: 6px 6px 0 0;
+
   
 	-webkit-transform: perspective(0px) rotateX(0.93deg) translateZ(-1px);
 	        transform: perspective(0px) rotateX(0.93deg) translateZ(-1px);
-	/* -webkit-transform-origin: 0 0;
+	-webkit-transform-origin: 0 0;
 	        transform-origin: 0 0;
 	-webkit-backface-visibility: hidden;
 	        backface-visibility: hidden;
 	
 	-webkit-box-shadow: 15px -15px 30px rgba(0,0,0,0.32);
      -moz-box-shadow: 15px -15px 30px rgba(0,0,0,0.32);
-          box-shadow: 15px -15px 30px rgba(0,0,0,0.32); */
+          box-shadow: 15px -15px 30px rgba(0,0,0,0.32);
 }
 
 .box-login-title {
 	width: 80%;
-	height: 150px;
+	min-height: 250px;
     font-weight:bold;
 	position: absolute;
 	float: left;
@@ -175,46 +167,17 @@ Login Box
 
 .box-login {
   position: relative;
-  top: 10px;
-  width: 320px;
-  background: #fdfdfd;
-  text-align: center;
-  overflow: hidden;
-  z-index: 2;
-  
-  -webkit-border-top-right-radius: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-  -moz-border-radius-topright: 6px;
-  -moz-border-radius-bottomleft: 6px;
-  -moz-border-radius-bottomright: 6px;
-   border-top-right-radius: 6px;
-   border-bottom-left-radius: 6px;
-   border-bottom-right-radius: 6px;
-  
-  -webkit-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
-     -moz-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
-          box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
+    top: 10px;
+    min-width: 400px;
+    background: #fff;
+    text-align: center;
+    overflow: hidden;
+    z-index: 2;
+    min-height: 420px;
+
 }
 
-.box-info {
-	width: 260px;
-	top: 60px;
-  position: absolute;
-	right: -5px;
-	padding: 15px 15px 15px 30px;
-	background-color: rgba(255,255,255,0.6);
-	border: 1px solid rgba(255,255,255,0.2);
-	z-index: 0;
-	
-	-webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-    
-    -webkit-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
-    -moz-box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
-    box-shadow: 15px 30px 30px rgba(0,0,0,0.32);
-}
+
 
 .line-wh {
  	width: 100%;
@@ -307,10 +270,10 @@ label {
   width: 100%;
 	top: 0px;
 	color: #032942;
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: 700;
 	text-align: left;
-	line-height: 1.5;
+	line-height: 2.0;
 }
 
 label.checkbox {
@@ -344,11 +307,12 @@ input[type=password]:focus {
 }
 
 input[type=submit]  {
-  width: 100%;
+  width: 50%;
   height: 48px;
   margin-top: 24px;
   padding: 0px 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'sans-serif';
+  border-radius:4px;
 	font-weight: 700;
 	font-size: 18px;
 	color: #fff;
@@ -410,7 +374,7 @@ Credits
   width: 100%;
   position: absolute;
   bottom: 4px;
-  font-family:'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+  font-family:'Helvetica Neue', Helvetica, sans-serif;
   font-size: 12px;
   color: rgba(255,255,255,0.1);
   text-align: center;
@@ -488,18 +452,20 @@ $(window).on('resize', function(){
     </div>
 
   
-      <h2 style="margin: 0 auto !imporntant;">iHRIS MOBILE TOOL LOGIN </h2>
+     
       
     </div>
     
     <div class='box-login'>
-    <img src="<?php echo base_url(); ?>assets/img/MOH.png" width="120" height="120">
+   
+    <h2 style="margin: 0 auto !imporntant; color:#000;">iHRIS MOBILE UPDATE TOOL</h2>
+     <img src="<?php echo base_url(); ?>assets/img/MOH.png" width="120" height="120">
     <p style="color:blue;"><?php echo $this->session->flashdata('msg'); ?></p>
       <form class='fieldset-body' id='login_form' role="form" method="post" action="<?php echo base_url(); ?>auth/login">
         
         <p class='field'>
        
-          <label for='username'>LOGIN ID/ USERNAME</label>
+          <label for='username'>USERNAME</label>
           <input type='text'  name='username' title='Username' required>
         </p>
       	  <p class='field'>
@@ -507,9 +473,7 @@ $(window).on('resize', function(){
           <input type='password'  name='password' title='Password' required>
           </p>
 
-          <label class='checkbox'>
-            <input type='checkbox' value='TRUE' title='Keep me Signed in' /> Remember Me
-          </label>
+       
 
         	<input type='submit'  value='Login' title='Login' />
       </form>
