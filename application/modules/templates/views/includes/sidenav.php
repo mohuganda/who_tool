@@ -185,6 +185,12 @@
                   <p>Constants & Variables</p>
                 </a>
                   </li>
+                  <li class="nav-item">
+                <a href="<?php echo base_url();?>data/cache_report"  class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cache Report</p>
+                </a>
+                  </li>
                 <?php } ?>
                
                 
