@@ -106,7 +106,7 @@ class Reports_mdl extends CI_Model {
 	}
 
 	public function enrollers(){
-		$this->db->where("user_group",17);
+		$this->db->where("role",17);
 		$query=$this->db->get('user');
 	return $query->result();
 
