@@ -65,7 +65,7 @@
             <td><?php echo $staff->gender ?></td>
             <td><?php echo $staff->position ?></td>
             <td><?php echo $staff->facility ?></td>
-            <td><img src="data:image/png;base64,<?php if(!empty($staff->id_photo))echo $staff->id_photo; ?> " alt="Img" class="img-thumbnail"  style="width:160px; height:90px;"/>
+            <td><img src="data:image/png;base64,<?php if(!empty($staff->id_photo))echo $staff->id_photo; ?> " alt="Img" class="img-circle"/>
             </td>
             <td><?php echo $staff->id_type ?></td>
             <td><?php echo $staff->id_number ?></td>
