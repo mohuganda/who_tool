@@ -52,7 +52,7 @@
             <td><?php echo $i++; ?></td>
           
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
-            <td><img src="data:image/png;base64,<?php if(!empty($staff->person_photo)) echo $staff->person_photo; ?> " alt="Img"  style="width:160; height:90;" />
+            <td><img src="data:image/png;base64,<?php if(!empty($staff->person_photo)) echo $staff->person_photo; ?> " alt="Img"  style="width:160px; height:90px;" />
             </td>
             <td>
 
@@ -65,7 +65,7 @@
             <td><?php echo $staff->gender ?></td>
             <td><?php echo $staff->position ?></td>
             <td><?php echo $staff->facility ?></td>
-            <td><img src="data:image/png;base64,<?php if(!empty($staff->id_photo))echo $staff->id_photo; ?> " alt="Img"  style="width:160; height:90;" />
+            <td><img src="data:image/png;base64,<?php if(!empty($staff->id_photo))echo $staff->id_photo; ?> " alt="Img"  style="width:160px; height:90px;" />
             </td>
             <td><?php echo $staff->id_type ?></td>
             <td><?php echo $staff->id_number ?></td>
