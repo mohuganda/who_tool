@@ -12,6 +12,7 @@
             <tr>
             <th>#</th>
 
+            <th>Enroller Key </th>
             <th>Enroller </th>
             <th>Enroller Email </th>
         
@@ -30,6 +31,7 @@
             <tr>
             <td><?php echo $i++; ?></td>
             <td><?php echo $staff->username ?></td>
+            <td><?php echo $staff->name ?></td>
             <td><?php echo $staff->email ?></td>
             
            
