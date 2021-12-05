@@ -64,7 +64,7 @@ class Reports extends MX_Controller {
          $data=$this->reports_mdl->getgraphData();
 	return $data;
 	}
-	public function dutygraphData(){
+   public function dutygraphData(){
 		$data=$this->reports_mdl->dutygraphData();
    return $data;
    }
@@ -73,6 +73,10 @@ class Reports extends MX_Controller {
 		$data=$this->reports_mdl->attroData();
      //print_r($data);
 	echo  json_encode($data,JSON_NUMERIC_CHECK);
+	}
+	public function  enrollers(){
+		$data=$this->reports_mdl->enrollers();
+    return $data;
 	}
 
 
