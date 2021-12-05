@@ -29,8 +29,8 @@
 
             <tr>
             <td><?php echo $i++; ?></td>
-            <td><?php echo $staff->enroller ?></td>
-            <td><?php echo $staff->enroller_email ?></td>
+            <td><?php echo $staff->username ?></td>
+            <td><?php echo $staff->email ?></td>
             
            
             
