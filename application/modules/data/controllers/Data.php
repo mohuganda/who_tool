@@ -20,7 +20,6 @@ class Data extends MX_Controller {
 		$data['module'] 	= "data";  
 		$data['view']   	= "data";   
 		$data['headers']   	= $this->data_model->headers();
-		$filters=$this->filters();
 		$data['staffs'] = $this->data_model->getData($filters);
 		echo Modules::run('templates/main', $data); 
 	}
@@ -32,22 +31,9 @@ class Data extends MX_Controller {
 		$data['module'] 	= "data";  
 		$data['view']   	= "kyc";   
 		$data['headers']   	= $this->data_model->headers();
-		
-		$filters=$this->filters();
-		$data['staffs'] = $this->data_model->kycData($filters);
 		echo Modules::run('templates/main', $data); 
 	}
-	public function filters(){
-		$filter = array();
-		$filters=$this->input->post();
-		if(!empty($filters)){
-		foreach($filters as $key=>$value):
-			$filter[]="AND ".$key."=". "$value"; 
-		endforeach;
-	     }
 
-	return $filter;
-	}
 	public function data2(){
 		$datas = $this->data_model->getData2();
 	return $datas;

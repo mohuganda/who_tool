@@ -5,15 +5,6 @@ class Data_model extends CI_Model {
  
 	
 
-	public function getData($filters)
-	{ 
-		if(empty($filters)){
-			$filters="";
-		}
-		$query=$this->db->query("SELECT * FROM `records` where primary_mobile_number!='' $filters");
-	return $query->result();
-	
-	}
 	public function getData2()
 	{ 
 		$query=$this->db->query("SELECT * FROM `records_json`");
@@ -25,7 +16,7 @@ class Data_model extends CI_Model {
 		if(empty($filters)){
 			$filters="";
 		}
-		$query=$this->db->query("SELECT * from records where kyc_verification='yes'");
+		$query=$this->db->query("SELECT * from report where kyc_verification='yes'");
 	return $query->result();
 	}
 	public function headers()

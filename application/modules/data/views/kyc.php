@@ -70,7 +70,6 @@
             <td><?php echo $staff->id_number ?></td>
             <td><?php echo $staff->id_expiry ?></td>
             <td><?php echo $staff->consent ?></td>
-            
             <td><?php echo $staff->location ?></td>
             <td><?php echo $staff->record_date ?></td>
            
