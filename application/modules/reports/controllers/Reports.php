@@ -75,7 +75,7 @@ class Reports extends MX_Controller {
 	echo  json_encode($data,JSON_NUMERIC_CHECK);
 	}
 	public function  enrollers(){
-		$data=$this->reports_mdl->enrollers();
+		$data['staffs']=$this->reports_mdl->enrollers();
 		$data['view']='enrollers';
 		$data['module']=$this->module;
 		$data['uptitle']='Enrollers';
