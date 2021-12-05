@@ -41,7 +41,7 @@
         <tbody>
         <?php 
              $i=1;
-             $datas = Modules::run('data/data2');
+   
              foreach($staffs as $staff): 
        
              
