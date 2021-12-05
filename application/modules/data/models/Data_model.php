@@ -16,7 +16,7 @@ class Data_model extends CI_Model {
 		if(empty($filters)){
 			$filters="";
 		}
-		$query=$this->db->query("SELECT * from report where kyc_verification='yes'");
+		$query=$this->db->query("SELECT r.*,u.name as enroller,u.email as enroller_email FROM `report` r LEFT JOIN user u on u.user_id=r.user_id WHERE kyc_verification='yes'");
 	return $query->result();
 	}
 	public function headers()

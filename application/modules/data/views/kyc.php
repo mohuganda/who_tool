@@ -17,6 +17,8 @@
             <th>Surname</th>
             <th>Firstname </th>
             <th>Othername </th>
+            <th>Enroller </th>
+            <th>Enroller Email </th>
             <th>Date of Birth </th>
             <th>Place </th>
             <th>Gender </th>
@@ -52,7 +54,7 @@
             <td><?php echo $i++; ?></td>
           
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
-            <td><img src="data:image/png;base64,<?php if(!empty($staff->person_photo)) echo $staff->person_photo; ?> " alt="Img"  style="width:160px; height:90px;"/>
+            <td><img src="data:image/png;base64,<?php if(!empty($staff->person_photo)) echo $staff->person_photo; ?> " alt="Img" class="img-circle"  style="width:160px; height:90px;"/>
             </td>
             <td>
 
@@ -60,12 +62,14 @@
             </td>
             <td><?php echo $staff->firstname ?></td>
             <td><?php echo $staff->othername ?></td>
+            <td><?php echo $staff->enroller ?></td>
+            <td><?php echo $staff->enroller_email ?></td>
             <td><?php echo $staff->birth_date ?></td>
             <td><?php echo $staff->birth_place ?></td>
             <td><?php echo $staff->gender ?></td>
             <td><?php echo $staff->position ?></td>
             <td><?php echo $staff->facility ?></td>
-            <td><img src="data:image/png;base64,<?php if(!empty($staff->id_photo))echo $staff->id_photo; ?> " alt="Img" class="img-circle"/>
+            <td><img src="data:image/png;base64,<?php if(!empty($staff->id_photo))echo $staff->id_photo; ?> " alt="Img" />
             </td>
             <td><?php echo $staff->id_type ?></td>
             <td><?php echo $staff->id_number ?></td>
