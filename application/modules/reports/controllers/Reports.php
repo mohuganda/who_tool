@@ -76,6 +76,9 @@ class Reports extends MX_Controller {
 	}
 	public function  enrollers(){
 		$data=$this->reports_mdl->enrollers();
+		$data['view']='enrollers';
+		$data['module']=$this->module;
+		echo Modules::run('templates/main', $data);
     return $data;
 	}
 
