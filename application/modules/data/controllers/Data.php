@@ -30,6 +30,7 @@ class Data extends MX_Controller {
 		$data['module'] 	= "data";  
 		$data['view']   	= "kyc";   
 		$data['headers']   	= $this->data_model->headers();
+		$data['staffs']   	= $this->data_model->kycData();
 		echo Modules::run('templates/main', $data); 
 	}
 
