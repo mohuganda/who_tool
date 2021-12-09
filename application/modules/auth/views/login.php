@@ -459,6 +459,14 @@ $(window).on('resize', function(){
     <div class='box-login'>
    
     <h2 style="margin: 0 auto !imporntant; color:#000;">iHRIS MOBILE UPDATE TOOL</h2>
+     <li class="nav-item">
+            <a href="<?php echo base_url()?>assets/New_IHris_Update_Tool.apk"  target="_blank" class="nav-link">
+              <i class="fa fa-clock dash-icon"></i>
+              <p>
+             Download iHRIS Update Tool Application
+              </p>
+        </a>
+      </li>
      <img src="<?php echo base_url(); ?>assets/img/MOH.png" width="120" height="120">
     <p style="color:blue;"><?php echo $this->session->flashdata('msg'); ?></p>
       <form class='fieldset-body' id='login_form' role="form" method="post" action="<?php echo base_url(); ?>auth/login">
