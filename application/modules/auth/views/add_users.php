@@ -56,7 +56,7 @@ $variables=Modules::run("svariables/getSettings");
                     <div class="col-sm-4">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label>Username /Passcode</label>
+                        <label>Username / Access Code</label>
                         <input type="text" required name="username"  autocomplete="off" class="form-control" placeholder="Username"  required/>
                       </div>
                     </div>
@@ -138,7 +138,7 @@ $variables=Modules::run("svariables/getSettings");
         <tr>
             <th style="width:2%;">#</th>
             <th>Name</th>
-            <th>Username</th>
+            <th>Username / Acces Code</th>
             <th>User Group</th>
             <th>Email</th>
             <th>Contact</th>
