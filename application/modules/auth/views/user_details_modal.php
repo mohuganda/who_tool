@@ -34,7 +34,24 @@
                     <?php endforeach; ?>
                 </select>
               </div>
-         
+              <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Contact</label>
+                        <input type="text" required name="contact"  class="form-control" placeholder="Contact"  <?php echo $user->contact;?> />
+                      </div>
+                    </div>
+              <div class="col-md-12" style="margin: 0 auto">
+                <strong style="margin-right: 1em;">District </strong> 
+                <select onchange="getFacs($(this).val());" name="district_id"  class="form-control select2 sditrict" style="width:100%;">
+          
+                    <?php  foreach($districts as $district): 
+                                  ?>
+                    <option value="<?php echo $district->district_id; ?>" <?php if($user->district==$district->district){ echo "selected";} ?> ><?php echo $district->district; ?></option>
+                                <?php endforeach; ?>
+                    </select>
+                   
+                    <br>
+                </div>
         
              
             

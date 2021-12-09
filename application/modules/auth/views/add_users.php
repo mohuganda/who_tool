@@ -64,7 +64,7 @@ $variables=Modules::run("svariables/getSettings");
                       <!-- textarea -->
                       <div class="form-group">
                         <label>Default Password</label>
-                        <input type="text" required name="password" value="<?php echo $variables=Modules::run("svariables/getSettings")->default_password; ?> "  class="form-control"  readonly/>
+                        <input type="text" required name="password" value="<?php echo md5($variables=Modules::run("svariables/getSettings")->default_password); ?> "  class="form-control"  readonly/>
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -73,7 +73,26 @@ $variables=Modules::run("svariables/getSettings");
                         <input type="email" required name="email"  class="form-control" placeholder="Email"  />
                       </div>
                     </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Contact</label>
+                        <input type="text" required name="contact"  class="form-control" placeholder="Contact"  />
+                      </div>
+                    </div>
                 
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>District</label>
+                    <select onChange="getFacs($(this).val());" name="district_id"  class="form-control select2 sdistrict" style="width:100%;">
+                    <option value="" disabled selected>DISTRICT</option>
+                    <?php  foreach($districts as $district): 
+                                  ?>
+                    <option value="<?php echo $district->district_id; ?>"><?php echo $district->district; ?></option>
+                                <?php endforeach; ?>
+                    </select>
+                  
+                      </div>
                     </div>
 
 
