@@ -33,6 +33,8 @@
             <td><?php echo $staff->username ?></td>
             <td><?php echo $staff->name ?></td>
             <td><?php echo $staff->email ?></td>
+            <td><?php echo $staff->contact ?></td>
+            <td><?php echo $staff->district ?></td>
             
            
             

@@ -141,6 +141,8 @@ $variables=Modules::run("svariables/getSettings");
             <th>Username</th>
             <th>User Group</th>
             <th>Email</th>
+            <th>Contact</th>
+            <th>District</th>
             <th>Actions</th>
         
             
@@ -159,6 +161,8 @@ $variables=Modules::run("svariables/getSettings");
             <td><?php echo $user->username; ?></td>
             <td><?php echo $user->group_name; ?></td>
             <td><?php echo $user->email; ?></td>
+            <td><?php echo $user->contact; ?></td>
+            <td><?php echo $user->district; ?></td>
           
             <td><a data-toggle="modal" data-target="#user<?php echo $user->user_id; ?>" href="#">Edit</a>
                 
