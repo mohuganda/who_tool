@@ -7,8 +7,10 @@
 <section class="col-lg-12 connectedSortable">
                 <div class="row">
                     <div class="col-lg-12">
+                    <p class="pagination"><?php echo $links;?>
+    <div id="table" style="overflow-x:scroll;">
            
-    <table id="example" class="table table-striped table-bordered nowrap mytable" style="width:100%">
+    <table id="example" class="table table-striped table-bordered nowrap table-responsive" style="width:100%">
         <thead>
             <tr>
             <th>#</th>
@@ -45,8 +47,8 @@
         <tbody>
         <?php 
              $i=1;
-             $datas = Modules::run('data/data2');
-             foreach($datas as $dt): 
+            
+             foreach($files as $dt): 
              $staff=json_decode($dt->data); 
              
              ?>
@@ -54,8 +56,8 @@
 
             <tr>
             <td><?php echo $i++; ?></td>
-            <td> <?php echo $staff->user_id; ?></td>
-            <td> <?php echo $staff->district; ?></td>
+            <td> <?php echo @$staff->user_id; ?></td>
+            <td> <?php echo @$staff->district; ?></td>
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
             <td><?php if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
             </td>
@@ -65,8 +67,8 @@
             </td>
             <td><?php echo $staff->firstname ?></td>
             <td><?php echo $staff->othername ?></td>
-            <td><?php echo $staff->birth_date ?></td>
-            <td><?php echo $staff->birth_place ?></td>
+            <td><?php echo @$staff->birth_date ?></td>
+            <td><?php echo @$staff->birth_place ?></td>
             <td><?php echo $staff->gender ?></td>
             <td><?php echo $staff->job ?></td>
             <td><?php echo $staff->facility ?></td>
@@ -78,7 +80,7 @@
             <td><?php echo $staff->national_id ?></td>
             <td><?php echo $staff->national_id_card_number ?></td>
             <td><?php echo $staff->consent ?></td>
-            <td><?php if(!empty(@$staff->signature)){ ?> <img src="data:image/png;base64,<?php echo @$staff->signature; ?> " alt="Img"  /><?php }?>
+            <td><?php if(!empty(@$staff->consent_image)){ ?> <img src="data:image/png;base64,<?php echo @$staff->consent_image; ?> " alt="Img"  /><?php }?>
             </td>
             <td><?php echo $staff->primary_mobile_number ?></td>
             <td><?php echo $staff->other_contact ?></td>
@@ -96,6 +98,7 @@
             <?php endforeach; ?>
         </tbody>
 </table>
+             </div>
 
         <!-- /.box -->
     </div>

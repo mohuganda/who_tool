@@ -5,16 +5,16 @@ class Data_model extends CI_Model {
  
 	
 
-	public function getData2()
+	public function getData2($limit,$start)
 	{ 
-		$query=$this->db->query("SELECT * FROM `records_json`");
+		$query=$this->db->query("SELECT * FROM `records_json` LIMIT $start,$limit");
 	return $query->result();
 	
 	}
 	public function getData()
 	{ 
 	
-		$query=$this->db->query("SELECT  sync_date,`data` FROM `records_json`");
+		$query=$this->db->query("SELECT  sync_date, `data` FROM `records_json`");
 	return $query->result();
 	
 	}
