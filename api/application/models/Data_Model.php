@@ -63,7 +63,7 @@ CLass Data_Model extends CI_Model
         $row=$this->db->query("SELECT * from user where username='$key' and status='1'");
         
         if($row->num_rows()>0){
-        $data=array("person"=>$row->row()->user_id,"status"=>1);
+        $data=array("person"=>$row->row()->user_id,"name"=>$row->row()->name,"status"=>1);
         }
         else{
 
