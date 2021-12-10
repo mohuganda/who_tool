@@ -74,7 +74,8 @@ Class Data extends REST_Controller
         $data = json_decode($post);
         $data_reference = json_decode($post)->reference;
         $user_id = json_decode($post)->user_id;
-        if(($user_id=200) || ($user_id=2115)){
+        if(($user_id==200) ||
+         ($user_id==2115)){
            $response = array('Received but not Saved');
         }
         else{
