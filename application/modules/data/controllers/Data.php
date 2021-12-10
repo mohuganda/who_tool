@@ -39,6 +39,10 @@ class Data extends MX_Controller {
 		$datas = $this->data_model->getData2();
 	return $datas;
 	}
+	public function collections(){
+		$datas = $this->data_model->getData();
+	    echo json_encode($datas);
+	}
 	public function cache_report(){
 		$this->create_report();
 		$datas=$this->data2();

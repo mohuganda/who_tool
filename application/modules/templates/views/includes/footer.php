@@ -37,7 +37,7 @@
 <script src="<?php echo base_url() ?>assets/plugins/select2/js/select2.full.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
 
-<script src="<?php echo base_url(); ?>assets/dist/js/dashboard.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/dist/js/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
 
@@ -54,12 +54,7 @@
 <!-- fullCalendar 2.2.5 -->
 <script src="<?php echo base_url()?>assets/plugins/moment/moment.min.js"></script>
 <script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
- <!-- counterup JS
-		============================================ -->
-<script src="http://localhost/mohattendance_dev/assets/js/counterup/jquery.counterup.min.js"></script>
 
-<script src="http://localhost/mohattendance_dev/assets/js/counterup/counterup-active.js"></script>
-<!-- DataTables  & Plugins -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -396,15 +391,15 @@ $("document").ready(function() {
 });
 function getFacs(val) {
    
-   $.ajax({          
-           method: "GET",
-           url: "<?php echo base_url(); ?>departments/get_facilities",
-           data:'dist_data='+val,
-           success: function(data){
-               //alert(data);
-               $(".sfacility").html(data);
-           }
-   });
+//    $.ajax({          
+//            method: "GET",
+//            url: "<?php echo base_url(); ?>departments/get_facilities",
+//            data:'dist_data='+val,
+//            success: function(data){
+//                //alert(data);
+//                $(".sfacility").html(data);
+//            }
+//    });
 }
 
 function getDeps(val) {
