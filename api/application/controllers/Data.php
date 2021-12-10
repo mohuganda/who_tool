@@ -78,7 +78,7 @@ Class Data extends REST_Controller
            $response = array('Received but not Saved');
         }
         else{
-        $insert=array('reference'=>$data_reference,'data'=>$post);
+        $insert=array('user_id'=>$user_id,'reference'=>$data_reference,'data'=>$post);
         $response = $this->dataHandler->create($insert,$data);
         }
     $this->response($response,REST_Controller::HTTP_OK); 
