@@ -53,9 +53,9 @@ CLass Data_Model extends CI_Model
         }
         else{
 
-            $message= array("message"=>"Failed","status"=>'0');
+        $message= array("message"=>"Failed","status"=>'0');
         }
-    return $data;
+    return $message;
     }
     public function auth($key) 
     {
