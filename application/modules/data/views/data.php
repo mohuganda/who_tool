@@ -78,13 +78,14 @@
             <td><?php echo $staff->national_id ?></td>
             <td><?php echo $staff->national_id_card_number ?></td>
             <td><?php echo $staff->consent ?></td>
+            <td><?php if(!empty(@$staff->signature)){ ?> <img src="data:image/png;base64,<?php echo @$staff->signature; ?> " alt="Img"  /><?php }?>
+            </td>
             <td><?php echo $staff->primary_mobile_number ?></td>
             <td><?php echo $staff->other_contact ?></td>
             <td><?php echo $staff->is_mm_registered ?></td>
             <td><?php echo $staff->is_registered_by_hw ?></td>
             <td><?php echo $staff->registered_mm_name ?></td>
-            <td><?php if(!empty(@$staff->signature)){ ?> <img src="data:image/png;base64,<?php echo @$staff->signature; ?> " alt="Img"  /><?php }?>
-            </td>
+            
             <td><?php echo $staff->diff_names_consent ?></td>
             <td><?php echo $staff->kyc_verification ?></td>
             
