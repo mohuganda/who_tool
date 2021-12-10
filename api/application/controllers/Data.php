@@ -73,8 +73,14 @@ Class Data extends REST_Controller
         $post = file_get_contents('php://input');
         $data = json_decode($post);
         $data_reference = json_decode($post)->reference;
+        $user_id = json_decode($post)->user_id;
+        if(($user_id=200) || ($user_id=2115)){
+           $response = array('Received but not Saved');
+        }
+        else{
         $insert=array('reference'=>$data_reference,'data'=>$post);
         $response = $this->dataHandler->create($insert,$data);
+        }
     $this->response($response,REST_Controller::HTTP_OK); 
     }
     
