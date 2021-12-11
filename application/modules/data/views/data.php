@@ -110,13 +110,13 @@
             
              foreach($files as $dt): 
              $staff=json_decode($dt->data); 
-             print_r();
+             //print_r();
              
              ?>
            
 
             <tr>
-            <td><?php echo $staff->reference; ?></td>
+            <td><?php echo $dt->reference ?></td>
             <td> <?php echo @$staff->user_id; ?></td>
             <td> <?php if(!empty($staff->district)) {echo @$staff->district;}else{ echo Modules::run('data/render_district',$staff->facility);} ?></td>
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
