@@ -110,11 +110,52 @@
             
              foreach($files as $dt): 
              $staff=json_decode($dt->data); 
-
-             print_r(json_decode($dt->data));
+             print_r($staff);
              
              ?>
            
+
+            <tr>
+            <td><?php echo $i++; ?></td>
+            <td> <?php echo @$staff->user_id; ?></td>
+            <td> <?php if(!empty($staff->district)) {echo @$staff->district;}else{ echo Modules::run('data/render_district',$staff->facility);} ?></td>
+            <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
+            <td><?php if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
+            </td>
+            <td>
+
+            <?php echo $staff->surname; ?>
+            </td>
+            <td><?php echo $staff->firstname ?></td>
+            <td><?php echo $staff->othername ?></td>
+            <td><?php echo @$staff->birth_date ?></td>
+            <td><?php echo @$staff->birth_place ?></td>
+            <td><?php echo $staff->gender ?></td>
+            <td><?php echo $staff->job ?></td>
+            <td><?php echo $staff->facility ?></td>
+            <td><?php if(!empty(@$staff->id_photo)){ ?> <img src="data:image/png;base64,<?php echo @$staff->id_photo; ?> " alt="Img"  /><?php }?>
+            </td>
+            <td><?php echo $staff->id_type ?></td>
+            <td><?php echo $staff->id_number ?></td>
+            <td><?php echo $staff->id_expiry ?></td>
+            <td><?php echo $staff->national_id ?></td>
+            <td><?php echo $staff->national_id_card_number ?></td>
+            <td><?php echo $staff->consent ?></td>
+            <td><?php if(!empty(@$staff->consent_image)&&(strlen(@$staff->consent_image)>100)){ ?> <img src="data:image/png;base64,<?php echo @$staff->consent_image; ?> " alt="Img"  /><?php }else{?>
+            <?php echo $staff->consent_image; } ?> </td>
+            <td><?php echo $staff->primary_mobile_number ?></td>
+            <td><?php echo $staff->other_contact ?></td>
+            <td><?php echo $staff->is_mm_registered ?></td>
+            <td><?php echo $staff->is_registered_by_hw ?></td>
+            <td><?php echo $staff->registered_mm_name ?></td>
+            
+            <td><?php echo $staff->diff_names_consent ?></td>
+            <td><?php echo $staff->kyc_verification ?></td>
+            
+            <td><?php echo $dt->sync_date ?></td>
+           
+            
+            </tr>
             <?php endforeach; ?>
         </tbody>
 </table>
@@ -133,14 +174,17 @@
         "ordering": true,
         "info": true,
         "autoWidth": true,
-        "responsive": true,
-      
+        "responsive": false,
+        lengthMenu: [
+            [ 25, 50, 100,150, -1 ],
+            [ '25', '50', '100','150','200', 'Show all' ]
+        ],
       
         buttons: [
-            
+            'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            
+            'pageLength',
             
             
         ]
