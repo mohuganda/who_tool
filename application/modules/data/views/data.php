@@ -173,17 +173,14 @@
         "ordering": true,
         "info": true,
         "autoWidth": true,
-        "responsive": false,
-        lengthMenu: [
-            [ 25, 50, 100,150, -1 ],
-            [ '25', '50', '100','150','200', 'Show all' ]
-        ],
+        "responsive": true,
+      
       
         buttons: [
-            'copyHtml5',
+            
             'excelHtml5',
             'csvHtml5',
-            'pageLength',
+            
             
             
         ]

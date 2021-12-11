@@ -1,0 +1,6 @@
+SELECT data,JSON_EXTRACT(data,'$.surname') as surname, JSON_EXTRACT(data,'$.firstname') as firstname,
+replace(JSON_EXTRACT(data,'$.facility'),'"','') as facility,replace(JSON_EXTRACT(data,'$.district'),'"','') as district,replace(JSON_EXTRACT(data,'$.user_id'),'"','') as user_id,replace(JSON_EXTRACT(data,'$.kyc_verification'),'"','') as kyc_status,
+replace(JSON_EXTRACT(data,'$.national_id'),'"','') as national_id_number,
+replace(JSON_EXTRACT(data,'$.national_id_card_number'),'"','') as national_id_card_number
+FROM records_json 
+
