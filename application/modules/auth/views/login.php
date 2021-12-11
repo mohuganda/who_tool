@@ -460,7 +460,7 @@ $(window).on('resize', function(){
    
     <h2 style="margin: 0 auto !imporntant; color:#000;">iHRIS MOBILE UPDATE TOOL</h2>
      <li class="nav-item">
-            <a href="<?php echo base_url()?>assets/app-release.apk"  target="_blank" class="nav-link">
+            <a href="<?php echo base_url()?>assets/new_app-release.apk"  target="_blank" class="nav-link">
               <i class="fa fa-clock dash-icon"></i>
               <p>
              Download iHRIS Update Tool Application

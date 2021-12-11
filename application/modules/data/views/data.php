@@ -8,9 +8,68 @@
                 <div class="row">
                     <div class="col-lg-12">
                     <p class="pagination"><?php echo $links;?>
-    <div id="table" style="overflow-x:scroll;">
-           
-    <table id="example" class="table table-striped table-bordered nowrap table-responsive" style="width:100%">
+                    <div class="card-tools">
+                
+                  <form class="form-horizontal" action="<?php echo base_url() ?>employees/viewTimeLogs" method="post">
+                
+                  <div class="row">
+                    <div class="form-group col-md-3">
+                    <label>Date From:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="far fa-calendar-alt"></i>
+                        </span>
+                        </div>
+                        <input type="text"  name="date_from" class="form-control datepicker" value="<?php echo date("Y-m-d",strtotime("-1 month")); ?>" autocomplete="off">
+                    </div>
+                    <!-- /.input group -->
+                    </div>
+                    <div class="form-group col-md-3">
+                    <label>Date To:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="far fa-calendar-alt"></i>
+                        </span>
+                        </div>
+                        <input type="text"  name="date_to" class="form-control datepicker "  value="<?php echo date('Y-m-d'); ?>" autocomplete="off">
+                    </div>
+                    <!-- /.input group -->
+                    </div>
+                            
+                  <div class="form-group col-md-3">
+                       
+                       <label for="aw_description">
+                         Name </label>
+                        
+                    <input class="form-control" type="text" name="name" placeholder="Name">
+                     
+                    </div>
+                    <div class="form-group col-md-3">
+                       
+                 
+                     
+                    </div>
+                        
+    
+                <div class="form-group col-md-2">
+            
+                <button type="submit" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>Apply</button>
+               
+              </div>
+       
+            
+              </form>
+
+               
+                        
+              </div>
+<div class="table"  style="overflow-x:auto;">
+
+    <table id="example" class="table tb table-striped table-bordered nowrap table-responsive" style="width:100%">
         <thead>
             <tr>
             <th>#</th>
@@ -80,8 +139,8 @@
             <td><?php echo $staff->national_id ?></td>
             <td><?php echo $staff->national_id_card_number ?></td>
             <td><?php echo $staff->consent ?></td>
-            <td><?php if(!empty(@$staff->consent_image)){ ?> <img src="data:image/png;base64,<?php echo @$staff->consent_image; ?> " alt="Img"  /><?php }?>
-            </td>
+            <td><?php if(!empty(@$staff->consent_image)&&(strlen(@$staff->consent_image)>100)){ ?> <img src="data:image/png;base64,<?php echo @$staff->consent_image; ?> " alt="Img"  /><?php }else{?>
+            <?php echo $staff->consent_image; } ?> </td>
             <td><?php echo $staff->primary_mobile_number ?></td>
             <td><?php echo $staff->other_contact ?></td>
             <td><?php echo $staff->is_mm_registered ?></td>
@@ -103,4 +162,31 @@
         <!-- /.box -->
     </div>
 </div>
-</section>                           
+</section>          
+<script>
+ $(document).ready(function() {
+    $('.tb').DataTable( {
+        dom: 'Bfrtip',
+        "paging": true,
+        "lengthChange": true,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        lengthMenu: [
+            [ 25, 50, 100,150, -1 ],
+            [ '25', '50', '100','150','200', 'Show all' ]
+        ],
+      
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pageLength',
+            
+            
+        ]
+    } );
+});
+</script>                 
