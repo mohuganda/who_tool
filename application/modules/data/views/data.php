@@ -167,13 +167,12 @@
  $(document).ready(function() {
     $('.tb').DataTable( {
         dom: 'Bfrtip',
-        "paging": true,
         "lengthChange": true,
         "searching": false,
         "ordering": true,
         "info": true,
-        "autoWidth": false,
-        "responsive": true,
+        "autoWidth": true,
+        "responsive": false,
         lengthMenu: [
             [ 25, 50, 100,150, -1 ],
             [ '25', '50', '100','150','200', 'Show all' ]
