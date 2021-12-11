@@ -14,7 +14,7 @@ class Data_model extends CI_Model {
 	public function getData()
 	{ 
 	
-		$query=$this->db->query("SELECT  sync_date, data FROM `records_json` ORDER BY STR_TO_DATE(sync_date,'%d-%m-%Y') DESC");
+		$query=$this->db->query("SELECT  sync_date, data FROM `records_json` ORDER BY id DESC");
 	return $query->result();
 	
 	}
