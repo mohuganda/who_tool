@@ -11,7 +11,12 @@ class Data extends MX_Controller {
  			'data_model'  
  		));
 	}
+   function render_district($facility){
+	    $fac=urldecode($facility);
+	   $district=$this->db->query("SELECT distinct district from ihrisdata WHERE facility like '$fac%'")->row()->district;
+	   return $district;
 
+	}
 
 	public function collection($seg=FALSE)
 	{ 
