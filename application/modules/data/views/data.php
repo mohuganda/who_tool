@@ -69,6 +69,7 @@
               </div>
 <div class="table"  style="overflow-x:auto;">
 
+
     <table id="example" class="table tb table-striped table-bordered nowrap table-responsive" style="width:100%">
         <thead>
             <tr>

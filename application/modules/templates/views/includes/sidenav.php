@@ -58,7 +58,7 @@
        
           <?php if(in_array('13', $permissions)){ ?>
          <li class="nav-item">
-            <a href="<?php echo base_url(); ?>data" class="nav-link">
+            <a href="<?php echo base_url(); ?>data/collection" class="nav-link">
               <i class="fa fa-th"></i>
               <p>
                   Data
