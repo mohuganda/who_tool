@@ -7,14 +7,14 @@ class Data_model extends CI_Model {
 
 	public function getData2($limit,$start)
 	{ 
-		$query=$this->db->query("SELECT * FROM `records_json` LIMIT $start,$limit");
+		$query=$this->db->query("SELECT * FROM `records_json` ORDER BY sync_date DESCLIMIT $start,$limit");
 	return $query->result();
 	
 	}
 	public function getData()
 	{ 
 	
-		$query=$this->db->query("SELECT  sync_date, data FROM `records_json` ORDER BY id DESC");
+		$query=$this->db->query("SELECT  sync_date, data FROM `records_json` ORDER BY STR_TO_DATE(sync_date,'%d-%m-%Y') DESC");
 	return $query->result();
 	
 	}
