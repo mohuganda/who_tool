@@ -111,7 +111,7 @@
              foreach($files as $dt): 
              $staff=json_decode($dt->data); 
 
-             print_r($dt);
+             print_r(json_decode($dt));
              
              ?>
            
