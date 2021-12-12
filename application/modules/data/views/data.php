@@ -120,8 +120,8 @@
             <td> <?php echo @$staff->user_id; ?></td>
             <td> <?php if(!empty($staff->district)) {echo @$staff->district;}else{ echo Modules::run('data/render_district',$staff->facility);} ?></td>
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
-            <td><?php if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
-            </td>
+            <td><div class="image"><?php if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
+             </div> </td>
             <td>
 
             <?php echo $staff->surname; ?>
