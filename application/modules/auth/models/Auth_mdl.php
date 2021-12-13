@@ -121,7 +121,7 @@ public function getAll($start,$limit,$key=FALSE){
 	$this->db->or_like("name","$key","after");
 
 	}
-	//$this->db->limit($start,$start);
+	$this->db->limit($start,$start);
 	$this->db->join('user_groups','user_groups.group_id=user.role','left');
 	$qry=$this->db->get($this->table);
 

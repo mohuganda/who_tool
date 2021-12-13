@@ -205,10 +205,10 @@ class Auth extends MX_Controller {
             $config['last_link'] = false;
             $config['first_tag_open'] = '<li class="page-item">';
             $config['first_tag_close'] = '</li>';
-            $config['prev_link'] = '&laquo';
+            $config['prev_link'] = 'Previous';
             $config['prev_tag_open'] = '<li class="page-item">';
             $config['prev_tag_close'] = '</li>';
-            $config['next_link'] = '&raquo';
+            $config['next_link'] = 'Next';
             $config['next_tag_open'] = '<li class="page-item">';
             $config['next_tag_close'] = '</li>';
             $config['last_tag_open'] = '<li class="page-item">';
