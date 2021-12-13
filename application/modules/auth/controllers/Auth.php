@@ -193,7 +193,7 @@ class Auth extends MX_Controller {
 
         $this->load->library('pagination');
         $config=array();
-        $config['base_url']=base_url()."auth/getAll";
+        $config['base_url']=base_url()."auth/users";
         $config['total_rows']=$this->auth_mdl->count_Users($searchkey);
         $config['per_page']=20; //records per page
         $config['uri_segment']=3; //segment in url  
