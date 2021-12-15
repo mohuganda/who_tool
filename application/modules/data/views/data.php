@@ -76,7 +76,7 @@ $facilities=Modules::run("auth/getFacilities");
 <div class="table"  style="overflow-x:auto;">
 
 
-    <table id="example" class="table tb table-striped table-bordered nowrap table-responsive" style="width:100%">
+    <table id="example" class="table table-striped table-bordered nowrap table-responsive" style="width:100%">
         <thead>
             <tr>
             <th>#</th>
@@ -181,10 +181,6 @@ $facilities=Modules::run("auth/getFacilities");
         "info": true,
         "autoWidth": true,
         "responsive": false,
-        lengthMenu: [
-            [ 25, 50, 100,150, -1 ],
-            [ '25', '50', '100','150','200', 'Show all' ]
-        ],
       
         buttons: [
             'copyHtml5',
