@@ -46,9 +46,6 @@
             </tr>
         </thead>
         <tbody>
-   
-           
-
             <tr v-for='collection in collections'>
             <td>{{JSON.parse(collection.data).user_id}}</td>
             <td>{{JSON.parse(collection.data).district}}</td>

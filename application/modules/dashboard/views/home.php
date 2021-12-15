@@ -39,8 +39,8 @@
               <span class="info-box-icon"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">iHRIS Manage</span>
-                <span class="info-box-number" id="ihrisdata"></span>
+                <span class="info-box-text">Total Records</span>
+                <span class="info-box-number" id="total_records"></span>
               </div>
               <!-- /.info-box-content-->
         </div>
@@ -174,7 +174,7 @@ $(document).ready(function(){
             data:'',
             success:function(data){
                 
-                    // $('#workers').text(data.workers);
+                     $('#total_records').text(data.total_records);
                   
                    // console.log(data);
                
