@@ -45,9 +45,7 @@ $facilities=Modules::run("auth/getFacilities");
                     </select>
 
                         
-                    
-                    <div class="form-group col-md-3">
-
+                    </div>
                     <div class="form-group col-md-3">
                        <label for="aw_description">
                         Facilities </label>
@@ -58,14 +56,9 @@ $facilities=Modules::run("auth/getFacilities");
                     <option value="<?php echo $facility->facility; ?>"><?php echo $facility->facility; ?></option>
                                 <?php endforeach; ?>
                     </select>
-                        
-                        
-                    
-                    <div class="form-group col-md-3">
-                       
-                 
-                     
                     </div>
+                        
+                  
                         
     
                 <div class="form-group col-md-2">
