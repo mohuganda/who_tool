@@ -4,6 +4,11 @@
         border-radius:3px;
     }
 </style>
+<?php
+$districts=Modules::run("auth/getDistricts");  
+
+$facilities=Modules::run("auth/getFacilities"); 
+?>
 <section class="col-lg-12 connectedSortable">
                 <div class="row">
                     <div class="col-lg-12">
@@ -22,32 +27,40 @@
                             <i class="far fa-calendar-alt"></i>
                         </span>
                         </div>
-                        <input type="text"  name="date_from" class="form-control datepicker" value="<?php echo date("Y-m-d",strtotime("-1 month")); ?>" autocomplete="off">
+                        <input type="text"  name="sync_date" class="form-control datepicker" value="<?php echo date("Y-m-d"); ?>" autocomplete="off">
                     </div>
                     <!-- /.input group -->
                     </div>
-                    <div class="form-group col-md-3">
-                    <label>Date To:</label>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="far fa-calendar-alt"></i>
-                        </span>
-                        </div>
-                        <input type="text"  name="date_to" class="form-control datepicker "  value="<?php echo date('Y-m-d'); ?>" autocomplete="off">
-                    </div>
-                    <!-- /.input group -->
-                    </div>
+                    
                             
                   <div class="form-group col-md-3">
-                       
                        <label for="aw_description">
-                         Name </label>
+                        Districts </label>
+                    <select onChange="getFacs($(this).val());" name="district"  class="form-control select2 sdistrict" style="width:100%;">
+                    <option value="" disabled selected>DISTRICT</option>
+                    <?php  foreach($districts as $district): 
+                                  ?>
+                    <option value="<?php echo $district->district; ?>"><?php echo $district->district; ?></option>
+                                <?php endforeach; ?>
+                    </select>
+
                         
-                    <input class="form-control" type="text" name="name" placeholder="Name">
-                     
-                    </div>
+                    
+                    <div class="form-group col-md-3">
+
+                    <div class="form-group col-md-3">
+                       <label for="aw_description">
+                        Facilities </label>
+                    <select onChange="getFacs($(this).val());" name="facility"  class="form-control select2" style="width:100%;">
+                    <option value="" disabled selected>FACILITY</option>
+                    <?php  foreach($facilities as $facility): 
+                                  ?>
+                    <option value="<?php echo $facility->facility; ?>"><?php echo $facility->facility; ?></option>
+                                <?php endforeach; ?>
+                    </select>
+                        
+                        
+                    
                     <div class="form-group col-md-3">
                        
                  
