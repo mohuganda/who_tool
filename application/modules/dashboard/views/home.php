@@ -45,12 +45,14 @@
               <!-- /.info-box-content-->
         </div>
             <!-- /.info-box -->
+         
+        
       </div>
             
             <!-- /.info-box -->
       <div class="col-md-3">
         <div class="info-box mb-3 bg-green">
-              <span class="info-box-icon"><i class="far fa-building"></i></span>
+              <span class="info-box-icon"><i class="far fa-user"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">CHW Registry</span>
@@ -64,7 +66,7 @@
             <!-- /.info-box -->
       <div class="col-md-3">
          <div class="info-box mb-3 bg-danger">
-              <span class="info-box-icon"><i class="fas fa-school"></i></span>
+              <span class="info-box-icon"><i class="fas fa-clock"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Daily Data Updates</span>
@@ -81,45 +83,31 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Daily Active Enrollers</span>
-                <span class="info-box-number" id="active_enrollers"></span>                 
+                <span class="info-box-number" id="active_enrollers"><span>                 
                 <span class="info-box-number" id="total_enrollers"> </span>
                 
               </div>
               <!-- /.info-box-content-->
         </div>
-        </div>
-        </div>
-        <div class="col-md-3">
-        <div class="info-box mb-3 bg-yellow">
-              <span class="info-box-icon"><i class="fas fa-tasks" ></i></span>
 
-              <div class="info-box-content">
-                <span class="info-box-text">Daily Active Enrollers</span>
-                <span class="info-box-number" id="active_enrollers"></span>                 
-                <span class="info-box-number" id="total_enrollers"> </span>
-                
-              </div>
-              <!-- /.info-box-content-->
+        
+        
         </div>
         </div>
-        </div>
-        <div class="col-md-3">
-        <div class="info-box mb-3 bg-yellow">
-              <span class="info-box-icon"><i class="fas fa-tasks" ></i></span>
+        <div class="row">
+            <div class="col-md-3">
+            <div class="info-box mb-3 bg-cyan ">
+                  <span class="info-box-icon"><i class="fas fa-user"></i></span>
 
-              <div class="info-box-content">
-                <span class="info-box-text">Daily Active Enrollers</span>
-                <span class="info-box-number" id="active_enrollers"></span>                 
-                <span class="info-box-number" id="total_enrollers"> </span>
-                
-              </div>
-              <!-- /.info-box-content-->
-        </div>
-        </div>
-        </div>
-    
-      <div class="row">
-       <section class="col-lg-4 connectedSortable">
+                  <div class="info-box-content">
+                    <span class="info-box-text">Ministry H Workers</span>
+                    <span class="info-box-number" id="mhwdata"></span>
+                  </div>
+                  <!-- /.info-box-content-->
+            </div>
+            </div>
+        
+       <section class="col-lg-9 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
               <div class="card-header">
@@ -143,7 +131,7 @@
          
           
           </section>
-          <section class="col-lg-8 connectedSortable">
+          <section class="col-lg-12 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
               <div class="card-header">
@@ -208,6 +196,8 @@ $(document).ready(function(){
                      $('#daily_updates').text(data.daily_updates);
                      $('#total_enrollers').text(data.total_enrollers);
                      $('#active_enrollers').text(data.active_enrollers);
+                     $('#chwdata').text(data.chwdata);
+                     $('#mhwdata').text(data.mhwdata);
                     console.log(data);
                
                 
