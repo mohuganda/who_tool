@@ -19,7 +19,7 @@ $facilities=Modules::run("auth/getFacilities");
                 
                   <div class="row">
                     <div class="form-group col-md-3">
-                    <label>Date From:</label>
+                    <label>Date:</label>
 
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -66,13 +66,14 @@ $facilities=Modules::run("auth/getFacilities");
                 <button type="submit" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>Apply</button>
                
               </div>
+              </div>
        
             
               </form>
 
                
                         
-              </div>
+            
 <div class="table"  style="overflow-x:auto;">
 
 
