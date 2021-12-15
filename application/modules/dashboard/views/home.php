@@ -166,7 +166,7 @@
     });
 //get dashboard Data
 $(document).ready(function(){
-        knobgauge(0);
+      
         $.ajax({
             type:'GET',
             url:'<?php echo base_url('dashboard/dashboardData')?>',
