@@ -89,6 +89,34 @@
         </div>
         </div>
         </div>
+        <div class="col-md-3">
+        <div class="info-box mb-3 bg-yellow">
+              <span class="info-box-icon"><i class="fas fa-tasks" ></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Daily Active Enrollers</span>
+                <span class="info-box-number" id="active_enrollers"></span>                 
+                <span class="info-box-number" id="total_enrollers"> </span>
+                
+              </div>
+              <!-- /.info-box-content-->
+        </div>
+        </div>
+        </div>
+        <div class="col-md-3">
+        <div class="info-box mb-3 bg-yellow">
+              <span class="info-box-icon"><i class="fas fa-tasks" ></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Daily Active Enrollers</span>
+                <span class="info-box-number" id="active_enrollers"></span>                 
+                <span class="info-box-number" id="total_enrollers"> </span>
+                
+              </div>
+              <!-- /.info-box-content-->
+        </div>
+        </div>
+        </div>
     
       <div class="row">
        <section class="col-lg-4 connectedSortable">
