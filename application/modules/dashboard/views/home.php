@@ -83,7 +83,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Daily Active Enrollers</span>
-                <span class="info-box-number" id="active_enrollers"><span>                 
+                <span class="info-box-number" id="active_enrollers"></span>                 
                 <span class="info-box-number" id="total_enrollers"> </span>
                 
               </div>
