@@ -11,7 +11,7 @@ class Dashboard_mdl extends CI_Model {
 
 	}
     public function getData(){
-        $data['total_records']=$this->get('records_json')->num_rows();
+        $data['total_records']=$this->db->get('records_json')->num_rows();
         
     return $data;
     //

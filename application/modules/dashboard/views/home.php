@@ -176,7 +176,7 @@ $(document).ready(function(){
                 
                      $('#total_records').text(data.total_records);
                   
-                   // console.log(data);
+                    console.log(data);
                
                 
             }
