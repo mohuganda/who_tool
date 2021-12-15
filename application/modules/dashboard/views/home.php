@@ -68,7 +68,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Daily Updates</span>
-                <span class="info-box-number" id="updates"></span>
+                <span class="info-box-number" id="daily_updates"></span>
              </div>
               <!-- /.info-box-content -->
         </div>
@@ -175,6 +175,7 @@ $(document).ready(function(){
             success:function(data){
                 
                      $('#total_records').text(data.total_records);
+                     $('#daily_updates').text(data.daily_updates);
                   
                     console.log(data);
                

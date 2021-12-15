@@ -12,6 +12,8 @@ class Dashboard_mdl extends CI_Model {
 	}
     public function getData(){
         $data['total_records']=$this->db->query("select count(id) as total_records from records_json")->row()->total_records;
+        $today=date('Y-m-d');
+        $data['daily_updates']=$this->db->query("select count(id) as total_records from records_json where DATE_FORMAT(sync_date, '%Y-%m-%d')=$today")->row()->total_records;
         
     return $data;
     //
