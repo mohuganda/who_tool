@@ -67,7 +67,7 @@
               <span class="info-box-icon"><i class="fas fa-school"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Daily Updates</span>
+                <span class="info-box-text">Daily Data Updates</span>
                 <span class="info-box-number" id="daily_updates"></span>
              </div>
               <!-- /.info-box-content -->
@@ -80,8 +80,11 @@
               <span class="info-box-icon"><i class="fas fa-tasks" ></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Data Clerks</span>
-                <span class="info-box-number" id="jobs"></span>
+                <span class="info-box-text">Daily Active Enrollers</span>
+                <span class="info-box-number" id="active_enrollers"> </span>
+                                                      <p> out of<p>
+                <span class="info-box-number" id="total_enrollers"> </span>
+                
               </div>
               <!-- /.info-box-content-->
         </div>
@@ -176,7 +179,8 @@ $(document).ready(function(){
                 
                      $('#total_records').text(data.total_records);
                      $('#daily_updates').text(data.daily_updates);
-                  
+                     $('#total_enrollers').text(data.total_enrollers);
+                     $('#active_enrollers').text(data.active_enrollers);
                     console.log(data);
                
                 
