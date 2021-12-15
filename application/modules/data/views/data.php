@@ -12,7 +12,7 @@ $facilities=Modules::run("auth/getFacilities");
 <section class="col-lg-12 connectedSortable">
                 <div class="row">
                     <div class="col-lg-12">
-                    <p class="pagination"><?php echo $links;?>
+                  
                     <div class="card-tools">
                 
                   <form class="form-horizontal" action="<?php echo base_url() ?>employees/viewTimeLogs" method="post">
@@ -72,7 +72,7 @@ $facilities=Modules::run("auth/getFacilities");
               </form>
 
                
-                        
+<p class="pagination"><?php echo $links;?>             
             
 <div class="table"  style="overflow-x:auto;">
 
