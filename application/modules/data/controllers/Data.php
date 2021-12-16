@@ -99,14 +99,14 @@ class Data extends MX_Controller {
 	function create_report(){
 		
 		$this->load->dbforge();
-		//$query=$this->dbforge->drop_table('report');
+		$query=$this->dbforge->drop_table('report');
 		
         $data=$this->db->query("SELECT form_field, data_type as type, db_constraint as 'constraint', db_unique as 'unique' from fields")->result();
 		$fields=array();
 		foreach($data as $row){
 			
 			$properties = array(
-				'type'=>str_replace("map","","$row->type"),
+				'type'=>str_replace("signature","blob",str_replace("map","","$row->type")),
 			    'constraint'=>"$row->constraint",
 			    'unique'=>"$row->unique");
 
@@ -119,6 +119,10 @@ class Data extends MX_Controller {
 		$fields['app_version'] = array(
 			'type'       => 'varchar',
 			'constraint'=>"10"
+		);
+		$fields['district'] = array(
+			'type'       => 'varchar',
+			'constraint'=>"30"
 		);
 		$this->dbforge->add_field($fields);
 		// define primary key
