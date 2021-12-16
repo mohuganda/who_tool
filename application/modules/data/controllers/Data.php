@@ -107,9 +107,17 @@ class Data extends MX_Controller {
 			if($row->type=='signature'){
 			$type=str_replace("signature","blob","$row->type");
            }
+		   else if ($row->type=='charmap'){
+			$type=str_replace("charmap","varchar","$row->type");
+		   }
+		   else if ($row->type=='char'){
+			$type=str_replace("char","varchar","$row->type"); 
+		   }
 		   else{
 			$type=str_replace("map","","$row->type");
+
 		   }
+		   
 			$properties = array( 
 				'type'=>$type,
 			    'constraint'=>"$row->constraint",
