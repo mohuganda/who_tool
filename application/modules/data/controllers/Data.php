@@ -121,21 +121,26 @@ class Data extends MX_Controller {
 			$properties = array( 
 				'type'=>$type,
 			    'constraint'=>"$row->constraint",
-			    'unique'=>"$row->unique");
+			    'unique'=>"$row->unique",
+				'null' => true, 
+			);
 
 			$fields[$row->form_field] = $properties;
 		}
 		//print_r($fields);
 		$fields['sync_date'] = array(
 			'type'       => 'DATETIME',
+			'null' => true,
 		);
 		$fields['app_version'] = array(
 			'type'       => 'varchar',
-			'constraint'=>"10"
+			'constraint'=>"10",
+			'null' => true,
 		);
 		$fields['district'] = array(
 			'type'       => 'varchar',
-			'constraint'=>"30"
+			'constraint'=>"30",
+			'null' => true,
 		);
 		$this->dbforge->add_field($fields);
 		// define primary key
