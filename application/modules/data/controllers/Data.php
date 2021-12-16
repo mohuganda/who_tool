@@ -85,9 +85,9 @@ class Data extends MX_Controller {
 	    echo json_encode($datas);
 	}
 	public function cache_report(){
-		if(!$this->db->get('records_json_report')->result()){
-		$this->create_report();
-	    }
+		// if(!$this->db->get('records_json_report')->result()){
+		// $this->create_report();
+	    // }
 		$datas=$this->getColums();
 		foreach($datas as $dt): 
 			$staff=json_decode($dt->data); 
