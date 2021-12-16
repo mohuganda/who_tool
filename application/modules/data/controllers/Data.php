@@ -88,6 +88,7 @@ class Data extends MX_Controller {
 		// if(!$this->db->get('records_json_report')->result()){
 		// $this->create_report();
 	    // }
+		ini_set('max_execution_time',0);
 		$datas=$this->data_model->getColums();
 		foreach($datas as $dt): 
 			 $staff=json_decode($dt->data); 
@@ -99,7 +100,7 @@ class Data extends MX_Controller {
 	function create_report(){
 		
 		$this->load->dbforge();
-		//$query=$this->dbforge->drop_table('records_json_report');
+		$query=$this->dbforge->drop_table('records_json_report');
 		
         $data=$this->db->query("SELECT form_field, data_type as type, db_constraint as 'constraint', db_unique as 'unique' from fields")->result();
 		$fields=array();
