@@ -128,6 +128,7 @@ class Data extends MX_Controller {
 		$this->dbforge->add_key('ihris_pid', TRUE);
 		$this->dbforge->add_key('national_id', TRUE);
 		$this->dbforge->add_key('app_version', TRUE);
+		$this->dbforge->add_key('sync_date', TRUE);
 
 
 		// create table
