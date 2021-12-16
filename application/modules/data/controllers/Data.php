@@ -89,7 +89,7 @@ class Data extends MX_Controller {
 		$datas=$this->data2();
 		foreach($datas as $dt): 
 			$staff=json_decode($dt->data); 
-			$this->db->replace('report',$staff);
+			$this->db->replace('records_json_report',$staff);
 		endforeach;
 	}
 	function create_report(){
@@ -109,8 +109,12 @@ class Data extends MX_Controller {
 			$fields[$row->form_field] = $properties;
 		}
 		//print_r($fields);
+		$fields['sync_date'] = array(
+			'type'       => 'TIMESTAMP',
+		);
 		$this->dbforge->add_field($fields);
 		// define primary key
+		
 		$this->dbforge->add_key('reference', TRUE);
 		// create table
 		$this->dbforge->create_table('report');
