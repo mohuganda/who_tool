@@ -105,7 +105,10 @@ class Data extends MX_Controller {
 		$fields=array();
 		foreach($data as $row){
 			if($row->type=='signature'){
-			$type=str_replace("signature","blob","$row->type");
+			$type=str_replace("signature","longtext","$row->type");
+           }
+		   else if($row->type=='blob'){
+			$type=str_replace("signature","longtext","$row->type");
            }
 		   else if ($row->type=='charmap'){
 			$type=str_replace("charmap","varchar","$row->type");
