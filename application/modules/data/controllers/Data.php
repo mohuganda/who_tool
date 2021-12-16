@@ -99,7 +99,7 @@ class Data extends MX_Controller {
 	function create_report(){
 		
 		$this->load->dbforge();
-		$query=$this->dbforge->drop_table('records_json_report');
+		//$query=$this->dbforge->drop_table('records_json_report');
 		
         $data=$this->db->query("SELECT form_field, data_type as type, db_constraint as 'constraint', db_unique as 'unique' from fields")->result();
 		$fields=array();
@@ -141,18 +141,18 @@ class Data extends MX_Controller {
 		// define primary key
 		
 		$this->dbforge->add_key('reference', TRUE);
-		$this->dbforge->add_key('user_id', TRUE);
-		$this->dbforge->add_key('facility', TRUE);
-		$this->dbforge->add_key('position', TRUE);
-		$this->dbforge->add_key('district', TRUE);
-		$this->dbforge->add_key('ihris_pid', TRUE);
-		$this->dbforge->add_key('national_id', TRUE);
-		$this->dbforge->add_key('app_version', TRUE);
-		$this->dbforge->add_key('sync_date', TRUE);
+		$this->dbforge->add_key('user_id', FALSE);
+		$this->dbforge->add_key('facility', FALSE);
+		$this->dbforge->add_key('position', FALSE);
+		$this->dbforge->add_key('district', FALSE);
+		$this->dbforge->add_key('ihris_pid', FALSE);
+		$this->dbforge->add_key('national_id', FALSE);
+		$this->dbforge->add_key('app_version', FALSE);
+		$this->dbforge->add_key('sync_date', FALSE);
 
 
 		// create table
-		$this->dbforge->create_table('records_json_report');
+		$this->dbforge->create_table('records_json_report',TRUE);
 
 	     
 
