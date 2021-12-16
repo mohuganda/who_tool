@@ -11,6 +11,12 @@ class Data_model extends CI_Model {
 	return $query->result();
 	
 	}
+	public function getColums()
+	{ 
+		$query=$this->db->query("SELECT sync_date,data FROM `records_json`");
+	return $query->result();
+	
+	}
 	public function getData()
 	{ 
 	

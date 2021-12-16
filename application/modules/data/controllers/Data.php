@@ -86,9 +86,10 @@ class Data extends MX_Controller {
 	}
 	public function cache_report(){
 		$this->create_report();
-		$datas=$this->data2();
+		$datas=$this->getColums();
 		foreach($datas as $dt): 
 			$staff=json_decode($dt->data); 
+			$staff['sync_date']=$datas->sync_date;
 			$this->db->replace('records_json_report',$staff);
 		endforeach;
 	}
@@ -110,14 +111,27 @@ class Data extends MX_Controller {
 		}
 		//print_r($fields);
 		$fields['sync_date'] = array(
-			'type'       => 'TIMESTAMP',
+			'type'       => 'datetime',
+		);
+		$fields['app_version'] = array(
+			'type'       => 'varchar',
+			'constraint'=>"10"
 		);
 		$this->dbforge->add_field($fields);
 		// define primary key
 		
 		$this->dbforge->add_key('reference', TRUE);
+		$this->dbforge->add_key('user_id', TRUE);
+		$this->dbforge->add_key('facility', TRUE);
+		$this->dbforge->add_key('position', TRUE);
+		$this->dbforge->add_key('district', TRUE);
+		$this->dbforge->add_key('ihris_pid', TRUE);
+		$this->dbforge->add_key('national_id', TRUE);
+		$this->dbforge->add_key('app_version', TRUE);
+
+
 		// create table
-		$this->dbforge->create_table('report');
+		$this->dbforge->create_table('records_json_report');
 
 	     
 
