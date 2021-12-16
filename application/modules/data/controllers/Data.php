@@ -111,8 +111,7 @@ class Data extends MX_Controller {
 		}
 		//print_r($fields);
 		$fields['sync_date'] = array(
-			'type'       => 'varchar',
-			'constraint'=>"20"
+			'type'       => 'DATETIME',
 		);
 		$fields['app_version'] = array(
 			'type'       => 'varchar',
