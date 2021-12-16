@@ -99,7 +99,7 @@ class Data extends MX_Controller {
 	function create_report(){
 		
 		$this->load->dbforge();
-		$query=$this->dbforge->drop_table('report');
+		$query=$this->dbforge->drop_table('records_json_report');
 		
         $data=$this->db->query("SELECT form_field, data_type as type, db_constraint as 'constraint', db_unique as 'unique' from fields")->result();
 		$fields=array();
