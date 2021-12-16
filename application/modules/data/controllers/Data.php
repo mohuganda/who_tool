@@ -88,7 +88,7 @@ class Data extends MX_Controller {
 		// if(!$this->db->get('records_json_report')->result()){
 		// $this->create_report();
 	    // }
-		$datas=$this->getColums();
+		$datas=$this->data_model->getColums();
 		foreach($datas as $dt): 
 			$staff=json_decode($dt->data); 
 			$staff['sync_date']=$datas->sync_date;
