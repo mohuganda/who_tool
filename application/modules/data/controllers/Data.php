@@ -111,7 +111,7 @@ class Data extends MX_Controller {
 		}
 		//print_r($fields);
 		$fields['sync_date'] = array(
-			'type'       => 'datetime',
+			'type'       => 'DATE',
 		);
 		$fields['app_version'] = array(
 			'type'       => 'varchar',
