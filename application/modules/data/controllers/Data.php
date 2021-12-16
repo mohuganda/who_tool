@@ -104,9 +104,14 @@ class Data extends MX_Controller {
         $data=$this->db->query("SELECT form_field, data_type as type, db_constraint as 'constraint', db_unique as 'unique' from fields")->result();
 		$fields=array();
 		foreach($data as $row){
-			
-			$properties = array(
-				'type'=>str_replace("signature","blob",str_replace("map","","$row->type")),
+			if($row->type=='signature'){
+			$type=str_replace("signature","blob","$row->type");
+           }
+		   else{
+			$type=str_replace("map","","$row->type");
+		   }
+			$properties = array( 
+				'type'=>$type,
 			    'constraint'=>"$row->constraint",
 			    'unique'=>"$row->unique");
 
