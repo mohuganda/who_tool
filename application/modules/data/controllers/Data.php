@@ -109,7 +109,7 @@ class Data extends MX_Controller {
 			$type=str_replace("signature","longtext","$row->type");
            }
 		   else if($row->type=='blob'){
-			$type=str_replace("signature","longtext","$row->type");
+			$type=str_replace("blob","longtext","$row->type");
            }
 		   else if ($row->type=='charmap'){
 			$type=str_replace("charmap","varchar","$row->type");
@@ -163,10 +163,26 @@ class Data extends MX_Controller {
 		// create table
 		$this->dbforge->create_table('records_json_report',TRUE);
 
+
+
 	     
 
 		
 		
+
+	}
+	public function fill_districts(){
+		$dis=$this->db->query("SELECT distinct district from ihrisdata");
+		foreach ($dis as $d):
+
+			$up=$this->db->query("UPDATE records_json SET=(SELECT JSON_EXTRACT(data,'.$district') WHERE JSON_EXTRACT(data,'.$district')='$d->district'");
+		if($up){
+			echo 'Successful';
+		}
+		else{
+			echo 'Failed';
+		}
+		endforeach;
 
 	}
 
