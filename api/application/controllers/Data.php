@@ -53,13 +53,13 @@ Class Data extends REST_Controller
     $this->response($results,REST_Controller::HTTP_OK);
 
     }
-    public function districts_get(){
+    public function new_districts_get(){
         $results = $this->dataHandler->districts();
     $this->response($results,REST_Controller::HTTP_OK);
         
     }
     //get forms
-    public function forms_get(){
+    public function new_forms_get(){
         $results = $this->dataHandler->forms();
     $this->response($results);
     }
