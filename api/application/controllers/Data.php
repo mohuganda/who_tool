@@ -69,7 +69,7 @@ Class Data extends REST_Controller
         $this->response($results,REST_Controller::HTTP_OK);
     }
 
-    public function create_post(){
+    public function new_create_post(){
         $post = file_get_contents('php://input');
         $data = json_decode($post);
         $data_reference = json_decode($post)->reference;
