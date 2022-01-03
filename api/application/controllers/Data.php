@@ -120,7 +120,7 @@ Class Data extends REST_Controller
                     'ID_Number'=>json_decode($post)->ID_Number,
                     'consent_image'=>json_decode($post)->consent_image,
                     'employment_terms'=>json_decode($post)->employment_terms,
-                    'sync_date'=>json_decode($post)->sync_date,
+                    'sync_date'=>date('Y-m-d H:i:s'),
                     'app_version'=>json_decode($post)->app_version,
                     'district'=>json_decode($post)->district);
         $response = $this->dataHandler->create($insert,$insert2);
