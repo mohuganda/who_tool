@@ -76,6 +76,12 @@ Class Data extends REST_Controller
         $district = json_decode($post)->district;
         $hwtype = json_decode($post)->hw_type;
         $user_id = json_decode($post)->user_id;
+        if(isset(json_decode($post)->record_date)){
+            @$recorddate=json_decode($post)->record_date;
+        }
+        else{
+            @$recorddate=date('Y-m-d'); 
+        }
         $app_version = json_decode($post)->app_version;
         if(($user_id==200) ||
          ($user_id==2115)){
@@ -116,7 +122,7 @@ Class Data extends REST_Controller
                     'reference'=>json_decode($post)->reference,
                     'user_id'=>json_decode($post)->firstname,
                     'location'=>json_decode($post)->location,
-                    'record_date'=>json_decode($post)->record_date,
+                    'record_date'=>$recorddate,
                     'ID_Number'=>json_decode($post)->ID_Number,
                     'consent_image'=>json_decode($post)->consent_image,
                     'employment_terms'=>json_decode($post)->employment_terms,
