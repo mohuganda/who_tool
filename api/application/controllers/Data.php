@@ -53,13 +53,13 @@ Class Data extends REST_Controller
     $this->response($results,REST_Controller::HTTP_OK);
 
     }
-    public function new_districts_get(){
+    public function districts_get(){
         $results = $this->dataHandler->districts();
     $this->response($results,REST_Controller::HTTP_OK);
         
     }
     //get forms
-    public function new_forms_get(){
+    public function forms_get(){
         $results = $this->dataHandler->forms();
     $this->response($results);
     }
@@ -73,6 +73,8 @@ Class Data extends REST_Controller
         $post = file_get_contents('php://input');
         $data = json_decode($post);
         $data_reference = json_decode($post)->reference;
+        $district = json_decode($post)->district;
+        $hwtype = json_decode($post)->hw_type;
         $user_id = json_decode($post)->user_id;
         $app_version = json_decode($post)->app_version;
         if(($user_id==200) ||
@@ -80,8 +82,48 @@ Class Data extends REST_Controller
            $response = array('Received but not Saved');
         }
         else{
-        $insert=array('app_version'=>$app_version,'user_id'=>$user_id,'reference'=>$data_reference,'data'=>$post);
-        $response = $this->dataHandler->create($insert,$data);
+        $insert2=array('app_version'=>$app_version,'user_id'=>$user_id,'reference'=>$data_reference,'data'=>$post,'district'=>$district,'hw_type'=>$hwtype);
+        $insert=array(
+                    'surname'=>json_decode($post)->surname,
+                    'ihris_pid'=>json_decode($post)->ihris_pid,
+                    'hw_type'=>json_decode($post)->hw_type,
+                    'firstname'=>json_decode($post)->firstname,
+                    'othername'=>json_decode($post)->othername,
+                    'birth_date'=>json_decode($post)->birth_date,
+                    'birth_place'=>json_decode($post)->birth_place,
+                    'gender'=>json_decode($post)->gender,
+                    'job'=>json_decode($post)->job,
+                    'facility'=>json_decode($post)->facility,
+                    'id_type'=>json_decode($post)->id_type,
+                    'national_id'=>json_decode($post)->national_id,
+                    'id_expiry'=>json_decode($post)->id_expiry,
+                    'id_photo'=>json_decode($post)->id_photo,
+                    'person_photo'=>json_decode($post)->person_photo,
+                    'primary_mobile_operator'=>json_decode($post)->primary_mobile_operator,
+                    'primary_mobile_number'=>json_decode($post)->primary_mobile_number,
+                    'is_mm_registered'=>json_decode($post)->is_mm_registered,
+                    'is_registered_by_hw'=>json_decode($post)->is_registered_by_hw,
+                    'email'=>json_decode($post)->email,
+                    'registered_mm_name'=>json_decode($post)->registered_mm_name,
+                    'diff_names_consent'=>json_decode($post)->diff_names_consent,
+                    'verification_process'=>json_decode($post)->verification_process,
+                    'kyc_verification'=>json_decode($post)->kyc_verification,
+                    'other_contact'=>json_decode($post)->other_contact,
+                    'consent'=>json_decode($post)->consent,
+                    'registered_before'=>json_decode($post)->registered_before,
+                    'no_mobile_money_point'=>json_decode($post)->no_mobile_money_point,
+                    'national_id_card_number'=>json_decode($post)->national_id_card_number,
+                    'reference'=>json_decode($post)->reference,
+                    'user_id'=>json_decode($post)->firstname,
+                    'location'=>json_decode($post)->location,
+                    'record_date'=>json_decode($post)->record_date,
+                    'ID_Number'=>json_decode($post)->ID_Number,
+                    'consent_image'=>json_decode($post)->consent_image,
+                    'employment_terms'=>json_decode($post)->employment_terms,
+                    'sync_date'=>json_decode($post)->sync_date,
+                    'app_version'=>json_decode($post)->app_version,
+                    'district'=>json_decode($post)->district);
+        $response = $this->dataHandler->create($insert,$insert2);
         }
     $this->response($response,REST_Controller::HTTP_OK); 
     }
