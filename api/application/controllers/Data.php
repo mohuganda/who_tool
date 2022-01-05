@@ -168,7 +168,7 @@ Class Data extends REST_Controller
                     'no_mobile_money_point'=>@json_decode($post)->no_mobile_money_point,
                     'national_id_card_number'=>$nin_cardno,
                     'reference'=>@json_decode($post)->reference,
-                    'user_id'=>@json_decode($post)->firstname,
+                    'user_id'=>$user_id,
                     'location'=>$location,
                     'record_date'=>$recorddate,
                     'ID_Number'=>@json_decode($post)->ID_Number,
