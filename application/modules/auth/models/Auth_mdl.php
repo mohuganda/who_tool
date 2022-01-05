@@ -119,6 +119,7 @@ public function getAll($start,$limit,$key=FALSE){
 	if(!empty($key)){
 	$this->db->like("username","$key","after");
 	$this->db->or_like("name","$key","after");
+	$this->db->or_like("user_id","$key","after");
 
 	}
 	$this->db->limit($start,$limit);

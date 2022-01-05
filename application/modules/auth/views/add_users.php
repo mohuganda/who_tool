@@ -138,6 +138,7 @@ $variables=Modules::run("svariables/getSettings");
         <tr>
             <th style="width:2%;">#</th>
             <th>Name</th>
+            <th>System UUID</th>
             <th>Username / Acces Code</th>
             <th>User Group</th>
             <th>Email</th>
@@ -158,6 +159,7 @@ $variables=Modules::run("svariables/getSettings");
         <tr>
             <td><?php echo $no; ?>. </td>
             <td><?php echo $user->name; ?></td>
+            <td><?php echo $user->user_id; ?></td>
             <td><?php echo $user->username; ?></td>
             <td><?php echo $user->group_name; ?></td>
             <td><?php echo $user->email; ?></td>
