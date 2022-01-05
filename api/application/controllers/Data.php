@@ -120,6 +120,13 @@ Class Data extends REST_Controller
         else{
             @$birth_date=""; 
         }
+        //othername
+        if(isset(json_decode($post)->othername)){
+            @$othername=json_decode($post)->othername;
+        }
+        else{
+            @$othername=""; 
+        }
         //id expiry
         
         
@@ -135,7 +142,7 @@ Class Data extends REST_Controller
                     'ihris_pid'=>$ihris_pid,
                     'hw_type'=>@json_decode($post)->hw_type,
                     'firstname'=>@json_decode($post)->firstname,
-                    'othername'=>@json_decode($post)->othername,
+                    'othername'=>@$othername,
                     'birth_date'=>$birth_date,
                     'birth_place'=>@json_decode($post)->birth_place,
                     'gender'=>@json_decode($post)->gender,
