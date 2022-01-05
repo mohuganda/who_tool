@@ -144,7 +144,7 @@ Class Data extends REST_Controller
                     'id_type'=>@json_decode($post)->id_type,
                     'national_id'=>$nin,
                     'id_expiry'=>$id_expiry,
-                    'kjsjksjks'=>@json_decode($post)->id_photo,
+                    'id_photo'=>@json_decode($post)->id_photo,
                     'person_photo'=>@json_decode($post)->person_photo,
                     'primary_mobile_operator'=>@json_decode($post)->primary_mobile_operator,
                     'primary_mobile_number'=>@json_decode($post)->primary_mobile_number,
