@@ -88,6 +88,12 @@ Class Data extends REST_Controller
         else{
             @$location=json_decode($post)->district; 
         }
+        if(isset(json_decode($post)->ihris_pid)){
+            @$ihris_pid=json_decode($post)->ihris_pid;
+        }
+        else{
+            @$ihris_pid=json_decode($post)->ihris_pid; 
+        }
         $app_version = json_decode($post)->app_version;
         if(($user_id==200) ||
          ($user_id==2115)){
@@ -97,7 +103,7 @@ Class Data extends REST_Controller
         $insert2=array('app_version'=>$app_version,'user_id'=>$user_id,'reference'=>$data_reference,'data'=>$post,'district'=>$district,'hw_type'=>$hwtype);
         $insert=array(
                     'surname'=>json_decode($post)->surname,
-                    'ihris_pid'=>json_decode($post)->ihris_pid,
+                    'ihris_pid'=>$ihris_pid,
                     'hw_type'=>json_decode($post)->hw_type,
                     'firstname'=>json_decode($post)->firstname,
                     'othername'=>json_decode($post)->othername,
