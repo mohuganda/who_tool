@@ -108,6 +108,18 @@ Class Data extends REST_Controller
         else{
             @$nin_cardno=""; 
         }
+        if(isset(json_decode($post)->id_expiry)){
+            @$id_expiry=json_decode($post)->id_expiry;
+        }
+        else{
+            @$id_expiry=""; 
+        }
+        if(isset(json_decode($post)->birth_date)){
+            @$birth_date=json_decode($post)->birth_date;
+        }
+        else{
+            @$birth_date=""; 
+        }
         //id expiry
         
         
@@ -124,14 +136,14 @@ Class Data extends REST_Controller
                     'hw_type'=>@json_decode($post)->hw_type,
                     'firstname'=>@json_decode($post)->firstname,
                     'othername'=>@json_decode($post)->othername,
-                    'birth_date'=>@json_decode($post)->birth_date,
+                    'birth_date'=>$birth_date,
                     'birth_place'=>@json_decode($post)->birth_place,
                     'gender'=>@json_decode($post)->gender,
                     'job'=>@json_decode($post)->job,
                     'facility'=>@json_decode($post)->facility,
                     'id_type'=>@json_decode($post)->id_type,
                     'national_id'=>$nin,
-                    'id_expiry'=>@json_decode($post)->id_expiry,
+                    'id_expiry'=>$id_expiry,
                     'kjsjksjks'=>@json_decode($post)->id_photo,
                     'person_photo'=>@json_decode($post)->person_photo,
                     'primary_mobile_operator'=>@json_decode($post)->primary_mobile_operator,
