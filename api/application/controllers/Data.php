@@ -76,6 +76,7 @@ Class Data extends REST_Controller
         $district = json_decode($post)->district;
         $hwtype = json_decode($post)->hw_type;
         $user_id = json_decode($post)->user_id;
+        @$facility=json_decode($post)->facility;
         if(isset(json_decode($post)->record_date)){
             @$recorddate=json_decode($post)->record_date;
         }
@@ -136,7 +137,7 @@ Class Data extends REST_Controller
            $response = array('Received but not Saved');
         }
         else{
-        $insert2=array('app_version'=>$app_version,'user_id'=>$user_id,'reference'=>$data_reference,'data'=>$post,'district'=>$district,'hw_type'=>$hwtype);
+        $insert2=array('app_version'=>$app_version,'user_id'=>$user_id,'reference'=>$data_reference,'data'=>$post,'district'=>$district,'facility'=>$facility,'hw_type'=>$hwtype);
         $insert=array(
                     'surname'=>@json_decode($post)->surname,
                     'ihris_pid'=>$ihris_pid,
