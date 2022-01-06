@@ -17,6 +17,16 @@ class Data extends MX_Controller {
 	   return $district;
 
 	}
+	function normalise_data(){
+		//fill type:
+        $datas=$this->data_model->getColums();
+		foreach($datas as $dt): 
+			$staff=json_decode($dt->data); 
+		  // @$staff->sync_date=$dt->sync_date;
+			print_r($staff);
+		  // $this->db->query("");
+	   endforeach;
+	}
 
 	public function collection($seg=FALSE)
 	{ 
@@ -94,13 +104,13 @@ class Data extends MX_Controller {
 			 $staff=json_decode($dt->data); 
 			@$staff->sync_date=$dt->sync_date;
              //print_r($staff);
-			$this->db->replace('records_json_report',$staff);
+			$this->db->replace('linear_json_report',$staff);
 		endforeach;
 	}
 	function create_report(){
 		
 		$this->load->dbforge();
-		$query=$this->dbforge->drop_table('records_json_report');
+		$query=$this->dbforge->drop_table('linear_json_report');
 		
         $data=$this->db->query("SELECT form_field, data_type as type, db_constraint as 'constraint', db_unique as 'unique' from fields")->result();
 		$fields=array();
