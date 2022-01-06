@@ -23,13 +23,37 @@ class Data extends MX_Controller {
 		foreach($datas as $dt): 
 			$staff=json_decode($dt->data); 
 		  // @$staff->sync_date=$dt->sync_date;
-			print_r($staff);
-		  // $this->db->query("");
+			//print_r($staff->reference);
+			@$facility=str_replace("'","\'",$staff->facility);
+			@$district=$staff->district;
+			if(empty($district)&&(!empty($facility))){
+				$db_district=$this->db->query("SELECT DISTINCT district,district_id,facility_id from ihrisdata WHERE facility like '$facility%'")->row();
+			$district = $db_district->district; 
+			}
+			@$user_id=$staff->user_id;
+			@$hw_type=$staff->hw_type;
+
+		   $this->db->query("UPDATE records_json SET facility='$facility', district='$district', hw_type='$hw_type',user_id='$user_id' WHERE reference='$staff->reference'");
 	   endforeach;
 	}
 
 	public function collection($seg=FALSE)
 	{ 
+		if(!empty($this->input->post('district'))){
+			$district = $this->input->post('district');
+			$dfilter = "district like 'district%'";
+		}
+		else{
+			$dfilter = "";
+		}
+		if(!empty($this->input->post('facility'))){
+			$facility = $this->input->post('facility');
+			$ffilter = "facility like 'facility%'";
+		}
+		else{
+			$ffilter = "";
+		}
+
 		$this->load->library('pagination');
 		$data['uptitle']      = 'Activity Report';
 		$data['title']      = 'Activity Report';

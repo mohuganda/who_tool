@@ -15,25 +15,28 @@ $facilities=Modules::run("auth/getFacilities");
                   
                     <div class="card-tools">
                 
-                  <form class="form-horizontal" action="<?php echo base_url() ?>employees/viewTimeLogs" method="post">
-                
+                  <form class="form-horizontal" action="<?php echo base_url() ?>/data/collection" method="post">
                   <div class="row">
-                    <div class="form-group col-md-3">
-                    <label>Date:</label>
-
+                    All Dates<input style="display: block; " name="all_date" value="on" type="checkbox" class="btn btn-primary">
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-4">
+                         <label>Date:</label>
+                   
                     <div class="input-group">
                         <div class="input-group-prepend">
                         <span class="input-group-text">
                             <i class="far fa-calendar-alt"></i>
                         </span>
                         </div>
+                        
                         <input type="text"  name="sync_date" class="form-control datepicker" value="<?php echo date("Y-m-d"); ?>" autocomplete="off">
                     </div>
                     <!-- /.input group -->
                     </div>
                     
                             
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-4">
                        <label for="aw_description">
                         Districts </label>
                     <select onChange="getFacs($(this).val());" name="district"  class="form-control select2 sdistrict" style="width:100%;">
@@ -46,7 +49,7 @@ $facilities=Modules::run("auth/getFacilities");
 
                         
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                        <label for="aw_description">
                         Facilities </label>
                     <select onChange="getFacs($(this).val());" name="facility"  class="form-control select2" style="width:100%;">
@@ -59,13 +62,15 @@ $facilities=Modules::run("auth/getFacilities");
                     </div>
                         
                   
-                        
+                </div>    
     
-                <div class="form-group col-md-3">
-                    <label>.</label>
-            
+                <div class="row">
+                <a href="<?php echo base_url() ?>" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>PDF</a>
+                <a href="<?php echo base_url() ?>" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>CSV</a>
+              
+
                 <button type="submit" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>Apply</button>
-               
+                  
               </div>
               </div>
        
@@ -73,7 +78,9 @@ $facilities=Modules::run("auth/getFacilities");
               </form>
 
                
-<p class="pagination"><?php echo $links;?>             
+<p class="pagination"><?php echo $links;?>   
+
+ <b><?php echo count($files). ' Records'; ?></b>
             
 <div class="table"  style="overflow-x:auto;">
 
@@ -126,7 +133,7 @@ $facilities=Modules::run("auth/getFacilities");
             <tr>
             <td><?php echo $dt->reference ?></td>
             <td> <?php echo @$staff->user_id; ?></td>
-            <td> <?php if(!empty($staff->district)) {echo @$staff->district;}else{ echo Modules::run('data/render_district',$staff->facility);} ?></td>
+            <td> <?php echo @$dt->district; ?></td>
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
             <td><div class="image"><?php if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
              </div> </td>
@@ -140,7 +147,7 @@ $facilities=Modules::run("auth/getFacilities");
             <td><?php echo @$staff->birth_place ?></td>
             <td><?php echo $staff->gender ?></td>
             <td><?php echo $staff->job ?></td>
-            <td><?php echo $staff->facility ?></td>
+            <td><?php echo @$dt->facility ?></td>
             <td><?php if(!empty(@$staff->id_photo)){ ?> <img src="data:image/png;base64,<?php echo @$staff->id_photo; ?> " alt="Img"  /><?php }?>
             </td>
             <td><?php echo $staff->id_type ?></td>

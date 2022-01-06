@@ -7,6 +7,7 @@ class Data_model extends CI_Model {
 
 	public function getData2($limit,$start)
 	{ 
+		
 		$query=$this->db->query("SELECT * FROM `records_json` ORDER BY sync_date DESC LIMIT $start,$limit");
 	return $query->result();
 	
