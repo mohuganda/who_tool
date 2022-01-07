@@ -21,7 +21,7 @@ class Data extends MX_Controller {
 	function normalise_data(){
 		ini_set('max_execution_time', 0);
 		//fill type:
-		for ($x = 0; $x <= 9047; $x+=3000) {
+		for ($x = 0; $x <= 1400; $x+=700) {
      
         $datas=$this->data_model->getColums($x,$x+=3000);
 		
