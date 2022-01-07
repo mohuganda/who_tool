@@ -19,6 +19,7 @@ class Data extends MX_Controller {
 	}
 	//This updates data to the new format 
 	function normalise_data(){
+		ini_set('max_execution_time', 0);
 		//fill type:
 		for ($x = 0; $x <= 102195; $x+=2000) {
      
