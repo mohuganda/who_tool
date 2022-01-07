@@ -14,7 +14,7 @@ class Data_model extends CI_Model {
 	}
 	public function getColums()
 	{ 
-		$query=$this->db->query("SELECT sync_date,data FROM `records_json`");
+		$query=$this->db->query("SELECT * FROM `records_json` limit 0, 5000");
 	return $query->result();
 	
 	}
