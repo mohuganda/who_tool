@@ -18,6 +18,12 @@ class Data_model extends CI_Model {
 	return $query->result();
 	
 	}
+	public function getColumsup()
+	{ 
+		$query=$this->db->query("SELECT sync_date,data FROM `records_json` where hw_type IS NULL OR hw_type=''");
+	return $query->result();
+	
+	}
 	public function getData()
 	{ 
 	
