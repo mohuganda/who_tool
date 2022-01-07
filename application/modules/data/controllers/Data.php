@@ -17,6 +17,7 @@ class Data extends MX_Controller {
 	   return $district;
 
 	}
+	//This updates data to the new format 
 	function normalise_data(){
 		//fill type:
         $datas=$this->data_model->getColums();
@@ -32,8 +33,13 @@ class Data extends MX_Controller {
 			}
 			@$user_id=$staff->user_id;
 			@$hw_type=$staff->hw_type;
+			if(empty($hw_type)){
+				$hw_type = 'chw';
 
-		   $this->db->query("UPDATE records_json SET facility='$facility', district='$district', hw_type='$hw_type',user_id='$user_id' WHERE reference='$staff->reference'");
+			}
+			@$ihris_pid=$staff->ihris_pid;
+
+		   $this->db->query("UPDATE records_json SET facility='$facility', district='$district', hw_type='$hw_type',user_id='$user_id',ihris_pid='$ihris_pid' WHERE reference='$staff->reference'");
 	   endforeach;
 	}
 
@@ -41,18 +47,27 @@ class Data extends MX_Controller {
 	{ 
 		if(!empty($this->input->post('district'))){
 			$district = $this->input->post('district');
-			$dfilter = "district like 'district%'";
+			$dfilter = "and district like '$district%'";
 		}
 		else{
 			$dfilter = "";
 		}
 		if(!empty($this->input->post('facility'))){
 			$facility = $this->input->post('facility');
-			$ffilter = "facility like 'facility%'";
+			$ffilter = " and facility like '$facility%'";
 		}
 		else{
 			$ffilter = "";
 		}
+		if($this->input->post('all_date')=='on'){
+			
+			$datefilter = "";
+		}
+		else{
+			$sdate = $this->input->post('sync_date');
+			$datefilter = " and sync_date like '$sdate%'";
+		}
+
 
 		$this->load->library('pagination');
 		$data['uptitle']      = 'Activity Report';
@@ -61,7 +76,7 @@ class Data extends MX_Controller {
 		$data['view']   	= "data";  
 		$config=array();
         $config['base_url']=base_url('data/collection');
-        $config['total_rows']=$this->count_rows();
+        $config['total_rows']=$this->count_rows($dfilter,$ffilter,$datefilter);
         $config['per_page']=25; //records per page
         $config['uri_segment']=3; //segment in url  
         //pagination links styling
@@ -89,12 +104,12 @@ class Data extends MX_Controller {
         $this->pagination->initialize($config);
         $page=($this->uri->segment(3))? $this->uri->segment(3):0; //default starting point for limits 
         $data['links']=$this->pagination->create_links();
-		$data['files'] = $this->data_model->getData2($config['per_page'],$page); 
+		$data['files'] = $this->data_model->getData2($config['per_page'],$page,$dfilter,$ffilter,$datefilter); 
 	   //print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data); 
 	}
-	public function count_rows(){
-		$query=$this->db->query('SELECT reference from records_json');
+	public function count_rows($dfilter,$ffilter,$datefilter){
+		$query=$this->db->query("SELECT reference from records_json WHERE reference IS NOT NULL $dfilter $ffilter $datefilter");
     return $query->num_rows();
 	}
 

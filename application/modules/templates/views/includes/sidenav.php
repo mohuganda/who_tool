@@ -67,17 +67,7 @@
           </li>
           <?php } ?>
 
-          <?php if(in_array('14', $permissions)){ ?>
-          <li class="nav-item">
-            <a href="<?php echo base_url(); ?>data/kyc" class="nav-link">
-              <i class="fa fa-phone"></i>
-              <p>
-               KYC Verified
-                
-              </p>
-            </a>
-          </li>
-          <?php } ?>
+         
       
 
               <!--user perm 26-->

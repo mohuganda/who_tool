@@ -5,10 +5,10 @@ class Data_model extends CI_Model {
  
 	
 
-	public function getData2($limit,$start)
+	public function getData2($limit,$start,$dfilter,$ffilter,$datefilter)
 	{ 
-		
-		$query=$this->db->query("SELECT * FROM `records_json` ORDER BY sync_date DESC LIMIT $start,$limit");
+
+		$query=$this->db->query("SELECT * FROM `records_json` WHERE reference IS NOT NULL $dfilter $ffilter $datefilter ORDER BY sync_date DESC LIMIT $start,$limit");
 	return $query->result();
 	
 	}

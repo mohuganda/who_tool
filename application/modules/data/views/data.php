@@ -17,7 +17,7 @@ $facilities=Modules::run("auth/getFacilities");
                 
                   <form class="form-horizontal" action="<?php echo base_url() ?>/data/collection" method="post">
                   <div class="row">
-                    All Dates<input style="display: block; " name="all_date" value="on" type="checkbox" class="btn btn-primary">
+                    All Dates<input style="display: block; " name="all_date" value="on" type="checkbox" class="btn btn-primary" checked>
                   </div>
                   <div class="row">
                     <div class="form-group col-md-4">
@@ -39,11 +39,11 @@ $facilities=Modules::run("auth/getFacilities");
                   <div class="form-group col-md-4">
                        <label for="aw_description">
                         Districts </label>
-                    <select onChange="getFacs($(this).val());" name="district"  class="form-control select2 sdistrict" style="width:100%;">
+                    <select name="district"  class="form-control select2 sdistrict" style="width:100%;">
                     <option value="" disabled selected>DISTRICT</option>
                     <?php  foreach($districts as $district): 
                                   ?>
-                    <option value="<?php echo $district->district; ?>"><?php echo $district->district; ?></option>
+                    <option value="<?php echo $district->district; ?>" <?php if ($this->input->post('district')==$district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
                                 <?php endforeach; ?>
                     </select>
 
@@ -56,7 +56,7 @@ $facilities=Modules::run("auth/getFacilities");
                     <option value="" disabled selected>FACILITY</option>
                     <?php  foreach($facilities as $facility): 
                                   ?>
-                    <option value="<?php echo $facility->facility; ?>"><?php echo $facility->facility; ?></option>
+                    <option value="<?php echo $facility->facility; ?>"<?php if ($this->input->post('facility')==$facility->facility) echo "selected"; ?>><?php echo $facility->facility; ?></option>
                                 <?php endforeach; ?>
                     </select>
                     </div>
@@ -67,9 +67,9 @@ $facilities=Modules::run("auth/getFacilities");
                 <div class="row">
                 <a href="<?php echo base_url() ?>" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>PDF</a>
                 <a href="<?php echo base_url() ?>" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>CSV</a>
-              
+                
 
-                <button type="submit" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>Apply</button>
+                <button type="submit" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px; left-right:4px;"><i class="fa fa-tasks" aria-hidden="true"></i>Apply</button>
                   
               </div>
               </div>
@@ -151,10 +151,10 @@ $facilities=Modules::run("auth/getFacilities");
             <td><?php if(!empty(@$staff->id_photo)){ ?> <img src="data:image/png;base64,<?php echo @$staff->id_photo; ?> " alt="Img"  /><?php }?>
             </td>
             <td><?php echo $staff->id_type ?></td>
-            <td><?php echo $staff->id_number ?></td>
-            <td><?php echo $staff->id_expiry ?></td>
-            <td><?php echo $staff->national_id ?></td>
-            <td><?php echo $staff->national_id_card_number ?></td>
+            <td><?php echo @$staff->ID_Number ?></td>
+            <td><?php echo @$staff->id_expiry ?></td>
+            <td><?php echo @$staff->national_id ?></td>
+            <td><?php echo @$staff->national_id_card_number ?></td>
             <td><?php echo $staff->consent ?></td>
             <td><?php if(!empty(@$staff->consent_image)&&(strlen(@$staff->consent_image)>100)){ ?> <img src="data:image/png;base64,<?php echo @$staff->consent_image; ?> " alt="Img"  /><?php }else{?>
             <?php echo $staff->consent_image; } ?> </td>

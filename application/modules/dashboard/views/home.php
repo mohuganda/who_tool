@@ -15,6 +15,9 @@
     color: #FFF;
 }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
  <section class="content">
       <div class="container-fluid">
         <!-- Main row -->
@@ -78,11 +81,11 @@
             
             <!-- /.info-box -->
       <div class="col-md-3">
-        <div class="info-box mb-3 bg-yellow">
+        <div class="info-box mb-3 bg-yellow" style="color:#FFF;">
               <span class="info-box-icon"><i class="fas fa-tasks" ></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Daily Active Enrollers</span>
+                <span class="info-box-text">Active Enrollers</span>
                 <span class="info-box-number" id="active_enrollers"></span>                 
                 <span class="info-box-number" id="total_enrollers"> </span>
                 
@@ -106,24 +109,45 @@
                   <!-- /.info-box-content-->
             </div>
             </div>
-        
-       <section class="col-lg-9 connectedSortable">
+            <div class="col-md-3">
+            <div class="info-box mb-3 bg-info ">
+                  <span class="info-box-icon"><i class="fas fa-building"></i></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">Covered Districts</span>
+                    <span class="info-box-number" id="covered_districts"></span>
+                  </div>
+                  <!-- /.info-box-content-->
+            </div>
+            </div>
+            <div class="col-md-3">
+            <div class="info-box mb-3 bg-orange" style="color:#FFF;">
+                  <span class="info-box-icon"><i class="fas fa-building"></i></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">Covered Facilities</span>
+                    <span class="info-box-number" id="covered_facilities"></span>
+                  </div>
+                  <!-- /.info-box-content-->
+            </div>
+            </div>
+            <div class="col-md-3">
+            <div class="info-box mb-3 bg-orange ">
+                  <span class="info-box-icon"><i class="fas fa-sync"></i></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">Updated Records</span>
+                    <span class="info-box-number" id="updated_records"></span>
+                  </div>
+                  <!-- /.info-box-content-->
+            </div>
+            </div>
+            <section class="col-lg-12 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
-              <div class="card-header">
               
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <!-- <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li> -->
-                  </ul>
-                </div>
-              </div><!-- /.card-header -->
               <div class="card-body">
+              <div id="record_breakdown"></div>
              
               </div><!-- /.card-body -->
             </div>
@@ -131,24 +155,118 @@
          
           
           </section>
+
+          
+         
+       <section class="col-lg-12 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <div class="card-header">
+              <h6>Data Aggregation By District</h6>
+                <div class="card-tools">
+                 
+                  <ul class="nav nav-pills ml-auto">
+      
+
+                  </ul>
+                </div>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+          
+           <table  class="table table-striped table-bordered nowrap mytable" style="width:100%" >
+             <thead>
+            <tr>
+            <th>#</th>
+            
+                <th>District</th>
+                <th>Community HW</th>
+                <th>MoH Workers</th>
+                <th>Total</th>
+          </tr>
+          </thead>
+          <tbody>
+            <?php 
+            $districts = Modules::run('dashboard/data_district'); 
+           // print_r($districts);
+            foreach($districts as $district): ?>
+              <tr>
+                  <td><?php echo $district['id'] ?></td>
+                  <td><?php echo $district['district'] ?></td>
+                  <td><?php echo $district['chw'] ?></td>
+                  <td><?php echo $district['mhw'] ?></td>
+                  <td><?php echo $district['total'] ?></td>
+                 
+                  
+                </tr>
+             <?php  endforeach; ?>
+          </tbody>
+          </table>
+          </div>
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+       
+          
+          </section>
+
           <section class="col-lg-12 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
               <div class="card-header">
-              
+              <h6>Active Enrollers Daily Entries</h6>
                 <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <!-- <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li> -->
-                  </ul>
+            
+                  <form class="form-horizontal" method="post" action="<?php echo base_url()?>dashboard/data_enrollers">
+                  <div class="form-group">
+                         <label>Date:</label>
+                   
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="far fa-calendar-alt"></i>
+                        </span>
+                        </div>
+                      
+                        <input type="text"  name="udate" class="form-control datepicker" value="<?php echo date("Y-m-d"); ?>" autocomplete="off">
+                        </div>
+                  
+                   
+                    </div>
+                      <!-- /.input group -->
+                      <button type="submit" class="btn btn-default">Search</button>
+                      </form>
+                 
                 </div>
               </div><!-- /.card-header -->
               <div class="card-body">
-                
+            <div class="app"> 
+                         
+           <table id="enrollers" class="table table-striped table-bordered nowrap " style="width:100%">
+             <thead>
+            <tr>
+            <th>#</th>
+            
+                <th>Code</th>
+                <th>Enroller</th>
+                <th>Contact</th>
+                <th>Total</th>
+               
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for='collection in collections' >
+                  <td>{{collection.id}}</td>
+                  <td>{{collection.code}}</td>
+                  <td>{{collection.name}}</td>
+                  <td>{{collection.contact}}</td>
+                  <td>{{collection.total}}</td>
+                 
+                  
+             </tr>
+          </tbody>
+          </table>
+
+          
              
               </div><!-- /.card-body -->
             </div>
@@ -156,6 +274,13 @@
          
           
           </section>
+        
+      
+      
+
+         
+
+          
           </div>
 
         
@@ -182,8 +307,66 @@
   Highcharts.setOptions({
     colors: ['#28a745',   '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
     });
+function renderGraph(data){
+
+Highcharts.chart('record_breakdown', {
+
+
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Health Worker Breakdown By Category'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+
+    series: [{
+        name: 'Health Worker Types',
+        colorByPoint: true,
+
+        data: [{
+            name: 'Community Worker',
+            y: data.chwdata,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Ministry Worker',
+            y: data.mhwdata 
+        }]
+    }],
+    credits: {
+    enabled: false
+  }
+    
+});
+//console.log(data.mhwdata);
+}
+
+
+
 //get dashboard Data
 $(document).ready(function(){
+     
       
         $.ajax({
             type:'GET',
@@ -198,7 +381,11 @@ $(document).ready(function(){
                      $('#active_enrollers').text(data.active_enrollers);
                      $('#chwdata').text(data.chwdata);
                      $('#mhwdata').text(data.mhwdata);
-                    console.log(data);
+                     $('#covered_districts').text(data.covered_districts);
+                     $('#covered_facilities').text(data.covered_facilities);
+                     $('#updated_records').text(data.updated_records);
+                   // console.log(data);
+                      renderGraph(data);
                
                 
             }
@@ -209,7 +396,129 @@ $(document).ready(function(){
    
 });
  
+//get data for districts
+//   var app = new Vue({
+//   el: '.apps',
+//   data: {
+//     collections: "",
+
+//   },
+//   mounted: function () {
+    
+//     this.dists()
+    
+//   },
+//   methods: {
+//     dists: function(){
+
+//       axios.get('<?php echo base_url() ?>dashboard/data_district')
+//       .then(function (response) {
+//           apps.districts = response.data;
+//         // console.log(response.data);
+//         setTimeout(() => {
+//           $('#vuetable2').DataTable(
+
+//             {
+//         dom: 'Bfrtip',
+//         "paging": true,
+//         "lengthChange": true,
+//         "searching": true,
+//         "ordering": true,
+//         "info": true,
+//         "autoWidth": false,
+//         "responsive": true,
+//         lengthMenu: [
+//             [ 25, 50, 100,150, -1 ],
+//             [ '25', '50', '100','150','200', 'Show all' ]
+//         ],
+      
+//         buttons: [
+//             'copyHtml5',
+//             'excelHtml5',
+//             'csvHtml5',
+//             'pageLength',
+            
+            
+//         ]
+//     } 
+
+//           );
+//         }, 4000);
+       
+//       })
+//       .catch(function (error) {
+//          console.log(error);
+//       });
+//     },
+    
+   
+//     }
+//   }
+// )
+//get data for enrollers
+  var app = new Vue({
+  el: '.app',
+  data: {
+    collections: "",
+    districts: "",
+
+  },
+  mounted: function () {
+    
+    this.records()
+    
+  },
+  methods: {
+    records: function(){
+
+      axios.get('<?php echo base_url() ?>dashboard/data_enrollers')
+      .then(function (response) {
+          app.collections = response.data;
+        // console.log(response.data);
+        setTimeout(() => {
+          $('#enrollers').DataTable(
+
+            {
+        dom: 'Bfrtip',
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        lengthMenu: [
+            [ 25, 50, 100,150, -1 ],
+            [ '25', '50', '100','150','200', 'Show all' ]
+        ],
+      
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pageLength',
+            
+            
+        ]
+    } 
+
+          );
+        }, 3000);
+       
+      })
+      .catch(function (error) {
+         console.log(error);
+      });
+    },
+    
+    }
+  }
+)
 </script>
+
+
+
+
 
 
 
