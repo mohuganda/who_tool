@@ -14,7 +14,7 @@ class Data_model extends CI_Model {
 	}
 	public function getColums($start, $limit)
 	{ 
-		$query=$this->db->query("SELECT hw_type FROM `records_json` WHERE hw_type is null limit $start, $limit");
+		$query=$this->db->query("SELECT * FROM `records_json` WHERE hw_type is null limit $start, $limit");
 	return $query->result();
 	
 	}
