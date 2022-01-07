@@ -345,12 +345,12 @@ Highcharts.chart('record_breakdown', {
         colorByPoint: true,
 
         data: [{
-            name: 'Community Worker',
+            name: 'Community Health Workers',
             y: data.chwdata,
             sliced: true,
             selected: true
         }, {
-            name: 'Ministry Worker',
+            name: 'Ministry Health Workers',
             y: data.mhwdata 
         }]
     }],
