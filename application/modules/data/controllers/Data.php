@@ -22,7 +22,7 @@ class Data extends MX_Controller {
 		ini_set('max_execution_time', 0);
 	
     
-        $datas=$this->data_model->getColums();
+        $datas=$this->data_model->getColumsup();
 		
 		foreach($datas as $dt): 
 			$staff=json_decode($dt->data); 
