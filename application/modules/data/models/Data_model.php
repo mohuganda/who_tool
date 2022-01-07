@@ -14,7 +14,7 @@ class Data_model extends CI_Model {
 	}
 	public function getColums()
 	{ 
-		$query=$this->db->query("SELECT * FROM `records_json` limit 0, 5000");
+		$query=$this->db->query("SELECT * FROM `records_json` limit 0, 15000");
 	return $query->result();
 	
 	}
