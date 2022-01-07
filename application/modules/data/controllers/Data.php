@@ -36,16 +36,17 @@ class Data extends MX_Controller {
 			}
 			@$user_id=$staff->user_id;
 			@$hw_type=$staff->hw_type;
+			$reference = $dt->reference;
 			if(empty($hw_type)){
 				$hw_type = 'chw';
 
 			}
 			@$ihris_pid=$staff->ihris_pid;
 
-		   $this->db->query("UPDATE records_json SET facility='$facility', district='$district', hw_type='$hw_type',user_id='$user_id',ihris_pid='$ihris_pid' WHERE reference='$staff->reference'");
+		   $this->db->query("UPDATE records_json SET facility='$facility', district='$district', hw_type='$hw_type',user_id='$user_id',ihris_pid='$ihris_pid' WHERE reference='$reference'");
 	   endforeach;
 	
-}
+      }
 
 	public function collection($seg=FALSE)
 	{ 
