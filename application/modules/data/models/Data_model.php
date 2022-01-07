@@ -12,9 +12,9 @@ class Data_model extends CI_Model {
 	return $query->result();
 	
 	}
-	public function getColums($start, $limit)
+	public function getColums()
 	{ 
-		$query=$this->db->query("SELECT * FROM `records_json` WHERE hw_type is null limit $start, $limit");
+		$query=$this->db->query("SELECT sync_date,data FROM `records_json`");
 	return $query->result();
 	
 	}

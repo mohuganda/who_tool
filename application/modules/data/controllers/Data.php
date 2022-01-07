@@ -20,10 +20,9 @@ class Data extends MX_Controller {
 	//This updates data to the new format 
 	function normalise_data(){
 		ini_set('max_execution_time', 0);
-		//fill type:
-		for ($x = 0; $x <= 1400; $x+=700) {
-     
-        $datas=$this->data_model->getColums($x,$x+=3000);
+	
+    
+        $datas=$this->data_model->getColums();
 		
 		foreach($datas as $dt): 
 			$staff=json_decode($dt->data); 
@@ -45,7 +44,7 @@ class Data extends MX_Controller {
 
 		   $this->db->query("UPDATE records_json SET facility='$facility', district='$district', hw_type='$hw_type',user_id='$user_id',ihris_pid='$ihris_pid' WHERE reference='$staff->reference'");
 	   endforeach;
-	}
+	
 }
 
 	public function collection($seg=FALSE)
