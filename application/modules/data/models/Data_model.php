@@ -20,7 +20,7 @@ class Data_model extends CI_Model {
 	}
 	public function getColumsup()
 	{ 
-		$query=$this->db->query("SELECT sync_date,data FROM `records_json` where hw_type IS NULL OR hw_type=''");
+		$query=$this->db->query("SELECT * FROM `records_json` WHERE hw_type is NULL");
 	return $query->result();
 	
 	}
