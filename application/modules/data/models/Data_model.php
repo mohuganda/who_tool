@@ -12,9 +12,9 @@ class Data_model extends CI_Model {
 	return $query->result();
 	
 	}
-	public function getColums()
+	public function getColums($start, $limit)
 	{ 
-		$query=$this->db->query("SELECT * FROM `records_json` limit 0, 3000");
+		$query=$this->db->query("SELECT * FROM `records_json` limit $start, $limit");
 	return $query->result();
 	
 	}
