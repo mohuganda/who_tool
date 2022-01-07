@@ -21,9 +21,9 @@ class Data extends MX_Controller {
 	function normalise_data(){
 		ini_set('max_execution_time', 0);
 		//fill type:
-		for ($x = 0; $x <= 102195; $x+=2000) {
+		for ($x = 0; $x <= 102195; $x+=3000) {
      
-        $datas=$this->data_model->getColums($x,$x+=2000);
+        $datas=$this->data_model->getColums($x,$x+=3000);
 		
 		foreach($datas as $dt): 
 			$staff=json_decode($dt->data); 
