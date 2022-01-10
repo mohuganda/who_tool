@@ -195,7 +195,7 @@ body::-webkit-scrollbar-thumb
     position:absolute;
     left:50%; 
     top:50%; 
-    background-image:url("<?php echo base_url()?>assets/images/loader.gif");
+    background-image:url("<?php echo base_url()?>assets/images/loader_32.gif");
     z-index:9999; 
     background-repeat:no-repeat;
     background-position:center;
