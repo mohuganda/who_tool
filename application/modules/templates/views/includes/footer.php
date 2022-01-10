@@ -109,16 +109,11 @@ Highcharts.setOptions({
 <script>
 $(window).load(function() {
 
-// makes sure the whole site is loaded
-$('#status').delay(2000).fadeOut("slow"); // will first fade out the loading animation
-$('#preloader').delay(2000).fadeOut("slow"); // will fade out the white DIV that covers the website.
-//$('body').delay(50).css({'overflow':'visible'});
+$('#status').delay(3000).fadeOut("slow"); // will first fade out the loading animation
+$('#preloader').delay(3000).fadeOut("slow"); // will fade out the white div
+
 })
 
-
-//   $(".loader").delay(2000).fadeOut("slow");
-//   $("#overlayer").delay(2000).fadeOut("slow");
-//})
 </script>
 
 <script>
