@@ -1,7 +1,6 @@
-   
-       <section class="col-lg-12 connectedSortable">
+<section class="col-lg-12 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
+            <div class="card ">
               <div class="card-header">
               <h6>Data Aggregation By District</h6>
                 <div class="card-tools">
@@ -13,8 +12,8 @@
                 </div>
               </div><!-- /.card-header -->
               <div class="card-body">
-          
-           <table  class="table table-striped table-bordered nowrap mytable" style="width:100%" >
+          <div id="app">
+           <table  id ="vuetable2" class="table table-striped table-bordered nowrap" style="width:100%" >
              <thead>
             <tr>
             <th>#</th>
@@ -26,36 +25,35 @@
           </tr>
           </thead>
           <tbody>
-            <?php 
-            $districts = Modules::run('dashboard/data_district'); 
-           // print_r($districts);
-            foreach($districts as $district): ?>
-              <tr>
-                  <td><?php echo $district['id'] ?></td>
-                  <td><?php echo $district['district'] ?></td>
-                  <td><?php echo $district['chw'] ?></td>
-                  <td><?php echo $district['mhw'] ?></td>
-                  <td><?php echo $district['total'] ?></td>
+          
+            <tr v-for='district in districts' >
+                  <td>{{district.id}}</td>
+                  <td>{{district.district}}</td>
+                  <td>{{district.chw}}</td>
+                  <td>{{district.mhw}}</td>
+                  <td>{{district.total}}</td>
                  
                   
-                </tr>
-             <?php  endforeach; ?>
+              </tr>
+           
           </tbody>
           </table>
           </div>
               </div><!-- /.card-body -->
             </div>
             <!-- /.card -->
+          </div>
        
           
-          </section>
+        </section>
 
-<script>
-          //get data for districts
+        <script>
+           
+//get data for districts
   var app = new Vue({
-  el: '.apps',
+  el: '#app',
   data: {
-    collections: "",
+    districts: "",
 
   },
   mounted: function () {
@@ -68,7 +66,7 @@
 
       axios.get('<?php echo base_url() ?>dashboard/jsondata_district')
       .then(function (response) {
-          apps.districts = response.data;
+          app.districts = response.data;
         // console.log(response.data);
         setTimeout(() => {
           $('#vuetable2').DataTable(
@@ -110,4 +108,7 @@
     }
   }
 )
-<script>
+
+</script>
+
+          

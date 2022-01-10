@@ -109,7 +109,7 @@
                              <li class="nav-item">
                                 <a href="<?php echo base_url()?>data/district_per" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                Enrollment Per Districts</a>
+                                Enrollment Per District</a>
                                 </li>
                                 <li class="nav-item">
                                 <a href="<?php echo base_url()?>data/enrollers_per" class="nav-link">

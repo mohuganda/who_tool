@@ -238,7 +238,7 @@
   Highcharts.setOptions({
     colors: ['#28a745',   '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
     });
-function renderGraph(data){
+function renderGraph(data=false){
 
 Highcharts.chart('record_breakdown', {
 
@@ -297,6 +297,7 @@ Highcharts.chart('record_breakdown', {
 
 //get dashboard Data
 $(document).ready(function(){
+       renderGraph(data);
      
       
         $.ajax({
@@ -345,7 +346,7 @@ $(document).ready(function(){
       axios.get('<?php echo base_url() ?>dashboard/jsondata_district')
       .then(function (response) {
           app.districts = response.data;
-         console.log(response.data);
+         //console.log(response.data);
         setTimeout(() => {
           $('#vuetable2').DataTable(
 
