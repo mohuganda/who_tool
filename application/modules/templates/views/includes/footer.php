@@ -42,10 +42,13 @@
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
 
 
-<script src="<?php echo base_url(); ?>/assets/plugins/jquery/jquery.min.js"></script>
+<!-- <script src="<?php echo base_url(); ?>/assets/plugins/jquery/jquery.min.js"></script> -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url(); ?>/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- date-range-picker -->
+
 <script src="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
@@ -103,8 +106,23 @@ Highcharts.setOptions({
 
 
 </script>
+<script>
+$(window).load(function() {
+
+// makes sure the whole site is loaded
+$('#status').delay(2000).fadeOut("slow"); // will first fade out the loading animation
+$('#preloader').delay(2000).fadeOut("slow"); // will fade out the white DIV that covers the website.
+//$('body').delay(50).css({'overflow':'visible'});
+})
+
+
+//   $(".loader").delay(2000).fadeOut("slow");
+//   $("#overlayer").delay(2000).fadeOut("slow");
+//})
+</script>
 
 <script>
+
  $(document).ready(function() {
     $('.mytable').DataTable( {
         dom: 'Bfrtip',

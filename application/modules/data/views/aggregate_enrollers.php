@@ -71,7 +71,7 @@
   el: '.app',
   data: {
     collections: "",
-    districts: "",
+   
 
   },
   mounted: function () {

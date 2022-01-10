@@ -160,7 +160,7 @@
          
        <section class="col-lg-12 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
+            <div class="card ">
               <div class="card-header">
               <h6>Data Aggregation By District</h6>
                 <div class="card-tools">
@@ -172,8 +172,8 @@
                 </div>
               </div><!-- /.card-header -->
               <div class="card-body">
-          
-           <table  class="table table-striped table-bordered nowrap mytable" style="width:100%" >
+          <div id="app">
+           <table  id ="vuetable2" class="table table-striped table-bordered nowrap" style="width:100%" >
              <thead>
             <tr>
             <th>#</th>
@@ -185,98 +185,29 @@
           </tr>
           </thead>
           <tbody>
-            <?php 
-            $districts = Modules::run('dashboard/data_district'); 
-           // print_r($districts);
-            foreach($districts as $district): ?>
-              <tr>
-                  <td><?php echo $district['id'] ?></td>
-                  <td><?php echo $district['district'] ?></td>
-                  <td><?php echo $district['chw'] ?></td>
-                  <td><?php echo $district['mhw'] ?></td>
-                  <td><?php echo $district['total'] ?></td>
+          
+            <tr v-for='district in districts' >
+                  <td>{{district.id}}</td>
+                  <td>{{district.district}}</td>
+                  <td>{{district.chw}}</td>
+                  <td>{{district.mhw}}</td>
+                  <td>{{district.total}}</td>
                  
                   
-                </tr>
-             <?php  endforeach; ?>
+              </tr>
+           
           </tbody>
           </table>
           </div>
               </div><!-- /.card-body -->
             </div>
             <!-- /.card -->
+          </div>
        
           
           </section>
 
-          <section class="col-lg-12 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
-              <div class="card-header">
-              <h6>Active Enrollers Daily Entries</h6>
-                <div class="card-tools">
-            
-                  <form class="form-horizontal" method="post" action="<?php echo base_url()?>dashboard/data_enrollers">
-                  <div class="form-group">
-                         <label>Date:</label>
-                   
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="far fa-calendar-alt"></i>
-                        </span>
-                        </div>
-                      
-                        <input type="text"  name="udate" class="form-control datepicker" value="<?php echo date("Y-m-d"); ?>" autocomplete="off">
-                        </div>
-                  
-                   
-                    </div>
-                      <!-- /.input group -->
-                      <button type="submit" class="btn btn-default">Search</button>
-                      </form>
-                 
-                </div>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-            <div class="app"> 
-                         
-           <table id="enrollers" class="table table-striped table-bordered nowrap " style="width:100%">
-             <thead>
-            <tr>
-            <th>#</th>
-            
-                <th>Code</th>
-                <th>Enroller</th>
-                <th>Contact</th>
-                <th>Total</th>
-               
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for='collection in collections' >
-                  <td>{{collection.id}}</td>
-                  <td>{{collection.code}}</td>
-                  <td>{{collection.name}}</td>
-                  <td>{{collection.contact}}</td>
-                  <td>{{collection.total}}</td>
-                 
-                  
-             </tr>
-          </tbody>
-          </table>
-
           
-             
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-         
-          
-          </section>
-        
-      
-      
 
          
 
@@ -397,86 +328,26 @@ $(document).ready(function(){
 });
  
 //get data for districts
-//   var app = new Vue({
-//   el: '.apps',
-//   data: {
-//     collections: "",
-
-//   },
-//   mounted: function () {
-    
-//     this.dists()
-    
-//   },
-//   methods: {
-//     dists: function(){
-
-//       axios.get('<?php echo base_url() ?>dashboard/data_district')
-//       .then(function (response) {
-//           apps.districts = response.data;
-//         // console.log(response.data);
-//         setTimeout(() => {
-//           $('#vuetable2').DataTable(
-
-//             {
-//         dom: 'Bfrtip',
-//         "paging": true,
-//         "lengthChange": true,
-//         "searching": true,
-//         "ordering": true,
-//         "info": true,
-//         "autoWidth": false,
-//         "responsive": true,
-//         lengthMenu: [
-//             [ 25, 50, 100,150, -1 ],
-//             [ '25', '50', '100','150','200', 'Show all' ]
-//         ],
-      
-//         buttons: [
-//             'copyHtml5',
-//             'excelHtml5',
-//             'csvHtml5',
-//             'pageLength',
-            
-            
-//         ]
-//     } 
-
-//           );
-//         }, 4000);
-       
-//       })
-//       .catch(function (error) {
-//          console.log(error);
-//       });
-//     },
-    
-   
-//     }
-//   }
-// )
-//get data for enrollers
   var app = new Vue({
-  el: '.app',
+  el: '#app',
   data: {
-    collections: "",
     districts: "",
 
   },
   mounted: function () {
     
-    this.records()
+    this.dists()
     
   },
   methods: {
-    records: function(){
+    dists: function(){
 
-      axios.get('<?php echo base_url() ?>dashboard/data_enrollers')
+      axios.get('<?php echo base_url() ?>dashboard/jsondata_district')
       .then(function (response) {
-          app.collections = response.data;
-        // console.log(response.data);
+          app.districts = response.data;
+         console.log(response.data);
         setTimeout(() => {
-          $('#enrollers').DataTable(
+          $('#vuetable2').DataTable(
 
             {
         dom: 'Bfrtip',
@@ -503,7 +374,7 @@ $(document).ready(function(){
     } 
 
           );
-        }, 3000);
+        }, 4000);
        
       })
       .catch(function (error) {
@@ -511,9 +382,11 @@ $(document).ready(function(){
       });
     },
     
+   
     }
   }
 )
+
 </script>
 
 

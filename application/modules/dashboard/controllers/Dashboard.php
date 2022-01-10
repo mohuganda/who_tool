@@ -37,6 +37,12 @@ class Dashboard extends MX_Controller {
 	echo json_encode($data);
 	}
 
+	public function jsondata_district(){
+		
+		$data = $this->dash_mdl->district_count();
+	echo json_encode($data);
+	}
+
 
 
 }

@@ -180,8 +180,29 @@ body::-webkit-scrollbar-thumb
     color:#fff !important;
 
   }
-
-
+  #preloader {
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#E4E5E5; 
+    z-index:200;
+}
+#status {
+    width:100px;
+    height:100px;
+    position:absolute;
+    left:50%; 
+    top:50%; 
+    background-image:url("<?php echo base_url()?>assets/images/loader.gif");
+    z-index:9999; 
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size: cover;
+    margin:-50px 0 0 -50px; 
+}
+ 
 </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
