@@ -238,7 +238,7 @@
   Highcharts.setOptions({
     colors: ['#28a745',   '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
     });
-function renderGraph(data=false){
+function renderGraph(data){
 
 Highcharts.chart('record_breakdown', {
 
@@ -297,7 +297,7 @@ Highcharts.chart('record_breakdown', {
 
 //get dashboard Data
 $(document).ready(function(){
-       renderGraph(data);
+      //  renderGraph(data);
      
       
         $.ajax({
