@@ -193,7 +193,7 @@ body::-webkit-scrollbar-thumb
     width:50px;
     height:50px;
     position:absolute;
-    left:55%; 
+    left:60%; 
     top:50%; 
     background-image:url("<?php echo base_url()?>assets/images/loader.gif");
     z-index:9999; 
