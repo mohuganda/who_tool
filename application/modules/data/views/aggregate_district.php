@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <section class="col-lg-12 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card ">
@@ -67,7 +69,7 @@
       axios.get('<?php echo base_url() ?>dashboard/jsondata_district')
       .then(function (response) {
           app.districts = response.data;
-        // console.log(response.data);
+        /// console.log(response.data);
         setTimeout(() => {
           $('#vuetable2').DataTable(
 
