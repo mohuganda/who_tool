@@ -239,6 +239,23 @@ class Data extends MX_Controller {
 		endforeach;
 
 	}
+	public function enrollers_per(){
+		$data['module']='data';
+		$data['uptitle']='Records per Enroller';
+		$data['title']='Records per Enroller';
+		$data['view']='aggregate_enrollers';
+		echo Modules::run('templates/main', $data); 
+		
+	}
+	public function district_per(){
+		$data['module']='data';
+		$data['uptitle']='Records per District';
+		$data['title']='Records per District';
+		$data['view']='aggregate_district';
+		echo Modules::run('templates/main', $data); 
+		
+	}
+
 
 	
 

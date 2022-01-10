@@ -107,25 +107,21 @@
             </a>
             <ul class="nav nav-treeview">
                              <li class="nav-item">
-                                <a href="<?php echo base_url()?>enrollment" class="nav-link">
+                                <a href="<?php echo base_url()?>data/district_per" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                Verfied Users</a>
+                                Enrollment Per Districts</a>
                                 </li>
                                 <li class="nav-item">
-                                <a href="<?php echo base_url()?>enrollment/dataclerks" class="nav-link">
+                                <a href="<?php echo base_url()?>data/enrollers_per" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                Data Clerk Enrollment</a>
+                                Records Per Enroller</a>
                                 </li>
                                 <li class="nav-item">
-                                <a href="<?php echo base_url()?>enrollment/dataclerks" class="nav-link">
+                                <a href="<?php echo base_url()?>data/collection" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                iHRIS Manage Sync</a>
+                                District Workers</a>
                                 </li>
-                                <li class="nav-item">
-                                <a href="<?php echo base_url()?>enrollment/dataclerks" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                CHWR Sync</a>
-                                </li>
+                               
                             
             </ul>
             </li>
