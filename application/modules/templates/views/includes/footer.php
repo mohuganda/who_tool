@@ -109,8 +109,8 @@ Highcharts.setOptions({
 <script>
 $(window).load(function() {
 
-$('#status').delay(3000).fadeOut("slow"); // will first fade out the loading animation
-$('#preloader').delay(3000).fadeOut("slow"); // will fade out the white div
+$('#status').delay(9000).fadeOut("slow"); // will first fade out the loading animation
+$('#preloader').delay(9000).fadeOut("slow"); // will fade out the white div
 
 })
 
