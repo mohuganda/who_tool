@@ -190,12 +190,12 @@ body::-webkit-scrollbar-thumb
     z-index:200;
 }
 #status {
-    width:100px;
-    height:100px;
+    width:50px;
+    height:50px;
     position:absolute;
     left:50%; 
     top:50%; 
-    background-image:url("<?php echo base_url()?>assets/images/loader_32.gif");
+    background-image:url("<?php echo base_url()?>assets/images/loader.gif");
     z-index:9999; 
     background-repeat:no-repeat;
     background-position:center;
