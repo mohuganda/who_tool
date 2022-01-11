@@ -168,7 +168,7 @@ Login Box
 .box-login {
   position: relative;
     top: 10px;
-    min-width: 400px;
+    min-width: ;
     background: #fff;
     text-align: center;
     overflow: hidden;
