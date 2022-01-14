@@ -80,7 +80,7 @@ $facilities=Modules::run("auth/getFacilities");
                
 <p class="pagination"><?php echo $links;?>   
 
- <b><?php echo count($files). ' Records'; ?></b>
+ <b><?php echo $total_rows. ' Records'; ?></b>
             
 <div class="table"  style="overflow-x:auto;">
 

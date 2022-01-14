@@ -52,26 +52,33 @@ class Data extends MX_Controller {
 	{ 
 		if(!empty($this->input->post('district'))){
 			$district = $this->input->post('district');
-			$dfilter = "and district like '$district%'";
+			$_SESSION['dfilter'] = "and district like '$district%'";
 		}
 		else{
-			$dfilter = "";
+            $_SESSION['dfilter'] = "";
 		}
+		
+		$dfilter=$_SESSION['dfilter'];
+		
 		if(!empty($this->input->post('facility'))){
 			$facility = $this->input->post('facility');
-			$ffilter = " and facility like '$facility%'";
+			$_SESSION['ffilter'] = " and facility like '$facility%'";
 		}
 		else{
-			$ffilter = "";
+			$_SESSION['ffilter'] = "";
+
 		}
+		$ffilter = $_SESSION['ffilter'];
+		
 		if($this->input->post('all_date')=='on'){
 			
-			$datefilter = "";
+			$_SESSION['datefilter'] = "";
 		}
 		else{
 			$sdate = $this->input->post('sync_date');
-			$datefilter = " and sync_date like '$sdate%'";
+			$_SESSION['datefilter']= " and sync_date like '$sdate%'";
 		}
+		$datefilter=$_SESSION['datefilter'];
 
 
 		$this->load->library('pagination');
@@ -254,6 +261,34 @@ class Data extends MX_Controller {
 		$data['view']='aggregate_district';
 		echo Modules::run('templates/main', $data); 
 		
+	}
+	public function csv_data()
+	{
+
+		$dfilter=$_SESSION['dfilter'];
+		$ffilter=$_SESSION['ffilter'];
+		$datefilter=$_SESSION['datefilter'];
+		if(!empty($dfilter)){
+		$records= $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter); 
+		}
+    $csv_file = "Field_Data" . date('Y-m-d') .'_'.$_SESSION['dfilter'] .".csv";	
+	header("Content-Type: text/csv");
+	header("Content-Disposition: attachment; filename=\"$csv_file\"");	
+	$fh = fopen( 'php://output', 'w' );
+  
+    $is_coloumn = true;
+	if(!empty($records)) {
+	  foreach($records as $recordy->data) {
+		  $record = $recordy->data;
+		if($is_coloumn) {		  	  
+		  fputcsv($fh, array_keys($record));
+		  $is_coloumn = false;
+		}		
+		fputcsv($fh, array_values($record));
+	  }
+	   fclose($fh);
+	}
+	exit;  
 	}
 
 
