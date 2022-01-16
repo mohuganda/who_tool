@@ -15,7 +15,7 @@ $facilities=Modules::run("auth/getFacilities");
                   
                     <div class="card-tools">
                 
-                  <form class="form-horizontal" action="<?php echo base_url() ?>/data/collection" method="post">
+                  <form class="form-horizontal" action="<?php echo base_url() ?>data/collection" method="post">
                   <div class="row">
                     All Dates<input style="display: block; " name="all_date" value="on" type="checkbox" class="btn btn-primary" checked>
                   </div>
@@ -65,10 +65,11 @@ $facilities=Modules::run("auth/getFacilities");
                 </div>    
     
                 <div class="row">
-                <a href="<?php echo base_url() ?>" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>PDF</a>
-                <a href="<?php echo base_url() ?>data/csv_data" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>CSV</a>
                 
-
+                <a href="<?php echo base_url() ?>" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-file" aria-hidden="true"></i>PDF</a>
+                &nbsp;&nbsp;
+                <a href="<?php echo base_url() ?>data/csv_data" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-excel" aria-hidden="true"></i>CSV</a>
+                &nbsp;&nbsp;
                 <button type="submit" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px; left-right:4px;"><i class="fa fa-tasks" aria-hidden="true"></i>Apply</button>
                   
               </div>
