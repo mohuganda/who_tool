@@ -1,11 +1,48 @@
+<style>
+    table.dataTable {
+  border: 3px solid #000000;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.dataTable td, table.dataTable th {
+  border: 1px solid #000000;
+  padding: 5px 4px;
+}
+table.dataTable tbody td {
+  font-size: 13px;
+}
+table.dataTable thead {
+  background: #CFCFCF;
+  background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+  background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+  background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+  border-bottom: 3px solid #000000;
+}
+table.dataTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000000;
+  text-align: left;
+}
+table.dataTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  border-top: 3px solid #000000;
+}
+table.dataTable tfoot td {
+  font-size: 14px;
+}
+</style>
 <section class="col-lg-12 connectedSortable">
     <div class="row">
-    <table id="example" class="table table-striped table-bordered nowrap table-responsive" style="width:100%">
+        <h3>HEALTH WORKERS LIST FOR -    <?php echo str_replace('%','',str_replace('and district like ','',$_SESSION['dfilter'])); ?> DISTRICT</h3>
+    
+    <table id="example" class="dataTable table-striped table-bordered nowrap table-responsive" style="width:100%">
         <thead>
             <tr>
             <th>#</th>
-            <th>Enroller ID</th>
-            <th>District</th>
             <th>Worker Type</th>
             <th>Image</th>
             <th>Surname</th>
@@ -31,7 +68,7 @@
             <th>If No, Registered Name </th>
             <th>Allow Mobile Money </th>
             <th>KYC verification </th>
-            <th>Sync Date </th>
+          
             </tr>
         </thead>
         <tbody>
@@ -43,14 +80,12 @@
              //print_r();
              ?>
             <tr>
-            <td><?php echo $dt->reference ?></td>
-            <td> <?php echo @$staff->user_id; ?></td>
-            <td> <?php echo @$dt->district; ?></td>
+            <td> <?php echo @$i++; ?></td>
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
             <td><div class="image"><?php if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
              </div> </td>
             <td>
-
+             
             <?php echo $staff->surname; ?>
             </td>
             <td><?php echo $staff->firstname ?></td>
@@ -79,7 +114,7 @@
             <td><?php echo $staff->diff_names_consent ?></td>
             <td><?php echo $staff->kyc_verification ?></td>
             
-            <td><?php echo $dt->sync_date ?></td>
+      
            
             
             </tr>
