@@ -295,7 +295,7 @@ class Data extends MX_Controller {
 	exit;  
 	}
 
-	public function pdf_data($datef,$datet,$person,$job)
+	public function pdf_data()
     {
        
 		

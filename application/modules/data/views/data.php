@@ -90,7 +90,7 @@ $facilities=Modules::run("auth/getFacilities");
         <thead>
             <tr>
             <th>#</th>
-            <th>Enroller ID</th>
+          
             <th>District</th>
             <th>Worker Type</th>
             <th>Image</th>
@@ -117,7 +117,7 @@ $facilities=Modules::run("auth/getFacilities");
             <th>If No, Registered Name </th>
             <th>Allow Mobile Money </th>
             <th>KYC verification </th>
-            <th>Sync Date </th>
+            
             </tr>
         </thead>
         <tbody>
@@ -133,7 +133,7 @@ $facilities=Modules::run("auth/getFacilities");
 
             <tr>
             <td><?php echo $dt->reference ?></td>
-            <td> <?php echo @$staff->user_id; ?></td>
+          
             <td> <?php echo @$dt->district; ?></td>
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
             <td><div class="image"><?php if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
@@ -167,8 +167,7 @@ $facilities=Modules::run("auth/getFacilities");
             
             <td><?php echo $staff->diff_names_consent ?></td>
             <td><?php echo $staff->kyc_verification ?></td>
-            
-            <td><?php echo $dt->sync_date ?></td>
+  
            
             
             </tr>
