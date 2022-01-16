@@ -66,7 +66,7 @@ $facilities=Modules::run("auth/getFacilities");
     
                 <div class="row">
                 <a href="<?php echo base_url() ?>" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>PDF</a>
-                <a href="<?php echo base_url() ?>" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>CSV</a>
+                <a href="<?php echo base_url() ?>data/csv_data" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-tasks" aria-hidden="true"></i>CSV</a>
                 
 
                 <button type="submit" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px; left-right:4px;"><i class="fa fa-tasks" aria-hidden="true"></i>Apply</button>

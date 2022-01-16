@@ -88,7 +88,7 @@ class Data extends MX_Controller {
 		$data['view']   	= "data";  
 		$config=array();
         $config['base_url']=base_url('data/collection');
-        $config['total_rows']=$this->count_rows($dfilter,$ffilter,$datefilter);
+        $data['total_rows'] = $config['total_rows'] = $this->count_rows($dfilter,$ffilter,$datefilter);
         $config['per_page']=25; //records per page
         $config['uri_segment']=3; //segment in url  
         //pagination links styling
@@ -271,15 +271,19 @@ class Data extends MX_Controller {
 		if(!empty($dfilter)){
 		$records= $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter); 
 		}
-    $csv_file = "Field_Data" . date('Y-m-d') .'_'.$_SESSION['dfilter'] .".csv";	
+		//print_r($records);
+		
+       $csv_file = "Field_Data" . date('Y-m-d') .'_'.$_SESSION['dfilter'] .".csv";	
 	header("Content-Type: text/csv");
 	header("Content-Disposition: attachment; filename=\"$csv_file\"");	
 	$fh = fopen( 'php://output', 'w' );
   
     $is_coloumn = true;
 	if(!empty($records)) {
-	  foreach($records as $recordy->data) {
-		  $record = $recordy->data;
+	  foreach($records as $srecord) {
+		  $record = (array)json_decode($srecord->data);
+		  //print_r($record);
+
 		if($is_coloumn) {		  	  
 		  fputcsv($fh, array_keys($record));
 		  $is_coloumn = false;
