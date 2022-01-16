@@ -295,6 +295,33 @@ class Data extends MX_Controller {
 	exit;  
 	}
 
+	public function pdf_data($datef,$datet,$person,$job)
+    {
+       
+		
+		$dfilter=$_SESSION['dfilter'];
+		$ffilter=$_SESSION['ffilter'];
+		$datefilter=$_SESSION['datefilter'];
+		if(!empty($dfilter)){
+		$data['files'] = $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter); 
+		}
+		$this->load->library('ML_pdf');	
+        $filename = "Field_Data" . date('Y-m-d') .'_'.$_SESSION['dfilter'] .".csv";	
+        ini_set('max_execution_time',0);
+        $html=$this->load->view('pdfdata',$data,true); 
+        $PDFContent = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+        $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
+        $this->ml_pdf->pdf->showWatermarkImage = true;
+        date_default_timezone_set("Africa/Kampala"); 
+        $this->ml_pdf->pdf->SetHTMLFooter("Printed/ Accessed on: <b>".date('d F,Y h:i A')."</b><br style='font-size: 9px !imporntant;'>"." Source: iHRIS - HRM Attend " .base_url());
+        $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
+        $this->ml_pdf->showWatermarkImage = true;
+        ini_set('max_execution_time',0);
+        $this->ml_pdf->pdf->WriteHTML($PDFContent); //ml_pdf because we loaded the library ml_pdf for landscape format not ml_pdf
+        //download it D save F.
+        $this->ml_pdf->pdf->Output($filename,'I');
+    }
+
 
 	
 
