@@ -274,7 +274,7 @@ class Data extends MX_Controller {
 		}
 		//print_r($records);
 		
-       $csv_file = "Field_Data" . date('Y-m-d') .'_'.$_SESSION['dfilter'] .".csv";	
+       $csv_file = "Field_Data" . date('Y-m-d') .'_'.$records[0]->district .".csv";	
 	header("Content-Type: text/csv");
 	header("Content-Disposition: attachment; filename=\"$csv_file\"");	
 	$fh = fopen( 'php://output', 'w' );
@@ -307,8 +307,9 @@ class Data extends MX_Controller {
 		$data['files'] = $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter); 
 		}
 		$this->load->library('ML_pdf');	
-        $filename = "Field_Data" . date('Y-m-d') .'_'.$_SESSION['dfilter'] .".csv";	
+        $filename = "Field_Data" . date('Y-m-d') .'_'.$data['files'][0]->district .".pdf";	
         ini_set('max_execution_time',0);
+	
         $html=$this->load->view('pdfdata',$data,true); 
         $PDFContent = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
         $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
@@ -317,6 +318,8 @@ class Data extends MX_Controller {
         $this->ml_pdf->pdf->SetHTMLFooter("Printed/ Accessed on: <b>".date('d F,Y h:i A')."</b><br style='font-size: 9px !imporntant;'>"." Source: iHRIS - iHRIS Mobile Tool " .base_url());
         $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
         $this->ml_pdf->showWatermarkImage = true;
+	
+		
         ini_set('max_execution_time',0);
         $this->ml_pdf->pdf->WriteHTML($PDFContent); //ml_pdf because we loaded the library ml_pdf for landscape format not ml_pdf
         //download it D save F.

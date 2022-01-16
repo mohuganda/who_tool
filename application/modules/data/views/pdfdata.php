@@ -44,7 +44,7 @@ table.dataTable tfoot td {
             <tr>
             <th>#</th>
             <th>Worker Type</th>
-            <th>Image</th>
+            <!-- <th>Image</th> -->
             <th>Surname</th>
             <th>Firstname </th>
             <th>Othername </th>
@@ -53,14 +53,14 @@ table.dataTable tfoot td {
             <th>Gender </th>
             <th>position </th>
             <th>facility </th>
-            <th>ID Photo </th>
+            <!-- <th>ID Photo </th> -->
             <th>ID Type </th>
             <th>ID Number </th>
             <th>ID Expiry </th>
             <th>National ID Number</th>
             <th>National ID Card Number</th>
             <th>Allow Consent</th>
-            <th>Signature</th>
+            <!-- <th>Signature</th> -->
             <th>Mobile Number </th>
             <th>Other Contact </th>
             <th>Mobile Money Registration Status </th>
@@ -82,8 +82,8 @@ table.dataTable tfoot td {
             <tr>
             <td> <?php echo @$i++; ?></td>
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
-            <td><div class="image"><?php if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
-             </div> </td>
+            <!-- <td><div class="image"><?php //if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  //echo @$staff->person_photo; ?> " alt="Img" /><?php //} ?>
+             </div> </td> -->
             <td>
              
             <?php echo $staff->surname; ?>
@@ -95,16 +95,16 @@ table.dataTable tfoot td {
             <td><?php echo $staff->gender ?></td>
             <td><?php echo $staff->job ?></td>
             <td><?php echo @$dt->facility ?></td>
-            <td><?php if(!empty(@$staff->id_photo)){ ?> <img src="data:image/png;base64,<?php echo @$staff->id_photo; ?> " alt="Img"  /><?php }?>
-            </td>
+            <!-- <td><?php //if(!empty(@$staff->id_photo)){ ?> <img src="data:image/png;base64,<?php //echo @$staff->id_photo; ?> " alt="Img"  /><?php //}?>
+            </td> -->
             <td><?php echo $staff->id_type ?></td>
             <td><?php echo @$staff->ID_Number ?></td>
             <td><?php echo @$staff->id_expiry ?></td>
             <td><?php echo @$staff->national_id ?></td>
             <td><?php echo @$staff->national_id_card_number ?></td>
             <td><?php echo $staff->consent ?></td>
-            <td><?php if(!empty(@$staff->consent_image)&&(strlen(@$staff->consent_image)>100)){ ?> <img src="data:image/png;base64,<?php echo @$staff->consent_image; ?> " alt="Img"  /><?php }else{?>
-            <?php echo $staff->consent_image; } ?> </td>
+            <!-- <td><?php //if(!empty(@$staff->consent_image)&&(strlen(@$staff->consent_image)>100)){ ?> <img src="data:image/png;base64,<?php// echo @$staff->consent_image; ?> " alt="Img"  /><?php //}else{?>
+            <?php //echo $staff->consent_image; } ?> </td> -->
             <td><?php echo $staff->primary_mobile_number ?></td>
             <td><?php echo $staff->other_contact ?></td>
             <td><?php echo $staff->is_mm_registered ?></td>
