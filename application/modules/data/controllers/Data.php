@@ -264,68 +264,68 @@ class Data extends MX_Controller {
 		echo Modules::run('templates/main', $data); 
 		
 	}
-	public function csv_data($print)
-	{
+	// public function csv_data($print)
+	// {
 
-		$dfilter=$_SESSION['dfilter'];
-		$ffilter=$_SESSION['ffilter'];
-		$datefilter=$_SESSION['datefilter'];
-		if((!empty($dfilter))&&($print=1)){
-		$records= $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter,$print); 
-		}
-		//print_r($records);
+	// 	$dfilter=$_SESSION['dfilter'];
+	// 	$ffilter=$_SESSION['ffilter'];
+	// 	$datefilter=$_SESSION['datefilter'];
+	// 	if((!empty($dfilter))&&($print=1)){
+	// 	$records= $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter,$print); 
+	// 	}
+	// 	//print_r($records);
 		
-       $csv_file = "Field_Data" . date('Y-m-d') .'_'.$records[0]->district .".csv";	
-	header("Content-Type: text/csv");
-	header("Content-Disposition: attachment; filename=\"$csv_file\"");	
-	$fh = fopen( 'php://output', 'w' );
+    //    $csv_file = "Field_Data" . date('Y-m-d') .'_'.$records[0]->district .".csv";	
+	// header("Content-Type: text/csv");
+	// header("Content-Disposition: attachment; filename=\"$csv_file\"");	
+	// $fh = fopen( 'php://output', 'w' );
   
-    $is_coloumn = true;
-	if(!empty($records)) {
-	  foreach($records as $srecord) {
-		  $record = (array)json_decode($srecord->data);
-		  //print_r($record);
+    // $is_coloumn = true;
+	// if(!empty($records)) {
+	//   foreach($records as $srecord) {
+	// 	  $record = (array)json_decode($srecord->data);
+	// 	  //print_r($record);
 
-		if($is_coloumn) {		  	  
-		  fputcsv($fh, array_keys($record));
-		  $is_coloumn = false;
-		}		
-		fputcsv($fh, array_values($record));
-	  }
-	   fclose($fh);
-	}
-	exit;  
-	}
+	// 	if($is_coloumn) {		  	  
+	// 	  fputcsv($fh, array_keys($record));
+	// 	  $is_coloumn = false;
+	// 	}		
+	// 	fputcsv($fh, array_values($record));
+	//   }
+	//    fclose($fh);
+	// }
+	// exit;  
+	// }
 
-	public function pdf_data($print)
-    {
+	// public function pdf_data($print)
+    // {
        
 		
-		$dfilter=$_SESSION['dfilter'];
-		$ffilter=$_SESSION['ffilter'];
-		$datefilter=$_SESSION['datefilter'];
-		if((!empty($dfilter))&&($print=1)){
-		$data['files'] = $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter,$print); 
-		}
-		$this->load->library('ML_pdf');	
-        $filename = "Field_Data" . date('Y-m-d') .'_'.$data['files'][0]->district .".pdf";	
-        ini_set('max_execution_time',0);
+	// 	$dfilter=$_SESSION['dfilter'];
+	// 	$ffilter=$_SESSION['ffilter'];
+	// 	$datefilter=$_SESSION['datefilter'];
+	// 	if((!empty($dfilter))&&($print=1)){
+	// 	$data['files'] = $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter,$print); 
+	// 	}
+	// 	$this->load->library('ML_pdf');	
+    //     $filename = "Field_Data" . date('Y-m-d') .'_'.$data['files'][0]->district .".pdf";	
+    //     ini_set('max_execution_time',0);
 	
-        $html=$this->load->view('pdfdata',$data,true); 
-        $PDFContent = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
-        $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
-        $this->ml_pdf->pdf->showWatermarkImage = true;
-        date_default_timezone_set("Africa/Kampala"); 
-        $this->ml_pdf->pdf->SetHTMLFooter("Printed/ Accessed on: <b>".date('d F,Y h:i A')."</b><br style='font-size: 9px !imporntant;'>"." Source: iHRIS - iHRIS Mobile Tool " .base_url());
-        $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
-        $this->ml_pdf->showWatermarkImage = true;
+    //     $html=$this->load->view('pdfdata',$data,true); 
+    //     $PDFContent = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    //     $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
+    //     $this->ml_pdf->pdf->showWatermarkImage = true;
+    //     date_default_timezone_set("Africa/Kampala"); 
+    //     $this->ml_pdf->pdf->SetHTMLFooter("Printed/ Accessed on: <b>".date('d F,Y h:i A')."</b><br style='font-size: 9px !imporntant;'>"." Source: iHRIS - iHRIS Mobile Tool " .base_url());
+    //     $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
+    //     $this->ml_pdf->showWatermarkImage = true;
 	
 		
-        ini_set('max_execution_time',0);
-        $this->ml_pdf->pdf->WriteHTML($PDFContent); //ml_pdf because we loaded the library ml_pdf for landscape format not ml_pdf
-        //download it D save F.
-        $this->ml_pdf->pdf->Output($filename,'I');
-    }
+    //     ini_set('max_execution_time',0);
+    //     $this->ml_pdf->pdf->WriteHTML($PDFContent); //ml_pdf because we loaded the library ml_pdf for landscape format not ml_pdf
+    //     //download it D save F.
+    //     $this->ml_pdf->pdf->Output($filename,'I');
+    // }
 
 
 	
