@@ -123,7 +123,7 @@ class Data extends MX_Controller {
 	}
 	public function count_rows($dfilter,$ffilter,$datefilter){
 		
-		$query=$this->db->query("SELECT reference from records_json WHERE $dfilter $ffilter $datefilter");
+		$query=$this->db->query("SELECT reference from records_json WHERE reference IS NOT NULL $dfilter $ffilter $datefilter");
     return $query->num_rows();
 	}
 
