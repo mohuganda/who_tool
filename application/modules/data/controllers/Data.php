@@ -271,7 +271,7 @@ class Data extends MX_Controller {
 		$ffilter=$_SESSION['ffilter'];
 		$datefilter=$_SESSION['datefilter'];
 		if((!empty($dfilter))&&($print=1)){
-		$records= $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter); 
+		$records= $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter,$print); 
 		}
 		//print_r($records);
 		
@@ -305,7 +305,7 @@ class Data extends MX_Controller {
 		$ffilter=$_SESSION['ffilter'];
 		$datefilter=$_SESSION['datefilter'];
 		if((!empty($dfilter))&&($print=1)){
-		$data['files'] = $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter); 
+		$data['files'] = $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter,$print); 
 		}
 		$this->load->library('ML_pdf');	
         $filename = "Field_Data" . date('Y-m-d') .'_'.$data['files'][0]->district .".pdf";	

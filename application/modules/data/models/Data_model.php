@@ -5,9 +5,9 @@ class Data_model extends CI_Model {
  
 	
 
-	public function getData2($limits,$starts,$dfilter,$ffilter,$datefilter)
+	public function getData2($limits,$starts,$dfilter,$ffilter,$datefilter,$print)
 	{ 
-		if(!empty($limits&&$starts)){
+		if(!empty($limits&&$starts&&$print=1)){
 			$limit ="LIMIT $starts,$limits";
 		}
 		else{
