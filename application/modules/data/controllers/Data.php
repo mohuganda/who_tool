@@ -49,7 +49,7 @@ class Data extends MX_Controller {
 	
       }
 
-	public function collection($seg=FALSE)
+	public function collection($seg=FALSE,$print=FALSE)
 	{ 
 		if(!empty($this->input->post('district'))){
 			$district = $this->input->post('district');
@@ -117,7 +117,7 @@ class Data extends MX_Controller {
         $this->pagination->initialize($config);
         $page=($this->uri->segment(3))? $this->uri->segment(3):0; //default starting point for limits 
         $data['links']=$this->pagination->create_links();
-		$data['files'] = $this->data_model->getData2($config['per_page'],$page,$dfilter,$ffilter,$datefilter); 
+		$data['files'] = $this->data_model->getData2($config['per_page'],$page,$dfilter,$ffilter,$datefilter,$print); 
 	   //print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data); 
 	}
