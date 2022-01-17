@@ -122,7 +122,8 @@ class Data extends MX_Controller {
 		echo Modules::run('templates/main', $data); 
 	}
 	public function count_rows($dfilter,$ffilter,$datefilter){
-		$query=$this->db->query("SELECT reference from records_json WHERE reference IS NOT NULL $dfilter $ffilter $datefilter");
+		
+		$query=$this->db->query("SELECT reference from records_json WHERE $dfilter $ffilter $datefilter");
     return $query->num_rows();
 	}
 
@@ -263,13 +264,13 @@ class Data extends MX_Controller {
 		echo Modules::run('templates/main', $data); 
 		
 	}
-	public function csv_data()
+	public function csv_data($print)
 	{
 
 		$dfilter=$_SESSION['dfilter'];
 		$ffilter=$_SESSION['ffilter'];
 		$datefilter=$_SESSION['datefilter'];
-		if(!empty($dfilter)){
+		if((!empty($dfilter))&&($print=1)){
 		$records= $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter); 
 		}
 		//print_r($records);
@@ -296,14 +297,14 @@ class Data extends MX_Controller {
 	exit;  
 	}
 
-	public function pdf_data()
+	public function pdf_data($print)
     {
        
 		
 		$dfilter=$_SESSION['dfilter'];
 		$ffilter=$_SESSION['ffilter'];
 		$datefilter=$_SESSION['datefilter'];
-		if(!empty($dfilter)){
+		if((!empty($dfilter))&&($print=1)){
 		$data['files'] = $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$datefilter); 
 		}
 		$this->load->library('ML_pdf');	
