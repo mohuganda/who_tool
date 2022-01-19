@@ -81,7 +81,7 @@ class Data extends MX_Controller {
 		$data['view']   	= "data";  
 		$config=array();
         $config['base_url']=base_url('data/collection');
-        $config['total_rows'] = $this->count_rows($dfilter,$ffilter);
+        $data['total_rows']=$config['total_rows'] = $this->count_rows($dfilter,$ffilter);
         $config['per_page']=25; //records per page
         $config['uri_segment']=3; //segment in url  
         //pagination links styling
@@ -113,7 +113,7 @@ class Data extends MX_Controller {
 	   //print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data); 
 	}
-	public function count_rows($dfilter,$ffilter,$datefilter){
+	public function count_rows($dfilter,$ffilter){
 		
 		$query=$this->db->query("SELECT reference from records_json WHERE reference IS NOT NULL $dfilter $ffilter");
     return $query->num_rows();

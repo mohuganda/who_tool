@@ -17,22 +17,7 @@ $facilities=Modules::run("auth/getFacilities");
                 
                   <form class="form-horizontal" action="<?php echo base_url() ?>data/collection" method="post">
                   <div class="row">
-                    All Dates<input style="display: block; " name="all_date" value="on" type="checkbox" class="btn btn-primary" checked>
-                  </div>
-                  <div class="row">
-                    <div class="form-group col-md-4">
-                         <label>Date:</label>
                    
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="far fa-calendar-alt"></i>
-                        </span>
-                        </div>
-                        
-                        <input type="text"  name="sync_date" class="form-control datepicker" value="<?php echo date("Y-m-d"); ?>" autocomplete="off">
-                    </div>
-                    <!-- /.input group -->
                     </div>
                     
                             
