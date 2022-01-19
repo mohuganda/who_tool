@@ -88,7 +88,7 @@ class Data extends MX_Controller {
 		$config=array();
         $config['base_url']=base_url('data/collection');
         $data['total_rows']=$config['total_rows'] = $this->count_rows($dfilter,$ffilter);
-        $config['per_page']=50; //records per page
+        $config['per_page']=30; //records per page
         $config['uri_segment']=3; //segment in url  
         //pagination links styling
         $config['full_tag_open'] = '<ul class="pagination">';
