@@ -282,8 +282,8 @@ class Data extends MX_Controller {
 	if(!empty($records)) {
 	  foreach($records as $srecord) {
 		  $data = (array)json_decode($srecord->data);
-		  $record = \array_diff_key($data, ["consent_image"=>"xy", "id_photo","person_photo"=>"xy"]);
-
+		  $recorda = \array_diff_key($data, ["consent_image"=>"xy", "id_photo"=>"xy","person_photo"=>"xy"]);
+		  $record = array_values($recorda);
 		  //print_r($record);
 
 		if($is_coloumn) {		  	  
