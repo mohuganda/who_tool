@@ -66,7 +66,7 @@ class Data extends MX_Controller {
 		
 		
 		
-		if(!empty($this->input->post('facility'))){
+		if(($this->input->post('facility')!='ALL')){
 			$facility = $this->input->post('facility');
 			$_SESSION['ffilter'] = " and facility like '$facility%'";
 		}
