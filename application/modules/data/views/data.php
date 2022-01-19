@@ -59,15 +59,16 @@ $facilities=Modules::run("auth/getFacilities");
                 &nbsp;&nbsp;
                 <?php endif; ?>
                 <button type="submit" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px; left-right:4px;"><i class="fa fa-tasks" aria-hidden="true"></i>APPLY</button>
-                  
+                &nbsp;&nbsp;
               </div>
+              &nbsp;&nbsp;
               </div>
        
             
               </form>
 
                
-<p class="pagination"><?php echo $links;?>   
+              &nbsp;&nbsp;<p class="pagination"><?php echo $links;?>   
 
  <b><?php echo $total_rows. ' Records'; ?></b>
             
