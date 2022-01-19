@@ -16,9 +16,8 @@ $facilities=Modules::run("auth/getFacilities");
                     <div class="card-tools">
                 
                   <form class="form-horizontal" action="<?php echo base_url() ?>data/collection" method="post">
-                  <div class="row">
-                   
-                    </div>
+                <div class="row">
+                  
                     
                             <?php //print_r($this->session->userdata()); ?>
                   <div class="form-group col-md-4">
@@ -49,9 +48,10 @@ $facilities=Modules::run("auth/getFacilities");
                     </div>
                         
                   
-                </div>    
+                   </div>
+                      
     
-                <div class="row">
+                <div class="col-md-4">
                 <?php if($this->input->post('district')):?>
                 <a href="<?php echo base_url() ?>data/pdf_data/1" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-file" aria-hidden="true"></i>PDF</a>
                 &nbsp;&nbsp;
@@ -62,7 +62,8 @@ $facilities=Modules::run("auth/getFacilities");
                 &nbsp;&nbsp;
               </div>
               &nbsp;&nbsp;
-              </div>
+            </div>
+             </div>
        
             
               </form>
