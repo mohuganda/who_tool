@@ -49,7 +49,7 @@ class Data extends MX_Controller {
 	
       }
 
-	public function collection($seg=FALSE,$print=FALSE)
+	public function collection($print=FALSE)
 	{ 
 		if(!empty($this->input->post('district'))){
 			$district = $this->input->post('district');

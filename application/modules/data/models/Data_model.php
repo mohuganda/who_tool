@@ -7,13 +7,14 @@ class Data_model extends CI_Model {
 
 	public function getData2($limits,$starts,$dfilter,$ffilter,$print)
 	{ 
-		if(!empty($limits&&$starts&&$print=1)){
-			$limit ="LIMIT $starts,$limits";
-		}
-		else{
+		if(($print=1)){
 			$limit ="";
 		}
-		$query=$this->db->query("SELECT * FROM `records_json` WHERE reference IS NOT NULL $dfilter $ffilter ORDER BY sync_date DESC $limit");
+		else{
+		
+			$limit ="LIMIT $starts,$limits";
+		}
+		$query=$this->db->query("SELECT * FROM `records_json`  $dfilter $ffilter ORDER BY sync_date DESC $limit");
 	return $query->result();
 	
 	}
