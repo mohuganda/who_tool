@@ -49,9 +49,9 @@ $facilities=Modules::run("auth/getFacilities");
                         
                   
                    </div>
-                      
+                    </div>    
     
-                <div class="col-md-4">
+                <div class="row">
                 <?php if($this->input->post('district')):?>
                 <a href="<?php echo base_url() ?>data/pdf_data/1" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-file" aria-hidden="true"></i>PDF</a>
                 &nbsp;&nbsp;
@@ -62,8 +62,7 @@ $facilities=Modules::run("auth/getFacilities");
                 &nbsp;&nbsp;
               </div>
               &nbsp;&nbsp;
-            </div>
-             </div>
+              </div>
        
             
               </form>
