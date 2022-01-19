@@ -7,7 +7,7 @@ class Data_model extends CI_Model {
 
 	public function getData2($limits,$starts,$dfilter,$ffilter,$print)
 	{ 
-		if(($print=1)){
+		if($print==1){
 			$limit ="";
 		}
 		else{

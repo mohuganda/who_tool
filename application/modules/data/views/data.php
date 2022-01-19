@@ -50,7 +50,7 @@ $facilities=Modules::run("auth/getFacilities");
                 </div>    
     
                 <div class="row">
-                <?php if($this->input->post('sync_date')):?>
+                <?php if($this->input->post('district')):?>
                 <a href="<?php echo base_url() ?>data/pdf_data/1" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-file" aria-hidden="true"></i>PDF</a>
                 &nbsp;&nbsp;
                 <a href="<?php echo base_url() ?>data/csv_data/1" class="btn bt-sm bg-gray-dark color-pale"  style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>

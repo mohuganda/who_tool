@@ -49,11 +49,13 @@ class Data extends MX_Controller {
 	
       }
 
-	public function collection($print=FALSE)
+	public function collection()
+
 	{ 
+		@$print=$_GET['print'];
 		if(!empty($this->input->post('district'))){
 			$district = $this->input->post('district');
-			$_SESSION['dfilter'] = "and district like '$district%'";
+			$_SESSION['dfilter'] = "WHERE district like '$district%'";
 		}
 		else{
             $_SESSION['dfilter'] = "";
@@ -115,7 +117,7 @@ class Data extends MX_Controller {
 	}
 	public function count_rows($dfilter,$ffilter){
 		
-		$query=$this->db->query("SELECT reference from records_json WHERE reference IS NOT NULL $dfilter $ffilter");
+		$query=$this->db->query("SELECT reference from records_json $dfilter $ffilter");
     return $query->num_rows();
 	}
 
