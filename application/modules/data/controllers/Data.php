@@ -53,25 +53,29 @@ class Data extends MX_Controller {
 
 	{ 
 		@$print=$_GET['print'];
-		if(!empty($this->input->post('district'))){
+		if($this->input->post('district')!='ALL'){
 			$district = $this->input->post('district');
 			$_SESSION['dfilter'] = "WHERE district like '$district%'";
 		}
+		if(isset($_SESSION['dfilter'])){
+            $dfilter=$_SESSION['dfilter'];
+		}
 		else{
-            $_SESSION['dfilter'] = "";
+			$dfilter="";
 		}
 		
-		$dfilter=$_SESSION['dfilter'];
+		
 		
 		if(!empty($this->input->post('facility'))){
 			$facility = $this->input->post('facility');
 			$_SESSION['ffilter'] = " and facility like '$facility%'";
 		}
-		else{
-			$_SESSION['ffilter'] = "";
-
+		if(isset($_SESSION['ffilter'])){
+            $ffilter=$_SESSION['ffilter'];
 		}
-		$ffilter = $_SESSION['ffilter'];
+		else{
+			$ffilter="";
+		}
 		
 	
 
