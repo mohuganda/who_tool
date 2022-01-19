@@ -20,7 +20,7 @@ $facilities=Modules::run("auth/getFacilities");
                    
                     </div>
                     
-                            <?php print_r($this->session->userdata()); ?>
+                            <?php //print_r($this->session->userdata()); ?>
                   <div class="form-group col-md-4">
                        <label for="aw_description">
                         Districts </label>
