@@ -70,7 +70,7 @@ $facilities=Modules::run("auth/getFacilities");
                
               &nbsp;&nbsp;<p class="pagination"><?php echo $links;?>   
 
- <b><?php echo $total_rows. ' Records'; ?></b>
+ <b> &nbsp;&nbsp;<?php echo $total_rows. ' Records'; ?></b>
             
 <div class="table"  style="overflow-x:auto;">
 
