@@ -37,7 +37,7 @@ table.dataTable tfoot td {
 </style>
 <section class="col-lg-12 connectedSortable">
     <div class="row">
-        <h3>HEALTH WORKERS LIST FOR -    <?php echo str_replace('%','',str_replace('and district like ','',$_SESSION['dfilter'])); ?> DISTRICT</h3>
+        <h3>HEALTH WORKERS LIST FOR -    <?php echo str_replace('%','',str_replace('WHERE district like ','',$_SESSION['dfilter'])); ?> DISTRICT</h3>
     
     <table id="example" class="dataTable table-striped table-bordered nowrap table-responsive" style="width:100%">
         <thead>
