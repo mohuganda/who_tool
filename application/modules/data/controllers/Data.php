@@ -317,8 +317,7 @@ class Data extends MX_Controller {
         $this->ml_pdf->pdf->showWatermarkImage = true;
         date_default_timezone_set("Africa/Kampala"); 
         $this->ml_pdf->pdf->SetHTMLFooter("Printed/ Accessed on: <b>".date('d F,Y h:i A')."</b><br style='font-size: 9px !imporntant;'>"." Source: iHRIS - iHRIS Mobile Tool " .base_url());
-        $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
-        $this->ml_pdf->showWatermarkImage = true;
+        
 	
 		
         ini_set('max_execution_time',0);
