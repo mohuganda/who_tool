@@ -76,7 +76,7 @@ table.dataTable tfoot td {
              $i=1;
             
              foreach($files as $dt): 
-             $staff=asort(json_decode($dt->data)); 
+             $staff=json_decode($dt->data); 
              //print_r();
              ?>
             <tr>
