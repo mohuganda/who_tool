@@ -323,7 +323,7 @@ class Data extends MX_Controller {
         ini_set('max_execution_time',0);
         $this->ml_pdf->pdf->WriteHTML($PDFContent); //ml_pdf because we loaded the library ml_pdf for landscape format not ml_pdf
         //download it D save F.
-       // $this->ml_pdf->pdf->Output($filename,'I');
+       $this->ml_pdf->pdf->Output($filename,'I');
     }
 
 
