@@ -311,7 +311,7 @@ class Data extends MX_Controller {
         $filename = "Field_Data" . date('Y-m-d') .'_'.$data['files'][0]->district .".pdf";	
         ini_set('max_execution_time',0);
 	
-        $html=$this->load->view('pdfdata',$data,false); 
+        $html=$this->load->view('pdfdata',$data,TRUE); 
         $PDFContent = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
         $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
         $this->ml_pdf->pdf->showWatermarkImage = true;
