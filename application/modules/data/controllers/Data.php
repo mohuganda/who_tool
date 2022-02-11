@@ -275,7 +275,7 @@ class Data extends MX_Controller {
 	   $f = fopen('php://memory', 'w'); 
 	   $delimiter = ","; 
 	   $fields = array(
-	   'NO',
+	   'No',
 	   'Worker Type',
 	   'Surname',
 	   'Firstname ',
