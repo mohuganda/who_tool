@@ -330,7 +330,7 @@ class Data extends MX_Controller {
 		$staff->diff_names_consent ,
 		$staff->kyc_verification );
 
-		fputcsv($f, $lineData, $delimiter); 
+		fputcsv($f, $linedata, $delimiter); 
 
 	  }
 	   // Move back to beginning of file 
