@@ -274,7 +274,9 @@ class Data extends MX_Controller {
 		//print_r($records);
 	   $f = fopen('php://memory', 'w'); 
 	   $delimiter = ","; 
-	   $fields = array('Worker Type',
+	   $fields = array(
+	   'NO',
+	   'Worker Type',
 	   'Surname',
 	   'Firstname ',
 	   'Othername ',
@@ -306,7 +308,7 @@ class Data extends MX_Controller {
 	  foreach($records as $srecord) {
 		$staff=json_decode($srecord->data);
 		$linedata = array(
-		 $i++ ,
+		$i++ ,
 		@$staff->hw_type=='chw'?"Community Health worker":"Ministry Health worker",
 		$staff->surname,
 		$staff->firstname ,
@@ -338,7 +340,7 @@ class Data extends MX_Controller {
      
 	   // Set headers to download file rather than displayed 
 	   header('Content-Type: text/csv'); 
-	   header('Content-Disposition: attachment; filename="' . $filename . '";'); 
+	   header('Content-Disposition: attachment; filename="' . $csv_file . '";'); 
 		
 	   //output all remaining data on a file pointer 
 	   fpassthru($f); 
