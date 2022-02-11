@@ -305,8 +305,8 @@ class Data extends MX_Controller {
 
 	  if(!empty($records)) {
       $i=1;
-	  foreach($records as $srecord) {
-		$staff=json_decode($srecord->data);
+	  foreach($records as $dt) {
+		$staff=json_decode($dt->data);
 		$linedata = array(
 		$i++ ,
 		@$staff->hw_type=='chw'?"Community Health worker":"Ministry Health worker",
