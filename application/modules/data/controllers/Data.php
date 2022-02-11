@@ -272,6 +272,8 @@ class Data extends MX_Controller {
 		$records= $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$print); 
 		}
 		//print_r($records);
+	   $f = fopen('php://memory', 'w'); 
+	   $delimiter = ","; 
 	   $fields = array('Worker Type',
 	   'Surname',
 	   'Firstname ',
@@ -294,18 +296,54 @@ class Data extends MX_Controller {
 	   'If No, Registered Name ',
 	   'Allow Mobile Money ',
 	   'KYC verification ');
-	   
+
+	   fputcsv($f, $fields, $delimiter); 
+
        $csv_file = "Field_Data" . date('Y-m-d') .'_'.$records[0]->district .".csv";	
 
 	  if(!empty($records)) {
-
+      $i=1;
 	  foreach($records as $srecord) {
-	
+		$staff=json_decode($srecord->data);
+		$linedata = array(
+		 $i++ ,
+		@$staff->hw_type=='chw'?"Community Health worker":"Ministry Health worker",
+		$staff->surname,
+		$staff->firstname ,
+		$staff->othername ,
+		@$staff->birth_date ,
+		@$staff->birth_place ,
+		$staff->gender ,
+		$staff->job ,
+		@$dt->facility ,
+		$staff->id_type ,
+		@$staff->ID_Number ,
+		@$staff->id_expiry ,
+		@$staff->national_id ,
+		@$staff->national_id_card_number ,
+		$staff->consent ,
+		$staff->primary_mobile_number ,
+		$staff->other_contact ,
+		$staff->is_mm_registered ,
+		$staff->is_registered_by_hw ,
+		$staff->registered_mm_name ,
+		$staff->diff_names_consent ,
+		$staff->kyc_verification );
 
+		fputcsv($f, $lineData, $delimiter); 
 
-
-	}
+	  }
+	   // Move back to beginning of file 
+	   fseek($f, 0); 
+     
+	   // Set headers to download file rather than displayed 
+	   header('Content-Type: text/csv'); 
+	   header('Content-Disposition: attachment; filename="' . $filename . '";'); 
+		
+	   //output all remaining data on a file pointer 
+	   fpassthru($f); 
     }
+	exit;
    }
 
 	public function pdf_data($print)
