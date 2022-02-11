@@ -272,30 +272,41 @@ class Data extends MX_Controller {
 		$records= $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$print); 
 		}
 		//print_r($records);
-		
+	   $fields = array('Worker Type',
+	   'Surname',
+	   'Firstname ',
+	   'Othername ',
+	   'Date of Birth ',
+	   'Place ',
+	   'Gender ',
+	   'position ',
+	   'facility ',
+	   'ID Type ',
+	   'ID Number ',
+	   'ID Expiry ',
+	   'National ID Number',
+	   'National ID Card Number',
+	   'Allow Consent',
+	   'Mobile Number ',
+	   'Other Contact ',
+	   'Mobile Money Registration Status ',
+	   'Is registered by Health Worker ',
+	   'If No, Registered Name ',
+	   'Allow Mobile Money ',
+	   'KYC verification ');
+	   
        $csv_file = "Field_Data" . date('Y-m-d') .'_'.$records[0]->district .".csv";	
-	header("Content-Type: text/csv");
-	header("Content-Disposition: attachment; filename=\"$csv_file\"");	
-	$fh = fopen( 'php://output', 'w' );
-  
-    $is_coloumn = true;
-	if(!empty($records)) {
-	  foreach($records as $srecord) {
-		  $data = (array)json_decode($srecord->data);
-		  $record = \array_diff_key($data, ["consent_image"=>"xy", "id_photo"=>"xy","person_photo"=>"xy"]);
-		  //$record = array_values($recorda);
-		  //print_r($record);
 
-		if($is_coloumn) {		  	  
-		  fputcsv($fh, array_keys($record));
-		  $is_coloumn = false;
-		}		
-		fputcsv($fh, array_values($record));
-	  }
-	   fclose($fh);
+	  if(!empty($records)) {
+
+	  foreach($records as $srecord) {
+	
+
+
+
 	}
-	exit;  
-	}
+    }
+   }
 
 	public function pdf_data($print)
     {
