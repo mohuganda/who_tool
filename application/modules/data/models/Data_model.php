@@ -26,7 +26,7 @@ class Data_model extends CI_Model {
 	}
 	public function getColumsup()
 	{ 
-		$query=$this->db->query("SELECT * FROM `records_json` WHERE hw_type is NULL");
+		$query=$this->db->query("SELECT * FROM `records_json` WHERE district is NULL or district=''");
 	return $query->result();
 	
 	}
