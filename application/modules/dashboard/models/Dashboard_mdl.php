@@ -68,7 +68,7 @@ class Dashboard_mdl extends CI_Model {
     public function enrollers_count(){
 
         $counts=array();
-         $user=$this->db->query("SELECT distinct user_id,name,contact,username from user WHERE user_id!=1 order by username ASC")->result();
+         $user=$this->db->query("SELECT distinct user_id,name,contact,username,district from user WHERE user_id!=1 order by username ASC")->result();
          $id=1;
          $date=$this->input->post('udate');
          foreach($user as $u):
@@ -76,6 +76,7 @@ class Dashboard_mdl extends CI_Model {
              $data['name']=$u->name;
              $data['code']=$u->username;
              $data['contact']=$u->contact;
+             $data['district']=$u->district;
              $data['id']=$id++;
              array_push($counts,$data);
             

@@ -40,6 +40,7 @@
                 <th>Code</th>
                 <th>Enroller</th>
                 <th>Contact</th>
+                <th>District</th>
                 <th>Total</th>
                
           </tr>
@@ -50,6 +51,7 @@
                   <td>{{collection.code}}</td>
                   <td>{{collection.name}}</td>
                   <td>{{collection.contact}}</td>
+                  <td>{{collection.district}}</td>
                   <td>{{collection.total}}</td>
                  
                   
