@@ -402,18 +402,7 @@ $("document").ready(function() {
    // console.log(time);
  
 });
-function getFacs(val) {
-   
-   $.ajax({          
-           method: "GET",
-           url: "<?php echo base_url(); ?>auth/get_facilities",
-           data:'dist_data='+val,
-           success: function(data){
-               console.log(data);
-               $(".sfacility").html(data);
-           }
-   });
-}
+
 
 
 </script>
