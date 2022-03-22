@@ -518,7 +518,7 @@ public function get_facilities()
         $permissions=$userdata['permissions'];
         //view all facilities
         // if(in_array('38', $permissions)){ 
-        $sql = "SELECT DISTINCT facility_id,facility FROM ihrisdata WHERE district_id LIKE '$dist_id' ORDER BY facility ASC";
+        $sql = "SELECT DISTINCT facility_id,facility FROM ihrisdata WHERE district='$dist_id' ORDER BY facility ASC";
         // }
         // else{
         //   $facility=$_SESSION['facility'];
@@ -533,7 +533,7 @@ public function get_facilities()
           if(!empty($facilities)){
 
              foreach($facilities as $facility) {
-             $opt .= "<option value='".$facility->facility_id."__".$facility->facility."'>".ucwords($facility->facility)."</option>";
+             $opt .= "<option value='".$facility->facility."'>".ucwords($facility->facility)."</option>";
            
             }
         

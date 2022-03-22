@@ -409,8 +409,8 @@ function getFacs(val) {
            url: "<?php echo base_url(); ?>auth/get_facilities",
            data:'dist_data='+val,
            success: function(data){
-              console.log(val);
-               //$(".sfacility").html(data);
+              //console.log(val);
+               $(".sfacility").html(data);
            }
    });
 }
