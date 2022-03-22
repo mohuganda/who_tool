@@ -23,7 +23,7 @@ $facilities=Modules::run("auth/getFacilities");
                   <div class="form-group col-md-4">
                        <label for="aw_description">
                         Districts </label>
-                    <select name="district"  class="form-control select2 sdistrict" style="width:100%;">
+                    <select name="district"  class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());">
                     <option value="" disabled selected>DISTRICT</option>
                     <option value="ALL" >ALL</option>
                     <?php  foreach($districts as $district): 
@@ -37,13 +37,9 @@ $facilities=Modules::run("auth/getFacilities");
                     <div class="form-group col-md-4">
                        <label for="aw_description">
                         Facilities </label>
-                    <select onChange="getFacs($(this).val());" name="facility"  class="form-control select2" style="width:100%;">
-                    <option value="" disabled selected>FACILITY</option>
-                    <option value="ALL">ALL</option>
-                    <?php  foreach($facilities as $facility): 
-                                  ?>
-                    <option value="<?php echo $facility->facility; ?>"<?php if ($this->input->post('facility')==$facility->facility) echo "selected"; ?>><?php echo $facility->facility; ?></option>
-                                <?php endforeach; ?>
+                    <select  name="facility"  class="sfacility form-control select2dist">
+                    <option value="" disabled>All</option>
+    
                     </select>
                     </div>
                         

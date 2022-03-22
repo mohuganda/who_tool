@@ -404,56 +404,17 @@ $("document").ready(function() {
 });
 function getFacs(val) {
    
-//    $.ajax({          
-//            method: "GET",
-//            url: "<?php echo base_url(); ?>departments/get_facilities",
-//            data:'dist_data='+val,
-//            success: function(data){
-//                //alert(data);
-//                $(".sfacility").html(data);
-//            }
-//    });
-}
-
-function getDeps(val) {
-   
    $.ajax({          
            method: "GET",
-           url: "<?php echo base_url(); ?>departments/get_departments",
-           data:'fac_data='+val,
+           url: "<?php echo base_url(); ?>auth/get_facilities",
+           data:'dist_data='+val,
            success: function(data){
                //alert(data);
-               $(".sdepartment").html(data);
+               $(".sfacility").html(data);
            }
-         //  console.log('iwioowiiwoow');
    });
 }
-function getDivisions(val) {
-   
-    $.ajax({          
-            method: "GET",
-            url: "<?php echo base_url(); ?>departments/get_divisions",
-            data:'depart_data='+val,
-            success: function(data){
-                // alert(data);
-                $(".sdivision").html(data);
-            }
-    });
-}
 
-
-function getUnits(val) {
-   
-    $.ajax({          
-            method: "GET",
-            url: "<?php echo base_url(); ?>departments/get_units",
-            data:'division='+val,
-            success: function(data){
-                //alert(data);
-                $(".sunit").html(data);
-            }
-    });
-}
 
 </script>
 
