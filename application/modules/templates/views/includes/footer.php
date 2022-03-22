@@ -203,6 +203,112 @@ $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
  // Outputs: Query String
 ?>
 
+<!-- Modal -->
+<div class="modal fade" id="switch" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Switch Facility</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form class="form form-horizontal" action="<?php echo base_url(); ?>departments/switchDepartment" method="post">
+      <div class="row">
+      <div class="col-md-12">
+                
+                    <label>District</label>
+                   
+                    
+                    <select class="sdistrict form-control select2dist" id="district" name="district" onChange="getFacs($(this).val());"  <?php if(!(in_array('34', $permissions))){ echo "disabled"; }?>>
+                    <option value="<?php echo urlencode($_SESSION['district_id'])."_".urlencode($_SESSION['district']); ?>" ><?php echo $_SESSION['district']; ?></option>
+                            <?php
+                           
+                            $districts=Modules::run("districts/getDistricts");
+                               foreach ($districts as $district){
+                            ?>
+                            <option value="<?php echo urlencode($district->district_id)."_".urlencode($district->district); ?>"><?php echo ucwords($district->district); ?></option>
+                            <?php }   ?>
+
+                    </select>
+         </div>
+
+ 
+      <div class="col-md-12">
+                <div class="form-group" >
+                    <label>Facility</label>
+                    <select  name="facility" onChange="getDeps($(this).val());" class="sfacility form-control select2dist" required>
+                    <option value="" disabled>All</option>
+    
+                    </select>
+                </div>
+            </div>
+    </div>
+    
+    <div class="row">
+   
+            <div class="col-md-12">
+                <div class="form-group" >
+                    <label>Department</label>
+                    <select  name="department" onChange="getDivisions($(this).val());" class="sdepartment form-control select2dist">
+                    <option value="">All</option>
+                    </select>
+                </div>
+            </div>
+  
+            <input type="hidden" name="direct" value="<?php echo $linkquery; ?>" >
+           
+
+            <div class="col-md-12" style="display:none;">
+                <div class="form-group">
+                    <label>Division</label>
+                    <select id="division" class="sdivison form-control select2dist" onChange="getUnits($(this).val());" name="division">
+                    <option value="">All</option>
+                    </select>
+              </div>
+           </div>
+  </div>
+
+  <div class="row" style="display:none;">
+  <div class="col-md-6">
+                <!-- < needs fixing> -->
+                <div class="form-group">
+                    <label>Section</label>
+                    <select id="section" class="ssection form-control select2dist" onChange="getUnits($(this).val());" name="section">
+                    <option value="">All</option>
+                    </select>
+              </div>
+           </div>
+
+          
+
+            <div class="col-md-6">
+                  <div class="form-group">
+                          <label>Unit</label>
+                    <select id="unit" name="unit" onchange="this.form.submit()" class="sunit form-control select2dist">
+                    <option value="">All</option>
+                         
+                    </select>
+                </div>
+            </div>
+  </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info"><i class="fa fa-paper-plane" aria-hidden="true">Switch</i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times">Close</i></button>
+      </div>
+
+        </form>
+
+    </div>
+
+  </div>
+</div>
+
+
+
   <!-- change password modal at ones own wish -->
   <div class="modal" id="changepassword" data-backdrop="false">
                 <div class="modal-dialog">
@@ -291,12 +397,11 @@ $(function () {
 <script>
 $("document").ready(function() {
     $(".sdistrict").change();
-    $(".sfacility").change();
+    //$(".sfacility").change();
     
    // console.log(time);
  
 });
-
 function getFacs(val) {
    
    $.ajax({          
@@ -304,12 +409,11 @@ function getFacs(val) {
            url: "<?php echo base_url(); ?>auth/get_facilities",
            data:'dist_data='+val,
            success: function(data){
-               //console.log(data);
+               //alert(data);
                $(".sfacility").html(data);
            }
    });
 }
-
 
 
 </script>
