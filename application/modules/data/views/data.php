@@ -37,7 +37,7 @@ $facilities=Modules::run("auth/getFacilities");
                     <div class="form-group col-md-4">
                        <label for="aw_description">
                         Facilities </label>
-                    <select  name="facility"  class="sfacility form-control select2dist" required>
+                    <select  name="facility"  class="sfacility form-control" required>
                     <option value="" disabled>All</option>
     
                     </select>
