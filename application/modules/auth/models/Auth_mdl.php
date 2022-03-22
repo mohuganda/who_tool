@@ -364,6 +364,7 @@ public function blockUser($postdata){
 	public function getDistricts(){
 		$this->db->select('district,district_id');
 		$this->db->distinct('district');
+		$this->db->order_by("district","ASC");
 		$qry=$this->db->get('ihrisdata');
 
 		return $qry->result();
