@@ -397,7 +397,7 @@ $(function () {
 <script>
 $("document").ready(function() {
     $(".sdistrict").change();
-    //$(".sfacility").change();
+    $(".sfacility").change();
     
    // console.log(time);
  
