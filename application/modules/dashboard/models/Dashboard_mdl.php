@@ -19,19 +19,19 @@ class Dashboard_mdl extends CI_Model {
 
 	}
     public function getData(){
-        $data['total_records']=$this->db->query("select count(id) as total_records from records_json")->row()->total_records;
+        $data['total_records']=$this->db->query("select count(id) as total_records from new_records_json")->row()->total_records;
         $today=date('Y-m-d');
-        $data['daily_updates']=$this->db->query("SELECT count(id) as daily_updates from records_json where DATE_FORMAT(sync_date, '%Y-%m-%d')='$today'")->row()->daily_updates;
+        $data['daily_updates']=$this->db->query("SELECT count(id) as daily_updates from new_records_json where DATE_FORMAT(sync_date, '%Y-%m-%d')='$today'")->row()->daily_updates;
         $data['total_enrollers']=$this->db->query("SELECT count(user_id) as users from user where user_id!=1")->row()->users;
-        $data['active_enrollers']= $this->db->query("SELECT count(distinct(user_id)) as active_enrollers from records_json where DATE_FORMAT(sync_date, '%Y-%m-%d')='$today' and user_id!=1")->row()->active_enrollers.' out of ';
-        $data['chwdata']= $this->db->query("SELECT reference as community_workers from records_json WHERE hw_type='chw'")->num_rows();
-        $data['mhwdata']= $this->db->query("SELECT reference as ministry_workers from records_json WHERE hw_type='mhw'")->num_rows();
-        $data['covered_districts']= $this->db->query("SELECT distinct district from records_json WHERE district!=''")->num_rows();
-        $data['covered_facilities']= $this->db->query("SELECT distinct facility from records_json WHERE facility!=''")->num_rows();
-        $data['updated_records']= $this->db->query("SELECT distinct ihris_pid from records_json ")->num_rows()-1;
+        $data['active_enrollers']= $this->db->query("SELECT count(distinct(user_id)) as active_enrollers from new_records_json where DATE_FORMAT(sync_date, '%Y-%m-%d')='$today' and user_id!=1")->row()->active_enrollers.' out of ';
+        $data['chwdata']= $this->db->query("SELECT reference as community_workers from new_records_json WHERE hw_type='chw'")->num_rows();
+        $data['mhwdata']= $this->db->query("SELECT reference as ministry_workers from new_records_json WHERE hw_type='mhw'")->num_rows();
+        $data['covered_districts']= $this->db->query("SELECT distinct district from new_records_json WHERE district!=''")->num_rows();
+        $data['covered_facilities']= $this->db->query("SELECT distinct facility from new_records_json WHERE facility!=''")->num_rows();
+        $data['updated_records']= $this->db->query("SELECT distinct ihris_pid from new_records_json ")->num_rows()-1;
      
      
-       // $data['mhwdata']= $this->db->query("SELECT reference as ministry_workers from records_json WHERE JSON_EXTRACT(data,'$.hw_type')='mhw'")->num_rows();
+       // $data['mhwdata']= $this->db->query("SELECT reference as ministry_workers from new_records_json WHERE JSON_EXTRACT(data,'$.hw_type')='mhw'")->num_rows();
       
     return $data;
     }
@@ -58,11 +58,11 @@ class Dashboard_mdl extends CI_Model {
 
     }
     public function count_ministry($district){
-    return  $this->db->query("SELECT reference from records_json WHERE district='$district' AND hw_type='mhw'")->num_rows();
+    return  $this->db->query("SELECT reference from new_records_json WHERE district='$district' AND hw_type='mhw'")->num_rows();
 
     }
     public function count_community($district){
-    return  $this->db->query("SELECT reference from records_json WHERE district='$district' AND hw_type='chw'")->num_rows();
+    return  $this->db->query("SELECT reference from new_records_json WHERE district='$district' AND hw_type='chw'")->num_rows();
     }
 
     public function enrollers_count(){
@@ -92,7 +92,7 @@ class Dashboard_mdl extends CI_Model {
          else{
              $dfilter="";
          }
-    return $this->db->query("SELECT reference from records_json WHERE user_id=$user_id $dfilter")->num_rows();
+    return $this->db->query("SELECT reference from new_records_json WHERE user_id=$user_id $dfilter")->num_rows();
 
      }
     
