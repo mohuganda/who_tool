@@ -126,7 +126,7 @@ class Dashboard_mdl extends CI_Model {
         else{
             $dfilter="";
         }
-   return $this->db->query("SELECT reference from records_json WHERE user_id=$user_id sync_date like '2022-04-%'")->num_rows();
+   return $this->db->query("SELECT reference from records_json WHERE user_id=$user_id and sync_date like '2022-04-%'")->num_rows();
 
     }
     
