@@ -40,8 +40,8 @@ class Dashboard extends MX_Controller {
 	public function phase2_data_enrollers(){
 		
 		$data = $this->dash_mdl->phase2_enrollers_count();
-		return 0;
-	//echo json_encode($data);
+		//return 0;
+	echo json_encode($data);
 	}
 
 	public function jsondata_district(){
