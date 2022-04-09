@@ -14,26 +14,26 @@ class Data_model extends CI_Model {
 		
 			$limit ="LIMIT $starts,$limits";
 		}
-		$query=$this->db->query("SELECT * FROM `new_records_json`  $dfilter $ffilter ORDER BY sync_date DESC $limit");
+		$query=$this->db->query("SELECT * FROM `records_json`  $dfilter $ffilter ORDER BY sync_date DESC $limit");
 	return $query->result();
 	
 	}
 	public function getColums()
 	{ 
-		$query=$this->db->query("SELECT sync_date,data FROM `new_records_json`");
+		$query=$this->db->query("SELECT sync_date,data FROM `records_json`");
 	return $query->result();
 	
 	}
 	public function getColumsup()
 	{ 
-		$query=$this->db->query("SELECT * FROM `new_records_json` WHERE district is NULL or district=''");
+		$query=$this->db->query("SELECT * FROM `records_json` WHERE district is NULL or district=''");
 	return $query->result();
 	
 	}
 	public function getData()
 	{ 
 	
-		$query=$this->db->query("SELECT  sync_date, data FROM `new_records_json` ORDER BY STR_TO_DATE(sync_date,'%d-%m-%Y') DESC");
+		$query=$this->db->query("SELECT  sync_date, data FROM `records_json` ORDER BY STR_TO_DATE(sync_date,'%d-%m-%Y') DESC");
 	return $query->result();
 	
 	}
