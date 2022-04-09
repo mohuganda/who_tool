@@ -254,6 +254,15 @@ class Data extends MX_Controller {
 		echo Modules::run('templates/main', $data); 
 		
 	}
+
+	public function phase2_enrollers_per(){
+		$data['module']='data';
+		$data['uptitle']='Phase2 Records per Enroller';
+		$data['title']='Phase2 Records per Enroller';
+		$data['view']='phase2_aggregate_enrollers';
+		echo Modules::run('templates/main', $data); 
+		
+	}
 	public function district_per(){
 		$data['module']='data';
 		$data['uptitle']='Records per District';

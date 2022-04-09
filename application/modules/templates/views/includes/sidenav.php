@@ -116,6 +116,12 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 Records Per Enroller</a>
                                 </li>
+
+                                <li class="nav-item">
+                                <a href="<?php echo base_url()?>data/phase2_enrollers_per" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                Records Per Enroller Phase2</a>
+                                </li>
                                 <li class="nav-item">
                                 <a href="<?php echo base_url()?>data/collection" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>

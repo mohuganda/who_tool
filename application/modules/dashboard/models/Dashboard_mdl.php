@@ -85,6 +85,28 @@ class Dashboard_mdl extends CI_Model {
      return $counts;  
  
      }
+
+     
+    public function phase2_enrollers_count(){
+
+        $counts=array();
+         $user=$this->db->query("SELECT distinct user_id,name,contact,username,district from user WHERE user_id!=1 order by username ASC")->result();
+         $id=1;
+         $date=$this->input->post('udate');
+         foreach($user as $u):
+             $data['total']=$this->phase2_user_records($date=FALSE, $u->user_id);
+             $data['name']=$u->name;
+             $data['code']=$u->username;
+             $data['contact']=$u->contact;
+             $data['district']=$u->district;
+             $data['id']=$id++;
+             array_push($counts,$data);
+            
+         endforeach;
+     
+     return $counts;  
+ 
+     }
      public function user_records($date=FALSE,$user_id){
          if(!empty($date)){
              $dfilter="AND sync_date like '$date%'";
@@ -95,6 +117,16 @@ class Dashboard_mdl extends CI_Model {
     return $this->db->query("SELECT reference from records_json WHERE user_id=$user_id $dfilter")->num_rows();
 
      }
+     public function phase2_user_records($date=FALSE,$user_id){
+        if(!empty($date)){
+            $dfilter="AND sync_date like '$date%'";
+        }
+        else{
+            $dfilter="";
+        }
+   return $this->db->query("SELECT reference from records_json WHERE user_id=$user_id $dfilter AND sync_date >= '2022-04%'")->num_rows();
+
+    }
     
 
 }
