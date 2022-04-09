@@ -85,9 +85,9 @@
               <span class="info-box-icon"><i class="fas fa-tasks" ></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Active Enrollers</span>
-                <span class="info-box-number" id="active_enrollers"></span>                 
-                <span class="info-box-number" id="total_enrollers"> </span>
+                <span class="info-box-text">Phase 2 Data</span>
+                <span class="info-box-number" id="phase2_data"></span>                 
+                
                 
               </div>
               <!-- /.info-box-content-->
@@ -310,7 +310,7 @@ $(document).ready(function(){
                      $('#total_records').text(data.total_records);
                      $('#daily_updates').text(data.daily_updates);
                      $('#total_enrollers').text(data.total_enrollers);
-                     $('#active_enrollers').text(data.active_enrollers);
+                     $('#phase2_data').text(data.phase2_data);
                      $('#chwdata').text(data.chwdata);
                      $('#mhwdata').text(data.mhwdata);
                      $('#covered_districts').text(data.covered_districts);
