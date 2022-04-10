@@ -70,7 +70,6 @@ img{
             <th>Mobile Money Registration Status </th>
             <th>Is registered by Health Worker </th>
             <th>If No, Registered Name </th>
-            <th>Allow Mobile Money </th>
             <th>KYC verification </th>
           
             </tr>
