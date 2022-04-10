@@ -87,7 +87,7 @@ img{
             <td> <?php echo @$i++; ?></td>
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
            <?php $photo="<img src=\"data:image/jpg;base64, ".@$staff->person_photo."\"/>"; ?>
-             <td><div class="image"><?php if(!empty(@$staff->person_photo)){ $photo }?>
+             <td><div class="image"><?php if(!empty(@$staff->person_photo)){ echo $photo; }?>
              </div> </td>
             <td>
              
