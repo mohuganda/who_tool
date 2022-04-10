@@ -121,7 +121,7 @@ $facilities=Modules::run("auth/getFacilities");
             <td> <?php echo @$staff->user_id; ?></td>
             <td> <?php echo @$dt->district; ?></td>
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
-            <td><div class="image"><?php if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
+            <td><div class="image"><?php if(!empty(@$staff->person_photo)){?><img src="data:image/jpg;base64,<?php  echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
              </div> </td>
             <td>
 

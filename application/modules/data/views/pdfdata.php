@@ -108,8 +108,8 @@ img{
             <td><?php echo @$staff->national_id ?></td>
             <td><?php echo @$staff->national_id_card_number ?></td>
             <td><?php echo $staff->consent ?></td>
-            <!-- <td><?php //if(!empty(@$staff->consent_image)&&(strlen(@$staff->consent_image)>100)){ ?> <img src="data:image/png;base64,<?php// echo @$staff->consent_image; ?> " alt="Img"  /><?php //}else{?>
-            <?php //echo $staff->consent_image; } ?> </td> -->
+            <td><?php if(!empty(@$staff->consent_image)&&(strlen(@$staff->consent_image)>100)){ ?> <img src="data:image/jpg;base64,<?php echo @$staff->consent_image; ?> "  /><?php }else{?>
+            <?php echo $staff->consent_image; } ?> </td>
             <td><?php echo $staff->primary_mobile_number ?></td>
             <td><?php echo $staff->other_contact ?></td>
             <td><?php echo $staff->is_mm_registered ?></td>
