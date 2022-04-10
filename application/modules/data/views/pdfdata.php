@@ -34,6 +34,10 @@ table.dataTable tfoot {
 table.dataTable tfoot td {
   font-size: 14px;
 }
+img{
+        width:80px;
+        border-radius:3px;
+    }
 </style>
 <section class="col-lg-12 connectedSortable">
     <div class="row">
@@ -44,7 +48,7 @@ table.dataTable tfoot td {
             <tr>
             <th>#</th>
             <th>Worker Type</th>
-            <!-- <th>Image</th> -->
+            <th>Image</th>
             <th>Surname</th>
             <th>Firstname </th>
             <th>Othername </th>
@@ -82,8 +86,9 @@ table.dataTable tfoot td {
             <tr>
             <td> <?php echo @$i++; ?></td>
             <td><?php  if ($staff->hw_type=='chw') { echo "Community Health worker"; } else { echo "Ministry Health worker"; }  ?></td>
-            <!-- <td><div class="image"><?php //if(!empty(@$staff->person_photo)){?><img src="data:image/png;base64,<?php  //echo @$staff->person_photo; ?> " alt="Img" /><?php //} ?>
-             </div> </td> -->
+           <?php $photo="<img src=\"data:image/jpg;base64, ".@$staff->person_photo."\"/>"; ?>
+             <td><div class="image"><?php if(!empty(@$staff->person_photo)){ $photo }?>
+             </div> </td>
             <td>
              
             <?php echo $staff->surname; ?>
