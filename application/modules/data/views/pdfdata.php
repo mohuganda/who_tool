@@ -51,13 +51,13 @@ img{
             <th>Image</th>
             <th>Surname</th>
             <th>Firstname </th>
-            <th>Othername </th>
+            <!-- <th>Othername </th> -->
             <th>Date of Birth </th>
             <th>Place </th>
             <th>Gender </th>
             <th>position </th>
             <th>facility </th>
-            <!-- <th>ID Photo </th> -->
+             <th>ID Photo </th>
             <th>ID Type </th>
             <th>ID Number </th>
             <th>ID Expiry </th>
@@ -94,14 +94,14 @@ img{
             <?php echo $staff->surname; ?>
             </td>
             <td><?php echo $staff->firstname ?></td>
-            <td><?php echo $staff->othername ?></td>
+            <!-- <td><?php //echo $staff->othername ?></td> -->
             <td><?php echo @$staff->birth_date ?></td>
             <td><?php echo @$staff->birth_place ?></td>
             <td><?php echo $staff->gender ?></td>
             <td><?php echo $staff->job ?></td>
             <td><?php echo @$dt->facility ?></td>
-            <!-- <td><?php //if(!empty(@$staff->id_photo)){ ?> <img src="data:image/png;base64,<?php //echo @$staff->id_photo; ?> " alt="Img"  /><?php //}?>
-            </td> -->
+            <td><?php if(!empty(@$staff->id_photo)){ ?> <img src="data:image/jpg;base64,<?php echo @$staff->id_photo; ?> " /><?php }?>
+            </td>
             <td><?php echo $staff->id_type ?></td>
             <td><?php echo @$staff->ID_Number ?></td>
             <td><?php echo @$staff->id_expiry ?></td>
