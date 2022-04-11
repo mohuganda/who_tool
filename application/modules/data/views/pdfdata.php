@@ -64,7 +64,7 @@ img{
             <th>National ID Number</th>
             <th>National ID Card Number</th>
             <th>Allow Consent</th>
-            <!-- <th>Signature</th> -->
+            <th>Signature</th>
             <th>Mobile Number </th>
             <th>Other Contact </th>
             <th>Mobile Money Registration Status </th>
