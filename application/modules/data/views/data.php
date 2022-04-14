@@ -1,7 +1,6 @@
 <style>
     img{
-        width:80px;
-        border-radius:3px;
+        
     }
 </style>
 <?php
