@@ -367,17 +367,20 @@ class Data extends MX_Controller {
 		if((!empty($dfilter))&&($print=1)){
 		$data['files'] = $this->data_model->getData2($config['per_page']=FALSE,$page=FALSE,$dfilter,$ffilter,$print); 
 		}
+		
 		$this->load->library('ML_pdf');	
         $filename = "Field_Data" . date('Y-m-d') .'_'.$data['files'][0]->district .".pdf";	
         ini_set('max_execution_time',0);
-	
-        $html=$this->load->view('pdfdata',$data,TRUE); 
-        $PDFContent = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+	$mpdf->SetCompression(true);
+	$PDFContent = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
         $this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
         $this->ml_pdf->pdf->showWatermarkImage = true;
         date_default_timezone_set("Africa/Kampala"); 
         $this->ml_pdf->pdf->SetHTMLFooter("Printed/ Accessed on: <b>".date('d F,Y h:i A')."</b><br style='font-size: 9px !imporntant;'>"." Source: iHRIS - iHRIS Mobile Tool " .base_url());
         
+	
+        $html=$this->load->view('pdfdata',$data,TRUE); 
+      
 	
 		
         ini_set('max_execution_time',0);
