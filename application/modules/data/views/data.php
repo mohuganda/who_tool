@@ -67,7 +67,13 @@ $facilities = Modules::run("auth/getFacilities");
 
         &nbsp;&nbsp;<p class="pagination"><?php echo $links; ?>
 
-            <b> &nbsp;&nbsp;<?php  $t=($total_rows - 5789); if ($t<0) { echo $t*-1; }  ' Records'; ?></b>
+            <b> &nbsp;&nbsp;<?php $t = ($total_rows - 5789);
+                            if ($t < 0) {
+                                echo $t * -1;
+                            } else {
+                                echo $t;
+                            }
+                            ' Records'; ?></b>
 
         <div class="table" style="overflow-x:auto;">
 
