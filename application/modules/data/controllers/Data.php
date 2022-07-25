@@ -157,7 +157,7 @@ class Data extends MX_Controller
 			$staff = json_decode($dt->data);
 			@$staff->sync_date = $dt->sync_date;
 			//print_r($staff);
-			$this->db->replace('linear_json_report', $staff);
+			$this->db->replace('records_json_report', $staff);
 		endforeach;
 	}
 	function create_report()
