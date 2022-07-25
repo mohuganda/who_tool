@@ -117,6 +117,75 @@ class Data extends MX_Controller
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}
+
+	public function clean_collection()
+
+	{
+		@$print = $_GET['print'];
+		if ($this->input->post('district') != 'ALL') {
+			$district = $this->input->post('district');
+			$_SESSION['dfilter'] = "WHERE district like '$district%'";
+		}
+		if (isset($_SESSION['dfilter'])) {
+			$dfilter = $_SESSION['dfilter'];
+		} else {
+			$dfilter = "";
+		}
+
+
+
+		if (($this->input->post('facility') != 'ALL')) {
+			$facility = $this->input->post('facility');
+			$_SESSION['ffilter'] = " and facility like '$facility%'";
+		}
+		if (isset($_SESSION['ffilter'])) {
+			$ffilter = $_SESSION['ffilter'];
+		} else {
+			$ffilter = "";
+		}
+
+
+
+
+		$this->load->library('pagination');
+		$data['uptitle']      = 'Activity Report';
+		$data['title']      = 'Activity Report';
+		$data['module'] 	= "data";
+		$data['view']   	= "data";
+		$config = array();
+		$config['base_url'] = base_url('data/collection');
+		$data['total_rows'] = $config['total_rows'] = $this->count_rows($dfilter, $ffilter);
+		$config['per_page'] = 10; //records per page
+		$config['uri_segment'] = 3; //segment in url  
+		//pagination links styling
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['attributes'] = ['class' => 'page-link'];
+		$config['first_link'] = true;
+		$config['last_link'] = true;
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['first_link'] = 'First';
+		$config['last_link'] = 'Last';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = 'Next';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+		$config['use_page_numbers'] = false;
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
+		$data['links'] = $this->pagination->create_links();
+		$data['files'] = $this->data_model->cleangetData2($config['per_page'], $page, $dfilter, $ffilter, $print);
+		//print_r($config['total_rows']);
+		echo Modules::run('templates/main', $data);
+	}
 	public function count_rows($dfilter, $ffilter)
 	{
 
