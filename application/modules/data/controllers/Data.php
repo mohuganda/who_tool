@@ -220,7 +220,7 @@ class Data extends MX_Controller
 
 		ini_set('max_execution_time', 0);
 		$datas = $this->data_model->getColums();
-		$split_data = array_chunk($datas, 500);
+		$split_data = array_chunk($datas, 50);
 		//contains = [ [],[] [] ]
 		for ($i = 0; $i < count($split_data); $i++) :
 
