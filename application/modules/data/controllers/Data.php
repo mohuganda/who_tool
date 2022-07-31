@@ -79,8 +79,8 @@ class Data extends MX_Controller
 
 
 		$this->load->library('pagination');
-		$data['uptitle']      = 'Activity Report';
-		$data['title']      = 'Activity Report';
+		$data['uptitle']      = 'Data Report';
+		$data['title']      = 'Data Report';
 		$data['module'] 	= "data";
 		$data['view']   	= "data";
 		$config = array();
@@ -148,8 +148,8 @@ class Data extends MX_Controller
 
 
 		$this->load->library('pagination');
-		$data['uptitle']      = 'Activity Report';
-		$data['title']      = 'Activity Report';
+		$data['uptitle']      = 'Clean Data Report';
+		$data['title']      = 'Clean Data Report';
 		$data['module'] 	= "data";
 		$data['view']   	= "data";
 		$config = array();
