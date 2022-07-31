@@ -154,7 +154,7 @@ class Data extends MX_Controller
 		$data['view']   	= "clean_data";
 		$config = array();
 		$config['base_url'] = base_url('data/collection');
-		$data['total_rows'] = $config['total_rows'] = $this->count_rows($dfilter, $ffilter);
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter);
 		$config['per_page'] = 10; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -190,6 +190,12 @@ class Data extends MX_Controller
 	{
 
 		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter");
+		return $query->num_rows();
+	}
+	public function processed_count_rows($dfilter, $ffilter)
+	{
+
+		$query = $this->db->query("SELECT reference from records_json_report $dfilter $ffilter");
 		return $query->num_rows();
 	}
 
