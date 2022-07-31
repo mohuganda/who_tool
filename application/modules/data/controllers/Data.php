@@ -224,7 +224,8 @@ class Data extends MX_Controller
 		//contains = [ [],[] [] ]
 		$per_page = 1000;
 		$page = 0;
-		for ($page = 0; $page < round(($count / $per_page), 0); $page++) :
+		$pages = ($count / $per_page == 0) ? ($count / $per_page) : (round($count / $per_page, 0) + 1);
+		for ($page = 0; $page < $pages; $page++) :
 			$offset = ($page > 1) ? ($per_page * ($page - 1)) : 0;
 			$datas = $this->data_model->getData2($per_page, $offset, $dfilter, $ffilter, 0);
 			//print_r(count($datas));

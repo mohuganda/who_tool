@@ -102,7 +102,7 @@ $facilities = Modules::run("auth/getFacilities");
                         <th label="If previous is No, Registered Name ">If previous is No, Registered Name </th>
                         <th label="Allow Mobile Money">Allow Mobile Money </th>
                         <th label="KYC verification">KYC verification </th>
-                        <th lable="Sync Date ">Sync Date </th>
+                        <th label="Sync Date ">Sync Date </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -125,47 +125,40 @@ $facilities = Modules::run("auth/getFacilities");
                                 <?php echo $staff->surname; ?>
                             </td>
                             <td label="Firstname"><?php echo $staff->firstname ?></td>
-                            <td><?php echo $staff->othername ?></td>
-                            <td><?php echo $stff->reference ?></td>
-                            <td> <?php echo @$staff->district; ?></td>
-                            <td><?php if ($staff->hw_type == 'chw') {
-                                    echo "Community Health worker";
-                                } else {
-                                    echo "Ministry Health worker";
-                                }  ?></td>
-
-                            <td>
-
-                                <?php echo $staff->surname; ?>
+                            <td label="Othername"><?php echo $staff->othername ?></td>
+                            <td label="Record Reference"><?php echo $stff->reference ?></td>
+                            <td label="District"> <?php echo @$staff->district; ?></td>
+                            <td label="Health Worker Type"><?php if ($staff->hw_type == 'chw') {
+                                                                echo "Community Health worker";
+                                                            } else {
+                                                                echo "Ministry Health worker";
+                                                            }  ?></td>
+                            <td label="Date of Birth"><?php echo @$staff->birth_date ?></td>
+                            <td label="Place of Birth"><?php echo @$staff->birth_place ?></td>
+                            <td label="Gender"><?php echo $staff->gender ?></td>
+                            <td label="Position"><?php echo $staff->job ?></td>
+                            <td label="Facility"><?php echo @$staff->facility ?></td>
+                            <td label="ID Photo"><?php if (!empty(@$staff->id_photo)) { ?> <img src="data:image/png;base64,<?php echo @$staff->id_photo; ?> " alt="Img" /><?php } ?>
                             </td>
-                            <td><?php echo $staff->firstname ?></td>
-                            <td><?php echo $staff->othername ?></td>
-                            <td><?php echo @$staff->birth_date ?></td>
-                            <td><?php echo @$staff->birth_place ?></td>
-                            <td><?php echo $staff->gender ?></td>
-                            <td><?php echo $staff->job ?></td>
-                            <td><?php echo @$staff->facility ?></td>
-                            <td><?php if (!empty(@$staff->id_photo)) { ?> <img src="data:image/png;base64,<?php echo @$staff->id_photo; ?> " alt="Img" /><?php } ?>
-                            </td>
-                            <td><?php echo $staff->id_type ?></td>
-                            <td><?php echo @$staff->ID_Number ?></td>
-                            <td><?php echo @$staff->id_expiry ?></td>
-                            <td><?php echo @$staff->national_id ?></td>
-                            <td><?php echo @$staff->national_id_card_number ?></td>
-                            <td><?php echo $staff->consent ?></td>
-                            <td><?php if (!empty(@$staff->consent_image) && (strlen(@$staff->consent_image) > 100)) { ?> <img src="data:image/png;base64,<?php echo @$staff->consent_image; ?> " alt="Img" /><?php } else { ?>
+                            <td label="ID Type"><?php echo $staff->id_type ?></td>
+                            <td label="ID Number"><?php echo @$staff->ID_Number ?></td>
+                            <td label="ID Expiry"><?php echo @$staff->id_expiry ?></td>
+                            <td label="National ID"><?php echo @$staff->national_id ?></td>
+                            <td label="National ID Card No."><?php echo @$staff->national_id_card_number ?></td>
+                            <td label="Data Share Consent"><?php echo $staff->consent ?></td>
+                            <td label="Signature"><?php if (!empty(@$staff->consent_image) && (strlen(@$staff->consent_image) > 100)) { ?> <img src="data:image/png;base64,<?php echo @$staff->consent_image; ?> " alt="Img" /><?php } else { ?>
                                 <?php echo $staff->consent_image;
-                                                                                                                                                                                                            } ?> </td>
-                            <td><?php echo $staff->primary_mobile_number ?></td>
-                            <td><?php echo $staff->other_contact ?></td>
-                            <td><?php echo $staff->is_mm_registered ?></td>
-                            <td><?php echo $staff->is_registered_by_hw ?></td>
-                            <td><?php echo $staff->registered_mm_name ?></td>
+                                                                                                                                                                                                                            } ?> </td>
+                            <td label="Primary Phone Number"><?php echo $staff->primary_mobile_number ?></td>
+                            <td label="Alternative Phone Number"><?php echo $staff->other_contact ?></td>
+                            <td label="Mobile Money Registration Status"><?php echo $staff->is_mm_registered ?></td>
+                            <td label="Is Number registered by Health Worker"><?php echo $staff->is_registered_by_hw ?></td>
+                            <td label="If previous is No, Registered Name"><?php echo $staff->registered_mm_name ?></td>
 
-                            <td><?php echo $staff->diff_names_consent ?></td>
-                            <td><?php echo $staff->kyc_verification ?></td>
+                            <td label="Allow Mobile Money"><?php echo $staff->diff_names_consent ?></td>
+                            <td label="KYC Verification"><?php echo $staff->kyc_verification ?></td>
 
-                            <td><?php echo $staff->sync_date ?></td>
+                            <td label="Sync Date"><?php echo $staff->sync_date ?></td>
 
 
                         </tr>
