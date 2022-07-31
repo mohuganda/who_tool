@@ -220,18 +220,19 @@ class Data extends MX_Controller
 
 		ini_set('max_execution_time', 0);
 		$datas = $this->data_model->getColums();
-		$split_data = array_chunk($datas, 50);
-		//contains = [ [],[] [] ]
-		for ($i = 0; $i < count($split_data); $i++) :
+		// $split_data = array_chunk($datas, 50);
+		// //contains = [ [],[] [] ]
+		// for ($i = 0; $i < count($split_data); $i++) :
 
-			foreach ($split_data[$i] as $dt) :
-				$staff = json_decode($dt->data);
-				@$staff->sync_date = $dt->sync_date;
-				//print_r($staff);
-				$this->db->replace('records_json_report', $staff);
-			endforeach;
+		// 	foreach ($split_data[$i] as $dt) :
+		// 		$staff = json_decode($dt->data);
+		// 		@$staff->sync_date = $dt->sync_date;
+		// 		//print_r($staff);
+		// 		$this->db->replace('records_json_report', $staff);
+		// 	endforeach;
 
-		endfor;
+		// endfor;
+		print_r($datas);
 	}
 	function create_report()
 	{
