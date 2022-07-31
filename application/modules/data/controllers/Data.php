@@ -118,7 +118,7 @@ class Data extends MX_Controller
 		echo Modules::run('templates/main', $data);
 	}
 
-	public function clean_collection()
+	public function processed()
 
 	{
 		@$print = $_GET['print'];
