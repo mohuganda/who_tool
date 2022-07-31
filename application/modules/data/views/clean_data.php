@@ -127,7 +127,7 @@ $facilities = Modules::run("auth/getFacilities");
                             </td>
                             <td label="Firstname"><?php echo $staff->firstname ?></td>
                             <td label="Othername"><?php echo $staff->othername ?></td>
-                            <td label="Record Reference"><?php echo $stff->reference ?></td>
+                            <td label="Record Reference"><?php echo $staff->reference ?></td>
                             <td label="District"> <?php echo @$staff->district; ?></td>
                             <td label="Health Worker Type"><?php if ($staff->hw_type == 'chw') {
                                                                 echo "Community Health worker";
