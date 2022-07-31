@@ -219,12 +219,15 @@ class Data extends MX_Controller
 	{
 
 		ini_set('max_execution_time', 0);
-		$datas = $this->data_model->getColums();
-		$this->count()
+		//$this->load->library('pagination');
+		$count = $this->count_rows($dfilter = '', $ffilter = '');
 		//contains = [ [],[] [] ]
-		for ($i = 0; $i < count($split_data); $i++) :
-
-			foreach ($split_data[$i] as $dt) :
+		$per_page = 5;
+		$page = 0;
+		for ($page = 0; $page < round(($count / $per_page), 0); $page++) :
+			$datas = $this->data_model->getData2($per_page, $page, $dfilter, $ffilter, 0);
+			//print_r(count($datas));
+			foreach ($datas as $dt) :
 				$staff = json_decode($dt->data);
 				@$staff->sync_date = $dt->sync_date;
 				//print_r($staff);
