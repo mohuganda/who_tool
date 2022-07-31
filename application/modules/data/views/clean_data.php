@@ -75,11 +75,12 @@ $facilities = Modules::run("auth/getFacilities");
             <table id="example" style="width:100%">
                 <thead>
                     <tr>
-                        <th>#</th>
+
                         <th label="Image">Image</th>
                         <th label="Surname">Surname</th>
                         <th label="Firstname">Firstname </th>
                         <th label="Othername">Othername </th>
+                        <th>Record Ref ID</th>
                         <th label="District">District</th>
                         <th label="Worker Type">Worker Type</th>
                         <th label="Date of Birth">Date of Birth </th>
