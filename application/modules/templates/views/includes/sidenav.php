@@ -3,7 +3,7 @@
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="<?php echo base_url(); ?>" class="brand-link" style="background: #1d80b9;
+  <a href="<?php echo base_url(); ?>" class="brand-link" style="background: #207bdd;
     color: #FFFFFF; text-align:center;">
     <!-- <img src="../../dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"

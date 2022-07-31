@@ -222,7 +222,7 @@ class Data extends MX_Controller
 		//$this->load->library('pagination');
 		$count = $this->count_rows($dfilter = '', $ffilter = '');
 		//contains = [ [],[] [] ]
-		$per_page = 5;
+		$per_page = 200;
 		$page = 0;
 		for ($page = 0; $page < round(($count / $per_page), 0); $page++) :
 			$datas = $this->data_model->getData2($per_page, $page, $dfilter, $ffilter, 0);
