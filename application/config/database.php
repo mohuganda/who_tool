@@ -7,10 +7,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	// 'hostname' => '172.27.1.222',
+	'hostname' => '172.27.1.222',
 	//'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'username' => 'manageatt',
+	'password' => 'manage123',
 	'database' => 'ihris_update',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
