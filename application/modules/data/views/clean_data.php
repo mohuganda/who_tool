@@ -76,15 +76,14 @@ $facilities = Modules::run("auth/getFacilities");
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th label="Enroller ID">Enroller ID</th>
-                        <th label="District">District</th>
-                        <th label="Worker Type">Worker Type</th>
                         <th label="Image">Image</th>
                         <th label="Surname">Surname</th>
                         <th label="Firstname">Firstname </th>
                         <th label="Othername">Othername </th>
+                        <th label="District">District</th>
+                        <th label="Worker Type">Worker Type</th>
                         <th label="Date of Birth">Date of Birth </th>
-                        <th label="Place of Birth">Place </th>
+                        <th label="Place of Birth">Place of Birth</th>
                         <th label="Gender">Gender </th>
                         <th label="Position">Position </th>
                         <th label="Facility">Facility </th>
@@ -117,18 +116,24 @@ $facilities = Modules::run("auth/getFacilities");
 
 
                         <tr>
+                            <td label="Image">
+                                <div class=" image"><?php if (!empty(@$staff->person_photo)) { ?><img src="data:image/jpg;base64,<?php echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
+                                </div>
+                            </td>
+                            <td label="Surname">
+
+                                <?php echo $staff->surname; ?>
+                            </td>
+                            <td label="Firstname"><?php echo $staff->firstname ?></td>
+                            <td><?php echo $staff->othername ?></td>
                             <td><?php echo $stff->reference ?></td>
-                            <td> <?php echo @$staff->user_id; ?></td>
                             <td> <?php echo @$staff->district; ?></td>
                             <td><?php if ($staff->hw_type == 'chw') {
                                     echo "Community Health worker";
                                 } else {
                                     echo "Ministry Health worker";
                                 }  ?></td>
-                            <td>
-                                <div class=" image"><?php if (!empty(@$staff->person_photo)) { ?><img src="data:image/jpg;base64,<?php echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
-                                </div>
-                            </td>
+
                             <td>
 
                                 <?php echo $staff->surname; ?>
