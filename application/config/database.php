@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
 $active_group = 'default';
@@ -7,7 +7,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-    'hostname' => '172.27.1.222',
+	'hostname' => '172.27.1.222',
 	//'hostname' => 'localhost',
 	'username' => 'manageatt',
 	'password' => 'manage123',

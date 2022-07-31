@@ -217,17 +217,21 @@ class Data extends MX_Controller
 	}
 	public function cache_report()
 	{
-		// if(!$this->db->get('records_json_report')->result()){
-		// $this->create_report();
-		// }
+
 		ini_set('max_execution_time', 0);
 		$datas = $this->data_model->getColums();
-		foreach ($datas as $dt) :
-			$staff = json_decode($dt->data);
-			@$staff->sync_date = $dt->sync_date;
-			//print_r($staff);
-			$this->db->replace('records_json_report', $staff);
-		endforeach;
+		$split_data = array_chunk($datas, 500);
+		//contains = [ [],[] [] ]
+		for ($i = 0; $i < count($split_data); $i++) :
+
+			foreach ($split_data[$i] as $dt) :
+				$staff = json_decode($dt->data);
+				@$staff->sync_date = $dt->sync_date;
+				//print_r($staff);
+				$this->db->replace('records_json_report', $staff);
+			endforeach;
+
+		endfor;
 	}
 	function create_report()
 	{
