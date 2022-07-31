@@ -151,7 +151,7 @@ class Data extends MX_Controller
 		$data['uptitle']      = 'Clean Data Report';
 		$data['title']      = 'Clean Data Report';
 		$data['module'] 	= "data";
-		$data['view']   	= "data";
+		$data['view']   	= "clean_data";
 		$config = array();
 		$config['base_url'] = base_url('data/collection');
 		$data['total_rows'] = $config['total_rows'] = $this->count_rows($dfilter, $ffilter);
