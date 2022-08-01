@@ -15,7 +15,7 @@ $db['default'] = array(
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
-	'db_debug' => (ENVIRONMENT !== 'development'),
+	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => 'cache',
 	'char_set' => 'utf8',
