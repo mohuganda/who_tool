@@ -153,7 +153,7 @@ class Data extends MX_Controller
 		$data['module'] 	= "data";
 		$data['view']   	= "clean_data";
 		$config = array();
-		$config['base_url'] = base_url('data/collection');
+		$config['base_url'] = base_url('data/processed');
 		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter);
 		$config['per_page'] = 10; //records per page
 		$config['uri_segment'] = 3; //segment in url  
@@ -225,12 +225,10 @@ class Data extends MX_Controller
 	{
 
 		ini_set('max_execution_time', 0);
-		//$this->load->library('pagination');
 		$count = $this->count_rows($dfilter = '', $ffilter = '');
 		//contains = [ [],[] [] ]
-		$per_page = 1000;
-		$page = 0;
-		$pages = ($count / $per_page == 0) ? ($count / $per_page) : (round($count / $per_page, 0) + 1);
+		$per_page = 500;
+		$pages = ceil($count / $per_page);
 		for ($page = 0; $page < $pages; $page++) :
 			$offset = ($page > 1) ? ($per_page * ($page - 1)) : 0;
 			$datas = $this->data_model->getData2($per_page, $offset, $dfilter, $ffilter, 0);
