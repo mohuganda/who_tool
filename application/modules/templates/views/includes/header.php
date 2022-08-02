@@ -201,7 +201,7 @@ $permissions = $userdata['permissions'];
       z-index: 200;
     }
 
-    /* #status {
+    #status {
       width: 50px;
       height: 50px;
       position: absolute;
@@ -213,7 +213,7 @@ $permissions = $userdata['permissions'];
       background-position: center;
       background-size: cover;
       margin: -50px 0 0 -50px;
-    } */
+    }
   </style>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/responsive2.css">
