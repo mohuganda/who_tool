@@ -136,12 +136,6 @@ $facilities = Modules::run("auth/getFacilities");
                             <td label="Othername"><?php echo $staff->othername ?></td>
                             <td label="Record Reference"><?php echo $staff->reference;
 
-                                                            $this->db->query("UPDATE records_json SET primary_mobile_number='$staff->primary_mobile_number' where reference='$staff->reference'");
-                                                            $this->db->query("UPDATE records_json SET national_id='$staff->national_id' where reference='$staff->reference'");
-
-                                                            $this->db->query("UPDATE records_json SET mobile_operator='$staff-> primary_mobile_operator' where reference='$staff->reference'");
-
-
                                                             ?></td>
                             <td label="District"> <?php echo @$staff->district; ?></td>
                             <td label="Health Worker Type"><?php if ($staff->hw_type == 'chw') {
