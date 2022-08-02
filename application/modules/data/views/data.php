@@ -135,9 +135,13 @@ $facilities = Modules::run("auth/getFacilities");
                             <td label="Firstname"><?php echo $staff->firstname ?></td>
                             <td label="Othername"><?php echo $staff->othername ?></td>
                             <td label="Record Reference"><?php echo $staff->reference;
-                                                            if (!empty($staff->primary_mobile_number)) :
-                                                                $this->db->query("UPDATE records_json SET primary_mobile_number='$staff->primary_mobile_number' where reference='$staff->reference'");
-                                                            endif;
+
+                                                            $this->db->query("UPDATE records_json SET primary_mobile_number='$staff->primary_mobile_number' where reference='$staff->reference'");
+                                                            $this->db->query("UPDATE records_json SET national_id='$staff->national_id' where reference='$staff->reference'");
+
+                                                            $this->db->query("UPDATE records_json SET mobile_operator='$staff-> primary_mobile_operator' where reference='$staff->reference'");
+
+
                                                             ?></td>
                             <td label="District"> <?php echo @$staff->district; ?></td>
                             <td label="Health Worker Type"><?php if ($staff->hw_type == 'chw') {
@@ -156,13 +160,6 @@ $facilities = Modules::run("auth/getFacilities");
                             <td label="ID Number"><?php echo @$staff->ID_Number ?></td>
                             <td label="ID Expiry"><?php echo @$staff->id_expiry ?></td>
                             <td label="National ID"><?php echo @$staff->national_id;
-                                                    if (!empty($staff->national_id)) :
-                                                        $this->db->query("UPDATE records_json SET national_id='$staff->national_id' where reference='$staff->reference'");
-                                                    endif;
-                                                    if (!empty($staff->primary_mobile_operator)) :
-                                                        $this->db->query("UPDATE records_json SET mobile_operator='$staff-> primary_mobile_operator' where reference='$staff->reference'");
-                                                    endif;
-
                                                     ?></td>
                             <td label="National ID Card No."><?php echo @$staff->national_id_card_number ?></td>
                             <td label="Data Share Consent"><?php echo $staff->consent ?></td>
