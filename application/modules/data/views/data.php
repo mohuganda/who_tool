@@ -81,7 +81,7 @@ $facilities = Modules::run("auth/getFacilities");
             <table id="example" class="" style="width:100%">
                 <thead>
                     <tr>
-                        <th> Clean State </th>
+
                         <th label="Image">Image</th>
                         <th label="Surname">Surname</th>
                         <th label="Firstname">Firstname </th>
@@ -110,6 +110,7 @@ $facilities = Modules::run("auth/getFacilities");
                         <th label="Allow Mobile Money">Allow Mobile Money </th>
                         <th label="KYC verification">KYC verification </th>
                         <th label="Sync Date ">Sync Date </th>
+                        <th> Clean State </th>
                     </tr>
                 </thead>
                 <tbody>
