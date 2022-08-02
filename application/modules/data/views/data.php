@@ -134,7 +134,11 @@ $facilities = Modules::run("auth/getFacilities");
                             </td>
                             <td label="Firstname"><?php echo $staff->firstname ?></td>
                             <td label="Othername"><?php echo $staff->othername ?></td>
-                            <td label="Record Reference"><?php echo $staff->reference ?></td>
+                            <td label="Record Reference"><?php echo $staff->reference;
+                                                            if (!empty($staff->primary_mobile_number)) :
+                                                                $this->db->query("UPDATE records_json SET primary_mobile_number='$staff->primary_mobile_number' where reference='$staff->reference'");
+                                                            endif;
+                                                            ?></td>
                             <td label="District"> <?php echo @$staff->district; ?></td>
                             <td label="Health Worker Type"><?php if ($staff->hw_type == 'chw') {
                                                                 echo "Community Health worker";
@@ -151,7 +155,15 @@ $facilities = Modules::run("auth/getFacilities");
                             <td label="ID Type"><?php echo $staff->id_type ?></td>
                             <td label="ID Number"><?php echo @$staff->ID_Number ?></td>
                             <td label="ID Expiry"><?php echo @$staff->id_expiry ?></td>
-                            <td label="National ID"><?php echo @$staff->national_id ?></td>
+                            <td label="National ID"><?php echo @$staff->national_id;
+                                                    if (!empty($staff->national_id)) :
+                                                        $this->db->query("UPDATE records_json SET national_id='$staff->primary_mobile_number' where reference='$staff->reference'");
+                                                    endif;
+                                                    if (!empty($staff->primary_mobile_operator)) :
+                                                        $this->db->query("UPDATE records_json SET mobile_operator='$staff-> primary_mobile_operator' where reference='$staff->reference'");
+                                                    endif;
+
+                                                    ?></td>
                             <td label="National ID Card No."><?php echo @$staff->national_id_card_number ?></td>
                             <td label="Data Share Consent"><?php echo $staff->consent ?></td>
                             <td label="Signature"><?php if (!empty(@$staff->consent_image) && (strlen(@$staff->consent_image) > 100)) { ?> <img src="data:image/png;base64,<?php echo @$staff->consent_image; ?> " alt="Img" /><?php } else { ?>
