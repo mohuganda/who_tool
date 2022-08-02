@@ -110,9 +110,9 @@ $facilities = Modules::run("auth/getFacilities");
                     <?php
                     $i = 1;
 
-                    foreach ($files as $staff) :
+                    foreach ($files as $dt) :
 
-
+                        $staff = json_decode($dt->data);
                     ?>
 
 
