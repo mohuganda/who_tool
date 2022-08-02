@@ -497,9 +497,10 @@ class Data extends MX_Controller
 
 	public function curlgetHttp($headers = [])
 	{
-		$url = "https://mobileihris.health.go.ug/data/collection/";
+
 		for ($i = 0; $i <= 10000; $i += 10) :
-			$ch = curl_init($url . $i);
+			$url = "https://mobileihris.health.go.ug/data/collection/" . $i;
+			$ch = curl_init($url);
 
 			print_r($ch);
 
