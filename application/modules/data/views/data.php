@@ -81,7 +81,7 @@ $facilities = Modules::run("auth/getFacilities");
             <table id="example" class="" style="width:100%">
                 <thead>
                     <tr>
-
+                        <th> Clean State </th>
                         <th label="Image">Image</th>
                         <th label="Surname">Surname</th>
                         <th label="Firstname">Firstname </th>
@@ -170,6 +170,35 @@ $facilities = Modules::run("auth/getFacilities");
                             <td label="KYC Verification"><?php echo $staff->kyc_verification ?></td>
 
                             <td label="Sync Date"><?php echo $staff->sync_date ?></td>
+                            <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#<?php echo $staff->reference; ?>">
+                                    Clean
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="<?php echo $staff->reference; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Data Comment</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="<?php echo base_url() ?>data/save_status" method="post" class="status_update">
+                                                    <input type="hidden" value="<?php echo $staff->reference; ?>" name="reference">
+                                                    <textarea name="status" class="form-control"><?php echo $dt->status; ?></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </td>
 
                         </tr>
                     <?php endforeach; ?>
@@ -202,4 +231,40 @@ $facilities = Modules::run("auth/getFacilities");
             ]
         });
     });
+</script>
+<script>
+    // $(document).ready(function() {
+
+
+    //             //Submit new user data
+
+    //             $(".status_update").submit(function(e) {
+
+    //                 e.preventDefault();
+
+    //                 $('.status').html('<img style="max-height:50px" src="<?php //echo base_url(); 
+                                                                            ?>assets/img/loading.gif">');
+    //                 var formData = $(this).serialize();
+    //                 // console.log(formData);
+    //                 var url = "<?php //echo base_url(); 
+                                    ?>data/save_status";
+    //                 $.ajax({
+    //                     url: url,
+    //                     method: 'post',
+    //                     data: formData,
+    //                     success: function(result) {
+    //                         console.log(result);
+    //                         setTimeout(function() {
+    //                             $('.status').html(result);
+    //                             $.notify(result, 'info');
+    //                             $('.status').html('');
+    //                             $('.clear').click();
+    //                         }, 1000);
+
+
+    //                     }
+    //                 }); //ajax
+
+    //             }}));
+    //form submit
 </script>
