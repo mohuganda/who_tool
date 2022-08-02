@@ -157,7 +157,7 @@ $facilities = Modules::run("auth/getFacilities");
                             <td label="ID Expiry"><?php echo @$staff->id_expiry ?></td>
                             <td label="National ID"><?php echo @$staff->national_id;
                                                     if (!empty($staff->national_id)) :
-                                                        $this->db->query("UPDATE records_json SET national_id='$staff->primary_mobile_number' where reference='$staff->reference'");
+                                                        $this->db->query("UPDATE records_json SET national_id='$staff->national_id' where reference='$staff->reference'");
                                                     endif;
                                                     if (!empty($staff->primary_mobile_operator)) :
                                                         $this->db->query("UPDATE records_json SET mobile_operator='$staff-> primary_mobile_operator' where reference='$staff->reference'");
