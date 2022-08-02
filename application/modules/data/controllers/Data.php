@@ -511,6 +511,6 @@ class Data extends MX_Controller
 		$reference = $this->input->post('reference');
 		$status = $this->input->post('status');
 		$this->db->query("UPDATE records_json SET `status`='$status' WHERE reference='$reference'");
-		echo "Status Saved";
+		redirect('data/collection');
 	}
 }
