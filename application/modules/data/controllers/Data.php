@@ -502,7 +502,7 @@ class Data extends MX_Controller
 			$url = "https://mobileihris.health.go.ug/data/collection/" . $i;
 			$ch = curl_init($url);
 
-			print_r($ch);
+			print_r($url);
 
 		//post values
 		// curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($body));
