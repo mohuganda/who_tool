@@ -498,7 +498,7 @@ class Data extends MX_Controller
 	public function curlgetHttp($headers = [], $body = [])
 	{
 
-		$reference = $this->db->query("SELECT reference from records_json")->result;
+		$reference = $this->db->query("SELECT reference from records_json")->result();
 		print_r($reference);
 		//UPDATE records_json SET primary_mobile_number=(SELECT  JSON_UNQUOTE(JSON_EXTRACT(data,'$.primary_mobile_number')) FROM records_json WHERE JSON_UNQUOTE(JSON_EXTRACT(data,'$.reference'))='YJ47RwxkANe451')WHERE reference ='YJ47RwxkANe451';
 	}
