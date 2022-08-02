@@ -155,7 +155,7 @@ class Data extends MX_Controller
 		@$print = $_GET['print'];
 		if ($this->input->post('district') != 'ALL') {
 			$district = $this->input->post('district');
-			$_SESSION['dfilter'] = "WHERE district like '$district%'";
+			$_SESSION['dfilter'] = "WHERE status='clean' district like '$district%'";
 		}
 		if (isset($_SESSION['dfilter'])) {
 			$dfilter = $_SESSION['dfilter'];
@@ -226,7 +226,7 @@ class Data extends MX_Controller
 	public function processed_count_rows($dfilter, $ffilter)
 	{
 
-		$query = $this->db->query("SELECT reference from records_json_report WHERE status='clean' $dfilter $ffilter");
+		$query = $this->db->query("SELECT reference from records_json_report $dfilter $ffilter");
 		return $query->num_rows();
 	}
 
