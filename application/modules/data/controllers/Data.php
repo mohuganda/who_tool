@@ -512,9 +512,9 @@ class Data extends MX_Controller
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
-		// if (ob_get_level()) {
-		// 	ob_end_clean();
-		// }
+		if (ob_get_level()) {
+			ob_end_clean();
+		}
 		$csv = "Field_Data" . date('Y-m-d') . '_' . ".csv";
 
 
@@ -530,7 +530,7 @@ class Data extends MX_Controller
 		header(
 			"Expires: 0"
 		);
-		// flush();
+		flush();
 		if ((!empty($dfilter)) && ($print = 1)) {
 			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
@@ -603,7 +603,7 @@ class Data extends MX_Controller
 			//print_r($linedata);
 			fputcsv($fp, $linedata, ';', '"');
 
-			// flush();
+			flush();
 		}
 		fclose($fp);
 	}
