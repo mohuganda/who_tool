@@ -52,7 +52,7 @@ $facilities = Modules::run("auth/getFacilities");
                 <?php if ($this->input->post('district')) : ?>
                     <a href="<?php echo base_url() ?>data/pdf_data/1" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file" aria-hidden="true"></i>PDF</a>
                     &nbsp;&nbsp;
-                    <a onclick="exportToCSV(0, <?php echo $numRows ?>);" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>
+                    <a onclick="exportToCSV(0, <?php echo $total_rows ?>);" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>
                     &nbsp;&nbsp;
                 <?php endif; ?>
                 <button type="submit" class="btn bt-sm bg-gray-dark color-pale" style="width:100px; left-right:4px;"><i class="fa fa-tasks" aria-hidden="true"></i>APPLY</button>
@@ -199,9 +199,7 @@ $facilities = Modules::run("auth/getFacilities");
 <script type="text/javascript">
     var data = "data:text/csv;charset=utf-8,No,Reference,Worker Type,Surname,Firstname,Othername,Date of Birth,Place,Gender,position,facility,ID Type,ID Number,ID Expiry,National ID Number,National ID Card Number,Allow Consent,Mobile Number,Other Contact,Mobile Money Registration Status,Is registered by Health Worker,If No, Registered Name,Allow Mobile Money,KYC verification\ n ";
 
-    $(document).ready(function() {
-        exportToCSV(0, <?php echo $total_rows ?>);
-    });
+
 
     function exportToCSV(start, max) {
         if (start > max) {
