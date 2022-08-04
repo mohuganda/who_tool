@@ -466,20 +466,30 @@ class Data extends MX_Controller
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
-		// if (ob_get_level()) {
-		// 	ob_end_clean();
-		// }
+		if (ob_get_level()) {
+			ob_end_clean();
+		}
 		$csv = "Field_Data" . date('Y-m-d') . '_' . ".csv";
 
-		header("Content-Type: text/csv;charset=utf-8");
-		header("Content-Disposition: attachment;filename=\"$csv\"");
-		header("Pragma: no-cache");
-		header("Expires: 0");
-		$fp = fopen('php://output', 'w');
+
+		header(
+			"Content-Type: text/csv;charset=utf-8"
+		);
+		header(
+			"Content-Disposition: attachment;filename=\"$csv\""
+		);
+		header(
+			"Pragma: no-cache"
+		);
+		header(
+			"Expires: 0"
+		);
+		flush();
 		if ((!empty($dfilter)) && ($print = 1)) {
 			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
-		//print_r($records);
+		print_r($records);
+		die();
 		$fp = fopen('php://memory', 'w');
 		$delimiter = ",";
 
@@ -546,7 +556,7 @@ class Data extends MX_Controller
 
 			fputcsv($fp, $linedata, $delimiter);
 
-			// flush();
+			flush();
 		}
 		fclose($fp);
 	}
