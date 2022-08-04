@@ -553,6 +553,7 @@ class Data extends MX_Controller
 				$staff->kyc_verification
 			);
 
+			print_r($linedata);
 			fputcsv($fp, $linedata, ';', '"');
 
 			flush();
