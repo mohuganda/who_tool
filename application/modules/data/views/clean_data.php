@@ -194,3 +194,31 @@ $facilities = Modules::run("auth/getFacilities");
         });
     });
 </script>
+
+<script type="text/javascript">
+    var data = "data:text/csv;charset=utf-8,ID,NAME,COUNTRY CODE\n";
+
+    $(document).ready(function() {
+        exportToCSV(0, <?php echo $numRows ?>);
+    });
+
+    function exportToCSV(start, max) {
+        if (start > max) {
+            $("#response").html('<a href="' + data + '" download="countryTable.csv">Download</a>');
+            return;
+        }
+
+        $.ajax({
+            url: '<?php echo base_url() ?>data/large_csv_data',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                start: start
+            },
+            success: function(response) {
+                data += response.data;
+                exportToCSV((start + 50), max);
+            }
+        });
+    }
+</script>

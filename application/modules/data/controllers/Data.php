@@ -520,7 +520,8 @@ class Data extends MX_Controller
 			'Allow Mobile Money ',
 			'KYC verification '
 		);
-		$fp = fopen('php://memory', 'w');
+		//$fp = fopen('php://memory', 'w');
+		$fp = fopen('file.csv', 'w');
 		fputcsv($fp, $fields, ';', '"');
 
 
