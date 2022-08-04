@@ -375,7 +375,8 @@ class Data extends MX_Controller
 	}
 	public function csv_data($print)
 	{
-
+		ini_set('max_execution_time', 0);
+		ini_set('memory_limit', '1024M');
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
