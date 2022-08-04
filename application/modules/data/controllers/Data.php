@@ -460,21 +460,31 @@ class Data extends MX_Controller
 		exit;
 	}
 
-	public function country_csv_data($print)
+	public function large_csv_data($print)
 	{
 		ini_set('max_execution_time', 0);
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
-
+		if (ob_get_level()) {
+			ob_end_clean();
+		}
 		$csv = "Field_Data" . date('Y-m-d') . '_' . ".csv";
 
-		header('Content-Type: application/octet-stream');
-		header("Content-Disposition: attachment;filename=\"$csv\"");
-		header('Content-Transfer-Encoding: binary');
-		header('Cache-Control: must-revalidate');
-		header('Expires: 0');
-		$fp = fopen('php://output', 'w');
+
+		header(
+			"Content-Type: text/csv;charset=utf-8"
+		);
+		header(
+			"Content-Disposition: attachment;filename=\"$csv\""
+		);
+		header(
+			"Pragma: no-cache"
+		);
+		header(
+			"Expires: 0"
+		);
+		flush();
 		if ((!empty($dfilter)) && ($print = 1)) {
 			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
@@ -544,7 +554,7 @@ class Data extends MX_Controller
 			);
 
 			fputcsv($fp, $linedata, $delimiter);
-			if ($i % 100 == 0) {
+			if ($i % 1000 == 0) {
 				flush();
 			}
 		}
