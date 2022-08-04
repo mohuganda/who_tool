@@ -59,6 +59,7 @@ $facilities = Modules::run("auth/getFacilities");
                 &nbsp;&nbsp;
             </div>
             &nbsp;&nbsp;
+            <p id="response">Downloading CSV, Please Wait...</p>
         </div>
 
 
@@ -196,15 +197,15 @@ $facilities = Modules::run("auth/getFacilities");
 </script>
 
 <script type="text/javascript">
-    var data = "data:text/csv;charset=utf-8,ID,NAME,COUNTRY CODE\n";
+    var data = "data:text/csv;charset=utf-8,No,Reference,Worker Type,Surname,Firstname,Othername,Date of Birth,Place,Gender,position,facility,ID Type,ID Number,ID Expiry,National ID Number,National ID Card Number,Allow Consent,Mobile Number,Other Contact,Mobile Money Registration Status,Is registered by Health Worker,If No, Registered Name,Allow Mobile Money,KYC verification\ n ";
 
     $(document).ready(function() {
-        exportToCSV(0, <?php echo $numRows ?>);
+        exportToCSV(0, <?php echo $total_rows ?>);
     });
 
     function exportToCSV(start, max) {
         if (start > max) {
-            $("#response").html('<a href="' + data + '" download="countryTable.csv">Download</a>');
+            $("#response").html('<a href="' + data + '" download="Field_Data_<?php date('Y-m-d'); ?>.csv">Download</a>');
             return;
         }
 
