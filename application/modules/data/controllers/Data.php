@@ -468,41 +468,41 @@ class Data extends MX_Controller
 		$datefilter = $_SESSION['datefilter'];
 		$page = $this->input->post('start');
 
-		$records = $this->data_model->getData2(50, $page, $dfilter, $ffilter, 1);
+		$records = $this->data_model->getData2(10, $page, $dfilter, $ffilter, 1);
 
 
-		$i = 0;
-		foreach ($records as $dt) {
-			$staff = json_decode($dt->data);
-			$linedata = array(
-				$i++,
-				$staff->reference,
-				@$staff->hw_type == 'chw' ? "Community Health worker" : "Ministry Health worker",
-				$staff->surname,
-				$staff->firstname,
-				$staff->othername,
-				@$staff->birth_date,
-				@$staff->birth_place,
-				$staff->gender,
-				$staff->job,
-				@$dt->facility,
-				$staff->id_type,
-				@$staff->ID_Number,
-				@$staff->id_expiry,
-				@$staff->national_id,
-				@$staff->national_id_card_number,
-				$staff->consent,
-				$staff->primary_mobile_number,
-				$staff->other_contact,
-				$staff->is_mm_registered,
-				$staff->is_registered_by_hw,
-				$staff->registered_mm_name,
-				$staff->diff_names_consent,
-				$staff->kyc_verification
-			);
+		// $i = 0;
+		// foreach ($records as $dt) {
+		// 	$staff = json_decode($dt->data);
+		// 	$linedata = array(
+		// 		$i++,
+		// 		$staff->reference,
+		// 		@$staff->hw_type == 'chw' ? "Community Health worker" : "Ministry Health worker",
+		// 		$staff->surname,
+		// 		$staff->firstname,
+		// 		$staff->othername,
+		// 		@$staff->birth_date,
+		// 		@$staff->birth_place,
+		// 		$staff->gender,
+		// 		$staff->job,
+		// 		@$dt->facility,
+		// 		$staff->id_type,
+		// 		@$staff->ID_Number,
+		// 		@$staff->id_expiry,
+		// 		@$staff->national_id,
+		// 		@$staff->national_id_card_number,
+		// 		$staff->consent,
+		// 		$staff->primary_mobile_number,
+		// 		$staff->other_contact,
+		// 		$staff->is_mm_registered,
+		// 		$staff->is_registered_by_hw,
+		// 		$staff->registered_mm_name,
+		// 		$staff->diff_names_consent,
+		// 		$staff->kyc_verification
+		// 	);
 
 
-			return (json_encode(array("data" => $linedata)));
+			return (json_encode(array("data" => $records)));
 		}
 	}
 
