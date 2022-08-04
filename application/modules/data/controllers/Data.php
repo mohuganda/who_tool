@@ -488,8 +488,8 @@ class Data extends MX_Controller
 		if ((!empty($dfilter)) && ($print = 1)) {
 			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
-		print_r($records);
-		die();
+
+
 		$fp = fopen('php://memory', 'w');
 		$delimiter = ",";
 
@@ -522,7 +522,7 @@ class Data extends MX_Controller
 			'KYC verification '
 		);
 
-		fputcsv($fp, $fields, $delimiter);
+		fputcsv($fp, $fields, ';', '"');
 
 
 		foreach ($records as $dt) {
@@ -554,7 +554,7 @@ class Data extends MX_Controller
 				$staff->kyc_verification
 			);
 
-			fputcsv($fp, $linedata, $delimiter);
+			fputcsv($fp, $linedata, ';', '"');
 
 			flush();
 		}
