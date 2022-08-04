@@ -460,7 +460,7 @@ class Data extends MX_Controller
 		exit;
 	}
 
-	public function country_csv_data($print)
+	public function large_csv_data($print)
 	{
 		ini_set('max_execution_time', 0);
 		$dfilter = $_SESSION['dfilter'];
@@ -469,15 +469,12 @@ class Data extends MX_Controller
 
 		$csv = "Field_Data" . date('Y-m-d') . '_' . ".csv";
 
-
-		header("Content-Type: text/csv;charset=utf-8");
+		header('Content-Type: application/octet-stream');
 		header("Content-Disposition: attachment;filename=\"$csv\"");
-		header("Pragma: no-cache");
-		header("Expires: 0");
+		header('Content-Transfer-Encoding: binary');
+		header('Cache-Control: must-revalidate');
+		header('Expires: 0');
 		$fp = fopen('php://output', 'w');
-		// $districts = $this->db->query("SELECT distinct district from records_json")->result();
-		// foreach ($districts as $district) :
-		//$dfilter = $district->district;
 		if ((!empty($dfilter)) && ($print = 1)) {
 			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
@@ -547,8 +544,10 @@ class Data extends MX_Controller
 			);
 
 			fputcsv($fp, $linedata, $delimiter);
+			if ($i % 100 == 0) {
+				flush();
+			}
 		}
-		//endforeach;
 		fclose($fp);
 	}
 
