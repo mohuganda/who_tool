@@ -453,6 +453,8 @@ class Data extends MX_Controller
 			// Set headers to download file rather than displayed 
 			header('Content-Type: text/csv');
 			header('Content-Disposition: attachment; filename="' . $csv_file . '";');
+			header("Pragma: no-cache");
+			header("Expires: 0");
 
 			//output all remaining data on a file pointer 
 			fpassthru($f);
