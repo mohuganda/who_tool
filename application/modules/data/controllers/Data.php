@@ -379,7 +379,7 @@ class Data extends MX_Controller
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
-		$csv_file = "Field_Data" . date('Y-m-d') . '_' . $records[0]->district . ".csv";
+		$csv_file = "Field_Data" . date('Y-m-d') . '_' . ".csv";
 		header('Content-Type: text/csv');
 		header('Content-Disposition: attachment; filename="' . $csv_file . '";');
 		header("Pragma: no-cache");
