@@ -215,9 +215,9 @@ $facilities = Modules::run("auth/getFacilities");
                 start: start
             },
             success: function(response) {
-                //data += response.data;
-                console.log(response);
-                //exportToCSV((start + 50), max);
+                data += response.data;
+                console.log(data);
+                exportToCSV((start + 50), max);
             }
         });
     }
