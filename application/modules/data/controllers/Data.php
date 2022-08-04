@@ -468,7 +468,7 @@ class Data extends MX_Controller
 		$datefilter = $_SESSION['datefilter'];
 		$page = $this->input->post('start');
 		if ((!empty($dfilter)) && ($print = 1)) {
-			$records = $this->data_model->getData2($config['per_page'] = 50, $page, $dfilter, $ffilter, $print);
+			$records = $this->data_model->getData2(50, $page, $dfilter, $ffilter, $print);
 		}
 
 		$i = 0;
