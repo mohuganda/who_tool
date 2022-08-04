@@ -490,8 +490,7 @@ class Data extends MX_Controller
 		}
 
 
-		$fp = fopen('php://memory', 'w');
-		$delimiter = ",";
+
 
 		$i = 1;
 		$fields = array(
@@ -521,7 +520,7 @@ class Data extends MX_Controller
 			'Allow Mobile Money ',
 			'KYC verification '
 		);
-
+		$fp = fopen('php://memory', 'w');
 		fputcsv($fp, $fields, ';', '"');
 
 
