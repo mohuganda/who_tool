@@ -469,7 +469,7 @@ class Data extends MX_Controller
 
 		$csv = "Field_Data" . date('Y-m-d') . '_' . ".csv";
 
-		header('Content-Type: application/octet-stream');
+
 		header("Content-Disposition: attachment;filename=\"$csv\"");
 		header('Content-Transfer-Encoding: binary');
 		header('Cache-Control: must-revalidate');
