@@ -475,76 +475,80 @@ class Data extends MX_Controller
 		header('Cache-Control: must-revalidate');
 		header('Expires: 0');
 		$fp = fopen('php://output', 'w');
-		if ((!empty($dfilter)) && ($print = 1)) {
-			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
-		}
-		//print_r($records);
-		$fp = fopen('php://memory', 'w');
-		$delimiter = ",";
+		$districts = $this->db->query("SELECT distinct district from records_json")->result();
+		foreach ($districts as $district) :
+			$dfilter = $district->district;
+			if ((!empty($dfilter)) && ($print = 1)) {
+				$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
+			}
+			//print_r($records);
+			$fp = fopen('php://memory', 'w');
+			$delimiter = ",";
 
-		$i = 1;
-		$fields = array(
+			$i = 1;
+			$fields = array(
 
-			'No',
-			'Reference',
-			'Worker Type',
-			'Surname',
-			'Firstname ',
-			'Othername ',
-			'Date of Birth ',
-			'Place ',
-			'Gender ',
-			'position ',
-			'facility ',
-			'ID Type ',
-			'ID Number ',
-			'ID Expiry ',
-			'National ID Number',
-			'National ID Card Number',
-			'Allow Consent',
-			'Mobile Number ',
-			'Other Contact ',
-			'Mobile Money Registration Status ',
-			'Is registered by Health Worker ',
-			'If No, Registered Name ',
-			'Allow Mobile Money ',
-			'KYC verification '
-		);
-
-		fputcsv($fp, $fields, $delimiter);
-
-
-		foreach ($records as $dt) {
-			$staff = json_decode($dt->data);
-			$linedata = array(
-				$i++,
-				$staff->reference,
-				@$staff->hw_type == 'chw' ? "Community Health worker" : "Ministry Health worker",
-				$staff->surname,
-				$staff->firstname,
-				$staff->othername,
-				@$staff->birth_date,
-				@$staff->birth_place,
-				$staff->gender,
-				$staff->job,
-				@$dt->facility,
-				$staff->id_type,
-				@$staff->ID_Number,
-				@$staff->id_expiry,
-				@$staff->national_id,
-				@$staff->national_id_card_number,
-				$staff->consent,
-				$staff->primary_mobile_number,
-				$staff->other_contact,
-				$staff->is_mm_registered,
-				$staff->is_registered_by_hw,
-				$staff->registered_mm_name,
-				$staff->diff_names_consent,
-				$staff->kyc_verification
+				'No',
+				'Reference',
+				'Worker Type',
+				'Surname',
+				'Firstname ',
+				'Othername ',
+				'Date of Birth ',
+				'Place ',
+				'Gender ',
+				'position ',
+				'facility ',
+				'ID Type ',
+				'ID Number ',
+				'ID Expiry ',
+				'National ID Number',
+				'National ID Card Number',
+				'Allow Consent',
+				'Mobile Number ',
+				'Other Contact ',
+				'Mobile Money Registration Status ',
+				'Is registered by Health Worker ',
+				'If No, Registered Name ',
+				'Allow Mobile Money ',
+				'KYC verification '
 			);
 
-			fputcsv($fp, $linedata, $delimiter);
-		}
+			fputcsv($fp, $fields, $delimiter);
+
+
+			foreach ($records as $dt) {
+				$staff = json_decode($dt->data);
+				$linedata = array(
+					$i++,
+					$staff->reference,
+					@$staff->hw_type == 'chw' ? "Community Health worker" : "Ministry Health worker",
+					$staff->surname,
+					$staff->firstname,
+					$staff->othername,
+					@$staff->birth_date,
+					@$staff->birth_place,
+					$staff->gender,
+					$staff->job,
+					@$dt->facility,
+					$staff->id_type,
+					@$staff->ID_Number,
+					@$staff->id_expiry,
+					@$staff->national_id,
+					@$staff->national_id_card_number,
+					$staff->consent,
+					$staff->primary_mobile_number,
+					$staff->other_contact,
+					$staff->is_mm_registered,
+					$staff->is_registered_by_hw,
+					$staff->registered_mm_name,
+					$staff->diff_names_consent,
+					$staff->kyc_verification
+				);
+
+				fputcsv($fp, $linedata, $delimiter);
+			}
+		endforeach;
 		fclose($fp);
 	}
 
