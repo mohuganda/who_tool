@@ -502,8 +502,8 @@ class Data extends MX_Controller
 		// 	);
 
 
-			return (json_encode(array("data" => $records)));
-		}
+		return (json_encode(array("data" => $records)));
+		//}
 	}
 
 	public function large_csv_data($print)
