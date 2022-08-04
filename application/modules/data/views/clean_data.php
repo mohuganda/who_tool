@@ -208,7 +208,7 @@ $facilities = Modules::run("auth/getFacilities");
         }
 
         $.ajax({
-            url: '<?php echo base_url() ?>data/large_csv_data',
+            url: '<?php echo base_url() ?>data/clean_csv',
             method: 'POST',
             dataType: 'json',
             data: {
