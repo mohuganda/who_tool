@@ -502,7 +502,7 @@ class Data extends MX_Controller
 		// 	);
 
 
-		return (json_encode(array("data" => $records)));
+		echo (json_encode(array("data" => $records)));
 		//}
 	}
 
