@@ -460,7 +460,7 @@ class Data extends MX_Controller
 		exit;
 	}
 
-	public function large_csv_data($print)
+	public function country_csv_data($print)
 	{
 		ini_set('max_execution_time', 0);
 		$dfilter = $_SESSION['dfilter'];
