@@ -554,7 +554,7 @@ class Data extends MX_Controller
 			);
 
 			fputcsv($fp, $linedata, $delimiter);
-			if ($i % 1000 == 0) {
+			if ($i % 100 == 0) {
 				flush();
 			}
 		}
