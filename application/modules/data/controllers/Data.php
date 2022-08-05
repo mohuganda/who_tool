@@ -673,7 +673,7 @@ class Data extends MX_Controller
 			$this->db->replace('records_json_report', $staff);
 			// $this->db->query("UPDATE records_json SET primary_mobile_number=(SELECT  JSON_UNQUOTE(JSON_EXTRACT(data,'$.primary_mobile_number')) FROM records_json WHERE JSON_UNQUOTE(JSON_EXTRACT(data,'$.reference'))='$reference->reference')WHERE reference ='$reference->reference'");
 
-			echo "<p style='background:green';> Inserted" . $reference->reference . "<br></p>";
+			echo "<p style='background:green';> Inserted" . $reference->reference . "</n>";
 		endforeach;
 	}
 	public function save_status()
