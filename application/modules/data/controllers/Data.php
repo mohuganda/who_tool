@@ -664,6 +664,7 @@ class Data extends MX_Controller
 
 		$references = $this->db->query("SELECT reference from records_json")->result();
 		//print_r($reference);
+		$i = 1;
 		foreach ($references as $reference) :
 			$datas = $this->db->query("SELECT reference,data FROM `records_json` WHERE reference='$reference->reference'")->row();
 
@@ -673,9 +674,9 @@ class Data extends MX_Controller
 			$inserted = $this->db->replace('records_json_report', $staff);
 			// $this->db->query("UPDATE records_json SET primary_mobile_number=(SELECT  JSON_UNQUOTE(JSON_EXTRACT(data,'$.primary_mobile_number')) FROM records_json WHERE JSON_UNQUOTE(JSON_EXTRACT(data,'$.reference'))='$reference->reference')WHERE reference ='$reference->reference'");
 			if ($inserted) {
-				echo "\033[32m" . $reference->reference . " Inserted\n";
+				echo "\033[32m" . $reference->reference . " Inserted Record" . $i++ . "\n";
 			} else {
-				echo "\033[37m" . $reference->reference . " Failed\n";
+				echo "\033[37m" . $reference->reference . "Failed" . $i++ . "\n";
 			}
 		endforeach;
 	}
