@@ -659,7 +659,7 @@ class Data extends MX_Controller
 	}
 
 
-	public function curlgetHttp($headers = [], $body = [])
+	public function clean_data()
 	{
 
 		$references = $this->db->query("SELECT reference from records_json")->result();
