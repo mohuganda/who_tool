@@ -515,26 +515,14 @@ class Data extends MX_Controller
 		ini_set('max_execution_time', 0);
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
-		$datefilter = $_SESSION['datefilter'];
+
 		if (ob_get_level()) {
 			ob_end_clean();
 		}
 		$csv = "Field_Data" . date('Y-m-d') . '_' . ".csv";
 
 
-		header(
-			"Content-Type: text/csv;charset=utf-8"
-		);
-		header(
-			"Content-Disposition: attachment;filename=\"$csv\""
-		);
-		header(
-			"Pragma: no-cache"
-		);
-		header(
-			"Expires: 0"
-		);
-		flush();
+
 		if ((!empty($dfilter)) && ($print = 1)) {
 			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
@@ -572,7 +560,7 @@ class Data extends MX_Controller
 		);
 		//$fp = fopen('php://memory', 'w');
 		$fp = fopen($csv, 'w');
-		fputcsv($fp, $fields, ';', '"');
+		fputcsv($fp, $fields, ';');
 
 
 		foreach ($records as $dt) {
@@ -605,17 +593,31 @@ class Data extends MX_Controller
 			);
 
 			//print_r($linedata);
-			fputcsv($fp, $linedata, ';', '"');
+			fputcsv($fp, $linedata, ';');
 
 			//flush();
 			// Move back to beginning of file 
 			fseek($fp, 0);
 
 			// Set headers to download file rather than displayed 
+			header(
+				"Content-Type: text/csv;charset=utf-8"
+			);
+			header(
+				"Content-Disposition: attachment;filename=\"$csv\""
+			);
+			header(
+				"Pragma: no-cache"
+			);
+			header(
+				"Expires: 0"
+			);
+
 
 
 			//output all remaining data on a file pointer 
 			fpassthru($fp);
+			flush();
 		}
 		fclose($fp);
 	}
