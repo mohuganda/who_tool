@@ -560,7 +560,9 @@ class Data extends MX_Controller
 		);
 		//$fp = fopen('php://memory', 'w');
 		$fp = fopen($csv, 'w');
+
 		fputcsv($fp, $fields, ';');
+		flush();
 
 
 		foreach ($records as $dt) {
