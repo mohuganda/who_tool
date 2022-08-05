@@ -523,10 +523,23 @@ class Data extends MX_Controller
 
 
 
-		if ((!empty($dfilter)) && ($print = 1)) {
+		if ((!empty($dfilter))) {
 			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
 
+		// Set headers to download file rather than displayed 
+		header(
+			"Content-Type: text/csv;charset=utf-8"
+		);
+		header(
+			"Content-Disposition: attachment;filename=\"$csv\""
+		);
+		header(
+			"Pragma: no-cache"
+		);
+		header(
+			"Expires: 0"
+		);
 
 
 
@@ -601,19 +614,6 @@ class Data extends MX_Controller
 			// Move back to beginning of file 
 			fseek($fp, 0);
 
-			// Set headers to download file rather than displayed 
-			header(
-				"Content-Type: text/csv;charset=utf-8"
-			);
-			header(
-				"Content-Disposition: attachment;filename=\"$csv\""
-			);
-			header(
-				"Pragma: no-cache"
-			);
-			header(
-				"Expires: 0"
-			);
 
 
 
