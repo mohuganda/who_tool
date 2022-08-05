@@ -607,7 +607,15 @@ class Data extends MX_Controller
 			//print_r($linedata);
 			fputcsv($fp, $linedata, ';', '"');
 
-			flush();
+			//flush();
+			// Move back to beginning of file 
+			fseek($fp, 0);
+
+			// Set headers to download file rather than displayed 
+
+
+			//output all remaining data on a file pointer 
+			fpassthru($fp);
 		}
 		fclose($fp);
 	}
