@@ -667,10 +667,13 @@ class Data extends MX_Controller
 		foreach ($references as $reference) :
 			$datas = $this->db->query("SELECT reference,data FROM `records_json` WHERE reference='$reference->reference'")->row();
 
-			print_r($datas->data);
-		// $this->db->query("UPDATE records_json SET primary_mobile_number=(SELECT  JSON_UNQUOTE(JSON_EXTRACT(data,'$.primary_mobile_number')) FROM records_json WHERE JSON_UNQUOTE(JSON_EXTRACT(data,'$.reference'))='$reference->reference')WHERE reference ='$reference->reference'");
+			$staff = json_decode($datas->data);
 
-		// echo "<p color='green'>UPDATED" . $reference->reference . "</p>";
+			//print_r($staff);
+			$this->db->insert('records_json_report', $staff);
+			// $this->db->query("UPDATE records_json SET primary_mobile_number=(SELECT  JSON_UNQUOTE(JSON_EXTRACT(data,'$.primary_mobile_number')) FROM records_json WHERE JSON_UNQUOTE(JSON_EXTRACT(data,'$.reference'))='$reference->reference')WHERE reference ='$reference->reference'");
+
+			echo "<p style='background:green';> Inserted" . $reference->reference . "<br></p>";
 		endforeach;
 	}
 	public function save_status()
