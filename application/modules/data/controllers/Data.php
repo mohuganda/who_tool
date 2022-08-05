@@ -571,7 +571,7 @@ class Data extends MX_Controller
 			'KYC verification '
 		);
 		//$fp = fopen('php://memory', 'w');
-		$fp = fopen('file.csv', 'w');
+		$fp = fopen($csv, 'w');
 		fputcsv($fp, $fields, ';', '"');
 
 
