@@ -81,7 +81,7 @@
         <?php if (in_array('13', $permissions)) { ?>
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
-              <i class="fa-mobile-phone"></i>
+              <i class="fa fa-mobile-phone"></i>
               <p>
                 MNO Data Sheets
                 <i class="fas fa-angle-left right"></i>
