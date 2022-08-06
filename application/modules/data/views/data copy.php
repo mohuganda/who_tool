@@ -127,10 +127,10 @@ $facilities = Modules::run("auth/getFacilities");
                                 </div>
                             </td>
                             <td label="Surname">
-                                <?php echo $staff->surname; ?>
+                                <?php echo ucwords($staff->surname); ?>
                             </td>
-                            <td label="Firstname"><?php echo $staff->firstname ?></td>
-                            <td label="Othername"><?php echo $staff->othername ?></td>
+                            <td label="Firstname"><?php echo ucwords($staff->firstname) ?></td>
+                            <td label="Othername"><?php echo ucwords($staff->othername) ?></td>
                             <td label="Record Reference"><?php echo $staff->reference; ?></td>
                             <td label="District"> <?php echo @$staff->district; ?></td>
                             <td label="Health Worker Type">

@@ -100,14 +100,14 @@ $facilities = Modules::run("auth/getFacilities");
 
                         <td label="Record Reference"><?php echo $i++ ?></td>
                         <td label="Record Reference"><?php echo $staff->reference ?></td>
-                        <td label="Surname"> <?php echo $staff->surname; ?> </td>
-                        <td label="Firstname"><?php echo $staff->firstname ?></td>
-                        <td label="Othername"><?php echo $staff->othername ?></td>
+                        <td label="Surname"> <?php echo ucwords($staff->surname); ?> </td>
+                        <td label="Firstname"><?php echo ucwords($staff->firstname) ?></td>
+                        <td label="Othername"><?php echo ucwords($staff->othername) ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->primary_mobile_number ?></td>
-                        <td label="Consented Registered Names"><?php echo $staff->registered_mm_name ?></td>
-                        <td label="National ID"><?php echo @$staff->national_id ?></td>
-                        <td label="Position"><?php echo $staff->job ?></td>
-                        <td label="Facility"><?php echo @$staff->facility ?></td>
+                        <td label="Consented Registered Names"><?php echo ucwords($staff->registered_mm_name) ?></td>
+                        <td label="National ID"><?php echo ucwords(@$staff->national_id) ?></td>
+                        <td label="Position"><?php echo ucwords($staff->job) ?></td>
+                        <td label="Facility"><?php echo ucwords(@$staff->facility) ?></td>
                         <td label="District"> <?php echo @$staff->district; ?></td>
 
 
