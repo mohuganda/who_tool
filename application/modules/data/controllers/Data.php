@@ -629,9 +629,9 @@ class Data extends MX_Controller
 		$this->ml_pdf->pdf->Output($filename, 'I');
 	}
 
-	public function clean_data()
+	public function cache_report_data()
 	{
-		$references = $this->db->query("SELECT reference from new_refs ")->result();
+		$references = $this->db->query("SELECT reference from records_json")->result();
 		//print_r($reference);
 		$i = 1;
 		foreach ($references as $reference) :
