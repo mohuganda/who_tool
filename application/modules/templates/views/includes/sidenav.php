@@ -77,6 +77,44 @@
           </li>
         <?php } ?>
 
+        <!--user perm 14-->
+        <?php if (in_array('13', $permissions)) { ?>
+          <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link">
+              <i class="fa fa-cog"></i>
+              <p>
+                MNO Data Sheets
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+
+                <?php if (in_array('13', $permissions)) { ?>
+                  <a href="<?php echo base_url(); ?>data/mtn_data" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>MTN</p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>data/airtel_data" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Airtel</p>
+                </a>
+              </li>
+            <?php } ?>
+
+
+
+            </ul>
+          </li>
+        <?php } ?>
+
+
+
+
+
 
 
 
