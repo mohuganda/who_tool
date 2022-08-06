@@ -155,22 +155,20 @@ class Data extends MX_Controller
 		@$print = $_GET['print'];
 		if ($this->input->post('district') != 'ALL') {
 			$district = $this->input->post('district');
-			$_SESSION['dfilter'] = "and district like '$district%'";
-		}
-		if (isset($_SESSION['dfilter'])) {
-			$dfilter = $_SESSION['dfilter'];
+			$dfilter = "and district like '$district%'";
 		} else {
 			$dfilter = "";
 		}
+
 		if (($this->input->post('facility') != 'ALL')) {
 			$facility = $this->input->post('facility');
-			$_SESSION['ffilter'] = " and facility like '$facility%'";
-		}
-		if (isset($_SESSION['ffilter'])) {
-			$ffilter = $_SESSION['ffilter'];
+			$ffilter = " and facility like '$facility%'";
 		} else {
 			$ffilter = "";
 		}
+
+
+
 		$this->load->library('pagination');
 		$data['uptitle']      = 'Clean Data Report';
 		$data['title']      = 'Clean Data Report';
