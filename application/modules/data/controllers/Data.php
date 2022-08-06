@@ -185,7 +185,7 @@ class Data extends MX_Controller
 		$data['view']   	= "clean_data";
 		$config = array();
 		$config['base_url'] = base_url('data/processed');
-		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter);
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, 'records_json_report');
 		$config['per_page'] = 10; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -223,10 +223,10 @@ class Data extends MX_Controller
 		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter");
 		return $query->num_rows();
 	}
-	public function processed_count_rows($dfilter, $ffilter)
+	public function processed_count_rows($dfilter, $ffilter, $table)
 	{
 
-		$query = $this->db->query("SELECT reference from records_json_report $dfilter $ffilter");
+		$query = $this->db->query("SELECT reference from $table WHERE status='clean' $dfilter $ffilter");
 		return $query->num_rows();
 	}
 
@@ -411,11 +411,7 @@ class Data extends MX_Controller
 			'Allow Mobile Money ',
 			'KYC verification '
 		);
-
 		fputcsv($f, $fields, $delimiter);
-
-
-
 		if (!empty($records)) {
 			$i = 1;
 			foreach ($records as $dt) {
@@ -467,10 +463,7 @@ class Data extends MX_Controller
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
 		$page = $this->input->post('start');
-
 		$records = $this->data_model->getData2(50, $page, $dfilter, $ffilter, 1);
-
-
 		$i = 0;
 		foreach ($records as $dt) {
 			$staff = json_decode($dt->data);
@@ -611,8 +604,6 @@ class Data extends MX_Controller
 			fseek($fp, 0);
 
 
-
-
 			//output all remaining data on a file pointer 
 			fpassthru($fp);
 			flush();
@@ -622,42 +613,30 @@ class Data extends MX_Controller
 
 	public function pdf_data($print)
 	{
-
-
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
 		if ((!empty($dfilter)) && ($print = 1)) {
 			$data['files'] = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
-
 		$this->load->library('ML_pdf');
 		$filename = "Field_Data" . date('Y-m-d') . '_' . $data['files'][0]->district . ".pdf";
 		ini_set('max_execution_time', 0);
-
-
 		$html = $this->load->view('pdfdata', $data, TRUE);
-
 		$PDFContent = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
 		$this->ml_pdf->pdf->SetCompression(true);
 		$this->ml_pdf->pdf->SetWatermarkImage($this->watermark);
 		$this->ml_pdf->pdf->showWatermarkImage = true;
 		date_default_timezone_set("Africa/Kampala");
 		$this->ml_pdf->pdf->SetHTMLFooter("Printed/ Accessed on: <b>" . date('d F,Y h:i A') . "</b><br style='font-size: 9px !imporntant;'>" . " Source: iHRIS - iHRIS Mobile Tool " . base_url());
-
-
-
-
 		ini_set('max_execution_time', 0);
 		$this->ml_pdf->pdf->WriteHTML($PDFContent); //ml_pdf because we loaded the library ml_pdf for landscape format not ml_pdf
 		//download it D save F.
 		$this->ml_pdf->pdf->Output($filename, 'I');
 	}
 
-
 	public function clean_data()
 	{
-
 		$references = $this->db->query("SELECT reference from new_refs ")->result();
 		//print_r($reference);
 		$i = 1;
@@ -676,25 +655,19 @@ class Data extends MX_Controller
 			}
 		endforeach;
 	}
-	public function mtn_data()
-	{
-		echo "coming soon";
-	}
+
 	public function airtel_data()
 	{
 		@$print = $_GET['print'];
 		if ($this->input->post('district') != 'ALL') {
 			$district = $this->input->post('district');
-			$_SESSION['dfilter'] = "WHERE status='clean' and district like '$district%'";
+			$_SESSION['dfilter'] = "and district like '$district%'";
 		}
 		if (isset($_SESSION['dfilter'])) {
 			$dfilter = $_SESSION['dfilter'];
 		} else {
 			$dfilter = "";
 		}
-
-
-
 		if (($this->input->post('facility') != 'ALL')) {
 			$facility = $this->input->post('facility');
 			$_SESSION['ffilter'] = " and facility like '$facility%'";
@@ -704,10 +677,6 @@ class Data extends MX_Controller
 		} else {
 			$ffilter = "";
 		}
-
-
-
-
 		$this->load->library('pagination');
 		$data['uptitle']      = 'Airtel Data';
 		$data['title']      = 'Airtel Data';
@@ -715,7 +684,7 @@ class Data extends MX_Controller
 		$data['view']   	= "telcom_data";
 		$config = array();
 		$config['base_url'] = base_url('data/airtel_data');
-		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter);
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, 'airtel_clients');
 		$config['per_page'] = 25; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -743,7 +712,69 @@ class Data extends MX_Controller
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
-		$data['files'] = $this->data_model->cleangetData2($config['per_page'], $page, $dfilter, $ffilter, $print);
+		$data['files'] = $this->data_model->airtel_data($config['per_page'], $page, $dfilter, $ffilter, $print);
+		//print_r($config['total_rows']);
+		echo Modules::run('templates/main', $data);
+	}
+	public function mtn_data()
+	{
+		@$print = $_GET['print'];
+		if ($this->input->post('district') != 'ALL') {
+			$district = $this->input->post('district');
+			$_SESSION['dfilter'] = "and district like '$district%'";
+		}
+		if (isset($_SESSION['dfilter'])) {
+			$dfilter = $_SESSION['dfilter'];
+		} else {
+			$dfilter = "";
+		}
+
+		if (($this->input->post('facility') != 'ALL')) {
+			$facility = $this->input->post('facility');
+			$_SESSION['ffilter'] = " and facility like '$facility%'";
+		}
+		if (isset($_SESSION['ffilter'])) {
+			$ffilter = $_SESSION['ffilter'];
+		} else {
+			$ffilter = "";
+		}
+
+		$this->load->library('pagination');
+		$data['uptitle']      = 'MTN Data';
+		$data['title']      = 'MTN Data';
+		$data['module'] 	= "data";
+		$data['view']   	= "telcom_data";
+		$config = array();
+		$config['base_url'] = base_url('data/airtel_data');
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, 'mtn_clients');
+		$config['per_page'] = 25; //records per page
+		$config['uri_segment'] = 3; //segment in url  
+		//pagination links styling
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['attributes'] = ['class' => 'page-link'];
+		$config['first_link'] = true;
+		$config['last_link'] = true;
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['first_link'] = 'First';
+		$config['last_link'] = 'Last';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = 'Next';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+		$config['use_page_numbers'] = false;
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
+		$data['links'] = $this->pagination->create_links();
+		$data['files'] = $this->data_model->mtn_data($config['per_page'], $page, $dfilter, $ffilter, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}

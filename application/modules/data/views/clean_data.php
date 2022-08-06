@@ -55,7 +55,7 @@ $facilities = Modules::run("auth/getFacilities");
                     <a href="<?php echo base_url() ?>data/large_csv_data/1" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>
                     &nbsp;&nbsp;
                 <?php endif; ?>
-                <button type="submit" class="btn bt-sm bg-gray-dark color-pale" style="width:100px; left-right:4px;"><i class="fa fa-tasks" aria-hidden="true"></i>APPLY</button>
+                <button type="submit" class="btn bt-sm bg-gray-dark color-pale" style="width:100px; "><i class="fa fa-tasks" aria-hidden="true"></i>APPLY</button>
                 &nbsp;&nbsp;
             </div>
             &nbsp;&nbsp;
