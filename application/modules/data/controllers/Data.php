@@ -662,7 +662,7 @@ class Data extends MX_Controller
 	public function clean_data()
 	{
 
-		$references = $this->db->query("SELECT reference from records_json")->result();
+		$references = $this->db->query("SELECT reference from new_refs ")->result();
 		//print_r($reference);
 		$i = 1;
 		foreach ($references as $reference) :
