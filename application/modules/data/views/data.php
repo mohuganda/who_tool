@@ -81,7 +81,7 @@ $facilities = Modules::run("auth/getFacilities");
             <table id="example" class="" style="width:100%">
                 <thead>
                     <tr>
-
+                        <th label="Image">No</th>
                         <th label="Image">Image</th>
                         <th label="Surname">Surname</th>
                         <th label="Firstname">Firstname </th>
@@ -125,6 +125,7 @@ $facilities = Modules::run("auth/getFacilities");
 
 
                         <tr>
+                            <td label="Firstname"><?php echo $i++; ?></td>
                             <td label="Image">
                                 <div class=" image"><?php if (!empty(@$staff->person_photo)) { ?><img src="data:image/jpg;base64,<?php echo @$staff->person_photo; ?> " alt="Img" /><?php } ?>
                                 </div>

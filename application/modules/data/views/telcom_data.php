@@ -98,7 +98,7 @@ $facilities = Modules::run("auth/getFacilities");
 
                     ?>
 
-
+                        <td label="Record Reference"><?php echo $i++ ?></td>
                         <td label="Record Reference"><?php echo $staff->reference ?></td>
                         <td label="Surname"> <?php echo $staff->surname; ?> </td>
                         <td label="Firstname"><?php echo $staff->firstname ?></td>
