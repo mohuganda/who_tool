@@ -86,6 +86,7 @@ $facilities = Modules::run("auth/getFacilities");
                         <th label="Job">Job</th>
                         <th label="Facility ">Facility </th>
                         <th label="Ditrict">District</th>
+                        <th label="Status">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,6 +109,7 @@ $facilities = Modules::run("auth/getFacilities");
                         <td label="Position"><?php echo $staff->job ?></td>
                         <td label="Facility"><?php echo @$staff->facility ?></td>
                         <td label="District"> <?php echo @$staff->district; ?></td>
+                        <td label="District"> <?php echo @$staff->status; ?></td>
 
 
 
