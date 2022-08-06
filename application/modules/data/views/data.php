@@ -119,11 +119,7 @@ $facilities = Modules::run("auth/getFacilities");
 
                     foreach ($files as $dt) :
                         $staff = json_decode($dt->data);
-                        //print_r();
-
                     ?>
-
-
                         <tr>
                             <td label="Firstname"><?php echo $i++; ?></td>
                             <td label="Image">
@@ -131,20 +127,19 @@ $facilities = Modules::run("auth/getFacilities");
                                 </div>
                             </td>
                             <td label="Surname">
-
                                 <?php echo $staff->surname; ?>
                             </td>
                             <td label="Firstname"><?php echo $staff->firstname ?></td>
                             <td label="Othername"><?php echo $staff->othername ?></td>
-                            <td label="Record Reference"><?php echo $staff->reference;
-
-                                                            ?></td>
+                            <td label="Record Reference"><?php echo $staff->reference; ?></td>
                             <td label="District"> <?php echo @$staff->district; ?></td>
-                            <td label="Health Worker Type"><?php if ($staff->hw_type == 'chw') {
-                                                                echo "Community Health worker";
-                                                            } else {
-                                                                echo "Ministry Health worker";
-                                                            }  ?></td>
+                            <td label="Health Worker Type">
+                                <?php if ($staff->hw_type == 'chw') {
+                                    echo "Community Health worker";
+                                } else {
+                                    echo "Ministry Health worker";
+                                }  ?>
+                            </td>
                             <td label="Date of Birth"><?php echo @$staff->birth_date ?></td>
                             <td label="Place of Birth"><?php echo @$staff->birth_place ?></td>
                             <td label="Gender"><?php echo $staff->gender ?></td>
