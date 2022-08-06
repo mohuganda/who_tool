@@ -686,7 +686,7 @@ class Data extends MX_Controller
 		$config = array();
 		$config['base_url'] = base_url('data/airtel_data');
 		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, 'airtel_clients');
-		$config['per_page'] = 25; //records per page
+		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
 		$config['full_tag_open'] = '<ul class="pagination">';
@@ -748,7 +748,7 @@ class Data extends MX_Controller
 		$config = array();
 		$config['base_url'] = base_url('data/airtel_data');
 		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, 'mtn_clients');
-		$config['per_page'] = 25; //records per page
+		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
 		$config['full_tag_open'] = '<ul class="pagination">';
