@@ -226,7 +226,7 @@ class Data extends MX_Controller
 	public function processed_count_rows($dfilter, $ffilter)
 	{
 
-		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter");
+		$query = $this->db->query("SELECT reference from records_json_report $dfilter $ffilter");
 		return $query->num_rows();
 	}
 
@@ -242,11 +242,7 @@ class Data extends MX_Controller
 		echo Modules::run('templates/main', $data);
 	}
 
-	public function data2()
-	{
 
-		return $data;
-	}
 	public function collections()
 	{
 		$datas = $this->data_model->getData();
@@ -337,16 +333,16 @@ class Data extends MX_Controller
 	}
 	public function fill_districts()
 	{
-		$dis = $this->db->query("SELECT distinct district from ihrisdata");
-		foreach ($dis as $d) :
+		// $dis = $this->db->query("SELECT distinct district from ihrisdata");
+		// foreach ($dis as $d) :
 
-			$up = $this->db->query("UPDATE records_json SET=(SELECT JSON_EXTRACT(data,'.$district') WHERE JSON_EXTRACT(data,'.$district')='$d->district'");
-			if ($up) {
-				echo 'Successful';
-			} else {
-				echo 'Failed';
-			}
-		endforeach;
+		// 	$up = $this->db->query("UPDATE records_json SET=(SELECT JSON_EXTRACT(data,'.$district') WHERE JSON_EXTRACT(data,'.$district')='$d->district'");
+		// 	if ($up) {
+		// 		echo 'Successful';
+		// 	} else {
+		// 		echo 'Failed';
+		// 	}
+		// endforeach;
 	}
 	public function enrollers_per()
 	{
@@ -686,6 +682,69 @@ class Data extends MX_Controller
 	}
 	public function airtel_data()
 	{
-		echo "coming soon";
+		@$print = $_GET['print'];
+		if ($this->input->post('district') != 'ALL') {
+			$district = $this->input->post('district');
+			$_SESSION['dfilter'] = "WHERE status='clean' and district like '$district%'";
+		}
+		if (isset($_SESSION['dfilter'])) {
+			$dfilter = $_SESSION['dfilter'];
+		} else {
+			$dfilter = "";
+		}
+
+
+
+		if (($this->input->post('facility') != 'ALL')) {
+			$facility = $this->input->post('facility');
+			$_SESSION['ffilter'] = " and facility like '$facility%'";
+		}
+		if (isset($_SESSION['ffilter'])) {
+			$ffilter = $_SESSION['ffilter'];
+		} else {
+			$ffilter = "";
+		}
+
+
+
+
+		$this->load->library('pagination');
+		$data['uptitle']      = 'Airtel Data';
+		$data['title']      = 'Airtel Data';
+		$data['module'] 	= "data";
+		$data['view']   	= "telcom_data";
+		$config = array();
+		$config['base_url'] = base_url('data/airtel_data');
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter);
+		$config['per_page'] = 25; //records per page
+		$config['uri_segment'] = 3; //segment in url  
+		//pagination links styling
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['attributes'] = ['class' => 'page-link'];
+		$config['first_link'] = true;
+		$config['last_link'] = true;
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['first_link'] = 'First';
+		$config['last_link'] = 'Last';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = 'Next';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+		$config['use_page_numbers'] = false;
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
+		$data['links'] = $this->pagination->create_links();
+		$data['files'] = $this->data_model->cleangetData2($config['per_page'], $page, $dfilter, $ffilter, $print);
+		//print_r($config['total_rows']);
+		echo Modules::run('templates/main', $data);
 	}
 }

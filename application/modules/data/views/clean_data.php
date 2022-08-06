@@ -26,7 +26,7 @@ $facilities = Modules::run("auth/getFacilities");
                                 Districts </label>
                             <select name="district" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());">
                                 <option value="" disabled selected>DISTRICT</option>
-                                <option value="ALL">ALL</option>
+                                <option value="">ALL</option>
                                 <?php foreach ($districts as $district) :
                                 ?>
                                     <option value="<?php echo $district->district; ?>" <?php if ($this->input->post('district') == $district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
@@ -111,9 +111,9 @@ $facilities = Modules::run("auth/getFacilities");
                     <?php
                     $i = 1;
 
-                    foreach ($files as $dt) :
+                    foreach ($files as $staff) :
 
-                        $staff = json_decode($dt->data);
+
                     ?>
 
 

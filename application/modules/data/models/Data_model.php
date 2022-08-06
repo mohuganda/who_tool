@@ -25,7 +25,7 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `records_json`  $dfilter $ffilter ORDER BY sync_date DESC $limit");
+		$query = $this->db->query("SELECT * FROM `records_json_report`  $dfilter $ffilter ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
 	public function getColums()
@@ -55,5 +55,28 @@ class Data_model extends CI_Model
 	public function headers()
 	{
 		return $this->db->get('fields')->result();
+	}
+
+	public function mtn_data($limits, $starts, $dfilter, $ffilter, $print)
+	{
+		if ($print == 1) {
+			$limit = "";
+		} else {
+
+			$limit = "LIMIT $starts,$limits";
+		}
+		$query = $this->db->query("SELECT * FROM `records_json`  $dfilter $ffilter ORDER BY sync_date DESC $limit");
+		return $query->result();
+	}
+	public function airtel_data($limits, $starts, $dfilter, $ffilter, $print)
+	{
+		if ($print == 1) {
+			$limit = "";
+		} else {
+
+			$limit = "LIMIT $starts,$limits";
+		}
+		$query = $this->db->query("SELECT * FROM `Airtel_clients`  $dfilter $ffilter ORDER BY surname ASC $limit");
+		return $query->result();
 	}
 }
