@@ -162,9 +162,6 @@ class Data extends MX_Controller
 		} else {
 			$dfilter = "";
 		}
-
-
-
 		if (($this->input->post('facility') != 'ALL')) {
 			$facility = $this->input->post('facility');
 			$_SESSION['ffilter'] = " and facility like '$facility%'";
@@ -174,10 +171,6 @@ class Data extends MX_Controller
 		} else {
 			$ffilter = "";
 		}
-
-
-
-
 		$this->load->library('pagination');
 		$data['uptitle']      = 'Clean Data Report';
 		$data['title']      = 'Clean Data Report';
