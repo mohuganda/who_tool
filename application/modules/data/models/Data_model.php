@@ -25,7 +25,7 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `records_json_report`  $dfilter $ffilter ORDER BY sync_date DESC $limit");
+		$query = $this->db->query("SELECT * FROM `records_json_report` where status='Clean' $dfilter $ffilter ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
 	public function getColums()
