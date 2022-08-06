@@ -680,11 +680,12 @@ class Data extends MX_Controller
 			}
 		endforeach;
 	}
-	public function save_status()
+	public function mtn_data()
 	{
-		$reference = $this->input->post('reference');
-		$status = $this->input->post('status');
-		$this->db->query("UPDATE records_json SET `status`='$status' WHERE reference='$reference'");
-		redirect('data/collection');
+		echo "coming soon";
+	}
+	public function airtel_data()
+	{
+		echo "coming soon";
 	}
 }
