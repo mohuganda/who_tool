@@ -76,7 +76,7 @@ $facilities = Modules::run("auth/getFacilities");
             <table id="example" style="width:100%">
                 <thead>
                     <tr>
-
+                        <th>No</th>
                         <th>Record Ref ID</th>
                         <th label="Surname">Surname</th>
                         <th label="Firstname">Firstname </th>
