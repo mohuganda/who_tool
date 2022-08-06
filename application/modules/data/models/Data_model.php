@@ -65,7 +65,7 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `mtn_clients` WHERE status='clean' and primary_mobile_operator='MTN' $dfilter $ffilter ORDER BY surname ASC $limit");
+		$query = $this->db->query("SELECT * FROM `mtn_clients` WHERE status='clean' $dfilter $ffilter ORDER BY surname ASC $limit");
 		return $query->result();
 	}
 	public function airtel_data($limits, $starts, $dfilter, $ffilter, $print)
@@ -76,7 +76,7 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `airtel_clients` WHERE status='clean' and primary_mobile_operator='Airtel' $dfilter $ffilter ORDER BY surname ASC $limit");
+		$query = $this->db->query("SELECT * FROM `airtel_clients` WHERE status='clean' $dfilter $ffilter ORDER BY surname ASC $limit");
 		return $query->result();
 	}
 }

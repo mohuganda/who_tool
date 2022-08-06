@@ -226,6 +226,7 @@ class Data extends MX_Controller
 	public function processed_count_rows($dfilter, $ffilter, $table)
 	{
 
+
 		$query = $this->db->query("SELECT reference from $table WHERE status='clean' $dfilter $ffilter");
 		return $query->num_rows();
 	}
