@@ -155,7 +155,7 @@ class Data extends MX_Controller
 		@$print = $_GET['print'];
 		if ($this->input->post('district') != 'ALL') {
 			$district = $this->input->post('district');
-			$_SESSION['dfilter'] = "district like '$district%'";
+			$_SESSION['dfilter'] = "and district like '$district%'";
 		}
 		if (isset($_SESSION['dfilter'])) {
 			$dfilter = $_SESSION['dfilter'];
