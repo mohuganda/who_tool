@@ -60,7 +60,7 @@
             <a href="<?php echo base_url(); ?>data/collection" class="nav-link">
               <i class="fa fa-th"></i>
               <p>
-                Data
+                Field Data
               </p>
             </a>
           </li>
