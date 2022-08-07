@@ -779,36 +779,60 @@ class Data extends MX_Controller
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
 		$csv = $form . "_MNO_Data" . date('Y-m-d') . '_' . ".csv";
-		// header('Content-Type: text/csv');
-		// header('Content-Disposition: attachment; filename="' . $csv . '";');
-		// header("Pragma: no-cache");
-		// header("Expires: 0");
+		header('Content-Type: text/csv');
+		header('Content-Disposition: attachment; filename="' . $csv . '";');
+		header("Pragma: no-cache");
+		header("Expires: 0");
 		if ($print = 1) {
 			$records = $this->data_model->$form($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
 		//print_r($records);
 		$f = fopen($csv, 'w');
 		$delimiter = ",";
-		$fields = array_keys($records);
-		print_r($records);
-		//fputcsv($f, $fields, $delimiter);
+		$fields = array(
 
-		// if (!empty($records)) {
-		// 	$i = 1;
-		// 	foreach ($records as $dt) {
+			'NO',
+			'Reference',
+			'Surname',
+			'Firstname ',
+			'Othername ',
+			'Primary Mobile Number ',
+			'Registered Name ',
+			'National ID',
+			'Job',
+			'Facility',
+			'District'
+
+		);
+		fputcsv($f, $fields, $delimiter);
+		$i = 0;
+		foreach ($records as $staff) {
+			$data = array(
+				$i++,
+				@$staff->Refrence,
+				ucwords($staff->surname),
+				ucwords($staff->firstname),
+				ucwords($staff->othername),
+				$staff->primary_mobile_number,
+				ucwords($staff->registered_mm_name),
+				ucwords(@$staff->national_id),
+				ucwords($staff->job),
+				ucwords($staff->facility),
+				ucwords($staff->district)
+
+			);
+
+			fputcsv($f, $data, $delimiter);
+		}
+		// Move back to beginning of file 
+		fseek($f, 0);
+
+		// Set headers to download file rather than displayed 
 
 
-		// 		fputcsv($f, $linedata, $delimiter);
-		// 	}
-		// 	// Move back to beginning of file 
-		// 	fseek($f, 0);
+		//output all remaining data on a file pointer 
+		fpassthru($f);
 
-		// 	// Set headers to download file rather than displayed 
-
-
-		// 	//output all remaining data on a file pointer 
-		// 	fpassthru($f);
-		// }
 		exit;
 	}
 }
