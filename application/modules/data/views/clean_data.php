@@ -52,7 +52,7 @@ $facilities = Modules::run("auth/getFacilities");
                 <?php if ($this->input->post('district')) : ?>
                     <a href="<?php echo base_url() ?>data/pdf_data/1" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file" aria-hidden="true"></i>PDF</a>
                     &nbsp;&nbsp;
-                    <a href="<?php echo base_url() ?>data/large_csv_data/1" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>
+                    <!-- <a href="<?php echo base_url() ?>data/large_csv_data/1" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a> -->
                     &nbsp;&nbsp;
                 <?php endif; ?>
                 <button type="submit" class="btn bt-sm bg-gray-dark color-pale" style="width:100px; "><i class="fa fa-tasks" aria-hidden="true"></i>APPLY</button>
