@@ -368,10 +368,7 @@ class Data extends MX_Controller
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
 		$csv_file = "Field_Data" . date('Y-m-d') . '_' . ".csv";
-		header('Content-Type: text/csv');
-		header('Content-Disposition: attachment; filename="' . $csv_file . '";');
-		header("Pragma: no-cache");
-		header("Expires: 0");
+
 		if ((!empty($dfilter)) && ($print = 1)) {
 			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
@@ -440,7 +437,10 @@ class Data extends MX_Controller
 			fseek($f, 0);
 
 			// Set headers to download file rather than displayed 
-
+			header('Content-Type: text/csv');
+			header('Content-Disposition: attachment; filename="' . $csv_file . '";');
+			header("Pragma: no-cache");
+			header("Expires: 0");
 
 			//output all remaining data on a file pointer 
 			fpassthru($f);
@@ -779,10 +779,7 @@ class Data extends MX_Controller
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
 		$csv = $form . "_MNO_Data" . date('Y-m-d') . '_' . ".csv";
-		header('Content-Type: text/csv');
-		header('Content-Disposition: attachment; filename="' . $csv . '";');
-		header("Pragma: no-cache");
-		header("Expires: 0");
+
 		if ($print = 1) {
 			$records = $this->data_model->$form($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
@@ -828,7 +825,10 @@ class Data extends MX_Controller
 		fseek($f, 0);
 
 		// Set headers to download file rather than displayed 
-
+		header('Content-Type: text/csv');
+		header('Content-Disposition: attachment; filename="' . $csv . '";');
+		header("Pragma: no-cache");
+		header("Expires: 0");
 
 		//output all remaining data on a file pointer 
 		fpassthru($f);
