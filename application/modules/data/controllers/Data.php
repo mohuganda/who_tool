@@ -806,7 +806,7 @@ class Data extends MX_Controller
 		foreach ($records as $staff) {
 			$data = array(
 				$i++,
-				@$staff->Refrence,
+				@$staff->reference,
 				ucwords($staff->surname),
 				ucwords($staff->firstname),
 				ucwords($staff->othername),
