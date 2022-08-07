@@ -51,7 +51,7 @@ $facilities = Modules::run("auth/getFacilities");
             <div class="row">
 
 
-                <a href="<?php echo base_url() ?>data/mono_data/1/<?php $form ?>" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>
+                <a href="<?php echo base_url() ?>data/mono_data/1/<?php echo $form ?>" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>
                 &nbsp;&nbsp;
 
                 <button type="submit" class="btn bt-sm bg-gray-dark color-pale" style="width:100px; "><i class="fa fa-tasks" aria-hidden="true"></i>APPLY</button>
