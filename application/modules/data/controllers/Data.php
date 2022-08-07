@@ -789,7 +789,7 @@ class Data extends MX_Controller
 		//print_r($records);
 		$f = fopen($csv, 'w');
 		$delimiter = ",";
-		$fields = array_keys($records);
+		$fields = array_keys($records[0]);
 		print_r($fields);
 		//fputcsv($f, $fields, $delimiter);
 
