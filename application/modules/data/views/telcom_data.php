@@ -15,7 +15,7 @@ $facilities = Modules::run("auth/getFacilities");
 
             <div class="card-tools">
 
-                <form class="form-horizontal" action="<?php echo base_url() ?>data/processed" method="post">
+                <form class="form-horizontal" action="<?php echo base_url() ?>data/<?php echo $form ?>" method="post">
                     <div class="row">
 
 

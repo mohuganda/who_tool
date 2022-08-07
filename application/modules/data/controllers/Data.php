@@ -704,6 +704,7 @@ class Data extends MX_Controller
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
+		$data['form'] = 'airtel_data';
 		$data['files'] = $this->data_model->airtel_data($config['per_page'], $page, $dfilter, $ffilter, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
@@ -764,6 +765,7 @@ class Data extends MX_Controller
 		$config['num_tag_close'] = '</li>';
 		$config['use_page_numbers'] = false;
 		$this->pagination->initialize($config);
+		$data['form'] = 'mtn_data';
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
 		$data['files'] = $this->data_model->mtn_data($config['per_page'], $page, $dfilter, $ffilter, $print);
