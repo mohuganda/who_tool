@@ -784,7 +784,7 @@ class Data extends MX_Controller
 			$records = $this->data_model->$form($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
 		}
 		//print_r($records);
-		$f = fopen($csv, 'w');
+		$f = fopen('php://memory', 'w');
 		$delimiter = ",";
 		$fields = array(
 
