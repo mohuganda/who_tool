@@ -772,4 +772,43 @@ class Data extends MX_Controller
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}
+	public function mno_data($print, $form)
+	{
+		ini_set('max_execution_time', 0);
+		$dfilter = $_SESSION['dfilter'];
+		$ffilter = $_SESSION['ffilter'];
+		$datefilter = $_SESSION['datefilter'];
+		$csv = $form . "_MNO_Data" . date('Y-m-d') . '_' . ".csv";
+		// header('Content-Type: text/csv');
+		// header('Content-Disposition: attachment; filename="' . $csv . '";');
+		// header("Pragma: no-cache");
+		// header("Expires: 0");
+		if ($print = 1) {
+			$records = $this->data_model->$form($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
+		}
+		//print_r($records);
+		$f = fopen($csv, 'w');
+		$delimiter = ",";
+		$fields = array_keys($records);
+		print_r($fields);
+		//fputcsv($f, $fields, $delimiter);
+
+		// if (!empty($records)) {
+		// 	$i = 1;
+		// 	foreach ($records as $dt) {
+
+
+		// 		fputcsv($f, $linedata, $delimiter);
+		// 	}
+		// 	// Move back to beginning of file 
+		// 	fseek($f, 0);
+
+		// 	// Set headers to download file rather than displayed 
+
+
+		// 	//output all remaining data on a file pointer 
+		// 	fpassthru($f);
+		// }
+		exit;
+	}
 }
