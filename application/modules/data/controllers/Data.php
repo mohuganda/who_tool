@@ -85,6 +85,9 @@ class Data extends MX_Controller
 	public function collection()
 
 	{
+		$dfilter = $_SESSION['dfilter'] = "";
+		$ffilter = $_SESSION['ffilter'] = "";
+		$fworker_type = $_SESSION['worker_type'] = "";
 		@$print = $_GET['print'];
 		if (!empty($this->input->post('district'))) {
 			$district = $this->input->post('district');
@@ -154,6 +157,9 @@ class Data extends MX_Controller
 	public function processed()
 
 	{
+		$dfilter = $_SESSION['dfilter'] = "";
+		$ffilter = $_SESSION['ffilter'] = "";
+		$fworker_type = $_SESSION['worker_type'] = "";
 		@$print = $_GET['print'];
 		if (!empty($this->input->post('district'))) {
 			$district = $this->input->post('district');
@@ -597,6 +603,9 @@ class Data extends MX_Controller
 	public function airtel_data()
 	{
 		@$print = $_GET['print'];
+		$dfilter = $_SESSION['dfilter'] = "";
+		$ffilter = $_SESSION['ffilter'] = "";
+		$fworker_type = $_SESSION['worker_type'] = "";
 		if (!empty($this->input->post('district'))) {
 			$district = $this->input->post('district');
 			$dfilter = $_SESSION['dfilter'] = "WHERE district like '$district%'";
@@ -662,6 +671,9 @@ class Data extends MX_Controller
 	public function mtn_data()
 	{
 		@$print = $_GET['print'];
+		$dfilter = $_SESSION['dfilter'] = "";
+		$ffilter = $_SESSION['ffilter'] = "";
+		$fworker_type = $_SESSION['worker_type'] = "";
 		if (!empty($this->input->post('district'))) {
 			$district = $this->input->post('district');
 			$dfilter = $_SESSION['dfilter'] = "WHERE district like '$district%'";
