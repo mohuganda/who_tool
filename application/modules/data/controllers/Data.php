@@ -155,23 +155,25 @@ class Data extends MX_Controller
 
 	{
 		@$print = $_GET['print'];
-		if ($this->input->post('district') != 'ALL') {
+		if (!empty($this->input->post('district'))) {
 			$district = $this->input->post('district');
-			$dfilter = "and district like '$district%'";
+			$dfilter = $_SESSION['dfilter'] = "WHERE district like '$district%'";
 		} else {
 			$dfilter = "";
 		}
 
-		if (($this->input->post('facility') != 'ALL')) {
+
+
+		if (!empty($this->input->post('facility'))) {
 			$facility = $this->input->post('facility');
-			$ffilter = " and facility like '$facility%'";
+			$_SESSION['ffilter'] = " and facility like '$facility%'";
 		} else {
 			$ffilter = "";
 		}
 
-		if (($this->input->post('worker_type') != 'ALL')) {
+		if (!empty($this->input->post('worker_type'))) {
 			$worker_type = $this->input->post('worker_type');
-			$fworker_type = " and hw_type like '$worker_type%'";
+			$fworker_type = $_SESSION['worker_type'] = "and hw_type like '$worker_type%'";
 		} else {
 			$fworker_type = "";
 		}
@@ -595,27 +597,25 @@ class Data extends MX_Controller
 	public function airtel_data()
 	{
 		@$print = $_GET['print'];
-		if ($this->input->post('district') != 'ALL') {
+		if (!empty($this->input->post('district'))) {
 			$district = $this->input->post('district');
-			$_SESSION['dfilter'] = "and district like '$district%'";
-		}
-		if (isset($_SESSION['dfilter'])) {
-			$dfilter = $_SESSION['dfilter'];
+			$dfilter = $_SESSION['dfilter'] = "WHERE district like '$district%'";
 		} else {
 			$dfilter = "";
 		}
-		if (($this->input->post('facility') != 'ALL')) {
+
+
+
+		if (!empty($this->input->post('facility'))) {
 			$facility = $this->input->post('facility');
 			$_SESSION['ffilter'] = " and facility like '$facility%'";
-		}
-		if (isset($_SESSION['ffilter'])) {
-			$ffilter = $_SESSION['ffilter'];
 		} else {
 			$ffilter = "";
 		}
-		if (($this->input->post('worker_type') != 'ALL')) {
+
+		if (!empty($this->input->post('worker_type'))) {
 			$worker_type = $this->input->post('worker_type');
-			$fworker_type = " and hw_type like '$worker_type%'";
+			$fworker_type = $_SESSION['worker_type'] = "and hw_type like '$worker_type%'";
 		} else {
 			$fworker_type = "";
 		}
@@ -662,29 +662,25 @@ class Data extends MX_Controller
 	public function mtn_data()
 	{
 		@$print = $_GET['print'];
-		if ($this->input->post('district') != 'ALL') {
+		if (!empty($this->input->post('district'))) {
 			$district = $this->input->post('district');
-			$_SESSION['dfilter'] = "and district like '$district%'";
-		}
-		if (isset($_SESSION['dfilter'])) {
-			$dfilter = $_SESSION['dfilter'];
+			$dfilter = $_SESSION['dfilter'] = "WHERE district like '$district%'";
 		} else {
 			$dfilter = "";
 		}
 
-		if (($this->input->post('facility') != 'ALL')) {
+
+
+		if (!empty($this->input->post('facility'))) {
 			$facility = $this->input->post('facility');
 			$_SESSION['ffilter'] = " and facility like '$facility%'";
-		}
-		if (isset($_SESSION['ffilter'])) {
-			$ffilter = $_SESSION['ffilter'];
 		} else {
 			$ffilter = "";
 		}
 
-		if (($this->input->post('worker_type') != 'ALL')) {
+		if (!empty($this->input->post('worker_type'))) {
 			$worker_type = $this->input->post('worker_type');
-			$fworker_type = " and hw_type like '$worker_type%'";
+			$fworker_type = $_SESSION['worker_type'] = "and hw_type like '$worker_type%'";
 		} else {
 			$fworker_type = "";
 		}
