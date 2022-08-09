@@ -6,7 +6,7 @@ class Data_model extends CI_Model
 
 
 
-	public function getData2($limits, $starts, $dfilter, $ffilter, $print)
+	public function getData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
 	{
 		if ($print == 1) {
 			$limit = "";
@@ -14,10 +14,10 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT data FROM `records_json`  $dfilter $ffilter ORDER BY sync_date DESC $limit");
+		$query = $this->db->query("SELECT data FROM `records_json`  $dfilter $ffilter, $fworker_type ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
-	public function cleangetData2($limits, $starts, $dfilter, $ffilter, $print)
+	public function cleangetData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
 	{
 		if ($print == 1) {
 			$limit = "";
@@ -25,7 +25,7 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `records_json_report` where status='Clean' $dfilter $ffilter ORDER BY sync_date DESC $limit");
+		$query = $this->db->query("SELECT * FROM `records_json_report` where status='Clean' $dfilter $ffilter $fworker_type ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
 	public function getColums()
@@ -57,7 +57,7 @@ class Data_model extends CI_Model
 		return $this->db->get('fields')->result();
 	}
 
-	public function mtn_data($limits, $starts, $dfilter, $ffilter, $print)
+	public function mtn_data($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
 	{
 		if ($print == 1) {
 			$limit = "";
@@ -65,10 +65,10 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `mtn_clients` WHERE status='clean' $dfilter $ffilter ORDER BY surname ASC $limit");
+		$query = $this->db->query("SELECT * FROM `mtn_clients` WHERE status='clean' $dfilter $ffilter $fworker_type ORDER BY surname ASC $limit");
 		return $query->result();
 	}
-	public function airtel_data($limits, $starts, $dfilter, $ffilter, $print)
+	public function airtel_data($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
 	{
 		if ($print == 1) {
 			$limit = "";
@@ -76,7 +76,7 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `airtel_clients` WHERE status='clean' $dfilter $ffilter ORDER BY surname ASC $limit");
+		$query = $this->db->query("SELECT * FROM `airtel_clients` WHERE status='clean' $dfilter $ffilter $fworker_type ORDER BY surname ASC $limit");
 		return $query->result();
 	}
 }

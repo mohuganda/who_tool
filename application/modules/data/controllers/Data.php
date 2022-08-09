@@ -106,6 +106,12 @@ class Data extends MX_Controller
 			$ffilter = "";
 		}
 
+		if (($this->input->post('worker_type') != 'ALL')) {
+			$worker_type = $this->input->post('worker_type');
+			$fworker_type = " and hw_type like '$worker_type%'";
+		} else {
+			$fworker_type = "";
+		}
 
 
 
@@ -116,7 +122,7 @@ class Data extends MX_Controller
 		$data['view']   	= "data";
 		$config = array();
 		$config['base_url'] = base_url('data/collection');
-		$data['total_rows'] = $config['total_rows'] = $this->count_rows($dfilter, $ffilter);
+		$data['total_rows'] = $config['total_rows'] = $this->count_rows($dfilter, $ffilter, $fworker_type);
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -144,7 +150,7 @@ class Data extends MX_Controller
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
-		$data['files'] = $this->data_model->getData2($config['per_page'], $page, $dfilter, $ffilter, $print);
+		$data['files'] = $this->data_model->getData2($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}
@@ -167,6 +173,13 @@ class Data extends MX_Controller
 			$ffilter = "";
 		}
 
+		if (($this->input->post('worker_type') != 'ALL')) {
+			$worker_type = $this->input->post('worker_type');
+			$fworker_type = " and hw_type like '$worker_type%'";
+		} else {
+			$fworker_type = "";
+		}
+
 
 
 		$this->load->library('pagination');
@@ -176,7 +189,7 @@ class Data extends MX_Controller
 		$data['view']   	= "clean_data";
 		$config = array();
 		$config['base_url'] = base_url('data/processed');
-		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, 'records_json_report');
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, $fworker_type, 'records_json_report');
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -204,21 +217,21 @@ class Data extends MX_Controller
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
-		$data['files'] = $this->data_model->cleangetData2($config['per_page'], $page, $dfilter, $ffilter, $print);
+		$data['files'] = $this->data_model->cleangetData2($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}
-	public function count_rows($dfilter, $ffilter)
+	public function count_rows($dfilter, $ffilter, $fworker_type)
 	{
 
-		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter");
+		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter,$fworker_type");
 		return $query->num_rows();
 	}
-	public function processed_count_rows($dfilter, $ffilter, $table)
+	public function processed_count_rows($dfilter, $ffilter, $fworker_type, $table)
 	{
 
 
-		$query = $this->db->query("SELECT reference from $table WHERE status='clean' $dfilter $ffilter");
+		$query = $this->db->query("SELECT reference from $table WHERE status='clean' $fworker_type $dfilter $ffilter");
 		return $query->num_rows();
 	}
 
@@ -244,7 +257,7 @@ class Data extends MX_Controller
 	{
 
 		ini_set('max_execution_time', 0);
-		$count = $this->count_rows($dfilter = '', $ffilter = '');
+		$count = $this->count_rows($dfilter = '', $ffilter = '', $fworker_type = '');
 		//contains = [ [],[] [] ]
 		$per_page = 500;
 		$pages = ceil($count / $per_page);
@@ -367,10 +380,11 @@ class Data extends MX_Controller
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
+		$worker_type = $_SESSION['worker_type'];
 		$csv_file = "Field_Data" . date('Y-m-d') . '_' . ".csv";
 
 		if ((!empty($dfilter)) && ($print = 1)) {
-			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
+			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $worker_type, $print);
 		}
 		//print_r($records);
 		$f = fopen('php://memory', 'w');
@@ -447,88 +461,23 @@ class Data extends MX_Controller
 		}
 		exit;
 	}
-	public function clean_csv()
+	public function clean_csv_data($print)
 	{
-
 		ini_set('max_execution_time', 0);
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
-		$page = $this->input->post('start');
-		$records = $this->data_model->getData2(50, $page, $dfilter, $ffilter, 1);
-		$i = 0;
-		foreach ($records as $dt) {
-			$staff = json_decode($dt->data);
-			$linedata = array(
-				$i++,
-				$staff->reference,
-				@$staff->hw_type == 'chw' ? "Community Health worker" : "Ministry Health worker",
-				$staff->surname,
-				$staff->firstname,
-				$staff->othername,
-				@$staff->birth_date,
-				@$staff->birth_place,
-				$staff->gender,
-				$staff->job,
-				@$dt->facility,
-				$staff->id_type,
-				@$staff->ID_Number,
-				@$staff->id_expiry,
-				@$staff->national_id,
-				@$staff->national_id_card_number,
-				$staff->consent,
-				$staff->primary_mobile_number,
-				$staff->other_contact,
-				$staff->is_mm_registered,
-				$staff->is_registered_by_hw,
-				$staff->registered_mm_name,
-				$staff->diff_names_consent,
-				$staff->kyc_verification
-			);
+		$worker_type = $_SESSION['worker_type'];
+		$csv_file = "Field_Data" . date('Y-m-d') . '_' . ".csv";
 
-
-			echo (json_encode(array("data" => $linedata)));
+		if ((!empty($dfilter)) && ($print = 1)) {
+			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $worker_type, $print);
 		}
-	}
-
-	public function large_csv_data($print)
-	{
-		ini_set('max_execution_time', 0);
-		$dfilter = $_SESSION['dfilter'];
-		$ffilter = $_SESSION['ffilter'];
-
-		if (ob_get_level()) {
-			ob_end_clean();
-		}
-		$csv = "Field_Data" . date('Y-m-d') . '_' . ".csv";
-
-
-
-		if ((!empty($dfilter))) {
-			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
-		}
-
-		// Set headers to download file rather than displayed 
-		header(
-			"Content-Type: text/csv;charset=utf-8"
-		);
-		header(
-			"Content-Disposition: attachment;filename=\"$csv\""
-		);
-		header(
-			"Pragma: no-cache"
-		);
-		header(
-			"Expires: 0"
-		);
-
-
-
-		$i = 1;
+		//print_r($records);
+		$f = fopen('php://memory', 'w');
+		$delimiter = ",";
 		$fields = array(
-
 			'No',
-			'Reference',
 			'Worker Type',
 			'Surname',
 			'Firstname ',
@@ -552,64 +501,63 @@ class Data extends MX_Controller
 			'Allow Mobile Money ',
 			'KYC verification '
 		);
-		//$fp = fopen('php://memory', 'w');
-		$fp = fopen($csv, 'w');
+		fputcsv($f, $fields, $delimiter);
+		if (!empty($records)) {
+			$i = 1;
+			foreach ($records as $dt) {
+				$staff = json_decode($dt->data);
+				$linedata = array(
+					$i++,
+					@$staff->hw_type == 'chw' ? "Community Health worker" : "Ministry Health worker",
+					$staff->surname,
+					$staff->firstname,
+					$staff->othername,
+					@$staff->birth_date,
+					@$staff->birth_place,
+					$staff->gender,
+					$staff->job,
+					@$dt->facility,
+					$staff->id_type,
+					@$staff->ID_Number,
+					@$staff->id_expiry,
+					@$staff->national_id,
+					@$staff->national_id_card_number,
+					$staff->consent,
+					$staff->primary_mobile_number,
+					$staff->other_contact,
+					$staff->is_mm_registered,
+					$staff->is_registered_by_hw,
+					$staff->registered_mm_name,
+					$staff->diff_names_consent,
+					$staff->kyc_verification
+				);
 
-		fputcsv($fp, $fields, ';');
-		flush();
-
-
-		foreach ($records as $dt) {
-			$staff = json_decode($dt->data);
-			$linedata = array(
-				$i++,
-				$staff->reference,
-				@$staff->hw_type == 'chw' ? "Community Health worker" : "Ministry Health worker",
-				$staff->surname,
-				$staff->firstname,
-				$staff->othername,
-				@$staff->birth_date,
-				@$staff->birth_place,
-				$staff->gender,
-				$staff->job,
-				@$dt->facility,
-				$staff->id_type,
-				@$staff->ID_Number,
-				@$staff->id_expiry,
-				@$staff->national_id,
-				@$staff->national_id_card_number,
-				$staff->consent,
-				$staff->primary_mobile_number,
-				$staff->other_contact,
-				$staff->is_mm_registered,
-				$staff->is_registered_by_hw,
-				$staff->registered_mm_name,
-				$staff->diff_names_consent,
-				$staff->kyc_verification
-			);
-
-			//print_r($linedata);
-			fputcsv($fp, $linedata, ';');
-
-			//flush();
+				fputcsv($f, $linedata, $delimiter);
+			}
 			// Move back to beginning of file 
-			fseek($fp, 0);
+			fseek($f, 0);
 
+			// Set headers to download file rather than displayed 
+			header('Content-Type: text/csv');
+			header('Content-Disposition: attachment; filename="' . $csv_file . '";');
+			header("Pragma: no-cache");
+			header("Expires: 0");
 
 			//output all remaining data on a file pointer 
-			fpassthru($fp);
-			flush();
+			fpassthru($f);
 		}
-		fclose($fp);
+		exit;
 	}
+
 
 	public function pdf_data($print)
 	{
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
 		$datefilter = $_SESSION['datefilter'];
+		$fworker_type = $_SESSION['worker_type'];
 		if ((!empty($dfilter)) && ($print = 1)) {
-			$data['files'] = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
+			$data['files'] = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $fworker_type, $print);
 		}
 		$this->load->library('ML_pdf');
 		$filename = "Field_Data" . date('Y-m-d') . '_' . $data['files'][0]->district . ".pdf";
@@ -669,6 +617,12 @@ class Data extends MX_Controller
 		} else {
 			$ffilter = "";
 		}
+		if (($this->input->post('worker_type') != 'ALL')) {
+			$worker_type = $this->input->post('worker_type');
+			$fworker_type = " and hw_type like '$worker_type%'";
+		} else {
+			$fworker_type = "";
+		}
 		$this->load->library('pagination');
 		$data['uptitle']      = 'Airtel Data';
 		$data['title']      = 'Airtel Data';
@@ -676,7 +630,7 @@ class Data extends MX_Controller
 		$data['view']   	= "telcom_data";
 		$config = array();
 		$config['base_url'] = base_url('data/airtel_data');
-		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, 'airtel_clients');
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, $fworker_type, 'airtel_clients');
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -732,6 +686,15 @@ class Data extends MX_Controller
 			$ffilter = "";
 		}
 
+		if (($this->input->post('worker_type') != 'ALL')) {
+			$worker_type = $this->input->post('worker_type');
+			$fworker_type = " and hw_type like '$worker_type%'";
+		} else {
+			$fworker_type = "";
+		}
+
+
+
 		$this->load->library('pagination');
 		$data['uptitle']      = 'MTN Data';
 		$data['title']      = 'MTN Data';
@@ -739,7 +702,7 @@ class Data extends MX_Controller
 		$data['view']   	= "telcom_data";
 		$config = array();
 		$config['base_url'] = base_url('data/airtel_data');
-		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, 'mtn_clients');
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, $fworker_type, 'mtn_clients');
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -768,7 +731,7 @@ class Data extends MX_Controller
 		$data['form'] = 'mtn_data';
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
-		$data['files'] = $this->data_model->mtn_data($config['per_page'], $page, $dfilter, $ffilter, $print);
+		$data['files'] = $this->data_model->mtn_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}
@@ -777,11 +740,12 @@ class Data extends MX_Controller
 		ini_set('max_execution_time', 0);
 		$dfilter = $_SESSION['dfilter'];
 		$ffilter = $_SESSION['ffilter'];
+		$fworker_type = $_SESSION['worker_type'];
 		$datefilter = $_SESSION['datefilter'];
 		$csv = $form . "_MNO_Data" . date('Y-m-d') . '_' . ".csv";
 
 		if ($print = 1) {
-			$records = $this->data_model->$form($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $print);
+			$records = $this->data_model->$form($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $fworker_type, $print);
 		}
 		//print_r($records);
 		$f = fopen('php://memory', 'w');
