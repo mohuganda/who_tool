@@ -655,7 +655,7 @@ class Data extends MX_Controller
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
 		$data['form'] = 'airtel_data';
-		$data['files'] = $this->data_model->airtel_data($config['per_page'], $page, $dfilter, $ffilter, $print);
+		$data['files'] = $this->data_model->airtel_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}
