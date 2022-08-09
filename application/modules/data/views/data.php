@@ -47,7 +47,7 @@ $facilities = Modules::run("auth/getFacilities");
                             <label for="aw_description">
                                 Worker Type </label>
                             <select name="worker_type" class="form-control">
-                                <option value="" disabled>All</option>
+                                <option value="">All</option>
                                 <option value="mhw">Main Stream</option>
                                 <option value="chw">VHT</option>
 
