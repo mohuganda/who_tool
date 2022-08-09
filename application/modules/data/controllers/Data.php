@@ -110,7 +110,7 @@ class Data extends MX_Controller
 
 		if (($this->input->post('worker_type') != 'ALL')) {
 			$worker_type = $this->input->post('worker_type');
-			$fworker_type = " and hw_type like '$worker_type%'";
+			$fworker_type = "and hw_type like '$worker_type%'";
 		} else {
 			$fworker_type = "";
 		}
@@ -226,7 +226,7 @@ class Data extends MX_Controller
 	public function count_rows($dfilter, $ffilter, $fworker_type)
 	{
 
-		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter,$fworker_type");
+		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter $fworker_type");
 		return $query->num_rows();
 	}
 	public function processed_count_rows($dfilter, $ffilter, $fworker_type, $table)
