@@ -57,25 +57,21 @@ class Data extends MX_Controller
 
 		$datas = $this->data_model->getColumsup();
 
-		foreach ($datas as $dt) :
-			$staff = json_decode($dt->data);
+		foreach ($datas as $staff) :
+
 			// @$staff->sync_date=$dt->sync_date;
 			//print_r($staff->reference);
-			@$facility = str_replace("'", "\'", $staff->facility);
-			@$district = $staff->district;
-			if (empty($district) && (!empty($facility))) {
+			@$facility = $staff->facility;
+
+			if (!empty($facility)) {
 				$db_district = $this->db->query("SELECT DISTINCT district,district_id,facility_id from ihrisdata WHERE facility like '$facility%'")->row();
 				$district = $db_district->district;
 			}
-			@$user_id = $staff->user_id;
-			@$hw_type = $staff->hw_type;
-			$reference = $dt->reference;
-			if (empty($hw_type)) {
-				$hw_type = 'chw';
-			}
-			@$ihris_pid = $staff->ihris_pid;
 
-			$this->db->query("UPDATE records_json SET facility='$facility', district='$district', hw_type='$hw_type',user_id='$user_id',ihris_pid='$ihris_pid' WHERE reference='$reference'");
+			if (empty($district)) {
+				$this->db->query("UPDATE records_json_report SET  district='$district' WHERE facility='$facility'");
+			}
+
 		endforeach;
 	}
 

@@ -35,7 +35,7 @@ class Data_model extends CI_Model
 	}
 	public function getColumsup()
 	{
-		$query = $this->db->query("SELECT * FROM `records_json` WHERE district is NULL or district=''");
+		$query = $this->db->query("SELECT Distinct facility FROM `records_json_report` WHERE district is NULL");
 		return $query->result();
 	}
 	public function getData()
