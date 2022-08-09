@@ -56,7 +56,7 @@ class Data extends MX_Controller
 
 
 		$datas = $this->data_model->getColumsup();
-
+		$i = 0;
 		foreach ($datas as $staff) :
 
 			// @$staff->sync_date=$dt->sync_date;
@@ -68,8 +68,14 @@ class Data extends MX_Controller
 				$district = $db_district->district;
 			}
 
-			if (empty($district)) {
-				$this->db->query("UPDATE records_json_report SET  district='$district' WHERE facility='$facility'");
+			if (!empty($district)) {
+				$update = $this->db->query("UPDATE records_json_report SET  district='$district' WHERE facility='$facility'");
+
+				if ($update) {
+					echo "\033[32m" . $staff->facility . " updated" . $i++ . "\n";
+				} else {
+					echo "\033[37m" . $staff->facility . "Not Found In IHRIS" . $i++ . "\n";
+				}
 			}
 
 		endforeach;
