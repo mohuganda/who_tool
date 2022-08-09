@@ -38,7 +38,7 @@ $facilities = Modules::run("auth/getFacilities");
                         <div class="form-group col-md-4">
                             <label for="aw_description">
                                 Facilities </label>
-                            <select name="facility" class="sfacility form-control">
+                            <select name="facility" class="sfacility form-control select2">
                                 <option value="" disabled>All</option>
 
                             </select>
@@ -46,7 +46,7 @@ $facilities = Modules::run("auth/getFacilities");
                         <div class="form-group col-md-4">
                             <label for="aw_description">
                                 Worker Type </label>
-                            <select name="worker_type" class="form-control">
+                            <select name="worker_type" class="form-control select2">
                                 <option value="">All</option>
                                 <option value="mhw">Main Stream</option>
                                 <option value="chw">VHT</option>
