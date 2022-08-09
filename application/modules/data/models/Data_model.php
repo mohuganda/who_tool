@@ -14,7 +14,7 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT data FROM `records_json`  $dfilter $ffilter, $fworker_type ORDER BY sync_date DESC $limit");
+		$query = $this->db->query("SELECT data FROM `records_json`  $dfilter $ffilter $fworker_type ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
 	public function cleangetData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
@@ -30,7 +30,7 @@ class Data_model extends CI_Model
 	}
 	public function getColums()
 	{
-		$query = $this->db->query("SELECT sync_date,data FROM `records_json`");
+		$query = $this->db->query("SELECT sync_date, data FROM `records_json`");
 		return $query->result();
 	}
 	public function getColumsup()
