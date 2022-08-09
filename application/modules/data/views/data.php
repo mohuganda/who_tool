@@ -83,6 +83,7 @@ $facilities = Modules::run("auth/getFacilities");
                     <tr>
                         <th>No</th>
                         <th>Record Ref ID</th>
+                        <th>Worker Category</th>
                         <th label="Surname">Surname</th>
                         <th label="Firstname">Firstname </th>
                         <th label="Othername">Othername </th>
@@ -106,6 +107,11 @@ $facilities = Modules::run("auth/getFacilities");
 
                         <td label="Record Reference"><?php echo $i++ ?></td>
                         <td label="Record Reference"><?php echo $staff->reference ?></td>
+                        <td><?php if ($staff->hw_type == 'chw') {
+                                echo "Community Health worker";
+                            } else {
+                                echo "Ministry Health worker";
+                            }  ?></td>
                         <td label="Surname"> <?php echo ucwords($staff->surname); ?> </td>
                         <td label="Firstname"><?php echo ucwords($staff->firstname) ?></td>
                         <td label="Othername"><?php echo ucwords($staff->othername) ?></td>
