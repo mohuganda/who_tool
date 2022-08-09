@@ -803,4 +803,90 @@ class Data extends MX_Controller
 
 		exit;
 	}
+	public function utl_data()
+	{
+		@$print = $_GET['print'];
+		$dfilter = $_SESSION['dfilter'] = "";
+		$ffilter = $_SESSION['ffilter'] = "";
+		$fworker_type = $_SESSION['worker_type'] = "";
+		if (!empty($this->input->post('district'))) {
+			$district = $this->input->post('district');
+			$dfilter = $_SESSION['dfilter'] = "WHERE district like '$district%'";
+		} else {
+			$dfilter = "";
+		}
+
+
+
+		if (!empty($this->input->post('facility'))) {
+			$facility = $this->input->post('facility');
+			$_SESSION['ffilter'] = " and facility like '$facility%'";
+		} else {
+			$ffilter = "";
+		}
+
+		if (!empty($this->input->post('worker_type'))) {
+			$worker_type = $this->input->post('worker_type');
+			$fworker_type = $_SESSION['worker_type'] = "and hw_type like '$worker_type%'";
+		} else {
+			$fworker_type = "";
+		}
+
+
+
+		$this->load->library('pagination');
+		$data['uptitle']      = 'UTL Data';
+		$data['title']      = 'UTL Data';
+		$data['module'] 	= "data";
+		$data['view']   	= "telcom_data";
+		$config = array();
+		$config['base_url'] = base_url('data/airtel_data');
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, $fworker_type, 'mtn_clients');
+		$config['per_page'] = 50; //records per page
+		$config['uri_segment'] = 3; //segment in url  
+		//pagination links styling
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['attributes'] = ['class' => 'page-link'];
+		$config['first_link'] = true;
+		$config['last_link'] = true;
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['first_link'] = 'First';
+		$config['last_link'] = 'Last';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = 'Next';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+		$config['use_page_numbers'] = false;
+		$this->pagination->initialize($config);
+		$data['form'] = 'utl_data';
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
+		$data['links'] = $this->pagination->create_links();
+		$data['files'] = $this->data_model->utl_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
+		//print_r($config['total_rows']);
+		echo Modules::run('templates/main', $data);
+	}
+	public function assign_operator()
+	{
+
+		$refs = $this->db->query("SELECT reference from records_json_report WHERE primary_mobile_operator='UTL'");
+		$i = 0;
+		foreach ($refs as $ref) :
+
+			$query = $this->db->query("UPDATE records_json_report SET primary_mobile_operator='MTN' WHERE reference='$ref->reference' AND primary_mobile_number LIKE '077%' OR primary_mobile_number LIKE '078%' OR primary_mobile_number LIKE '076%'");
+			if ($query) {
+				echo "\033[32m" . $ref->reference . " Inserted Record" . $i++ . "\n";
+			} else {
+				echo "\033[37m" . $ref->reference . "Failed" . $i++ . "\n";
+			}
+		endforeach;
+	}
 }

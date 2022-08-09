@@ -79,4 +79,17 @@ class Data_model extends CI_Model
 		$query = $this->db->query("SELECT * FROM `airtel_clients` WHERE status='clean' $dfilter $ffilter $fworker_type ORDER BY surname ASC $limit");
 		return $query->result();
 	}
+	public function utl_data($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
+	{
+		if ($print == 1) {
+			$limit = "";
+		} else {
+
+			$limit = "LIMIT $starts,$limits";
+		}
+		$query = $this->db->query("SELECT * FROM `utl_clients` WHERE status='clean' $dfilter $ffilter $fworker_type ORDER BY surname ASC $limit");
+		return $query->result();
+	}
+
+
 }
