@@ -65,7 +65,12 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `mtn_clients` WHERE status='clean' $dfilter $ffilter $fworker_type ORDER BY surname ASC $limit");
+		if (empty($dfilter)) {
+			$fstatus = "WHERE status='clean'";
+		} else {
+			$fstatus = "and status='clean'";
+		}
+		$query = $this->db->query("SELECT * FROM `mtn_clients`  $dfilter $fstatus $ffilter $fworker_type ORDER BY surname ASC $limit");
 		return $query->result();
 	}
 	public function airtel_data($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
@@ -76,7 +81,12 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `airtel_clients` WHERE status='clean' $dfilter $ffilter $fworker_type ORDER BY surname ASC $limit");
+		if (empty($dfilter)) {
+			$fstatus = "WHERE status='clean'";
+		} else {
+			$fstatus = "and status='clean'";
+		}
+		$query = $this->db->query("SELECT * FROM `airtel_clients`  $dfilter $fstatus $ffilter $fworker_type ORDER BY surname ASC $limit");
 		return $query->result();
 	}
 	public function utl_data($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
@@ -87,9 +97,12 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `utl_clients` WHERE status='clean' $dfilter $ffilter $fworker_type ORDER BY surname ASC $limit");
+		if (empty($dfilter)) {
+			$fstatus = "WHERE status='clean'";
+		} else {
+			$fstatus = "and status='clean'";
+		}
+		$query = $this->db->query("SELECT * FROM `utl_clients`  $dfilter $fstatus $ffilter $fworker_type ORDER BY surname ASC $limit");
 		return $query->result();
 	}
-
-
 }

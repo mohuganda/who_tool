@@ -233,9 +233,13 @@ class Data extends MX_Controller
 	}
 	public function processed_count_rows($dfilter, $ffilter, $fworker_type, $table)
 	{
+		if (empty($dfilter)) {
+			$fstatus = "WHERE status='clean'";
+		} else {
+			$fstatus = "and status='clean'";
+		}
 
-
-		$query = $this->db->query("SELECT reference from $table WHERE status='clean' $fworker_type $dfilter $ffilter");
+		$query = $this->db->query("SELECT reference from $table   $dfilter $fstatus $fworker_type ");
 		return $query->num_rows();
 	}
 
