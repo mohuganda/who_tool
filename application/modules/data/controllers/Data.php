@@ -841,7 +841,7 @@ class Data extends MX_Controller
 		$data['view']   	= "telcom_data";
 		$config = array();
 		$config['base_url'] = base_url('data/airtel_data');
-		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, $fworker_type, 'mtn_clients');
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, $fworker_type, 'utl_clients');
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
