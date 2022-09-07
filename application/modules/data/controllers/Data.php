@@ -268,7 +268,7 @@ class Data extends MX_Controller
 		$data['view']   	= "kyc_verified_data";
 		$config = array();
 		$config['base_url'] = base_url('data/processed');
-		$data['total_rows'] = $config['total_rows'] = $this->data_model->kyc_verified_data($config['per_page'] = 0, $page = 1, $dfilter, $ffilter, $fworker_type, $count = 1);
+		$data['total_rows'] = $config['total_rows'] = $this->kyc_count_rows($dfilter, $ffilter, $fworker_type);
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -304,6 +304,12 @@ class Data extends MX_Controller
 	{
 
 		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter $fworker_type");
+		return $query->num_rows();
+	}
+	public function kyc_count_rows($dfilter, $ffilter, $fworker_type)
+	{
+
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference WHERE kyc_status IS NOT NULL $dfilter $ffilter $fworker_type");
 		return $query->num_rows();
 	}
 	function generate_users()
