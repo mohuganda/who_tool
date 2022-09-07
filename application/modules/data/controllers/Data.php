@@ -19,6 +19,11 @@ class Data extends MX_Controller
 		$district = $this->db->query("SELECT distinct district from ihrisdata WHERE facility like '$fac%'")->row()->district;
 		return $district;
 	}
+	public function kyc_status()
+	{
+		$kyc = $this->db->query("SELECT distinct kyc_status from validated_numbers")->result();
+		return $kyc;
+	}
 	//This updates data to the new format 
 	function normalise_data()
 	{
@@ -296,7 +301,6 @@ class Data extends MX_Controller
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
-		$data['kyc_status'] = $this->data_model->kyc_status();
 		$data['files'] = $this->data_model->kyc_verified_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);

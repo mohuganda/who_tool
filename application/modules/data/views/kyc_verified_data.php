@@ -8,6 +8,8 @@
 $districts = Modules::run("auth/getDistricts");
 
 $facilities = Modules::run("auth/getFacilities");
+$kyc_status = Modules::run("data/kyc_status");
+
 ?>
 <section class="col-lg-12 connectedSortable">
     <div class="row">
