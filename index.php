@@ -1,6 +1,6 @@
 <?php
 
-ini_set('display_startup_errors', 1);
+
 date_default_timezone_set('Africa/Kampala');
 
 define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
