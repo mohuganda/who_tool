@@ -308,7 +308,7 @@ class Data extends MX_Controller
 	}
 	function generate_users()
 	{
-		$districts =  $this->db->query('SELECT distinct district,district_id from ihrisdata');
+		$districts =  $this->db->query('SELECT distinct district,district_id from ihrisdata')->result();
 		$i = 0;
 		foreach ($districts as $dist) :
 
