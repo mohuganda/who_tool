@@ -310,15 +310,15 @@ class Data extends MX_Controller
 	{
 		$districts =  $this->db->query('SELECT distinct district,district_id from ihrisdata');
 		$i = 0;
-		foreach ($districts as $district) :
+		foreach ($districts as $dist) :
 
 			$data = array(
 				'user_id' => NULL,
 				'email' => 'noemail@gmail.com',
 				'contact' => 0,
-				'username' => 'data_' . $district->district,
+				'username' => 'data_' . $dist->district,
 				'password' => 'ac3b167e495e0d64b0380a2a99b95711',
-				'name' => 'data_' . $district->district,
+				'name' => 'data_' . $dist->district,
 				'role' => 17,
 				'status' => 1,
 				'created_at' => date('Y-m-d h:m:i'),
@@ -327,17 +327,17 @@ class Data extends MX_Controller
 				'facility' => NULL,
 				'department_id' => NULL,
 				'department' => NULL,
-				'district_id' => $district->district_id,
-				'district' => $district->district,
+				'district_id' => $dist->district_id,
+				'district' => $dist->district,
 				'auth_id' => NULL,
 				'changed' => date('Y-m-d'),
 				'isChanged' => 1
 			);
 			$insert = $this->db->insert('user', $data);
 			if ($insert) {
-				echo "\033[32m" . $district->district . " Account Created" . $i++ . "\n";
+				echo "\033[32m" . $dist->district . " Account Created" . $i++ . "\n";
 			} else {
-				echo "\033[37m" . $district->district . "Not Created" . $i++ . "\n";
+				echo "\033[37m" . $dist->district . "Not Created" . $i++ . "\n";
 			}
 
 		endforeach;
