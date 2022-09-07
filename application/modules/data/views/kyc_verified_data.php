@@ -90,7 +90,7 @@ $facilities = Modules::run("auth/getFacilities");
                         <th>Worker Category</th>
                         <th label="Customer Name">Customer Name</th>
                         <th label="Network Provider Registered Name">Network Provider Registered Name </th>
-                        <th label="Othername">kyc_status </th>
+                        <th label="Othername">KYC Status </th>
                         <th label="Mobile Number">Primary Mobile Number </th>
                         <th label="Facility ">Facility </th>
                         <th label="Ditrict">District</th>
