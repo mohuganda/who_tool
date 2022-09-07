@@ -88,16 +88,13 @@ $facilities = Modules::run("auth/getFacilities");
                         <th>No</th>
                         <th>Record Ref ID</th>
                         <th>Worker Category</th>
-                        <th label="Surname">Surname</th>
-                        <th label="Firstname">Firstname </th>
-                        <th label="Othername">Othername </th>
+                        <th label="Customer Name">Customer Name</th>
+                        <th label="Network Provider Registered Name">Network Provider Registered Name </th>
+                        <th label="Othername">kyc_status </th>
                         <th label="Mobile Number">Primary Mobile Number </th>
-                        <th label="Registered Name if Not Owner"> Registered Name </th>
-                        <th label="National ID">National ID</th>
-                        <th label="Job">Job</th>
                         <th label="Facility ">Facility </th>
                         <th label="Ditrict">District</th>
-                        <th label="Status">Status</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -116,18 +113,12 @@ $facilities = Modules::run("auth/getFacilities");
                             } else {
                                 echo "Ministry Health worker";
                             }  ?></td>
-                        <td label="Surname"> <?php echo ucwords($staff->surname); ?> </td>
-                        <td label="Firstname"><?php echo ucwords($staff->firstname) ?></td>
-                        <td label="Othername"><?php echo ucwords($staff->othername) ?></td>
-                        <td label="Primary Phone Number"><?php echo $staff->primary_mobile_number ?></td>
-                        <td label="Consented Registered Names"><?php echo ucwords($staff->registered_mm_name) ?></td>
-                        <td label="National ID"><?php echo ucwords(@$staff->national_id) ?></td>
-                        <td label="Position"><?php echo ucwords($staff->job) ?></td>
-                        <td label="Facility"><?php echo ucwords(@$staff->facility) ?></td>
-                        <td label="District"> <?php echo @$staff->district; ?></td>
-                        <td label="District"> <?php echo @$staff->status; ?></td>
-
-
+                        <td label="Name"> <?php echo ucwords($staff->customer_name); ?> </td>
+                        <td label="Name"> <?php echo ucwords($staff->mno_registered_name); ?> </td>
+                        <td label="Primary Phone Number"><?php echo $staff->kyc_status ?></td>
+                        <td label="Primary Phone Number"><?php echo $staff->mobile_number ?></td>
+                        <td label="Primary Phone Number"><?php echo $staff->facility ?></td>
+                        <td label="Primary Phone Number"><?php echo $staff->district ?></td>
 
                         </tr>
                     <?php endforeach; ?>
