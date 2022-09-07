@@ -268,7 +268,7 @@ class Data extends MX_Controller
 		$data['view']   	= "kyc_verified_data";
 		$config = array();
 		$config['base_url'] = base_url('data/processed');
-		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, $fworker_type, 'records_json_report');
+		$data['total_rows'] = $config['total_rows'] = $this->data_model->kyc_verified_data($config['per_page']=0, $page=1, $dfilter, $ffilter, $fworker_type, $count=1);
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
