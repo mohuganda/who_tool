@@ -163,7 +163,7 @@ class Data extends MX_Controller
 		@$print = $_GET['print'];
 		if (!empty($this->input->post('district'))) {
 			$district = $this->input->post('district');
-			$dfilter = $_SESSION['dfilter'] = "WHERE district like '$district%'";
+			$dfilter = $_SESSION['dfilter'] = "WHERE district='$district'";
 		} else {
 			$dfilter = "";
 		}
@@ -179,7 +179,7 @@ class Data extends MX_Controller
 
 		if (!empty($this->input->post('worker_type'))) {
 			$worker_type = $this->input->post('worker_type');
-			$fworker_type = $_SESSION['worker_type'] = "and hw_type like '$worker_type%'";
+			$fworker_type = $_SESSION['worker_type'] = "and hw_type='$worker_type'";
 		} else {
 			$fworker_type = "";
 		}
@@ -238,7 +238,7 @@ class Data extends MX_Controller
 		@$print = $_GET['print'];
 		if (!empty($this->input->post('district'))) {
 			$district = $this->input->post('district');
-			$dfilter = $_SESSION['dfilter'] = "WHERE district like '$district%'";
+			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
 		} else {
 			$dfilter = "";
 		}
@@ -247,14 +247,14 @@ class Data extends MX_Controller
 
 		if (!empty($this->input->post('facility'))) {
 			$facility = $this->input->post('facility');
-			$_SESSION['ffilter'] = " and facility like '$facility%'";
+			$_SESSION['ffilter'] = " and facility = '$facility'";
 		} else {
 			$ffilter = "";
 		}
 
 		if (!empty($this->input->post('worker_type'))) {
 			$worker_type = $this->input->post('worker_type');
-			$fworker_type = $_SESSION['worker_type'] = "and hw_type like '$worker_type%'";
+			$fworker_type = $_SESSION['worker_type'] = "and hw_type = '$worker_type'";
 		} else {
 			$fworker_type = "";
 		}
@@ -296,6 +296,7 @@ class Data extends MX_Controller
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
+		$data['kyc_status'] = $this->data_model->kyc_status();
 		$data['files'] = $this->data_model->kyc_verified_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);

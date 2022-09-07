@@ -5,7 +5,11 @@ class Data_model extends CI_Model
 {
 
 
-
+	public function kyc_status()
+	{
+		$kyc = $this->db->query("SELECT distinct kyc_status from validated_numbers")->result();
+		return $kyc;
+	}
 	public function getData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
 	{
 		if ($print == 1) {
@@ -30,7 +34,7 @@ class Data_model extends CI_Model
 		} else {
 			$kycstatus = "and kyc_status IS NOT NULL";
 		}
-		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference  $dfilter $kycstatus $ffilter $fworker_type ORDER BY sync_date DESC $limit");
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference  $dfilter $kycstatus $ffilter $fworker_type $limit");
 		return $query->result();
 	}
 	public function cleangetData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
