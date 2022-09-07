@@ -333,7 +333,7 @@ class Data extends MX_Controller
 				'changed' => date('Y-m-d'),
 				'isChanged' => 1
 			);
-			$insert = $this->db->insert('user', "$data");
+			$insert = $this->db->insert('user', $data);
 			if ($insert) {
 				echo "\033[32m" . $district->district . " Account Created" . $i++ . "\n";
 			} else {
