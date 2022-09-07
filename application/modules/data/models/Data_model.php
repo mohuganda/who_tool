@@ -25,7 +25,12 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference WHERE kyc_status IS NOT NULL $dfilter $ffilter $fworker_type ORDER BY sync_date DESC $limit");
+		if (empty($dfilter)) {
+			$kycstatus = "WHERE kyc_status IS NOT NULL";
+		} else {
+			$kycstatus = "kyc_status IS NOT NULL";
+		}
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference  $dfilter $kycstatus $ffilter $fworker_type ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
 	public function cleangetData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
@@ -36,7 +41,12 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `records_json_report` where status='Clean' $dfilter $ffilter $fworker_type ORDER BY sync_date DESC $limit");
+		if (empty($dfilter)) {
+			$fstatus = "WHERE status='clean'";
+		} else {
+			$fstatus = "and status='clean'";
+		}
+		$query = $this->db->query("SELECT * FROM `records_json_report` $dfilter $fstatus $ffilter $fworker_type ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
 	public function getColums()
