@@ -62,7 +62,7 @@ $kyc_status = Modules::run("data/kyc_status");
                             <select name="kyc_status" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());" multiple>
                                 <option value="" disabled selected>SELECT Below</option>
                                 <option value="">ALL</option>
-                                <?php foreach ($kyc_status as $kyc->kyc_status) :
+                                <?php foreach ($kyc_status as $kyc) :
                                 ?>
                                     <option value="<?php echo $kyc->kyc_status; ?>" <?php if ($this->input->post('kyc_status') == $kyc->kyc_status) echo "selected"; ?>><?php echo $kyc->kyc_status; ?></option>
                                 <?php endforeach; ?>
