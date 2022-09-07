@@ -315,7 +315,7 @@ class Data extends MX_Controller
 			$kycstatus = "and kyc_status IS NOT NULL";
 		}
 
-		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference WHERE  $dfilter $kycstatus $ffilter $fworker_type");
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference $dfilter $kycstatus $ffilter $fworker_type");
 		return $query->num_rows();
 	}
 	function generate_users()
