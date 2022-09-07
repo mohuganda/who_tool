@@ -77,6 +77,17 @@
           </li>
         <?php } ?>
 
+        <?php if (in_array('13', $permissions)) { ?>
+          <li class="nav-item">
+            <a href="<?php echo base_url(); ?>data/kyc_verified" class="nav-link">
+              <i class="fa fa-th"></i>
+              <p>
+                KYC verified Data
+              </p>
+            </a>
+          </li>
+        <?php } ?>
+
         <!--user perm 14-->
         <?php if (in_array('13', $permissions)) { ?>
           <li class="nav-item has-treeview ">

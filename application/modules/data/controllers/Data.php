@@ -225,11 +225,122 @@ class Data extends MX_Controller
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}
+
+
+	//kyc verified
+
+	public function kyc_verified()
+
+	{
+		$dfilter = $_SESSION['dfilter'] = "";
+		$ffilter = $_SESSION['ffilter'] = "";
+		$fworker_type = $_SESSION['worker_type'] = "";
+		@$print = $_GET['print'];
+		if (!empty($this->input->post('district'))) {
+			$district = $this->input->post('district');
+			$dfilter = $_SESSION['dfilter'] = "WHERE district like '$district%'";
+		} else {
+			$dfilter = "";
+		}
+
+
+
+		if (!empty($this->input->post('facility'))) {
+			$facility = $this->input->post('facility');
+			$_SESSION['ffilter'] = " and facility like '$facility%'";
+		} else {
+			$ffilter = "";
+		}
+
+		if (!empty($this->input->post('worker_type'))) {
+			$worker_type = $this->input->post('worker_type');
+			$fworker_type = $_SESSION['worker_type'] = "and hw_type like '$worker_type%'";
+		} else {
+			$fworker_type = "";
+		}
+
+
+
+		$this->load->library('pagination');
+		$data['uptitle']      = 'KYC Verified Data Report';
+		$data['title']      = 'KYC Verified Data Report';
+		$data['module'] 	= "data";
+		$data['view']   	= "kyc_verified_data";
+		$config = array();
+		$config['base_url'] = base_url('data/processed');
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, $fworker_type, 'records_json_report');
+		$config['per_page'] = 50; //records per page
+		$config['uri_segment'] = 3; //segment in url  
+		//pagination links styling
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['attributes'] = ['class' => 'page-link'];
+		$config['first_link'] = true;
+		$config['last_link'] = true;
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['first_link'] = 'First';
+		$config['last_link'] = 'Last';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = 'Next';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+		$config['use_page_numbers'] = false;
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
+		$data['links'] = $this->pagination->create_links();
+		$data['files'] = $this->data_model->kyc_verified_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
+		//print_r($config['total_rows']);
+		echo Modules::run('templates/main', $data);
+	}
 	public function count_rows($dfilter, $ffilter, $fworker_type)
 	{
 
 		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter $fworker_type");
 		return $query->num_rows();
+	}
+	function generate_users()
+	{
+		$districts =  $this->db->query('SELECT distinct district,district_id from ihrisdata');
+		$i = 0;
+		foreach ($districts as $district) :
+
+			$data = array(
+				'user_id' => NULL,
+				'email' => 'noemail@gmail.com',
+				'contact' => 0,
+				'username' => 'data_' . $district,
+				'password' => 'ac3b167e495e0d64b0380a2a99b95711',
+				'name' => 'data_' . $district,
+				'role' => 17,
+				'status' => 1,
+				'created_at' => date('Y-m-d h:m:i'),
+				'ihris_pid' => NULL,
+				'facility_id' => NULL,
+				'facility' => NULL,
+				'department_id' => NULL,
+				'department' => NULL,
+				'district_id' => $district->district_id,
+				'district' => $district,
+				'auth_id' => NULL,
+				'changed' => date('Y-m-d'),
+				'isChanged' => 1
+			);
+			$insert = $this->db->insert('user', "$data");
+			if ($insert) {
+				echo "\033[32m" . $district->district . " Account Created" . $i++ . "\n";
+			} else {
+				echo "\033[37m" . $district->district . "Not Created" . $i++ . "\n";
+			}
+
+		endforeach;
 	}
 	public function processed_count_rows($dfilter, $ffilter, $fworker_type, $table)
 	{
@@ -589,7 +700,7 @@ class Data extends MX_Controller
 		//print_r($reference);
 		$i = 1;
 		foreach ($references as $reference) :
-			$datas = $this->db->query("SELECT reference,data FROM `records_json` WHERE reference='$reference->reference'")->row();
+			$datas = $this->db->query("SELECT reference,data FROM 'records_json' WHERE reference='$reference->reference'")->row();
 
 			$staff = json_decode($datas->data);
 

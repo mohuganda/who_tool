@@ -17,6 +17,17 @@ class Data_model extends CI_Model
 		$query = $this->db->query("SELECT data FROM `records_json`  $dfilter $ffilter $fworker_type ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
+	public function kyc_verified_data($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
+	{
+		if ($print == 1) {
+			$limit = "";
+		} else {
+
+			$limit = "LIMIT $starts,$limits";
+		}
+		$query = $this->db->query("SELECT * FROM `validated_numbers` LEFT join `records_json_report` on  $dfilter $ffilter $fworker_type ORDER BY sync_date DESC $limit");
+		return $query->result();
+	}
 	public function cleangetData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
 	{
 		if ($print == 1) {
