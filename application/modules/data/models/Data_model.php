@@ -25,7 +25,7 @@ class Data_model extends CI_Model
 
 			$limit = "LIMIT $starts,$limits";
 		}
-		$query = $this->db->query("SELECT * FROM `validated_numbers` LEFT join `records_json_report` on  $dfilter $ffilter $fworker_type ORDER BY sync_date DESC $limit");
+		$query = $this->db->query("SELECT * FROM `records_json_report` where status='Clean' and reference in (select distinct reference from validated_numbers) $dfilter $ffilter $fworker_type ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
 	public function cleangetData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
