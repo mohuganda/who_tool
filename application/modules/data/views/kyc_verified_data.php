@@ -29,10 +29,17 @@ $kyc_status = Modules::run("data/kyc_status");
                             <select name="district" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());">
                                 <option value="" disabled selected>DISTRICT</option>
                                 <option value="">ALL</option>
-                                <?php foreach ($districts as $district) :
+                                <?php
+                                if ($_SESSION['role'] != "District Administrator") {
+                                    foreach ($districts as $district) :
                                 ?>
-                                    <option value="<?php echo $district->district; ?>" <?php if ($this->input->post('district') == $district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
-                                <?php endforeach; ?>
+                                        <option value="<?php echo $district->district; ?>" <?php if ($this->input->post('district') == $district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
+                                    <?php endforeach;
+                                } else { ?>
+                                    <option value="<?php echo $_SESSION['district']; ?>" <?php if ($this->input->post('district') == $_SESSION['district']) echo "selected"; ?>><?php echo $_SESSION['district']; ?></option>
+                                <?php }
+
+                                ?>
                             </select>
 
 

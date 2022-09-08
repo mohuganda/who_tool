@@ -237,12 +237,16 @@ class Data extends MX_Controller
 	public function kyc_verified()
 
 	{
+
 		$dfilter = $_SESSION['dfilter'] = "";
 		$ffilter = $_SESSION['ffilter'] = "";
 		$fworker_type = $_SESSION['worker_type'] = "";
 		@$print = $_GET['print'];
 		if (!empty($this->input->post('district'))) {
 			$district = $this->input->post('district');
+			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
+		} elseif (!empty($_SESSION['district'])) {
+			$district = $_SESSION['district'];
 			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
 		} else {
 			$dfilter = "";
