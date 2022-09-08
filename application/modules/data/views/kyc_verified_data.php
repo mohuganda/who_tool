@@ -66,9 +66,8 @@ $kyc_status = Modules::run("data/kyc_status");
                         <div class="form-group col-md-4">
                             <label for="aw_description">
                                 KYC Status </label>
-                            <select name="kyc_status" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());" multiple>
-                                <option value="" disabled selected>SELECT Below</option>
-                                <option value="">ALL</option>
+                            <select name="kyc_status[]" class="form-control select2 sdistrict" style="width:100%;" multiple>
+
                                 <?php foreach ($kyc_status as $kyc) :
                                 ?>
                                     <option value="<?php echo $kyc->kyc_status; ?>" <?php if ($this->input->post('kyc_status') == $kyc->kyc_status) echo "selected"; ?>><?php echo $kyc->kyc_status; ?></option>
@@ -83,12 +82,8 @@ $kyc_status = Modules::run("data/kyc_status");
             </div>
 
             <div class="row">
-                <?php if ($this->input->post('district')) : ?>
-                    <a href="<?php echo base_url() ?>data/pdf_data/1" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file" aria-hidden="true"></i>PDF</a>
-                    &nbsp;&nbsp;
-                    <!-- <a href="<?php echo base_url() ?>data/large_csv_data/1" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a> -->
-                    &nbsp;&nbsp;
-                <?php endif; ?>
+                <a href="<?php echo base_url() ?>data/kyc_csv/1/<?php echo $form ?>" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>
+                &nbsp;&nbsp;
                 <button type="submit" class="btn bt-sm bg-gray-dark color-pale" style="width:100px; "><i class="fa fa-tasks" aria-hidden="true"></i>APPLY</button>
                 &nbsp;&nbsp;
             </div>
@@ -114,7 +109,8 @@ $kyc_status = Modules::run("data/kyc_status");
                         <th>Worker Category</th>
                         <th label="Customer Name">Customer Name</th>
                         <th label="Network Provider Registered Name">Network Provider Registered Name </th>
-                        <th label="Othername">KYC Status </th>
+                        <th label="Position">Position </th>
+                        <th label="Kyc Status">KYC Status </th>
                         <th label="Mobile Number">Primary Mobile Number </th>
                         <th label="Facility ">Facility </th>
                         <th label="Ditrict">District</th>
@@ -138,7 +134,8 @@ $kyc_status = Modules::run("data/kyc_status");
                                 echo "Ministry Health worker";
                             }  ?></td>
                         <td label="Name"> <?php echo ucwords($staff->customer_name); ?> </td>
-                        <td label="Name"> <?php echo ucwords($staff->mno_registered_name); ?> </td>
+                        <td label="MNO Name"> <?php echo ucwords($staff->mno_registered_name); ?> </td>
+                        <td label="Primary Phone Number"><?php echo $staff->job ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->kyc_status ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->mobile_number ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->facility ?></td>

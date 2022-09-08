@@ -234,6 +234,75 @@ class Data extends MX_Controller
 
 	//kyc verified
 
+	public function kyc_csv($print)
+	{
+		ini_set('max_execution_time', 0);
+		$dfilter = $_SESSION['dfilter'];
+		$ffilter = $_SESSION['ffilter'];
+		$fworker_type = $_SESSION['worker_type'];
+		$datefilter = $_SESSION['datefilter'];
+		$kycfilter = $_SESSION['kycfilter'];
+		$csv = $_SESSION['district'] . "_MNO_Data" . date('Y-m-d') . '_' . ".csv";
+
+		if ($print = 1) {
+			$records = $this->data_model->kyc_verified_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $kycfilter, $fworker_type, $print);
+		}
+		//print_r($records);
+		$f = fopen('php://memory', 'w');
+		$delimiter = ",";
+		$fields = array(
+
+			'NO',
+			'Reference',
+			'Worker Type',
+			'Name  ',
+			'MNO Registered Name ',
+			'JOb ',
+			'KYC Status ',
+			'Mobile Number',
+			'Facility',
+			'District'
+
+		);
+		fputcsv($f, $fields, $delimiter);
+		$i = 0;
+		foreach ($records as $staff) {
+			if ($staff->hw_type == 'chw') {
+				$wtype = "Community Health worker";
+			} else {
+				$wtype = "Ministry Health worker";
+			}
+			$data = array(
+				$i++,
+				@$staff->reference,
+				ucwords($wtype),
+				ucwords($staff->customer_name),
+				ucwords($staff->mno_registered_name),
+				ucwords($staff->job),
+				ucwords($staff->kyc_status),
+				ucwords(@$staff->mobile_number),
+				ucwords($staff->facility),
+				ucwords($staff->district)
+
+			);
+
+			fputcsv($f, $data, $delimiter);
+		}
+		// Move back to beginning of file 
+		fseek($f, 0);
+
+		// Set headers to download file rather than displayed 
+		header('Content-Type: text/csv');
+		header('Content-Disposition: attachment; filename="' . $csv . '";');
+		header("Pragma: no-cache");
+		header("Expires: 0");
+
+		//output all remaining data on a file pointer 
+		fpassthru($f);
+
+		exit;
+	}
+
 	public function kyc_verified()
 
 	{
