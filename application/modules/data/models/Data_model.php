@@ -34,7 +34,7 @@ class Data_model extends CI_Model
 		} else {
 			$kycstatus = "and kyc_status IS NOT NULL";
 		}
-		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type,r.job FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference  $dfilter $kycstatus $ffilter $kycfilter $fworker_type $limit");
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type,r.job,r.national_id FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference  $dfilter $kycstatus $ffilter $kycfilter $fworker_type $limit");
 		return $query->result();
 	}
 	public function cleangetData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
