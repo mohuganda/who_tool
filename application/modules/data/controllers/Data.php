@@ -344,7 +344,7 @@ class Data extends MX_Controller
 		if (!empty($kyc)) {
 
 
-			$kycfilter = $_SESSION['kycfilter'] = " and kyc_status in  ($kyc)";
+			$kycfilter = $_SESSION['kycfilter'] = " and kyc_status in  ('$kyc')";
 		} else {
 			$kycfilter = "";
 		}
