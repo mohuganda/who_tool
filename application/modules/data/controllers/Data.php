@@ -339,8 +339,8 @@ class Data extends MX_Controller
 
 
 		$kycs = $this->input->post('kyc_status');
-		//$kyc = implode("','", $kycs);
-		$kyc =  implode(',', array_map('add_quotes', $kycs));
+		$kyc = implode("','", $kycs);
+		//$kyc =  implode(',', array_map('add_quotes', $kycs));
 		if (!empty($kyc)) {
 
 
