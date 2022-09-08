@@ -74,7 +74,7 @@ $kyc_status = Modules::run("data/kyc_status");
                                 <?php endforeach; ?>
                             </select>
 
-                            Showing ( <?php echo $_SESSION['kycfilter']; ?> )
+                            Showing <?php echo str_replace(" and kyc_status in ", "", $_SESSION['kycfilter']); ?>
 
 
                         </div>
