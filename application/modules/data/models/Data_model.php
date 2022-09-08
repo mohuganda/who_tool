@@ -21,7 +21,7 @@ class Data_model extends CI_Model
 		$query = $this->db->query("SELECT data FROM `records_json`  $dfilter $ffilter $fworker_type ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
-	public function kyc_verified_data($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)
+	public function kyc_verified_data($limits, $starts, $dfilter, $ffilter, $kycfilter, $fworker_type, $print)
 	{
 		if ($print == 1) {
 			$limit = "";
@@ -34,7 +34,7 @@ class Data_model extends CI_Model
 		} else {
 			$kycstatus = "and kyc_status IS NOT NULL";
 		}
-		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference  $dfilter $kycstatus $ffilter $fworker_type $limit");
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference  $dfilter $kycstatus $ffilter $kycfilter $fworker_type $limit");
 		return $query->result();
 	}
 	public function cleangetData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)

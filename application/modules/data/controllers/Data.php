@@ -256,7 +256,7 @@ class Data extends MX_Controller
 
 		if (!empty($this->input->post('facility'))) {
 			$facility = $this->input->post('facility');
-			$_SESSION['ffilter'] = " and facility = '$facility'";
+			$ffilter = $_SESSION['ffilter'] = " and facility = '$facility'";
 		} else {
 			$ffilter = "";
 		}
@@ -269,6 +269,15 @@ class Data extends MX_Controller
 		}
 
 
+		$kycs = $this->input->post('kyc_status');
+		$kyc = implode(',', $kycs);
+		if (!empty($kyc)) {
+			$kycfilter = $_SESSION['kycfilter'] = " and kyc_status in  ($kyc)";
+		} else {
+			$kycfilter = "";
+		}
+
+
 
 		$this->load->library('pagination');
 		$data['uptitle']      = 'KYC Verified Data Report';
@@ -277,7 +286,7 @@ class Data extends MX_Controller
 		$data['view']   	= "kyc_verified_data";
 		$config = array();
 		$config['base_url'] = base_url('data/kyc_verified');
-		$data['total_rows'] = $config['total_rows'] = $this->kyc_count_rows($dfilter, $ffilter, $fworker_type);
+		$data['total_rows'] = $config['total_rows'] = $this->kyc_count_rows($dfilter, $ffilter, $kycfilter, $fworker_type);
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -305,7 +314,7 @@ class Data extends MX_Controller
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
-		$data['files'] = $this->data_model->kyc_verified_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
+		$data['files'] = $this->data_model->kyc_verified_data($config['per_page'], $page, $dfilter, $ffilter, $kycfilter, $fworker_type, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}
@@ -315,7 +324,7 @@ class Data extends MX_Controller
 		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter $fworker_type");
 		return $query->num_rows();
 	}
-	public function kyc_count_rows($dfilter, $ffilter, $fworker_type)
+	public function kyc_count_rows($dfilter, $ffilter, $kycfilter, $fworker_type)
 
 	{
 		if (empty($dfilter)) {
@@ -324,7 +333,7 @@ class Data extends MX_Controller
 			$kycstatus = "and kyc_status IS NOT NULL";
 		}
 
-		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference $dfilter $kycstatus $ffilter $fworker_type");
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference $dfilter $kycstatus $kycfilter $ffilter $fworker_type");
 		return $query->num_rows();
 	}
 	function generate_users()
