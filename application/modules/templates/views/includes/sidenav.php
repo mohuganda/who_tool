@@ -77,7 +77,7 @@
           </li>
         <?php } ?>
 
-        <?php if (in_array('13', $permissions)) { ?>
+        <?php if (in_array('14', $permissions)) { ?>
           <li class="nav-item">
             <a href="<?php echo base_url(); ?>data/kyc_verified" class="nav-link">
               <i class="fa fa-th"></i>
