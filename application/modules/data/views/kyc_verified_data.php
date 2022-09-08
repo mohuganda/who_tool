@@ -21,7 +21,7 @@ $kyc_status = Modules::run("data/kyc_status");
                     <div class="row">
 
 
-                        <?php print_r($this->session->userdata());
+                        <?php //print_r($this->session->userdata());
                         ?>
                         <div class="form-group col-md-4">
                             <label for="aw_description">
@@ -73,6 +73,8 @@ $kyc_status = Modules::run("data/kyc_status");
                                     <option value="<?php echo $kyc->kyc_status; ?>" <?php if ($this->input->post('kyc_status') == $kyc->kyc_status) echo "selected"; ?>><?php echo $kyc->kyc_status; ?></option>
                                 <?php endforeach; ?>
                             </select>
+
+                            Showing ( <?php echo $_SESSION['kycfilter']; ?> )
 
 
                         </div>
