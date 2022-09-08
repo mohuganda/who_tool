@@ -128,13 +128,13 @@ $kyc_status = Modules::run("data/kyc_status");
 
                     ?>
 
-                        <td label="Record Reference"><?php echo $i++ ?></td>
+                        <td label="No"><?php echo $i++ ?></td>
                         <td label="Record Reference"><?php echo $staff->reference ?></td>
-                        <td><?php if ($staff->hw_type == 'chw') {
-                                echo "Community Health worker";
-                            } else {
-                                echo "Ministry Health worker";
-                            }  ?></td>
+                        <td label="Worker Category"><?php if ($staff->hw_type == 'chw') {
+                                                        echo "Community Health worker";
+                                                    } else {
+                                                        echo "Ministry Health worker";
+                                                    }  ?></td>
                         <td label="Name"> <?php echo ucwords($staff->customer_name); ?> </td>
                         <td label="MNO Name"> <?php echo ucwords($staff->mno_registered_name); ?> </td>
                         <td label="Primary Phone Number"><?php echo $staff->job ?></td>
@@ -175,31 +175,4 @@ $kyc_status = Modules::run("data/kyc_status");
             ]
         });
     });
-</script>
-
-<script type="text/javascript">
-    var data = "data:text/csv;charset=utf-8,No,Reference,Worker Type,Surname,Firstname,Othername,Date of Birth,Place,Gender,position,facility,ID Type,ID Number,ID Expiry,National ID Number,National ID Card Number,Allow Consent,Mobile Number,Other Contact,Mobile Money Registration Status,Is registered by Health Worker,If No, Registered Name,Allow Mobile Money,KYC verification\ n ";
-
-
-
-    function exportToCSV(start, max) {
-        if (start > max) {
-            $("#response").html('<a href="' + data + '" download="Field_Data_<?php date('Y-m-d'); ?>.csv">Download</a>');
-            return;
-        }
-
-        $.ajax({
-            url: '<?php echo base_url() ?>data/clean_csv',
-            method: 'POST',
-            dataType: 'json',
-            data: {
-                start: start
-            },
-            success: function(response) {
-                data += response.data;
-                console.log(data);
-                exportToCSV((start + 50), max);
-            }
-        });
-    }
 </script>
