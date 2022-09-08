@@ -109,6 +109,7 @@ $kyc_status = Modules::run("data/kyc_status");
                         <th>No</th>
                         <th>Record Ref ID</th>
                         <th>Worker Category</th>
+                        <th>National ID</th>
                         <th label="Customer Name">Customer Name</th>
                         <th label="Network Provider Registered Name">Network Provider Registered Name </th>
                         <th label="Position">Position </th>
@@ -135,6 +136,7 @@ $kyc_status = Modules::run("data/kyc_status");
                                                     } else {
                                                         echo "Ministry Health worker";
                                                     }  ?></td>
+                        <td label="National ID"> <?php echo ucwords($staff->national_id); ?> </td>
                         <td label="Name"> <?php echo ucwords($staff->customer_name); ?> </td>
                         <td label="MNO Name"> <?php echo ucwords($staff->mno_registered_name); ?> </td>
                         <td label="Primary Phone Number"><?php echo $staff->job ?></td>
