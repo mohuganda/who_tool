@@ -343,8 +343,8 @@ class Data extends MX_Controller
 		//$kyc =  implode(',', array_map('add_quotes', $kycs));
 		if (!empty($kyc)) {
 
-
-			$kycfilter = $_SESSION['kycfilter'] = " and kyc_status in  ('$kyc')";
+			$quot = "'";
+			$kycfilter = $_SESSION['kycfilter'] = " and kyc_status in  ($quot$kyc$quot)";
 		} else {
 			$kycfilter = "";
 		}
