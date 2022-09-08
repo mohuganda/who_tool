@@ -339,8 +339,10 @@ class Data extends MX_Controller
 
 
 		$kycs = $this->input->post('kyc_status');
-		$kyc = implode(',', $kycs);
+		$kyc = implode("','", $kycs);
 		if (!empty($kyc)) {
+		
+
 			$kycfilter = $_SESSION['kycfilter'] = " and kyc_status in  ($kyc)";
 		} else {
 			$kycfilter = "";
