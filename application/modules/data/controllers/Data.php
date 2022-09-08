@@ -265,7 +265,7 @@ class Data extends MX_Controller
 
 		);
 		fputcsv($f, $fields, $delimiter);
-		$i = 0;
+		$i = 1;
 		foreach ($records as $staff) {
 			if ($staff->hw_type == 'chw') {
 				$wtype = "Community Health worker";
