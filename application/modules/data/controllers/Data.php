@@ -242,7 +242,7 @@ class Data extends MX_Controller
 		$fworker_type = $_SESSION['worker_type'];
 		$datefilter = $_SESSION['datefilter'];
 		$kycfilter = $_SESSION['kycfilter'];
-		$csv = $_SESSION['district'] . "_MNO_Data" . date('Y-m-d') . '_' . ".csv";
+		$csv = $_SESSION['district'] . "-KYC_VERIFIED" . date('Y-m-d') . '_' . ".csv";
 
 		if ($print = 1) {
 			$records = $this->data_model->kyc_verified_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $kycfilter, $fworker_type, $print);
