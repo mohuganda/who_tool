@@ -112,7 +112,7 @@ $kyc_status = Modules::run("data/kyc_status");
 
 
         </form>
-        <?php print_r($job); ?>
+        <?php print_r($jobs); ?>
 
         &nbsp;&nbsp;<p class="pagination"><?php echo $links; ?>
 
