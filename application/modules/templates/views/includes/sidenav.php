@@ -88,6 +88,17 @@
           </li>
         <?php } ?>
 
+        <?php if (in_array('35', $permissions)) { ?>
+          <li class="nav-item">
+            <a href="<?php echo base_url(); ?>data/kyc_verified" class="nav-link">
+              <i class="fa fa-th"></i>
+              <p>
+                Mismatched Numbers
+              </p>
+            </a>
+          </li>
+        <?php } ?>
+
         <!--user perm 14-->
         <?php if (in_array('13', $permissions)) { ?>
           <li class="nav-item has-treeview ">
@@ -130,7 +141,7 @@
 
         <!--user perm 26-->
         <?php if (in_array('32', $permissions)) { ?>
-          <li class="nav-item has-treeview ">
+          <!-- <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
               <i class="fa fa-check-square"></i>
               <p>
@@ -145,7 +156,7 @@
                   Form - Fields</a>
               </li>
             </ul>
-          </li>
+          </li> -->
         <?php } ?>
 
         <!-- user perm 26

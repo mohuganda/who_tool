@@ -313,8 +313,8 @@ class Data extends MX_Controller
 		$ffilter = $_SESSION['ffilter'] = "";
 		$fworker_type = $_SESSION['worker_type'] = "";
 		@$print = $_GET['print'];
-		if (!empty($this->input->post('district'))) {
-			$district = $this->input->post('district');
+		if (!empty($this->input->get('district'))) {
+			$district = $this->input->get('district');
 			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
 		} elseif (!empty($_SESSION['district'])) {
 			$district = $_SESSION['district'];
@@ -325,22 +325,28 @@ class Data extends MX_Controller
 
 
 
-		if (!empty($this->input->post('facility'))) {
-			$facility = $this->input->post('facility');
+		if (!empty($this->input->get('facility'))) {
+			$facility = $this->input->get('facility');
 			$ffilter = $_SESSION['ffilter'] = " and facility = '$facility'";
 		} else {
 			$ffilter = "";
 		}
 
-		if (!empty($this->input->post('worker_type'))) {
-			$worker_type = $this->input->post('worker_type');
+		if (!empty($this->input->get('worker_type'))) {
+			$worker_type = $this->input->get('worker_type');
 			$fworker_type = $_SESSION['worker_type'] = "and hw_type = '$worker_type'";
 		} else {
 			$fworker_type = "";
 		}
 
+		if (!empty($this->input->get('job'))) {
+			$job = $this->input->get('job');
+			$fjob = $_SESSION['job'] = "and job = '$job'";
+		} else {
+			$fjob = "";
+		}
 
-		$kycs = $this->input->post('kyc_status');
+		$kycs = $this->input->get('kyc_status');
 		$kyc = implode("','", $kycs);
 		//$kyc =  implode(',', array_map('add_quotes', $kycs));
 		if (!empty($kyc)) {
@@ -358,9 +364,10 @@ class Data extends MX_Controller
 		$data['title']      = 'KYC Verified Data Report';
 		$data['module'] 	= "data";
 		$data['view']   	= "kyc_verified_data";
+		$data['jobs'] = $this->data_model->get_jobs();
 		$config = array();
 		$config['base_url'] = base_url('data/kyc_verified');
-		$data['total_rows'] = $config['total_rows'] = $this->kyc_count_rows($dfilter, $ffilter, $kycfilter, $fworker_type);
+		$data['total_rows'] = $config['total_rows'] = $this->kyc_count_rows($dfilter, $ffilter, $kycfilter, $fworker_type, $fjob);
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -388,7 +395,7 @@ class Data extends MX_Controller
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
-		$data['files'] = $this->data_model->kyc_verified_data($config['per_page'], $page, $dfilter, $ffilter, $kycfilter, $fworker_type, $print);
+		$data['files'] = $this->data_model->kyc_verified_data($config['per_page'], $page, $dfilter, $ffilter, $kycfilter, $fworker_type, $fjob, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}
@@ -609,7 +616,7 @@ class Data extends MX_Controller
 		if ((!empty($dfilter)) && ($print = 1)) {
 			$records = $this->data_model->getData2($config['per_page'] = FALSE, $page = FALSE, $dfilter, $ffilter, $worker_type, $print);
 		}
-		//print_r($records);
+		//print_r($records);kyc
 		$f = fopen('php://memory', 'w');
 		$delimiter = ",";
 		$fields = array(
