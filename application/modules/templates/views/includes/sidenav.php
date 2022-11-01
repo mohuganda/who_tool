@@ -56,14 +56,14 @@
         </li>
 
         <?php if (in_array('13', $permissions)) { ?>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="<?php echo base_url(); ?>data/collection" class="nav-link">
               <i class="fa fa-th"></i>
               <p>
                 General Data
               </p>
             </a>
-          </li>
+          </li> -->
         <?php } ?>
 
         <?php if (in_array('13', $permissions)) { ?>
@@ -184,77 +184,77 @@
 
             </ul>
           </li> -->
-        <?php } ?> 
+      <?php } ?>
 
-        <!--user perm 14-->
-        <?php if (in_array('35', $permissions)) { ?>
-          <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link">
-              <i class="fa fa-cog"></i>
-              <p>
-                System Settings
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-
-                <?php if (in_array('15', $permissions)) { ?>
-                  <a href="<?php echo base_url(); ?>auth/users" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Manage User</p>
-                  </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>reports/enrollers" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Enrollers</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>admin/groups" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Group Permissions</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>admin/showLogs" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>User Logs</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>forms/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Constants & Variables</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>data/cache_report" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Cache Report</p>
-                </a>
-              </li>
-            <?php } ?>
-
-
-
-            </ul>
-          </li>
-        <?php } ?>
-
-
-
-        <li class="nav-item has-treeview">
-          <a href="<?php echo base_url(); ?>" class="nav-link" class="passchange nav-link dropdown-toggle" data-toggle="modal" role="button" data-target="#changepassword">
-            <i class="fa fa-lock"></i>
+      <!--user perm 14-->
+      <?php if (in_array('35', $permissions)) { ?>
+        <li class="nav-item has-treeview ">
+          <a href="#" class="nav-link">
+            <i class="fa fa-cog"></i>
             <p>
-              Change Password
-              </i>
+              System Settings
+              <i class="fas fa-angle-left right"></i>
             </p>
           </a>
+          <ul class="nav nav-treeview">
+
+            <li class="nav-item">
+
+              <?php if (in_array('15', $permissions)) { ?>
+                <a href="<?php echo base_url(); ?>auth/users" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage User</p>
+                </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>reports/enrollers" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Enrollers</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>admin/groups" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Group Permissions</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>admin/showLogs" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>User Logs</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>forms/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Constants & Variables</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>data/cache_report" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Cache Report</p>
+              </a>
+            </li>
+          <?php } ?>
+
+
+
+          </ul>
         </li>
+      <?php } ?>
+
+
+
+      <li class="nav-item has-treeview">
+        <a href="<?php echo base_url(); ?>" class="nav-link" class="passchange nav-link dropdown-toggle" data-toggle="modal" role="button" data-target="#changepassword">
+          <i class="fa fa-lock"></i>
+          <p>
+            Change Password
+            </i>
+          </p>
+        </a>
+      </li>
 
 
 
