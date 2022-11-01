@@ -66,12 +66,12 @@ $kyc_status = Modules::run("data/kyc_status");
                         <div class="form-group col-md-4">
                             <label for="aw_description">
                                 Job </label>
-                            <select name="job" class="form-control select2 sdistrict" style="width:100%;" multiple>
+                            <select name="job" class="form-control select2 sdistrict" style="width:100%;>
 
                                 <?php foreach ($jobs as $job) :
                                 ?>
-                                    <option value="<?php echo $job->job; ?>" <?php if ($this->input->get('kyc_status') == $job->job) echo "selected"; ?>><?php echo $job->job; ?></option>
-                                <?php endforeach; ?>
+                                    <option value=" <?php echo $job->job; ?>" <?php if ($this->input->get('kyc_status') == $job->job) echo "selected"; ?>><?php echo $job->job; ?></option>
+                            <?php endforeach; ?>
                             </select>
 
 

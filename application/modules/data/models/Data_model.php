@@ -11,7 +11,10 @@ class Data_model extends CI_Model
 		return $kyc;
 	}
 	public function get_jobs()
-	{		   $this->db->select('job');
+
+	{
+		$this->db->select('job');
+		$this->db->distinct('job');
 		$kyc = $this->db->get('records_json_report')->result();
 		return $kyc;
 	}
@@ -26,7 +29,7 @@ class Data_model extends CI_Model
 		$query = $this->db->query("SELECT data FROM `records_json`  $dfilter $ffilter $fworker_type ORDER BY sync_date DESC $limit");
 		return $query->result();
 	}
-	public function kyc_verified_data($limits, $starts, $dfilter, $ffilter, $kycfilter, $fworker_type,$fjob, $print)
+	public function kyc_verified_data($limits, $starts, $dfilter, $ffilter, $kycfilter, $fworker_type, $fjob, $print)
 	{
 		if ($print == 1) {
 			$limit = "";
