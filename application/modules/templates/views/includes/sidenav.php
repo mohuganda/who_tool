@@ -67,14 +67,14 @@
         <?php } ?>
 
         <?php if (in_array('13', $permissions)) { ?>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="<?php echo base_url(); ?>data/processed" class="nav-link">
               <i class="fa fa-th"></i>
               <p>
                 Clean Data
               </p>
             </a>
-          </li>
+          </li> -->
         <?php } ?>
 
         <?php if (in_array('14', $permissions)) { ?>
@@ -128,13 +128,6 @@
           </li>
         <?php } ?>
 
-
-
-
-
-
-
-
         <!--user perm 26-->
         <?php if (in_array('32', $permissions)) { ?>
           <li class="nav-item has-treeview ">
@@ -151,16 +144,11 @@
                   <i class="far fa-circle nav-icon"></i>
                   Form - Fields</a>
               </li>
-
-
-
-
-
             </ul>
           </li>
         <?php } ?>
 
-        <!--user perm 26-->
+        <!-- user perm 26
         <?php if (in_array('17', $permissions)) { ?>
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
@@ -195,8 +183,8 @@
 
 
             </ul>
-          </li>
-        <?php } ?>
+          </li> -->
+        <?php } ?> 
 
         <!--user perm 14-->
         <?php if (in_array('35', $permissions)) { ?>
