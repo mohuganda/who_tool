@@ -316,9 +316,6 @@ class Data extends MX_Controller
 		if (!empty($this->input->get('district'))) {
 			$district = urldecode($this->input->get('district'));
 			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
-		} elseif (!empty($_SESSION['district'])) {
-			$district = $_SESSION['district'];
-			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
 		} else {
 			$dfilter = "";
 		}
@@ -416,7 +413,7 @@ class Data extends MX_Controller
 			$kycstatus = "and kyc_status IS NOT NULL";
 		}
 
-		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v LEFT JOIN records_json_report r ON v.reference=r.reference $dfilter $kycstatus $kycfilter $ffilter $fworker_type");
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference $dfilter $kycstatus $kycfilter $ffilter $fworker_type");
 		return $query->num_rows();
 	}
 	function generate_users()

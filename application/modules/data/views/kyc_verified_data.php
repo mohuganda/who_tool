@@ -67,6 +67,7 @@ $kyc_status = Modules::run("data/kyc_status");
                             <label for="aw_description">
                                 Job </label>
                             <select name="job" class="form-control select2 sdistrict" style="width:100%;">
+                                <option value="">All</option>
 
                                 <?php foreach ($jobs as $job) :
                                 ?>
