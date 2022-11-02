@@ -33,10 +33,10 @@ $kyc_status = Modules::run("data/kyc_status");
                                 if ($_SESSION['role'] != "District Administrator") {
                                     foreach ($districts as $district) :
                                 ?>
-                                        <option value="<?php echo $district->district; ?>" <?php if ($this->input->post('district') == $district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
+                                        <option value="<?php echo $district->district; ?>" <?php if (urldecode($this->input->get('district')) == $district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
                                     <?php endforeach;
                                 } else { ?>
-                                    <option value="<?php echo $_SESSION['district']; ?>" <?php if ($this->input->post('district') == $_SESSION['district']) echo "selected"; ?>><?php echo $_SESSION['district']; ?></option>
+                                    <option value="<?php echo $_SESSION['district']; ?>" <?php if (urldecode($this->input->get('district')) == $_SESSION['district']) echo "selected"; ?>><?php echo $_SESSION['district']; ?></option>
                                 <?php }
 
                                 ?>
@@ -70,7 +70,7 @@ $kyc_status = Modules::run("data/kyc_status");
 
                                 <?php foreach ($jobs as $job) :
                                 ?>
-                                    <option value="<?php echo $job->job; ?>" <?php if ($this->input->get('kyc_status') == $job->job) echo "selected"; ?>><?php echo $job->job; ?></option>
+                                    <option value="<?php echo $job->job; ?>" <?php if (urldecode($this->input->get('kyc_status')) == $job->job) echo "selected"; ?>><?php echo $job->job; ?></option>
                                 <?php endforeach; ?>
                             </select>
 
@@ -87,7 +87,7 @@ $kyc_status = Modules::run("data/kyc_status");
 
                                 <?php foreach ($kyc_status as $kyc) :
                                 ?>
-                                    <option value="<?php echo $kyc->kyc_status; ?>" <?php if ($this->input->post('kyc_status') == $kyc->kyc_status) echo "selected"; ?>><?php echo $kyc->kyc_status; ?></option>
+                                    <option value="<?php echo $kyc->kyc_status; ?>" <?php if (urldecode($this->input->get('kyc_status')) == $kyc->kyc_status) echo "selected"; ?>><?php echo $kyc->kyc_status; ?></option>
                                 <?php endforeach; ?>
                             </select>
 
