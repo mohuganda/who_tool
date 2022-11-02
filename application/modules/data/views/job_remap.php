@@ -30,28 +30,38 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="aw_description">
-                                Remap Value </label>
-                            <input type="text" name="value" class="form-control">
+                                Remap Value</label>
+                            <select name="value" class="form-control" style="width:100%;">
+                                <?php
+
+                                foreach ($jobs as $job) : ?>
+
+                                    <option value="<?php echo $job->job ?>"><?php echo $job->job; ?></option>
+                                <?php
+                                endforeach;
+                                ?>
+
                             </select>
+
+
+
+
+
                         </div>
-
-
-
                     </div>
+
+                    <div class="row">
+
+                        <button type="submit" class="btn bt-sm bg-gray-dark color-pale" style="width:100px; "><i class="fa fa-tasks" aria-hidden="true"></i>Remap</button>
+                        &nbsp;&nbsp;
+                    </div>
+                    &nbsp;&nbsp;
+
             </div>
 
-            <div class="row">
 
-                <button type="submit" class="btn bt-sm bg-gray-dark color-pale" style="width:100px; "><i class="fa fa-tasks" aria-hidden="true"></i>Remap</button>
-                &nbsp;&nbsp;
-            </div>
-            &nbsp;&nbsp;
-
+            </form>
         </div>
-
-
-        </form>
-    </div>
 </section>
 
 <script>
