@@ -414,7 +414,7 @@ class Data extends MX_Controller
 			$kycstatus = "and kyc_status IS NOT NULL";
 		}
 
-		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference $dfilter $kycstatus $kycfilter $ffilter $fworker_type $fjob");
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and status in ('MATCH,CLOSE MATCH,POSSIBLE MATCH,VERIFIED MATCH') $dfilter $kycstatus $kycfilter $ffilter $fworker_type $fjob");
 		return $query->num_rows();
 	}
 	function generate_users()
