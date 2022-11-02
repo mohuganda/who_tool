@@ -241,11 +241,12 @@ class Data extends MX_Controller
 		$ffilter = $_SESSION['ffilter'];
 		$fworker_type = $_SESSION['worker_type'];
 		$datefilter = $_SESSION['datefilter'];
+		$jobfilter = $_SESSION['job'];
 		$kycfilter = $_SESSION['kycfilter'];
 		$csv = $_SESSION['district'] . "-KYC_VERIFIED" . date('Y-m-d') . '_' . ".csv";
 
 		if ($print = 1) {
-			$records = $this->data_model->kyc_verified_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $kycfilter, $fworker_type, $print);
+			$records = $this->data_model->kyc_verified_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $kycfilter, $fworker_type, $jobfilter, $print);
 		}
 		//print_r($records);
 		$f = fopen('php://memory', 'w');
