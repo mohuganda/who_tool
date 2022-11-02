@@ -71,7 +71,7 @@ $kyc_status = Modules::run("data/kyc_status");
 
                                 <?php foreach ($jobs as $job) :
                                 ?>
-                                    <option value="<?php echo $job->job; ?>" <?php if (urldecode($this->input->get('kyc_status')) == $job->job) echo "selected"; ?>><?php echo $job->job; ?></option>
+                                    <option value="<?php echo $job->job; ?>" <?php if (urldecode($this->input->get('job')) == $job->job) echo "selected"; ?>><?php echo $job->job; ?></option>
                                 <?php endforeach; ?>
                             </select>
 
