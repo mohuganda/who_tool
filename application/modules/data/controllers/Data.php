@@ -314,7 +314,7 @@ class Data extends MX_Controller
 		$fworker_type = $_SESSION['worker_type'] = "";
 		@$print = $_GET['print'];
 		if (!empty($this->input->get('district'))) {
-			$district = $this->input->get('district');
+			$district = urldecode($this->input->get('district'));
 			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
 		} elseif (!empty($_SESSION['district'])) {
 			$district = $_SESSION['district'];
@@ -326,7 +326,7 @@ class Data extends MX_Controller
 
 
 		if (!empty($this->input->get('facility'))) {
-			$facility = $this->input->get('facility');
+			$facility = urldecode($this->input->get('facility'));
 			$ffilter = $_SESSION['ffilter'] = " and facility = '$facility'";
 		} else {
 			$ffilter = "";
@@ -340,7 +340,7 @@ class Data extends MX_Controller
 		}
 
 		if (!empty($this->input->get('job'))) {
-			$job = $this->input->get('job');
+			$job = urldecode($this->input->get('job'));
 			$fjob = $_SESSION['job'] = "and job = '$job'";
 		} else {
 			$fjob = "";
@@ -397,6 +397,8 @@ class Data extends MX_Controller
 		$data['links'] = $this->pagination->create_links();
 		$data['files'] = $this->data_model->kyc_verified_data($config['per_page'], $page, $dfilter, $ffilter, $kycfilter, $fworker_type, $fjob, $print);
 		//print_r($config['total_rows']);
+
+		//print_r($data);	
 		echo Modules::run('templates/main', $data);
 	}
 	public function count_rows($dfilter, $ffilter, $fworker_type)
@@ -1114,5 +1116,19 @@ class Data extends MX_Controller
 				echo "\033[37m" . $ref->reference . "Failed" . $i++ . "\n";
 			}
 		endforeach;
+	}
+	public function data_remap()
+	{
+		$data['jobs'] = $this->data_model->get_jobs();
+		$data['uptitle']      = 'Remap Job';
+		$data['title']      = 'Remap';
+		$data['module'] 	= "data";
+		$data['view']   	= "job_remap";
+		if (!empty($this->input->post('value'))) :
+			$data['message'] = $this->data_model->remap_data($this->input->post());
+
+		endif;
+		//print_r($this->input->post());
+		echo Modules::run('templates/main', $data);
 	}
 }

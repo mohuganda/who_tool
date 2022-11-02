@@ -138,4 +138,17 @@ class Data_model extends CI_Model
 		$query = $this->db->query("SELECT * FROM `utl_clients`  $dfilter $fstatus $ffilter $fworker_type ORDER BY surname ASC $limit");
 		return $query->result();
 	}
+	public function remap_data($data)
+	{
+		$new_value = $data['value'];
+		$old_value = $data['job'];
+
+		$query = $this->db->query("UPDATE records_json_report SET job='$new_value'  WHERE job='$old_value'");
+		if ($query) {
+			$message = "Succesfully Mapped";
+		} else {
+			$message = "Failed to Map";
+		}
+		return $message;
+	}
 }

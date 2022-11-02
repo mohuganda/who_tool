@@ -242,9 +242,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>data/cache_report" class="nav-link">
+              <a href="<?php echo base_url(); ?>data/data_remap" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Cache Report</p>
+                <p>Remap</p>
               </a>
             </li>
           <?php } ?>
