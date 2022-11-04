@@ -71,7 +71,7 @@
            <span class="info-box-icon"><i class="fas fa-users"></i></span>
 
            <div class="info-box-content">
-             <span class="info-box-text">Main Stream Health Workers</span>
+             <span class="info-box-text">Facility Based Health Workers</span>
              <span class="info-box-number">
 
                <div id="mhwdata_verified"></div>
@@ -82,10 +82,10 @@
          </div>
          <!-- /.info-box -->
          <div class="info-box mb-3 bg-orange">
-           <span class="info-box-icon"><i class="fas fa-users"></i></span>
+           <span class="info-box-icon" style="color:#FFF !important;"><i class="fas fa-users"></i></span>
 
            <div class="info-box-content">
-             <span class="info-box-text">Other Categories</span>
+             <span class="info-box-text" style="color:#FFF !important;">Other Categories</span>
              <span class="info-box-number">
                <div id="others_verified"></div>
              </span>
