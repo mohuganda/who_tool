@@ -97,11 +97,11 @@
 
          <!-- /.footer -->
        </div>
-       
+
 
 
        <!-- Left col -->
-       <section class="col-lg-9 connectedSortable">
+       <section class="col-lg-9 connectedSortable" style="height:500px;">
          <!-- Custom tabs (Charts with tabs)-->
          <div class="card">
            <div class="card-header">
