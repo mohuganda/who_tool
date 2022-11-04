@@ -381,7 +381,6 @@
          //$('#updated_records').text(data.updated_records);
          // console.log(data);
          renderGraph(data);
-         getmnoData();
 
 
 
