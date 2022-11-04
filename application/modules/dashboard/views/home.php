@@ -123,7 +123,7 @@
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
-                 <div id="record_breakdown" height="4500" style="height: 300px;"></div>
+                 <div id="record_breakdown" style="height: 400px;"></div>
                </div>
 
              </div>
