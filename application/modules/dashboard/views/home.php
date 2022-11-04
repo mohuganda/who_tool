@@ -599,7 +599,7 @@
            $('#airtel_verified').text(data.airtel_verified);
            $('#others_verified').text(data.others_verified);
            mnodataGraph(data);
-           exit();
+
 
 
          }
