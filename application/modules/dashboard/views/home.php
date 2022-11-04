@@ -396,56 +396,60 @@
 
      }
    });
-   Highcharts.chart('enrollment', {
-     chart: {
-       type: 'column'
-     },
-     title: {
-       text: 'Enrollment by District'
-     },
-     subtitle: {
-       text: 'Source: <a href="<?php echo base_url() ?>" target="_blank">Digital Finance Data Bank</a>'
-     },
-     xAxis: {
-       type: 'category',
-       labels: {
-         rotation: -45,
-         style: {
-           fontSize: '13px',
-           fontFamily: 'Verdana, sans-serif'
-         }
-       }
-     },
-     yAxis: {
-       min: 0,
-       title: {
-         text: 'Population (millions)'
-       }
-     },
-     legend: {
-       enabled: false
-     },
-     tooltip: {
-       pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
-     },
-     series: [{
-       name: 'Population',
-       data: getenrollment_Data(),
-       dataLabels: {
-         enabled: true,
-         rotation: -90,
-         color: '#FFFFFF',
-         align: 'right',
-         format: '{point.y:.1f}', // one decimal
-         y: 10, // 10 pixels down from the top
-         style: {
-           fontSize: '13px',
-           fontFamily: 'Verdana, sans-serif'
-         }
-       }
-     }]
-   });
 
+   ///data by MNOS
+   function enrollment_column_graph(gdata) {
+
+     Highcharts.chart('enrollment', {
+       chart: {
+         type: 'column'
+       },
+       title: {
+         text: 'Enrollment by District'
+       },
+       subtitle: {
+         text: 'Source: <a href="<?php echo base_url() ?>" target="_blank">Digital Finance Data Bank</a>'
+       },
+       xAxis: {
+         type: 'category',
+         labels: {
+           rotation: -45,
+           style: {
+             fontSize: '13px',
+             fontFamily: 'Verdana, sans-serif'
+           }
+         }
+       },
+       yAxis: {
+         min: 0,
+         title: {
+           text: 'Population (millions)'
+         }
+       },
+       legend: {
+         enabled: false
+       },
+       tooltip: {
+         pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
+       },
+       series: [{
+         name: 'Population',
+         data: gdata,
+         dataLabels: {
+           enabled: true,
+           rotation: -90,
+           color: '#FFFFFF',
+           align: 'right',
+           format: '{point.y:.1f}', // one decimal
+           y: 10, // 10 pixels down from the top
+           style: {
+             fontSize: '13px',
+             fontFamily: 'Verdana, sans-serif'
+           }
+         }
+       }]
+     });
+   }
 
    ///data by MNOS
    function mnodataGraph(data) {
@@ -530,7 +534,7 @@
    });
 
    $(document).ready(function() {
-     //  renderGraph(data);
+
 
 
      $.ajax({
@@ -554,8 +558,8 @@
 
    });
 
-   function getenrollment_Data() {
-     //  renderGraph(data);
+   $(document).ready(function() {
+
 
 
      $.ajax({
@@ -564,14 +568,10 @@
        dataType: "json",
        data: '',
        success: function(data) {
-         console.log(data);
-
-         //return data
-
-
+         enrollment_column_graph(data);
        }
 
      });
 
-   }
+   });
  </script>
