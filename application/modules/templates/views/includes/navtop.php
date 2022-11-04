@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-dark" style="background: #207bdd;
+<nav class="main-header navbar navbar-expand navbar-dark" style="background: #A1D066;
     color:inherit; text-align:center;">
   <!-- Left navbar links -->
   <ul class="navbar-nav">
@@ -8,7 +8,7 @@
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <div class="header-title" style="color:#FFF; margin-top:5px;">
-        
+
     </li>
     <li class="nav-item d-none d-sm-inline-block">
 
