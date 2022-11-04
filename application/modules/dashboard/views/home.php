@@ -113,7 +113,7 @@
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
                <div class="chart tab-pane active" id="" style="position: relative; height: 300px;">
-                 <span id="enrolloader" style="margin:0 auto;"></span>
+                 <img id="enrolloader" src="<?php echo base_url() ?>assets/images/loader.gif" />
                  <div id=" enrollment" height="300" style="height: 300px;">
                  </div>
                </div>
@@ -566,7 +566,7 @@
    $(document).ready(function() {
 
 
-     //$('#enrolloader').html('<img src="<?php echo base_url() ?>assets/images/loader.gif" />');
+
      $.ajax({
        type: 'GET',
        url: '<?php echo base_url('dashboard/get_enrollments') ?>',
@@ -574,7 +574,7 @@
        data: '',
        success: function(data) {
          enrollment_column_graph(data);
-         $('#enrolloader').remove();
+         $('#enrolloader').hide();
        }
 
      });
