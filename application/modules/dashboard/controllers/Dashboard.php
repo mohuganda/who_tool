@@ -79,8 +79,8 @@ class Dashboard extends MX_Controller
 			array_push($people, $fdata);
 		}
 
-		json_encode($people);
-		$people = str_replace('\/', '/', $people);
-		echo $people;
+		$fpeople = json_encode($people);
+		$jpeople = str_replace('\/', '/', $fpeople);
+		echo $jpeople;
 	}
 }
