@@ -570,6 +570,7 @@
        dataType: "json",
        data: '',
        success: function(data) {
+         $('#enrolloader').hide();
          enrollment_column_graph(data);
        }
 
