@@ -574,4 +574,23 @@
      });
 
    });
+
+   $(document).ready(function() {
+     //  renderGraph(data);
+
+
+     $.ajax({
+       type: 'GET',
+       url: '<?php echo base_url('dashboard/get_enrollments') ?>',
+       dataType: "json",
+       data: '',
+       success: function(data) {
+         console.log(JSON.parse(data));
+
+
+       }
+
+     });
+
+   });
  </script>
