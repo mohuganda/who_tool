@@ -112,8 +112,10 @@
            <div class="card-body">
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="enrolloader" style="position: relative; height: 300px;">
-                 <div id="enrollment" height="300" style="height: 300px;"></div>
+               <div class="chart tab-pane active" id="" style="position: relative; height: 300px;">
+                 <span id="enrolloader" style="margin:0 auto;"></span>
+                 <div id=" enrollment" height="300" style="height: 300px;">
+                 </div>
                </div>
                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
                  <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
@@ -572,6 +574,7 @@
        data: '',
        success: function(data) {
          enrollment_column_graph(data);
+         $('#enrolloader').hide();
        }
 
      });
