@@ -294,7 +294,7 @@
            },
            {
              name: 'Other Categories(LCs etc.)',
-             y: data.others_verified
+             y: data.others_verified_data
            }
          ]
        }],
