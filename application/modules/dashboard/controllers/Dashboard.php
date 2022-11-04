@@ -80,7 +80,7 @@ class Dashboard extends MX_Controller
 		}
 
 		$fpeople = array_filter($people, function ($value) {
-			return ($value >= 600 && $value <= 10000);
+			return ($value >= 200 && $value <= 10000);
 		});
 
 		echo json_encode($fpeople);
