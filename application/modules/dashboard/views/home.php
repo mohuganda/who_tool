@@ -325,14 +325,20 @@
          colorByPoint: true,
 
          data: [{
-           name: 'Community Health Workers',
-           y: data.chwdata,
-           sliced: true,
-           selected: true
-         }, {
-           name: 'Main Stream Health Workers',
-           y: data.mhwdata
-         }]
+             name: 'Verified VHT',
+             y: data.chwdata_verified,
+             sliced: true,
+             selected: true
+           },
+           {
+             name: 'Verified Facility Based HWs',
+             y: data.mhwdata_verified
+           },
+           {
+             name: 'Other Categories(LCs etc.)',
+             y: data.others_verified
+           }
+         ]
        }],
        credits: {
          enabled: false
