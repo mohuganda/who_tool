@@ -113,7 +113,7 @@
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                 <img id="enrolloader" src="<?php echo base_url() ?>assets/images/loader.gif" />
+                 <span id="enrolloader"></span>
                  <div id="enrollment" height="300" style="height: 300px;"></div>
                </div>
 
@@ -562,7 +562,7 @@
 
    $(document).ready(function() {
 
-
+     $('#loader3').html('<img id="enrolloader" src="<?php echo base_url() ?>assets/images/loader.gif" />');
 
      $.ajax({
        type: 'GET',
