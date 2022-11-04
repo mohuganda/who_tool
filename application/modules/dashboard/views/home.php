@@ -562,7 +562,7 @@
 
    $(document).ready(function() {
 
-     $('#loader3').html('<img id="enrolloader" src="<?php echo base_url() ?>assets/images/loader.gif" />');
+     $('#enrolloader').html('<img id="enrolloader" src="<?php echo base_url() ?>assets/images/loader.gif" />');
 
      $.ajax({
        type: 'GET',
