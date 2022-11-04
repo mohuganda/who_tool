@@ -575,7 +575,7 @@
        data: '',
        success: function(data) {
          enrollment_column_graph(data);
-         $('#enrolloader').hide();
+         //$('#enrolloader').hide();
        }
 
      });
