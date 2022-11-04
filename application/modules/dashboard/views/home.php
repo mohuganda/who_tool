@@ -110,9 +110,9 @@
              </div>
            </div><!-- /.card-header -->
            <div class="card-body">
-             <div class="tab-content p-0">
+             <div class="tab-content p-0" style="display:flex; align-items:center; justify-content:center;">
                <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px; display:flex; align-items:center; justify-content:center; width:fit-content;">
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
                  <span id="enrolloader"></span>
                  <div id="enrollment" height="300" style="height: 300px;"></div>
                </div>
