@@ -72,8 +72,12 @@ class Dashboard extends MX_Controller
 	}
 	public function get_enrollments()
 	{
-
-		$data = $this->db->query("SELECT district, count(reference) from records_json_report WHERE district IS NOT NULL group by district")->result();
-		echo json_encode($data);
+		$people = array();
+		$data = $this->db->query("SELECT district, count(reference) as datas from records_json_report WHERE district IS NOT NULL group by district")->result();
+		foreach ($data as $d) {
+			$fdata = array($d->district, $d->datas);
+			array_push($data, $fdata);
+		}
+		echo json_encode($fdata);
 	}
 }
