@@ -35,9 +35,6 @@ class Dashboard_mdl extends CI_Model
         $data['others_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.hw_type!='mhw' and r.job!='VHT'")->num_rows();
 
         $data['others_not_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status not in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.hw_type!='mhw' and r.job!='VHT'")->num_rows();
-        $data['mtn_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status  in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and  r.primary_mobile_operator='MTN'")->num_rows();
-        $data['airtel_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status  in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and  r.primary_mobile_operator='Airtel'")->num_rows();
-        $data['others_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status  in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and  r.primary_mobile_operator NOT IN ('Airtel','MTN')")->num_rows();
 
         $data['covered_districts'] = $this->db->query("SELECT distinct district from records_json_report WHERE district!=''")->num_rows();
 
@@ -49,6 +46,14 @@ class Dashboard_mdl extends CI_Model
         // $data['mhwdata']= $this->db->query("SELECT reference as ministry_workers from records_json WHERE JSON_EXTRACT(data,'$.hw_type')='mhw'")->num_rows();
 
         return $data;
+    }
+
+    public function mno_graph()
+    {
+        $data['mtn_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status  in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and  r.primary_mobile_operator='MTN'")->num_rows();
+        $data['airtel_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status  in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and  r.primary_mobile_operator='Airtel'")->num_rows();
+        $data['others_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status  in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and  r.primary_mobile_operator NOT IN ('Airtel','MTN')")->num_rows();
+        return  $data;
     }
 
     //
