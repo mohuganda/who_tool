@@ -97,8 +97,38 @@
 
          <!-- /.footer -->
        </div>
+
+       <section class="col-lg-9 connectedSortable">
+         <!-- Custom tabs (Charts with tabs)-->
+         <div class="card">
+           <div class="card-header">
+             <h3 class="card-title">
+             </h3>
+             <div class="card-tools">
+               <ul class="nav nav-pills ml-auto">
+               </ul>
+             </div>
+           </div><!-- /.card-header -->
+           <div class="card-body">
+             <div class="tab-content p-0">
+               <!-- Morris chart - Sales -->
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                 <div id="enrollment" height="300" style="height: 300px;"></div>
+               </div>
+               <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+                 <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+               </div>
+             </div>
+           </div><!-- /.card-body -->
+         </div>
+         <!-- /.card -->
+
+
+       </section>
+
+
        <!-- Left col -->
-       <section class="col-lg-4 connectedSortable">
+       <section class="col-lg-6 connectedSortable">
          <!-- Custom tabs (Charts with tabs)-->
          <div class="card">
            <div class="card-header">
@@ -134,7 +164,7 @@
        </section>
        <!-- right col -->
 
-       <section class="col-lg-5 connectedSortable">
+       <section class="col-lg-6 connectedSortable">
          <!-- Custom tabs (Charts with tabs)-->
          <div class="card">
            <div class="card-header">
@@ -164,40 +194,6 @@
            </div><!-- /.card-body -->
          </div>
          <!-- /.card -->
-       </section>
-
-       <section class="col-lg-6 connectedSortable">
-         <!-- Custom tabs (Charts with tabs)-->
-         <div class="card">
-           <div class="card-header">
-             <h3 class="card-title">
-             </h3>
-             <div class="card-tools">
-               <ul class="nav nav-pills ml-auto">
-                 <!-- <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li> -->
-               </ul>
-             </div>
-           </div><!-- /.card-header -->
-           <div class="card-body">
-             <div class="tab-content p-0">
-               <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                 <div id="enrollment" height="300" style="height: 300px;"></div>
-               </div>
-               <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                 <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-               </div>
-             </div>
-           </div><!-- /.card-body -->
-         </div>
-         <!-- /.card -->
-
-
        </section>
 
 
