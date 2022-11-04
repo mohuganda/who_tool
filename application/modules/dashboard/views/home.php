@@ -424,20 +424,20 @@
        yAxis: {
          min: 0,
          title: {
-           text: 'Population (millions)'
+           text: 'Enrollment'
          }
        },
        legend: {
          enabled: false
        },
        tooltip: {
-         pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
+         pointFormat: 'Enrollment: <b>{point.y:.1f} </b>'
        },
        credits: {
          enabled: false
        },
        series: [{
-         name: 'Population',
+         name: 'Enrollment',
          data: gdata,
          dataLabels: {
            enabled: true,
