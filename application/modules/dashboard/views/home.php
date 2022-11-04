@@ -280,6 +280,11 @@
        series: [{
          name: 'Health Worker Types',
          colorByPoint: true,
+         filter: {
+           property: 'percentage',
+           operator: '>',
+           value: 4
+         },
 
          data: [{
              name: 'Verified VHT',
