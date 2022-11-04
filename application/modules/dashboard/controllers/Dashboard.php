@@ -79,10 +79,15 @@ class Dashboard extends MX_Controller
 			array_push($people, $fdata);
 		}
 
-		$fpeople = array_filter($people, function ($value) {
-			return ($value >= 200 && $value <= 10000);
-		});
+		$lower_limit = 1;
+		$upper_limit = 100;
 
+		$fpeople = array_filter(
+			$people,
+			function ($value) use ($lower_limit, $upper_limit) {
+				return ($value >= $lower_limit && $value <= $upper_limit);
+			}
+		);
 		echo json_encode($fpeople);
 	}
 }
