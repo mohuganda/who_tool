@@ -98,36 +98,9 @@
          <!-- /.footer -->
        </div>
 
-       <section class="col-lg-9 connectedSortable">
-         <!-- Custom tabs (Charts with tabs)-->
-         <div class="card">
-           <div class="card-header">
-             <h3 class="card-title">
-             </h3>
-             <div class="card-tools">
-               <ul class="nav nav-pills ml-auto">
-               </ul>
-             </div>
-           </div><!-- /.card-header -->
-           <div class="card-body">
-             <div class="tab-content p-0">
-               <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px; align-items:center; justify-content:center;">
-                 <span id="enrolloader"></span>
-                 <div id="enrollment" height="300" style="height: 300px;"></div>
-               </div>
-
-             </div>
-           </div><!-- /.card-body -->
-         </div>
-         <!-- /.card -->
-
-
-       </section>
-
 
        <!-- Left col -->
-       <section class="col-lg-6 connectedSortable">
+       <section class="col-lg-9 connectedSortable">
          <!-- Custom tabs (Charts with tabs)-->
          <div class="card">
            <div class="card-header">
@@ -162,6 +135,35 @@
 
        </section>
        <!-- right col -->
+
+       <section class="col-lg-12 connectedSortable">
+         <!-- Custom tabs (Charts with tabs)-->
+         <div class="card">
+           <div class="card-header">
+             <h3 class="card-title">
+             </h3>
+             <div class="card-tools">
+               <ul class="nav nav-pills ml-auto">
+               </ul>
+             </div>
+           </div><!-- /.card-header -->
+           <div class="card-body">
+             <div class="tab-content p-0">
+               <!-- Morris chart - Sales -->
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px; align-items:center; justify-content:center;">
+                 <span id="enrolloader"></span>
+                 <div id="enrollment" height="300" style="height: 300px;"></div>
+               </div>
+
+             </div>
+           </div><!-- /.card-body -->
+         </div>
+         <!-- /.card -->
+
+
+       </section>
+
+
 
        <section class="col-lg-6 connectedSortable">
          <!-- Custom tabs (Charts with tabs)-->
