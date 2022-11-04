@@ -82,12 +82,11 @@ class Dashboard extends MX_Controller
 		$lower_limit = 1;
 		$upper_limit = 100;
 
-		$fpeople = array_filter(
+		echo json_encode($fpeople = array_filter(
 			$people,
 			function ($value) use ($lower_limit, $upper_limit) {
 				return ($value >= $lower_limit && $value <= $upper_limit);
 			}
-		);
-		echo json_encode($fpeople);
+		));
 	}
 }
