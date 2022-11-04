@@ -86,7 +86,7 @@
 
            <div class="info-box-content">
              <span class="info-box-text" style="color:#FFF !important;">Other Categories</span>
-             <span class="info-box-number">
+             <span class="info-box-number" style="color:#FFF !important;">
                <div id="others_verified"></div>
              </span>
            </div -->
