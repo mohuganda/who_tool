@@ -381,6 +381,7 @@
          //$('#updated_records').text(data.updated_records);
          // console.log(data);
          renderGraph(data);
+         getmnoData();
 
 
 
@@ -585,7 +586,7 @@
      //console.log(data.mhwdata);
 
      //get dashboard Data
-     $(document).ready(function() {
+     function getmnoData() {
        //  renderGraph(data);
 
 
@@ -599,18 +600,10 @@
            $('#airtel_verified').text(data.airtel_verified);
            $('#others_verified').text(data.others_verified);
            mnodataGraph(data);
-
-
-
          }
 
        });
-
-
-
-
-
-     });
+     }
 
 
 
