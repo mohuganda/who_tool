@@ -363,15 +363,9 @@
          $('#total_records').text(data.total_records);
          $('#total_verified').text(data.total_verified);
          $('#chwdata_verified').text(data.chwdata_verified);
-         $('#chwdata_not_verified').text(data.chwdata_not_verified);
          $('#mhwdata_verified').text(data.mhwdata_verified);
-         $('#mhwdata_not_verified').text(data.mhwdata_not_verified);
          $('#others_verified').text(data.others_verified);
-         $('#others_not_verified').text(data.others_not_verified);
-         $('#covered_districts').text(data.covered_districts);
-         $('#covered_facilities').text(data.covered_facilities);
-         //$('#updated_records').text(data.updated_records);
-         // console.log(data);
+
          renderGraph(data);
 
 
@@ -594,35 +588,28 @@
      });
    });
 
+   $(document).ready(function() {
+     //  renderGraph(data);
 
-   //  //get statistics
-   //  $(document).ready(function() {
-   //    //  renderGraph(data);
-   //    $.ajax({
-   //      type: 'GET',
-   //      url: '<?php //echo base_url('dashboard/dashboardstats') 
-                  ?>',
-   //      dataType: "json",
-   //      data: '',
-   //      success: function(data) {
 
-   //        $('#total_records').text(data.total_records);
-   //        $('#total_verified').text(data.total_verified);
-   //        $('#chwdata_verified').text(data.chwdata_verified);
-   //        $('#chwdata_not_verified').text(data.chwdata_not_verified);
-   //        $('#mhwdata_verified').text(data.mhwdata_verified);
-   //        $('#mhwdata_not_verified').text(data.mhwdata_not_verified);
-   //        $('#others_verified').text(data.others_verified);
-   //        $('#others_not_verified').text(data.others_not_verified);
-   //        $('#covered_districts').text(data.covered_districts);
-   //        $('#covered_facilities').text(data.covered_facilities);
-   //        renderGraph(data);
+     $.ajax({
+       type: 'GET',
+       url: '<?php echo base_url('dashboard/not_verified') ?>',
+       dataType: "json",
+       data: '',
+       success: function(data) {
+         $('#chwdata_not_verified').text(data.chwdata_not_verified);
+         $('#mhwdata_not_verified').text(data.mhwdata_not_verified);
+         $('#others_not_verified').text(data.others_not_verified);
+         $('#covered_districts').text(data.covered_districts);
+         $('#covered_facilities').text(data.covered_facilities);
+         renderGraph(data);
 
 
 
-   //      }
+       }
 
-   //    });
+     });
 
-   //  });
+   });
  </script>
