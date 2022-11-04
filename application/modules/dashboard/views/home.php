@@ -522,7 +522,7 @@
          $('#mtn_verified').text(data.mtn_verified);
          $('#airtel_verified').text(data.airtel_verified);
          $('#others_verified').text(data.others_verified);
-         console.log(data);
+         //console.log(data);
          mnodataGraph(data);
        }
 
@@ -564,9 +564,9 @@
        dataType: "json",
        data: '',
        success: function(data) {
-         // console.log(data);
+         console.log(data);
 
-         return data
+         //return data
 
 
        }
