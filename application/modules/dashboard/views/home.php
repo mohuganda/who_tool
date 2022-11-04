@@ -566,7 +566,7 @@
    $(document).ready(function() {
 
 
-     $('#enrolloader').html('<img src="<?php echo base_url() ?>assets/images/loader.gif" />');
+     //$('#enrolloader').html('<img src="<?php echo base_url() ?>assets/images/loader.gif" />');
      $.ajax({
        type: 'GET',
        url: '<?php echo base_url('dashboard/get_enrollments') ?>',
