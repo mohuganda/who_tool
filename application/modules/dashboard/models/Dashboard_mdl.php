@@ -29,7 +29,7 @@ class Dashboard_mdl extends CI_Model
         $data['mhwdata_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.hw_type='mhw'")->num_rows();
 
         //other records
-        $data['others_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.hw_type!='mhw' and r.job!='VHT'")->num_rows();
+        $data['others_verified_data'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.hw_type!='mhw' and r.job!='VHT'")->num_rows();
 
 
         // $data['updated_records'] = $this->db->query("SELECT distinct ihris_pid from records_json_report ")->num_rows();

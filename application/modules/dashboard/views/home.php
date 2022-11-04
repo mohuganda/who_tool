@@ -87,7 +87,7 @@
            <div class="info-box-content">
              <span class="info-box-text" style="color:#FFF !important;">Other Categories</span>
              <span class="info-box-number" style="color:#FFF !important;">
-               <div id="others_verified"></div>
+               <div id="others_verified_data"></div>
              </span>
            </div -->
            <!-- /.info-box-content-->
@@ -364,7 +364,7 @@
          $('#total_verified').text(data.total_verified);
          $('#chwdata_verified').text(data.chwdata_verified);
          $('#mhwdata_verified').text(data.mhwdata_verified);
-         $('#others_verified').text(data.others_verified);
+         $('#others_verified_data').text(data.others_verified_data);
 
          renderGraph(data);
 
