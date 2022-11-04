@@ -8,7 +8,7 @@ table {
 }
 
 thead tr {
-    background-color: #2d2e2e;
+    background-color: #5d705fe6;
     color: #fff;
 }
 
@@ -21,7 +21,7 @@ tbody tr td {
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #7c8285;
+    background-color: #5d705fe6;
 }
 
 table,
@@ -45,14 +45,14 @@ td {
     }
     th,
     td {
-        border: 1px solid #a2a3a3;
+        border: 1px solid #5d705fe6;
         padding: 10px;
     }
     table tr {
         display: block;
         margin: 10px 0px;
         border-radius: 4px!important;
-        border: 1px solid #7e8080;
+        border: 1px solid #5d705fe6;
     }
     table tr td {
         border: 0px 1px 0px 1px;
