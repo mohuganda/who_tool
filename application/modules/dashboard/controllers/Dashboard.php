@@ -73,20 +73,13 @@ class Dashboard extends MX_Controller
 	public function get_enrollments()
 	{
 		$people = array();
-		$data = $this->db->query("SELECT district, count(reference) as datas from records_json_report WHERE district IS NOT NULL group by district")->result();
+		$data = $this->db->query("SELECT district, count(reference) as datas from records_json_report WHERE district IS NOT NULL AND count(reference)>500 group by district")->result();
 		foreach ($data as $d) {
 			$fdata = array($d->district, intval($d->datas));
 			array_push($people, $fdata);
 		}
 
-		$lower_limit = 1;
-		$upper_limit = 100;
 
-		echo json_encode($fpeople = array_filter(
-			$people,
-			function ($value) use ($lower_limit, $upper_limit) {
-				return ($value >= $lower_limit && $value <= $upper_limit);
-			}
-		));
+		echo json_encode($people);
 	}
 }
