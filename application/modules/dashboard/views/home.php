@@ -432,6 +432,9 @@
        tooltip: {
          pointFormat: 'Population in 2021: <b>{point.y:.1f} millions</b>'
        },
+       credits: {
+         enabled: false
+       },
        series: [{
          name: 'Population',
          data: gdata,
