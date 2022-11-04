@@ -81,7 +81,7 @@ class Dashboard extends MX_Controller
 
 		$fdata = (object)$people;
 
-		print_r($fdata[0]);
+		print_r($fdata);
 
 		//$ = json_encode($people);
 
