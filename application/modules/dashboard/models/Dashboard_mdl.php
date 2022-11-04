@@ -21,17 +21,26 @@ class Dashboard_mdl extends CI_Model
     public function getData()
     {
         $data['total_records'] = $this->db->query("select count(id) as total_records from records_json_report")->row()->total_records;
-        $today = date('Y-m-d');
-        $data['daily_updates'] = $this->db->query("SELECT count(id) as daily_updates from records_json_report where DATE_FORMAT(sync_date, '%Y-%m-%d')='$today'")->row()->daily_updates;
-        $data['total_enrollers'] = $this->db->query("SELECT count(user_id) as users from user where user_id!=1")->row()->users;
-        $data['phase2_data'] = $this->db->query("SELECT count(user_id) as phase2_data from records_json_report where DATE_FORMAT(sync_date, '%Y-%m-%d')>'2022-03-31'")->row()->phase2_data;
+        ///total verified
+        $data['total_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
+        //total  chws
+        $data['chwdata_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.job='VHT'")->num_rows();
+        //not verified
+        $data['chwdata_not_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status not in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.job='VHT'")->num_rows();
 
-        // $data['active_enrollers']= $this->db->query("SELECT count(distinct(user_id)) as active_enrollers from records_json where DATE_FORMAT(sync_date, '%Y-%m-%d')='$today' and user_id!=1")->row()->active_enrollers.' out of ';
-        $data['chwdata'] = $this->db->query("SELECT reference as community_workers from records_json_report WHERE hw_type='chw'")->num_rows();
-        $data['mhwdata'] = $this->db->query("SELECT reference as ministry_workers from records_json_report WHERE hw_type='mhw'")->num_rows();
+        $data['mhwdata_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.hw_type='mhw'")->num_rows();
+
+        $data['mhwdata_not_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status not in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.hw_type='mhw'")->num_rows();
+       //other records
+        $data['others_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.hw_type!='mhw' and r.job!='VHT'")->num_rows();
+
+        $data['others_not_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status not in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.hw_type!='mhw' and r.job!='VHT'")->num_rows();
+
         $data['covered_districts'] = $this->db->query("SELECT distinct district from records_json_report WHERE district!=''")->num_rows();
+
         $data['covered_facilities'] = $this->db->query("SELECT distinct facility from records_json_report WHERE facility!=''")->num_rows();
-        $data['updated_records'] = $this->db->query("SELECT distinct ihris_pid from records_json_report ")->num_rows() - 1;
+
+        // $data['updated_records'] = $this->db->query("SELECT distinct ihris_pid from records_json_report ")->num_rows();
 
 
         // $data['mhwdata']= $this->db->query("SELECT reference as ministry_workers from records_json WHERE JSON_EXTRACT(data,'$.hw_type')='mhw'")->num_rows();

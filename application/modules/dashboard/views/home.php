@@ -48,7 +48,7 @@
              <span class="info-box-text">Total Verified Records</span>
              <span class="info-box-number">
 
-               <div id="total_verified_records"></div>
+               <div id="total_verified"></div>
              </span>
            </div>
            <!-- /.info-box-content -->
@@ -60,7 +60,7 @@
            <div class="info-box-content">
              <span class="info-box-text">Community Health Workers</span>
              <span class="info-box-number">
-               <div id="chwdata"></div>
+               <div id="chwdata_verified"></div>
              </span>
            </div>
            <!-- /.info-box-content -->
@@ -74,7 +74,7 @@
              <span class="info-box-text">Main Stream Health Workers</span>
              <span class="info-box-number">
 
-               <div id="chwdata"></div>
+               <div id="mhwdata_verified"></div>
 
              </span>
            </div>
@@ -355,15 +355,21 @@
        success: function(data) {
 
          $('#total_records').text(data.total_records);
-         $('#verified_data').text(data.verified_records);
-         $('#daily_updates').text(data.daily_updates);
-         $('#total_enrollers').text(data.total_enrollers);
-         $('#phase2_data').text(data.phase2_data);
-         $('#chwdata').text(data.chwdata);
-         $('#mhwdata').text(data.mhwdata);
+         $('#total_verified').text(data.total_verified);
+         $('#chwdata_verified').text(data.chwdata_verified);
+         $('#chwdata_not_verified').text(data.chwdata_not_verified);
+         $('#mhwdata_verified').text(data.mhwdata_verified);
+         $('#mhwdata_not_verified').text(data.mhwdata_not_verified);
+         $('#others_verified').text(data.others_verified);
+         $('#others_not_verified').text(data.others_not_verified);
+         //  $('#daily_updates').text(data.daily_updates);
+         //  $('#total_enrollers').text(data.total_enrollers);
+         //  $('#phase2_data').text(data.phase2_data);
+         //  $('#chwdata').text(data.chwdata);
+         //  $('#mhwdata').text(data.mhwdata);
          $('#covered_districts').text(data.covered_districts);
          $('#covered_facilities').text(data.covered_facilities);
-         $('#updated_records').text(data.updated_records);
+         //$('#updated_records').text(data.updated_records);
          // console.log(data);
          renderGraph(data);
          mnodataGraph(data);
