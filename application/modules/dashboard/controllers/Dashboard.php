@@ -77,7 +77,7 @@ class Dashboard extends MX_Controller
 		foreach ($data as $d) {
 			$fdata = array($d->district, $d->datas);
 		}
-		array_push($data, $fdata);
-		echo json_encode($fdata);
+		array_push($people, $fdata);
+		echo json_encode($people);
 	}
 }
