@@ -603,7 +603,7 @@
          $('#others_not_verified').text(data.others_not_verified);
          $('#covered_districts').text(data.covered_districts);
          $('#covered_facilities').text(data.covered_facilities);
-         renderGraph(data);
+
 
 
 
