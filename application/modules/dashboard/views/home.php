@@ -525,70 +525,71 @@
 
 
    ///data by MNOS
+   function mnodataGraph(data) {
+
+     Highcharts.chart('enrollment_by_mno', {
 
 
-   Highcharts.chart('enrollment_by_mno', {
-
-
-     chart: {
-       plotBackgroundColor: null,
-       plotBorderWidth: null,
-       plotShadow: false,
-       type: 'pie'
-     },
-     title: {
-       text: 'Verified Data by Network Operators'
-     },
-     tooltip: {
-       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-     },
-     accessibility: {
-       point: {
-         valueSuffix: '%'
-       }
-     },
-     plotOptions: {
-       pie: {
-         allowPointSelect: true,
-         cursor: 'pointer',
-         dataLabels: {
-           enabled: true,
-           format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+       chart: {
+         plotBackgroundColor: null,
+         plotBorderWidth: null,
+         plotShadow: false,
+         type: 'pie'
+       },
+       title: {
+         text: 'Verified Data by Network Operators'
+       },
+       tooltip: {
+         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+       },
+       accessibility: {
+         point: {
+           valueSuffix: '%'
          }
-       }
-     },
-
-     series: [{
-       name: 'Operators',
-       colorByPoint: true,
-
-       data: [{
-           name: 'MTN',
-           y: mno_datas().mtn_verified,
-           sliced: true,
-           selected: true
-         }, {
-           name: 'Airtel',
-           y: mno_datas().airtel_verified
-         },
-         {
-           name: 'Others',
-           y: mno_datas().others_verified
+       },
+       plotOptions: {
+         pie: {
+           allowPointSelect: true,
+           cursor: 'pointer',
+           dataLabels: {
+             enabled: true,
+             format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+           }
          }
-       ]
-     }],
-     credits: {
-       enabled: false
-     }
+       },
 
-   });
+       series: [{
+         name: 'Operators',
+         colorByPoint: true,
+
+         data: [{
+             name: 'MTN',
+             y: data.mtn_verified,
+             sliced: true,
+             selected: true
+           }, {
+             name: 'Airtel',
+             y: data.airtel_verified
+           },
+           {
+             name: 'Others',
+             y: data.others_verified
+           }
+         ]
+       }],
+       credits: {
+         enabled: false
+       }
+
+     });
+   }
    //console.log(data.mhwdata);
 
    //get dashboard Data
+   $(document).ready(function() {
+     //  renderGraph(data);
 
-   //  renderGraph(data);
 
-   function mno_datas() {
      $.ajax({
        type: 'GET',
        url: '<?php echo base_url('dashboard/mnodashboardData') ?>',
@@ -598,11 +599,10 @@
          $('#mtn_verified').text(data.mtn_verified);
          $('#airtel_verified').text(data.airtel_verified);
          $('#others_verified').text(data.others_verified);
-         //  console.log(data);
-         //  mnodataGraph(data);
+         console.log(data);
+         mnodataGraph(data);
        }
 
      });
-     return data;
-   }
+   })
  </script>
