@@ -153,8 +153,8 @@ $permissions = $userdata['permissions'];
     .page-item.active .page-link {
       z-index: 3;
       color: #fff;
-      background-color: #17a2b8;
-      border-color: #17a2b8;
+      background-color: grey;
+      border-color: grey;
     }
 
     .sido::-webkit-scrollbar {
