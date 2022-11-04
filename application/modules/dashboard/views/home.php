@@ -113,7 +113,8 @@
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
                <div class="chart tab-pane active" id="" style="position: relative; height: 300px;">
-                 <img id="enrolloader" src="<?php echo base_url() ?>assets/images/loader.gif" />
+                 <!-- <img id="enrolloader" src="<?php // echo base_url() 
+                                                  ?>assets/images/loader.gif" /> -->
                  <div id=" enrollment" height="300" style="height: 300px;">
                  </div>
                </div>
