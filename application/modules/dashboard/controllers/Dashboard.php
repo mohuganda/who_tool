@@ -80,6 +80,6 @@ class Dashboard extends MX_Controller
 		}
 
 
-		json_encode($people);
+		echo json_encode($people);
 	}
 }
