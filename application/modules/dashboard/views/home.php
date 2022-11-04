@@ -122,12 +122,10 @@
            <div class="card-body">
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                 <div id="record_breakdown" height="300" style="height: 300px;"></div>
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
+                 <div id="record_breakdown" height="4500" style="height: 300px;"></div>
                </div>
-               <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                 <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-               </div>
+
              </div>
            </div><!-- /.card-body -->
          </div>
@@ -151,9 +149,9 @@
            <div class="card-body">
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px; align-items:center; justify-content:center;">
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px; align-items:center; justify-content:center;">
                  <span id="enrolloader"></span>
-                 <div id="enrollment" height="300" style="height: 300px;"></div>
+                 <div id="enrollment" height="300" style="height: 450px;"></div>
                </div>
 
              </div>
@@ -186,12 +184,10 @@
            <div class="card-body">
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                 <div id="enrollment_by_mno" height="300" style="height: 300px;"></div>
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
+                 <div id="enrollment_by_mno" style="height: 450px;"></div>
                </div>
-               <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                 <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-               </div>
+
              </div>
            </div><!-- /.card-body -->
          </div>
@@ -219,12 +215,10 @@
            <div class="card-body">
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                 <div id="gender_chart" height="300" style="height: 300px;"></div>
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
+                 <div id="gender_chart" height="300" style="height: 450px;"></div>
                </div>
-               <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                 <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-               </div>
+
              </div>
            </div><!-- /.card-body -->
          </div>
