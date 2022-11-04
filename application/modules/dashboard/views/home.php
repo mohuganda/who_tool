@@ -564,7 +564,7 @@
 
        data: [{
            name: 'MTN',
-           y: data.mtn_verified,
+           y: mno_datas().mtn_verified,
            sliced: true,
            selected: true
          }, {
