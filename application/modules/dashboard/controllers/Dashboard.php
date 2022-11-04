@@ -79,6 +79,6 @@ class Dashboard extends MX_Controller
 			array_push($people, $fdata);
 		}
 
-		echo json_encode($data);
+		echo json_encode($people);
 	}
 }
