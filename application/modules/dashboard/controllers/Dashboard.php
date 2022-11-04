@@ -75,7 +75,7 @@ class Dashboard extends MX_Controller
 		$people = array();
 		$data = $this->db->query("SELECT district, count(reference) as datas from records_json_report WHERE district IS NOT NULL group by district")->result();
 		foreach ($data as $d) {
-			$fdata = array($d->district, $d->datas);
+			$fdata = array($d->district, number_format($d->datas));
 			array_push($people, $fdata);
 		}
 
