@@ -87,7 +87,7 @@
            <div class="info-box-content">
              <span class="info-box-text">Other Categories</span>
              <span class="info-box-number">
-               <div id="chwdata"></div>
+               <div id="others_verified"></div>
              </span>
            </div -->
            <!-- /.info-box-content-->
