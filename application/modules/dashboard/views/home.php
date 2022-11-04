@@ -375,6 +375,9 @@
          //  $('#mhwdata').text(data.mhwdata);
          $('#covered_districts').text(data.covered_districts);
          $('#covered_facilities').text(data.covered_facilities);
+         $('#mtn_verified').text(data.mtn_verified);
+         $('#airtel_verified').text(data.airtel_verified);
+         $('#others_verified').text(data.others_verified);
          //$('#updated_records').text(data.updated_records);
          // console.log(data);
          renderGraph(data);
@@ -559,16 +562,16 @@
 
          data: [{
              name: 'MTN',
-             y: data.chwdata,
+             y: data.mtn_verified,
              sliced: true,
              selected: true
            }, {
              name: 'Airtel',
-             y: data.mhwdata
+             y: data.airtel_verified
            },
            {
-             name: 'Airtel',
-             y: data.mhwdata
+             name: 'Others',
+             y: data.others_verified
            }
          ]
        }],
