@@ -237,7 +237,7 @@
  <script src="<?php echo base_url() ?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
  <script type="text/javascript">
    Highcharts.setOptions({
-     colors: ['#A1D066', '#FF9655', '#28a745', '#FF9655', '#FFF263', '#6AF9C4']
+     colors: ['#A1D066', '#FF9655', '##adb5bd', '#FF9655', '#FFF263', '#6AF9C4']
    });
 
    function renderGraph(data) {
