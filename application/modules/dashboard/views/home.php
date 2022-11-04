@@ -109,13 +109,12 @@
                </ul>
              </div>
            </div><!-- /.card-header -->
-           <div class="card-body" style="display:flex; align-items:center; justify-content:center;">
+           <div class="card-body">
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px; ">
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px; display:flex; align-items:center; justify-content:center">
                  <span id="enrolloader"></span>
-                 <div id=" enrollment" height="300" style="height: 300px;">
-                 </div>
+                 <div id="enrollment" height="300" style="height: 300px;"></div>
                </div>
 
              </div>
