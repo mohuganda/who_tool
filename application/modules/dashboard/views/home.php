@@ -368,16 +368,8 @@
          $('#mhwdata_not_verified').text(data.mhwdata_not_verified);
          $('#others_verified').text(data.others_verified);
          $('#others_not_verified').text(data.others_not_verified);
-         //  $('#daily_updates').text(data.daily_updates);
-         //  $('#total_enrollers').text(data.total_enrollers);
-         //  $('#phase2_data').text(data.phase2_data);
-         //  $('#chwdata').text(data.chwdata);
-         //  $('#mhwdata').text(data.mhwdata);
          $('#covered_districts').text(data.covered_districts);
          $('#covered_facilities').text(data.covered_facilities);
-         $('#mtn_verified').text(data.mtn_verified);
-         $('#airtel_verified').text(data.airtel_verified);
-         $('#others_verified').text(data.others_verified);
          //$('#updated_records').text(data.updated_records);
          // console.log(data);
          renderGraph(data);
@@ -387,10 +379,6 @@
        }
 
      });
-
-
-
-
 
    });
 
@@ -604,5 +592,37 @@
        }
 
      });
-   })
+   });
+
+
+   //  //get statistics
+   //  $(document).ready(function() {
+   //    //  renderGraph(data);
+   //    $.ajax({
+   //      type: 'GET',
+   //      url: '<?php //echo base_url('dashboard/dashboardstats') 
+                  ?>',
+   //      dataType: "json",
+   //      data: '',
+   //      success: function(data) {
+
+   //        $('#total_records').text(data.total_records);
+   //        $('#total_verified').text(data.total_verified);
+   //        $('#chwdata_verified').text(data.chwdata_verified);
+   //        $('#chwdata_not_verified').text(data.chwdata_not_verified);
+   //        $('#mhwdata_verified').text(data.mhwdata_verified);
+   //        $('#mhwdata_not_verified').text(data.mhwdata_not_verified);
+   //        $('#others_verified').text(data.others_verified);
+   //        $('#others_not_verified').text(data.others_not_verified);
+   //        $('#covered_districts').text(data.covered_districts);
+   //        $('#covered_facilities').text(data.covered_facilities);
+   //        renderGraph(data);
+
+
+
+   //      }
+
+   //    });
+
+   //  });
  </script>
