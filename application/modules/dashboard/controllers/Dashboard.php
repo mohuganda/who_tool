@@ -70,5 +70,10 @@ class Dashboard extends MX_Controller
 		$data = $this->dash_mdl->district_count();
 		echo json_encode($data);
 	}
-	
+	public function get_enrollments()
+	{
+
+		$data = $this->db->query("SELECT district, count(reference) from records_json_report WHERE district IS NOT NULL group by district");
+		echo json_encode($data);
+	}
 }
