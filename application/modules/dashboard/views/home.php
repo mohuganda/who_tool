@@ -519,7 +519,7 @@
    $(document).ready(function() {
      //  renderGraph(data);
 
-
+     $('#loader').html('<img src="../../images/ajax-loader.gif" />       Please wait...');
      $.ajax({
        type: 'GET',
        url: '<?php echo base_url('dashboard/mnodashboardData') ?>',
