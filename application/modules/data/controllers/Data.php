@@ -765,6 +765,7 @@ class Data extends MX_Controller
 		$registername = $this->input->post('registered_name');
 		$mobile_number = $this->input->post('mobile_number');
 		$mobile_operator = $this->input->post('operator');
+		$job = $this->input->post('job');
 
 		$insert = array(
 			"kyc_status" => "$kyc_status",
@@ -776,7 +777,8 @@ class Data extends MX_Controller
 			"primary_mobile_number" => "$mobile_number",
 			"registered_mm_name" => "$registername",
 			"diff_names_consent" => "Yes",
-			"primary_mobile_operator" => "$mobile_operator"
+			"primary_mobile_operator" => "$mobile_operator",
+			"job" => "$job"
 		);
 
 		$this->db->where("reference", "$reference");

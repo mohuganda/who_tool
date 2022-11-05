@@ -224,6 +224,12 @@ $kyc_status = Modules::run("data/kyc_status");
                                                     <input type="text" class="form-control" name="mobile_number" value="<?php echo $staff->mobile_number ?>">
 
                                                 </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        CURRENT JOB </label>
+                                                    <input type="text" class="form-control" name="job" value="<?php echo $staff->job ?>">
+
+                                                </div>
 
                                             </div>
 
