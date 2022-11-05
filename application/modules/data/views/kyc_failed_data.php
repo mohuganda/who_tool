@@ -159,7 +159,7 @@ $kyc_status = Modules::run("data/kyc_status");
                             </button></td>
 
                         <!-- The Modal -->
-                        <form id="kyc_form" class="form-horizontal" method="post" action="">
+                        <form class="kyc_form" method="post" action="">
                             <div class="modal" id="<?php echo $staff->reference ?>">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -261,7 +261,7 @@ $kyc_status = Modules::run("data/kyc_status");
 
 
 
-        $("#kyc_form").submit(function(e) {
+        $(".kyc_form").submit(function(e) {
 
             e.preventDefault();
 
