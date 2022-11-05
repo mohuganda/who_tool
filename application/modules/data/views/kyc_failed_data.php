@@ -127,7 +127,7 @@ $kyc_status = Modules::run("data/kyc_status");
                         <th label="Mobile Number">Primary Mobile Number </th>
                         <th label="Facility ">Facility </th>
                         <th label="Ditrict">District</th>
-                        <th label="Action">#</th>
+                        <th label="Action">Update KYC</th>
 
                     </tr>
                 </thead>
@@ -156,7 +156,7 @@ $kyc_status = Modules::run("data/kyc_status");
                         <td label="Primary Phone Number"><?php echo $staff->facility ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->district ?></td>
                         <td><button type="button" class="btn bt-sm bg-gray-dark color-pale" data-toggle="modal" data-target="#<?php echo $staff->reference ?>">
-                                Update KYC
+                                Update
                             </button></td>
 
                         <!-- The Modal -->
