@@ -254,7 +254,7 @@
       },
       series: [{
         name: 'Records',
-        data: gdata,
+        data: JSON.parse(gdata),
         dataLabels: {
           enabled: true,
           rotation: -90,
