@@ -100,6 +100,6 @@ class Dashboard extends MX_Controller
 
 
 
-		echo ($data);
+		echo json_encode($data, FALSE);
 	}
 }
