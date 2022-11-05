@@ -265,28 +265,31 @@ $kyc_status = Modules::run("data/kyc_status");
 
             e.preventDefault();
 
-            $('.kyc_loader').html('<img style="max-height:50px" src="<?php echo base_url(); ?>assets/images/loader.gif">');
             var formData = $(this).serialize();
-            // console.log(formData);
+            console.log(formData);
             var url = "<?php echo base_url(); ?>data/update_kyc";
             $.ajax({
-                url: url,
-                method: 'post',
-                data: formData,
-                success: function(result) {
+                    url: url,
+                    method: 'post',
+                    data: formData,
+                    success: function(result) {
 
-                    setTimeout(function() {
-                        $('.status').html(result);
-                        $.notify(result, 'info');
-                        $('.status').html('');
-                        $('.clear').click();
-                    }, 1000);
+
+                        setTimeout(function() {
+                            $('.status').html(result);
+                            $.notify(result, 'info');
+                            $('.status').html('');
+                            $('.clear').click();
+                        }, 1000);
+
+
+                    }
+
 
 
                 }
 
-
-            }); //ajax
+            ); //ajax
 
         }); //form submit
         console.log(formData);
