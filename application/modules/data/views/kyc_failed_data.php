@@ -54,7 +54,7 @@ $kyc_status = Modules::run("data/kyc_status");
                         </div>
                         <div class="form-group col-md-4">
                             <label for="aw_description">
-                                Worker Type </label>
+                                Worker Category </label>
                             <select name="worker_type" class="form-control select2">
                                 <option value="">All</option>
                                 <option value="mhw">Main Stream</option>
@@ -83,9 +83,9 @@ $kyc_status = Modules::run("data/kyc_status");
 
                         <div class="form-group col-md-4">
                             <label for="aw_description">
-                                Search  </label>
-                                <input type="text" class="form-control" name="search" placeholder="Search Name">
-                           
+                                Search </label>
+                            <input type="text" class="form-control" name="search" placeholder="Search Name">
+
                         </div>
 
 
