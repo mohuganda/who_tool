@@ -112,8 +112,6 @@ $kyc_status = Modules::run("data/kyc_status");
             <b> &nbsp;&nbsp;<?php echo $total_rows . ' Records'; ?></b>
 
         <div class="table" style="overflow-x:auto;">
-            <span class="kyc_loader"></span>
-
             <table id=" example" style="width:100%">
                 <thead>
                     <tr>
@@ -161,19 +159,20 @@ $kyc_status = Modules::run("data/kyc_status");
                             </button></td>
 
                         <!-- The Modal -->
-                        <div class="modal" id="<?php echo $staff->reference ?>">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
+                        <form id="kyc_form" class="form-horizontal" method="post" action="">
+                            <div class="modal" id="<?php echo $staff->reference ?>">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
 
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Update KYC FOR: <?php echo ucwords($staff->customer_name); ?></h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Update KYC FOR: <?php echo ucwords($staff->customer_name); ?></h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <span class="kyc_loader"></span>
+                                        </div>
 
-                                    <!-- Modal body -->
-                                    <div class="modal-body">
-                                        <form id="kyc_form" class="form-horizontal" method="post" action="">
+                                        <!-- Modal body -->
+                                        <div class=" modal-body">
 
                                             <div class="form-group col-md-12">
                                                 <label for="aw_description">
@@ -220,15 +219,15 @@ $kyc_status = Modules::run("data/kyc_status");
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                             </div>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            </form>
-                            <!-- The Modal -->
+                        </form>
+                        <!-- The Modal -->
 
-                            </tr>
-                        <?php endforeach; ?>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
 
@@ -262,7 +261,7 @@ $kyc_status = Modules::run("data/kyc_status");
 
 
 
-        $(".kyc_form").submit(function(e) {
+        $("#kyc_form").submit(function(e) {
 
             e.preventDefault();
 
