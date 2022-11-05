@@ -16,80 +16,82 @@ $kyc_status = Modules::run("data/kyc_status");
         <div class="col-lg-12">
 
             <div class="card-tools">
+                <fieldset>
+                    <legend>Personalia:</legend>
 
-                <form class="form-horizontal" action="<?php echo base_url() ?>data/kyc_verified" method="get">
-                    <div class="row">
+                    <form class="form-horizontal" action="<?php echo base_url() ?>data/kyc_verified" method="get">
+                        <div class="row">
 
 
-                        <?php //print_r($this->session->userdata());
-                        ?>
-                        <div class="form-group col-md-4">
-                            <label for="aw_description">
-                                Districts </label>
-                            <select name="district" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());">
-                                <option value="" disabled selected>DISTRICT</option>
-                                <option value="">ALL</option>
-                                <?php
-                                if ($_SESSION['role'] != "District Administrator") {
-                                    foreach ($districts as $district) :
-                                ?>
-                                        <option value="<?php echo $district->district; ?>" <?php if (urldecode($this->input->get('district')) == $district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
-                                    <?php endforeach;
-                                } else { ?>
-                                    <option value="<?php echo $_SESSION['district']; ?>" <?php if (urldecode($this->input->get('district')) == $_SESSION['district']) echo "selected"; ?>><?php echo $_SESSION['district']; ?></option>
-                                <?php }
+                            <?php //print_r($this->session->userdata());
+                            ?>
+                            <div class="form-group col-md-4">
+                                <label for="aw_description">
+                                    Districts </label>
+                                <select name="district" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());">
+                                    <option value="" disabled selected>DISTRICT</option>
+                                    <option value="">ALL</option>
+                                    <?php
+                                    if ($_SESSION['role'] != "District Administrator") {
+                                        foreach ($districts as $district) :
+                                    ?>
+                                            <option value="<?php echo $district->district; ?>" <?php if (urldecode($this->input->get('district')) == $district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
+                                        <?php endforeach;
+                                    } else { ?>
+                                        <option value="<?php echo $_SESSION['district']; ?>" <?php if (urldecode($this->input->get('district')) == $_SESSION['district']) echo "selected"; ?>><?php echo $_SESSION['district']; ?></option>
+                                    <?php }
 
-                                ?>
-                            </select>
+                                    ?>
+                                </select>
+
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="aw_description">
+                                    Facilities </label>
+                                <select name="facility" class="sfacility form-control select2">
+                                    <option value="" disabled>All</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="aw_description">
+                                    Worker Category </label>
+                                <select name="worker_type" class="form-control select2">
+                                    <option value="">All</option>
+                                    <option value="mhw">Main Stream</option>
+                                    <option value="chw">VHT</option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="aw_description">
+                                    Job </label>
+                                <select name="job" class="form-control select2 sdistrict" style="width:100%;">
+                                    <option value="">All</option>
+
+                                    <?php foreach ($jobs as $job) :
+                                    ?>
+                                        <option value="<?php echo $job->job; ?>" <?php if (urldecode($this->input->get('job')) == $job->job) echo "selected"; ?>><?php echo $job->job; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+
+
+
+
+                            </div>
+
+
+                            <div class="form-group col-md-4">
+                                <label for="aw_description">
+                                    Search </label>
+                                <input type="text" name="search" class="form-control" placeholder="Search Name">
+
+                            </div>
 
 
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="aw_description">
-                                Facilities </label>
-                            <select name="facility" class="sfacility form-control select2">
-                                <option value="" disabled>All</option>
-
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="aw_description">
-                                Worker Category </label>
-                            <select name="worker_type" class="form-control select2">
-                                <option value="">All</option>
-                                <option value="mhw">Main Stream</option>
-                                <option value="chw">VHT</option>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="aw_description">
-                                Job </label>
-                            <select name="job" class="form-control select2 sdistrict" style="width:100%;">
-                                <option value="">All</option>
-
-                                <?php foreach ($jobs as $job) :
-                                ?>
-                                    <option value="<?php echo $job->job; ?>" <?php if (urldecode($this->input->get('job')) == $job->job) echo "selected"; ?>><?php echo $job->job; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-
-
-
-
-                        </div>
-
-
-                        <div class="form-group col-md-4">
-                            <label for="aw_description">
-                                Search </label>
-                            <input type="text" name="search" class="form-control" placeholder="Search Name">
-
-                        </div>
-
-
-                    </div>
             </div>
 
             <div class="row">
@@ -110,6 +112,8 @@ $kyc_status = Modules::run("data/kyc_status");
         &nbsp;&nbsp;<p class="pagination"><?php echo $links; ?>
 
             <b> &nbsp;&nbsp;<?php echo $total_rows . ' Records'; ?></b>
+            </fieldset>
+            </form>
 
         <div class="table" style="overflow-x:auto;">
 
