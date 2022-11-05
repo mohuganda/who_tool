@@ -127,6 +127,7 @@ $kyc_status = Modules::run("data/kyc_status");
                         <th label="Mobile Number">Primary Mobile Number </th>
                         <th label="Facility ">Facility </th>
                         <th label="Ditrict">District</th>
+                        <th label="Action">#</th>
 
                     </tr>
                 </thead>
@@ -154,6 +155,74 @@ $kyc_status = Modules::run("data/kyc_status");
                         <td label="Primary Phone Number"><?php echo $staff->mobile_number ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->facility ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->district ?></td>
+                        <td><button type="button" class="btn bt-sm bg-gray-dark color-pale" data-toggle="modal" data-target="#$staff->reference ">
+                                Update KYC
+                            </button></td>
+
+                        <!-- The Modal -->
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Update KYC FOR: <?php echo ucwords($staff->customer_name); ?></h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form id="kyc_form" class="form-horizontal" method="post" action="">
+
+                                            <div class="form-group col-md-12">
+                                                <label for="aw_description">
+                                                    KYC STATUS </label>
+                                                <select class="form-control" name="kyc_status">
+                                                    <?php $kycs = array('MATCH', 'CLOSE MATCH', 'POSSIBLE MATCH', 'VERIFIED MATCH', 'DOES NOT MATCH');
+                                                    foreach ($kycs as $kyc) : ?>
+                                                        <option value="<?php echo $kycs; ?>" <?php if ($kycs == $staff->kyc_status) {
+                                                                                                    echo "selected";
+                                                                                                } ?>><?php echo $kycs; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        DISTRICT </label>
+                                                    <select name="district" class="form-control select2 sdistrict" style="width:100%;">
+                                                        <option value="" disabled selected>DISTRICT</option>
+                                                        <option value="">ALL</option>
+                                                        <?php
+                                                        if ($_SESSION['role'] != "District Administrator") {
+                                                            foreach ($districts as $district) :
+                                                        ?>
+                                                                <option value="<?php echo $district->district; ?>" <?php if (urldecode($this->input->get('district')) == $district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
+                                                            <?php endforeach;
+                                                        } else { ?>
+                                                            <option value="<?php echo $_SESSION['district']; ?>" <?php if (urldecode($this->input->get('district')) == $_SESSION['district']) echo "selected"; ?>><?php echo $_SESSION['district']; ?></option>
+                                                        <?php }
+
+                                                        ?>
+                                                    </select>
+
+
+                                                </div>
+
+
+
+                                        </form>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class=" modal-footer">
+                                        <button type="Submit" class="btn bt-sm bg-gray-dark color-pale">Update</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- The Modal -->
 
                         </tr>
                     <?php endforeach; ?>
