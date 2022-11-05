@@ -82,4 +82,12 @@ class Dashboard extends MX_Controller
 
 		echo json_encode($people);
 	}
+	public function data_status(){
+		$data['Total Collection'] = $this->db->query("SELECT distinct reference from records_json")->num_rows();
+		$data['Total Cleaned Data'] = $this->db->query("SELECT distinct reference from records_json_report")->num_rows();
+		$data['Total KYC Verified Data'] =
+		$data['total_verified'] = $this->db->query("SELECT reference FROM validated_numbers WHERE kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
+
+		echo json_encode($data);
+	}
 }

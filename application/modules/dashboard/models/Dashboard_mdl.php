@@ -22,7 +22,7 @@ class Dashboard_mdl extends CI_Model
     {
         $data['total_records'] = $this->db->query("select count(id) as total_records from records_json_report")->row()->total_records;
         ///total verified
-        $data['total_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
+        $data['total_verified'] = $this->db->query("SELECT reference FROM validated_numbers WHERE kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
         //total  chws
         $data['chwdata_verified'] = $this->db->query("SELECT r.reference FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') and r.job='VHT'")->num_rows();
 
