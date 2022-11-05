@@ -306,7 +306,7 @@ class Data extends MX_Controller
 		exit;
 	}
 
-	public function kyc_failed_csv($print)
+	public function kyc_failed_csv($print = FALSE)
 	{
 		ini_set('max_execution_time', 0);
 		$dfilter = $_SESSION['dfilter'];
