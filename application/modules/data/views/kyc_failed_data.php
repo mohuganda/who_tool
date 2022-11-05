@@ -180,9 +180,9 @@ $kyc_status = Modules::run("data/kyc_status");
                                                 <select class="form-control" name="kyc_status">
                                                     <?php $kycs = array('MATCH', 'CLOSE MATCH', 'POSSIBLE MATCH', 'VERIFIED MATCH', 'DOES NOT MATCH');
                                                     foreach ($kycs as $kyc) : ?>
-                                                        <option value="<?php echo $kycs; ?>" <?php if ($kycs == $staff->kyc_status) {
-                                                                                                    echo "selected";
-                                                                                                } ?>><?php echo $kycs; ?></option>
+                                                        <option value="<?php echo $kyc; ?>" <?php if ($kyc == $staff->kyc_status) {
+                                                                                                echo "selected";
+                                                                                            } ?>><?php echo $kyc; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
 
