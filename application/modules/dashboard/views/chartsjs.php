@@ -398,7 +398,9 @@
       dataType: "json",
       data: '',
       success: function(data) {
-        data_status_column_graph(data);
+        //  data_status_column_graph(data);
+        console.log(JSON.parse(data));
+
       }
 
     });
