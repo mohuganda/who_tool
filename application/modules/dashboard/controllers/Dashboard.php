@@ -91,6 +91,6 @@ class Dashboard extends MX_Controller
 			$data['total_verified'] = $this->db->query("SELECT reference FROM validated_numbers WHERE kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
 		$encode = array_push($fdata, $data);
 
-		echo json_encode($data);
+		echo json_encode($encode);
 	}
 }
