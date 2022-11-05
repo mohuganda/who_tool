@@ -93,7 +93,7 @@
             <a href="<?php echo base_url(); ?>data/kyc_failed" class="nav-link">
               <i class="fa fa-th"></i>
               <p>
-                Mismatched Numbers
+                KYC Failed Data
               </p>
             </a>
           </li>
