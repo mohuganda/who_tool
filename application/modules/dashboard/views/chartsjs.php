@@ -399,7 +399,7 @@
       data: '',
       success: function(data) {
         //  data_status_column_graph(data);
-        console.log(data);
+        console.log(data.keys);
 
       }
 
