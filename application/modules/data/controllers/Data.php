@@ -428,6 +428,7 @@ class Data extends MX_Controller
 		$data['module'] 	= "data";
 		$data['view']   	= "kyc_verified_data";
 		$data['jobs'] = $this->data_model->get_jobs();
+		$config['reuse_query_string'] = true;
 		$config = array();
 		$config['base_url'] = base_url('data/kyc_verified');
 		$data['total_rows'] = $config['total_rows'] = $this->kyc_count_rows($dfilter, $ffilter, $fworker_type, $fjob, $fsearch);
@@ -521,6 +522,7 @@ class Data extends MX_Controller
 		$data['jobs'] = $this->data_model->get_jobs();
 		$config = array();
 		$config['base_url'] = base_url('data/kyc_failed');
+		$config['reuse_query_string'] = true;
 		$data['total_rows'] = $config['total_rows'] = $this->kyc_failed_count_rows($dfilter, $ffilter, $fworker_type, $fjob, $fsearch);
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
