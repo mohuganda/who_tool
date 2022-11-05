@@ -246,7 +246,7 @@ class Data extends MX_Controller
 		$csv = $_SESSION['district'] . "-KYC_VERIFIED" . date('Y-m-d') . '_' . ".csv";
 
 		if ($print = 1) {
-			$records = $this->data_model->kyc_verified_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $kycfilter, $fworker_type, $jobfilter, $print);
+			$records = $this->data_model->kyc_verified_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $fworker_type, $jobfilter, $print);
 		}
 		//print_r($records);
 		$f = fopen('php://memory', 'w');
@@ -318,7 +318,7 @@ class Data extends MX_Controller
 		$csv = $_SESSION['district'] . "-KYC_FAILED_VERIFIED" . date('Y-m-d') . '_' . ".csv";
 
 		if ($print = 1) {
-			$records = $this->data_model->kyc_failed_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $kycfilter, $fworker_type, $jobfilter, $print);
+			$records = $this->data_model->kyc_failed_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $fworker_type, $jobfilter, $print);
 		}
 		//print_r($records);
 		$f = fopen('php://memory', 'w');
