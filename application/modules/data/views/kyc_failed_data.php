@@ -205,7 +205,7 @@ $kyc_status = Modules::run("data/kyc_status");
                                                 <div class="form-group col-md-12">
                                                     <label for="aw_description">
                                                         MOBILE OPERATOR </label>
-                                                    <select name="primary_mobile_operator" class="form-control select2" style="width:100%;" required>
+                                                    <select name="operator" class="form-control select2" style="width:100%;" required>
                                                         <option value="<?php echo $staff->primary_mobile_operator; ?>" selected> <?php echo $staff->primary_mobile_operator; ?></option>
                                                         <option value="MTN">MTN</option>
                                                         <option value="AIRTEL">AIRTEL</option>
