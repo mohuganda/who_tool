@@ -771,10 +771,10 @@ class Data extends MX_Controller
 		$district = $this->input->post('district');
 
 		$insert = array(
-			'kyc_status' => "$kyc_status"
+			"kyc_status" => "$kyc_status"
 		);
 		$insert2 = array(
-			'district' => "$district"
+			"district" => "$district"
 		);
 
 		$this->db->where("reference", "$reference");
