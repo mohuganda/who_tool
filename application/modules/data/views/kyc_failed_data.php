@@ -154,13 +154,13 @@ $kyc_status = Modules::run("data/kyc_status");
                         <td label="Primary Phone Number"><?php echo $staff->mobile_number ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->facility ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->district ?></td>
-                        <td><button type="button" class="btn bt-sm bg-gray-dark color-pale" data-toggle="modal" data-target="#<?php echo $staff->reference ?>">
+                        <td><button type="button" class="btn bt-sm bg-gray-dark color-pale" data-toggle="modal" data-target="#<?php echo str_replace(' ', '', $staff->reference); ?>">
                                 Update
                             </button></td>
 
                         <!-- The Modal -->
                         <form class="kyc_form" method="post" action="">
-                            <div class="modal" id="<?php echo $staff->reference ?>">
+                            <div class="modal" id="<?php echo str_replace(' ', '', $staff->reference); ?>">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -173,7 +173,6 @@ $kyc_status = Modules::run("data/kyc_status");
 
                                         <!-- Modal body -->
                                         <div class=" modal-body">
-
                                             <div class="form-group col-md-12">
                                                 <label for="aw_description">
                                                     KYC STATUS </label>
@@ -200,17 +199,31 @@ $kyc_status = Modules::run("data/kyc_status");
                                                         ?>
                                                             <option value="<?php echo $district->district; ?>"><?php echo $district->district; ?></option>
                                                         <?php endforeach; ?>
-
-
-
                                                         ?>
                                                     </select>
-
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        MOBILE OPERATOR </label>
+                                                    <select name="primary_mobile_operator" class="form-control select2" style="width:100%;" required>
+                                                        <option value="<?php echo $staff->primary_mobile_operator; ?>" selected> <?php echo $staff->primary_mobile_operator; ?></option>
+                                                        <option value="MTN">MTN</option>
+                                                        <option value="AIRTEL">AIRTEL</option>
+                                                        <option value="UTL">UTL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        NETWORK REGISTERED NAME </label>
+                                                    <input type="text" name="registered_name" value="<?php echo $staff->mno_registered_name ?>">
 
                                                 </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        PRIMARY MOBILE MONEY NUMBER </label>
+                                                    <input type="text" name="mobile_number" value="<?php echo $staff->mobile_number ?>">
 
-
-
+                                                </div>
 
                                             </div>
 

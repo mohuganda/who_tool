@@ -247,7 +247,7 @@ class Data extends MX_Controller
 		$csv = $_SESSION['district'] . "-KYC_VERIFIED" . date('Y-m-d') . '_' . ".csv";
 
 		if ($print = 1) {
-			$records = $this->data_model->kyc_verified_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $fworker_type, $jobfilter,$fsearch, $print);
+			$records = $this->data_model->kyc_verified_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $fworker_type, $jobfilter, $fsearch, $print);
 		}
 		//print_r($records);
 		$f = fopen('php://memory', 'w');
@@ -762,12 +762,21 @@ class Data extends MX_Controller
 		$reference = $this->input->post('reference');
 		$kyc_status = $this->input->post('kyc_status');
 		$district = $this->input->post('district');
+		$registername = $this->input->post('registered_name');
+		$mobile_number = $this->input->post('mobile_number');
+		$mobile_operator = $this->input->post('operator');
 
 		$insert = array(
-			"kyc_status" => "$kyc_status"
+			"kyc_status" => "$kyc_status",
+			"mobile_number" => "$mobile_number",
+			"mno_registered_name" => "$registername"
 		);
 		$insert2 = array(
-			"district" => "$district"
+			"district" => "$district",
+			"primary_mobile_number" => "$mobile_number",
+			"registered_mm_name" => "$registername",
+			"diff_names_consent" => "Yes",
+			"primary_mobile_operator" => "$mobile_operator"
 		);
 
 		$this->db->where("reference", "$reference");
