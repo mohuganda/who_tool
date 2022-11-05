@@ -79,8 +79,8 @@ class Dashboard extends MX_Controller
 			array_push($people, $fdata);
 		}
 
-		print_r($people);
-		//echo json_encode($people);
+
+		echo json_encode($people);
 	}
 	public function data_status()
 	{
@@ -90,19 +90,17 @@ class Dashboard extends MX_Controller
 		$verified = $this->db->query("SELECT reference FROM validated_numbers WHERE kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
 
 		$fdata = array(
-			(array)array(
+			array(
 				"Total Collection" => intval($total)
 			),
-			(array)array(
+			array(
 				"Total Clean Data" => intval($Cleaned)
-			), (array)array(
+			), array(
 				"Total KYC Verified Data" => intval($verified)
 			)
 
 		);
 
-		print_r($fdata);
-
-		// echo json_encode($fdata, true);
+		echo json_encode([$fdata]);
 	}
 }
