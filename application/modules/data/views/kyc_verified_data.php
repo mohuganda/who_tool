@@ -84,7 +84,7 @@ $kyc_status = Modules::run("data/kyc_status");
                         <div class="form-group col-md-4">
                             <label for="aw_description">
                                 Search </label>
-                            <input type="text" name="search" placeholder="Search Name">
+                            <input type="text" name="search" class="form-control" placeholder="Search Name">
 
                         </div>
 
