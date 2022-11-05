@@ -315,7 +315,7 @@ class Data extends MX_Controller
 		$datefilter = $_SESSION['datefilter'];
 		$jobfilter = $_SESSION['job'];
 		$kycfilter = $_SESSION['kycfilter'];
-		$csv = $_SESSION['district'] . "-KYC_VERIFIED" . date('Y-m-d') . '_' . ".csv";
+		$csv = $_SESSION['district'] . "-KYC_FAILED_VERIFIED" . date('Y-m-d') . '_' . ".csv";
 
 		if ($print = 1) {
 			$records = $this->data_model->kyc_failed_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $kycfilter, $fworker_type, $jobfilter, $print);
@@ -528,7 +528,7 @@ class Data extends MX_Controller
 		$data['jobs'] = $this->data_model->get_jobs();
 		$config = array();
 		$config['base_url'] = base_url('data/kyc_failed');
-		$data['total_rows'] = $config['total_rows'] = $this->kyc_count_rows($dfilter, $ffilter, $fworker_type, $fjob);
+		$data['total_rows'] = $config['total_rows'] = $this->kyc_failed_count_rows($dfilter, $ffilter, $fworker_type, $fjob);
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
