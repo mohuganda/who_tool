@@ -96,7 +96,7 @@ class Dashboard extends MX_Controller
 			array(
 				"Total Clean Data" => $data['Total Collection']
 			), array(
-				"'Total KYC Verified Data'" => $data['Total KYC Verified Data']
+				"Total KYC Verified Data" => $data['Total KYC Verified Data']
 			)
 
 		);
