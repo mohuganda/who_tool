@@ -191,17 +191,17 @@ $kyc_status = Modules::run("data/kyc_status");
                                                 <div class="form-group col-md-12">
                                                     <label for="aw_description">
                                                         DISTRICT </label>
-                                                    <select name="district" class="form-control select2 sdistrict" style="width:100%;" required>
-                                                        <option value="" disabled selected>DISTRICT</option>
+                                                    <select name="district" class="form-control select2" style="width:100%;" required>
+                                                        <option value="<?php echo $staff->district; ?>" selected> <?php echo $staff->district; ?></option>
+
                                                         <?php
-                                                        if ($_SESSION['role'] != "District Administrator") {
-                                                            foreach ($districts as $district) :
+
+                                                        foreach ($districts as $district) :
                                                         ?>
-                                                                <option value="<?php echo $district->district; ?>" <?php if (urldecode($this->input->get('district')) == $district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
-                                                            <?php endforeach;
-                                                        } else { ?>
-                                                            <option value="<?php echo $_SESSION['district']; ?>" <?php if (urldecode($this->input->get('district')) == $_SESSION['district']) echo "selected"; ?>><?php echo $_SESSION['district']; ?></option>
-                                                        <?php }
+                                                            <option value="<?php echo $district->district; ?>"><?php echo $district->district; ?></option>
+                                                        <?php endforeach; ?>
+
+
 
                                                         ?>
                                                     </select>
