@@ -86,7 +86,7 @@ class Dashboard extends MX_Controller
 	{
 		$fdata = array();
 		$total = $this->db->query("SELECT distinct reference from records_json")->num_rows();
-		$Cleaned = $this->db->query("SELECT distinct reference from records_json_report")->num_rows();
+		$Cleaned = $this->db->query("SELECT distinct reference from records_json_report where status='Clean'")->num_rows();
 		$verified = $this->db->query("SELECT reference FROM validated_numbers WHERE kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
 
 		$data['keys'] = array("Total Collection", "Total Clean Data", "Total KYC Verified Data");
