@@ -112,8 +112,9 @@ $kyc_status = Modules::run("data/kyc_status");
             <b> &nbsp;&nbsp;<?php echo $total_rows . ' Records'; ?></b>
 
         <div class="table" style="overflow-x:auto;">
+            <span class="kyc_loader"></span>
 
-            <table id="example" style="width:100%">
+            <table id=" example" style="width:100%">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -210,22 +211,24 @@ $kyc_status = Modules::run("data/kyc_status");
 
 
 
-                                        </form>
-                                    </div>
 
-                                    <!-- Modal footer -->
-                                    <div class=" modal-footer">
-                                        <button type="Submit" class="btn bt-sm bg-gray-dark color-pale">Update</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    </div>
+                                            </div>
 
+                                            <!-- Modal footer -->
+                                            <div class=" modal-footer">
+                                                <button type="Submit" class="btn bt-sm bg-gray-dark color-pale">Update</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- The Modal -->
 
-                        </tr>
-                    <?php endforeach; ?>
+                            </form>
+                            <!-- The Modal -->
+
+                            </tr>
+                        <?php endforeach; ?>
                 </tbody>
             </table>
 
@@ -255,5 +258,35 @@ $kyc_status = Modules::run("data/kyc_status");
 
             ]
         });
+
+
+
+
+        $(".kyc_form").submit(function(e) {
+
+            e.preventDefault();
+
+            $('.kyc_loader').html('<img style="max-height:50px" src="<?php echo base_url(); ?>assets/image/loader.gif">');
+            var formData = $(this).serialize();
+            // console.log(formData);
+            var url = "<?php echo base_url(); ?>data/update_kyc";
+            $.ajax({
+                url: url,
+                method: 'post',
+                data: formData,
+                success: function(result) {
+                    console.log(data);
+                    setTimeout(function() {
+                        $('.status').html(result);
+                        $.notify(result, 'info');
+                        $('.status').html('');
+                        $('.clear').click();
+                    }, 1000);
+
+
+                }
+            }); //ajax
+
+        }); //form submit
     });
 </script>

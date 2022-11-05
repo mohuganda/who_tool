@@ -763,6 +763,11 @@ class Data extends MX_Controller
 		echo Modules::run('templates/main', $data);
 	}
 
+	public function update_kyc()
+	{
+
+		echo "reached";
+	}
 	public function phase2_enrollers_per()
 	{
 		$data['module'] = 'data';
