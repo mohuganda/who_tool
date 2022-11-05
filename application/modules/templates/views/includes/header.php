@@ -214,6 +214,16 @@ $permissions = $userdata['permissions'];
       background-size: cover;
       margin: -50px 0 0 -50px;
     }
+
+    fieldset {
+      background-color: #eeeeee;
+    }
+
+    legend {
+      background-color: gray;
+      color: white;
+      padding: 5px 10px;
+    }
   </style>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/responsive2.css">

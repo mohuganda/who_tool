@@ -17,7 +17,7 @@ $kyc_status = Modules::run("data/kyc_status");
 
             <div class="card-tools">
                 <fieldset>
-                    <legend>Personalia:</legend>
+                    <legend>Filters:</legend>
 
                     <form class="form-horizontal" action="<?php echo base_url() ?>data/kyc_verified" method="get">
                         <div class="row">
