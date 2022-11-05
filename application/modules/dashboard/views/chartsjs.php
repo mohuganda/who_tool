@@ -263,7 +263,10 @@
       series: [{
         data: gdata.values,
         colorByPoint: true
-      }]
+      }],
+      credits: {
+        enabled: false
+      }
     });
 
 
