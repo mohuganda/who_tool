@@ -215,60 +215,73 @@
 
 
   ///data by MNOS
+
+
   function data_status_column_graph(gdata) {
 
-    Highcharts.chart('data_status', {
+    // Set up the chart
+    const chart = new Highcharts.Chart({
       chart: {
-        type: 'column'
+        renderTo: 'data_status',
+        type: 'column',
+        options3d: {
+          enabled: true,
+          alpha: 15,
+          beta: 15,
+          depth: 50,
+          viewDistance: 25
+        }
+      },
+      xAxis: {
+        categories: gdata.keys
+      },
+      yAxis: {
+        title: {
+          enabled: false
+        }
+      },
+      tooltip: {
+        headerFormat: '<b>{point.key}</b><br>',
+        pointFormat: 'Records: {point.y}'
       },
       title: {
         text: 'Data Status'
       },
       subtitle: {
-        text: 'Source: <a href="<?php echo base_url() ?>" target="_blank">Digital Finance Data Bank</a>'
-      },
-      xAxis: {
-        type: 'category',
-        labels: {
-          rotation: -45,
-          style: {
-            fontSize: '13px',
-            fontFamily: 'Verdana, sans-serif'
-          }
-        }
-      },
-      yAxis: {
-        min: 0,
-        title: {
-          text: 'Data Status'
-        }
+        text: 'Source: ' +
+          '<a href="<?php echo base_url() ?>"' +
+          'target="_blank">Digital Finance Databank</a>'
       },
       legend: {
         enabled: false
       },
-      tooltip: {
-        pointFormat: 'Records: <b>{point.y:.1f} </b>'
-      },
-      credits: {
-        enabled: false
+      plotOptions: {
+        column: {
+          depth: 25
+        }
       },
       series: [{
-        name: 'Records',
-        data: gdata,
-        dataLabels: {
-          enabled: true,
-          rotation: -90,
-          color: '#FFFFFF',
-          align: 'right',
-          format: '{point.y:.1f}', // one decimal
-          y: 10, // 10 pixels down from the top
-          style: {
-            fontSize: '13px',
-            fontFamily: 'Verdana, sans-serif'
-          }
-        }
+        data: gdata.values,
+        colorByPoint: true
       }]
     });
+
+
+
+    // Activate the sliders
+    document.querySelectorAll('#sliders input').forEach(input => input.addEventListener('input', e => {
+      chart.options.chart.options3d[e.target.id] = parseFloat(e.target.value);
+      showValues();
+      chart.redraw(false);
+    }));
+
+    showValues();
+  }
+
+  function showValues() {
+    document.getElementById('alpha-value').innerHTML = chart.options.chart.options3d.alpha;
+    document.getElementById('beta-value').innerHTML = chart.options.chart.options3d.beta;
+    document.getElementById('depth-value').innerHTML = chart.options.chart.options3d.depth;
   }
   ///data by MNOS
   function mnodataGraph(data) {
@@ -398,8 +411,8 @@
       dataType: "json",
       data: '',
       success: function(data) {
-        //  data_status_column_graph(data);
-        console.log(data.keys);
+        data_status_column_graph(data);
+        // console.log(data.keys);
 
       }
 
