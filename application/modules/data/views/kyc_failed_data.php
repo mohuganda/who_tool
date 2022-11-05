@@ -17,7 +17,7 @@ $kyc_status = Modules::run("data/kyc_status");
 
             <div class="card-tools">
 
-                <form class="form-horizontal" action="<?php echo base_url() ?>data/kyc_failed_csv" method="get">
+                <form class="form-horizontal" action="<?php echo base_url() ?>data/kyc_failed" method="get">
                     <div class="row">
 
 
@@ -93,7 +93,7 @@ $kyc_status = Modules::run("data/kyc_status");
             </div>
 
             <div class="row">
-                <a href="<?php echo base_url() ?>data/kyc_csv/1/<?php echo $form ?>" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>
+                <a href="<?php echo base_url() ?>data/kyc_failed_csv/1/<?php echo $form ?>" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>
                 &nbsp;&nbsp;
                 <button type="submit" class="btn bt-sm bg-gray-dark color-pale" style="width:100px; "><i class="fa fa-tasks" aria-hidden="true"></i>APPLY</button>
                 &nbsp;&nbsp;
