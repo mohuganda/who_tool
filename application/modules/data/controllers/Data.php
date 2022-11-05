@@ -766,7 +766,40 @@ class Data extends MX_Controller
 	public function update_kyc()
 	{
 
-		echo "reached";
+		$reference = $this->input->post('reference');
+		$kyc_status = $this->input->post('kyc_status');
+		$district = $this->input->post('district');
+
+		$insert = array(
+			'kyc_status' => "$kyc_status"
+		);
+		$insert2 = array(
+			'district' => "$district"
+		);
+
+		$this->db->where("reference", "$reference");
+		$query = $this->db->update("validated_numbers", "$insert");
+
+		$query2 = $this->update_district($insert2, $reference);
+
+		if ($query && $query2) {
+
+			echo "KYC UPDATED";
+		} else {
+			echo "KYC FAILED";
+		}
+	}
+
+	public function update_district($insert2, $reference)
+	{
+		$this->db->where("reference", "$reference");
+		$query = $this->db->update("records_json_report", "$insert2");
+		if ($query) {
+
+			return "UPDATED";
+		} else {
+			return "FAILED";
+		}
 	}
 	public function phase2_enrollers_per()
 	{

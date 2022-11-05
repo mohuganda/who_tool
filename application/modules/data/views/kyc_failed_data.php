@@ -177,7 +177,7 @@ $kyc_status = Modules::run("data/kyc_status");
                                             <div class="form-group col-md-12">
                                                 <label for="aw_description">
                                                     KYC STATUS </label>
-                                                <select class="form-control" name="kyc_status">
+                                                <select class="form-control" name="kyc_status" required>
                                                     <?php $kycs = array('MATCH', 'CLOSE MATCH', 'POSSIBLE MATCH', 'VERIFIED MATCH', 'DOES NOT MATCH');
                                                     foreach ($kycs as $kyc) : ?>
                                                         <option value="<?php echo $kyc; ?>" <?php if ($kyc == $staff->kyc_status) {
@@ -191,9 +191,8 @@ $kyc_status = Modules::run("data/kyc_status");
                                                 <div class="form-group col-md-12">
                                                     <label for="aw_description">
                                                         DISTRICT </label>
-                                                    <select name="district" class="form-control select2 sdistrict" style="width:100%;">
+                                                    <select name="district" class="form-control select2 sdistrict" style="width:100%;" required>
                                                         <option value="" disabled selected>DISTRICT</option>
-                                                        <option value="">ALL</option>
                                                         <?php
                                                         if ($_SESSION['role'] != "District Administrator") {
                                                             foreach ($districts as $district) :
