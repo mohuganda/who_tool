@@ -45,7 +45,7 @@ class Data_model extends CI_Model
 		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type,r.job,r.national_id FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status NOT IN ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') $dfilter $kycstatus $ffilter $fworker_type $fjob $fsearch $limit");
 		return $query->result();
 	}
-	public function kyc_verified_data($limits, $starts, $dfilter, $ffilter, $fworker_type, $fjob, $print = FALSE)
+	public function kyc_verified_data($limits, $starts, $dfilter, $ffilter, $fworker_type, $fjob, $fsearch, $print = FALSE)
 	{
 		if ($print == 1) {
 			$limit = "";
@@ -58,7 +58,7 @@ class Data_model extends CI_Model
 		} else {
 			$kycstatus = "and kyc_status IS NOT NULL";
 		}
-		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type,r.job,r.national_id FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') $dfilter $kycstatus $ffilter $fworker_type $fjob $limit");
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type,r.job,r.national_id FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') $dfilter $kycstatus $ffilter $fworker_type $fjob $fsearch $limit");
 		return $query->result();
 	}
 	public function cleangetData2($limits, $starts, $dfilter, $ffilter, $fworker_type, $print)

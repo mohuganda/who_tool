@@ -243,10 +243,11 @@ class Data extends MX_Controller
 		$datefilter = $_SESSION['datefilter'];
 		$jobfilter = $_SESSION['job'];
 		$kycfilter = $_SESSION['kycfilter'];
+		$fsearch = $_SESSION['fsearch'];
 		$csv = $_SESSION['district'] . "-KYC_VERIFIED" . date('Y-m-d') . '_' . ".csv";
 
 		if ($print = 1) {
-			$records = $this->data_model->kyc_verified_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $fworker_type, $jobfilter, $print);
+			$records = $this->data_model->kyc_verified_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $fworker_type, $jobfilter,$fsearch, $print);
 		}
 		//print_r($records);
 		$f = fopen('php://memory', 'w');
@@ -414,18 +415,12 @@ class Data extends MX_Controller
 			$fjob = "";
 		}
 
-		// $kycs = $this->input->get('kyc_status');
-		// $kyc = implode("','", $kycs);
-		// //$kyc =  implode(',', array_map('add_quotes', $kycs));
-		// if (!empty($kyc)) {
-
-		// 	$quot = "'";
-		// 	$kycfilter = $_SESSION['kycfilter'] = " and kyc_status in  ($quot$kyc$quot)";
-		// } else {
-		// 	$kycfilter = "";
-		// }
-
-
+		if (!empty($this->input->get('search'))) {
+			$search = urldecode($this->input->get('search'));
+			$fsearch = $_SESSION['fsearch'] = "and surname  like'$search%' or firstname  like'$search%'";
+		} else {
+			$fsearch = "";
+		}
 
 		$this->load->library('pagination');
 		$data['uptitle']      = 'KYC Verified Data Report';
@@ -435,7 +430,7 @@ class Data extends MX_Controller
 		$data['jobs'] = $this->data_model->get_jobs();
 		$config = array();
 		$config['base_url'] = base_url('data/kyc_verified');
-		$data['total_rows'] = $config['total_rows'] = $this->kyc_count_rows($dfilter, $ffilter, $fworker_type, $fjob);
+		$data['total_rows'] = $config['total_rows'] = $this->kyc_count_rows($dfilter, $ffilter, $fworker_type, $fjob, $fsearch);
 		$config['per_page'] = 50; //records per page
 		$config['uri_segment'] = 3; //segment in url  
 		//pagination links styling
@@ -463,7 +458,7 @@ class Data extends MX_Controller
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
-		$data['files'] = $this->data_model->kyc_verified_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $fjob, $print);
+		$data['files'] = $this->data_model->kyc_verified_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $fjob, $fsearch, $print);
 		//print_r($config['total_rows']);
 
 		//print_r($data);	
@@ -566,7 +561,7 @@ class Data extends MX_Controller
 		$query = $this->db->query("SELECT reference from records_json $dfilter $ffilter $fworker_type");
 		return $query->num_rows();
 	}
-	public function kyc_count_rows($dfilter, $ffilter,  $fworker_type, $fjob)
+	public function kyc_count_rows($dfilter, $ffilter,  $fworker_type, $fjob, $fsearch)
 
 	{
 		if (empty($dfilter)) {
@@ -575,7 +570,7 @@ class Data extends MX_Controller
 			$kycstatus = "and kyc_status IS NOT NULL";
 		}
 
-		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type,r.job,r.national_id FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') $dfilter $kycstatus $ffilter $fworker_type $fjob");
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type,r.job,r.national_id FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') $dfilter $kycstatus $ffilter $fworker_type $fjob $fsearch");
 		return $query->num_rows();
 	}
 	public function kyc_failed_count_rows($dfilter, $ffilter,  $fworker_type, $fjob, $fsearch)
