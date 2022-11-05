@@ -216,7 +216,7 @@
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
-                 <div id="enrollment_by_mno" style="height: 450px;"></div>
+                 <div id="data_status" style="height: 450px;"></div>
                </div>
 
              </div>
@@ -234,7 +234,7 @@
              </h3>
              <div class="card-tools">
                <ul class="nav nav-pills ml-auto">
-              
+
                </ul>
              </div>
            </div><!-- /.card-header -->
@@ -242,7 +242,7 @@
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
-                 <div id="data_status" height="300" style="height: 450px;"></div>
+                 <div id="" height="300" style="height: 450px;"></div>
                </div>
 
              </div>
