@@ -766,11 +766,13 @@ class Data extends MX_Controller
 		$mobile_number = $this->input->post('mobile_number');
 		$mobile_operator = $this->input->post('operator');
 		$job = $this->input->post('job');
+		$customer_name = $this->input->post('customer_name');
 
 		$insert = array(
 			"kyc_status" => "$kyc_status",
 			"mobile_number" => "$mobile_number",
-			"mno_registered_name" => "$registername"
+			"mno_registered_name" => "$registername",
+			"customer_name" => "$customer_name"
 		);
 		$insert2 = array(
 			"district" => "$district",

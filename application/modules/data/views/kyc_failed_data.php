@@ -214,6 +214,12 @@ $kyc_status = Modules::run("data/kyc_status");
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="aw_description">
+                                                        OFFICIAL / CLIENT NAME </label>
+                                                    <input type="text" class="form-control" name="customer_name" value="<?php echo $staff->customer_name ?>" readonly>
+
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
                                                         NETWORK REGISTERED NAME </label>
                                                     <input type="text" class="form-control" name="registered_name" value="<?php echo $staff->mno_registered_name ?>">
 
