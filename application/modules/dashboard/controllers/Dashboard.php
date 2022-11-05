@@ -91,12 +91,12 @@ class Dashboard extends MX_Controller
 
 		$fdata = array(
 			array(
-				"Total Collection" => $total
+				"Total Collection" => intval($total)
 			),
 			array(
-				"Total Clean Data" => $Cleaned
+				"Total Clean Data" => intval($Cleaned)
 			), array(
-				"Total KYC Verified Data" => $verified
+				"Total KYC Verified Data" => intval($verified)
 			)
 
 		);
