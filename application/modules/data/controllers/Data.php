@@ -306,10 +306,79 @@ class Data extends MX_Controller
 		exit;
 	}
 
-	public function kyc_verified()
-
+	public function kyc_failed_csv($print)
 	{
+		ini_set('max_execution_time', 0);
+		$dfilter = $_SESSION['dfilter'];
+		$ffilter = $_SESSION['ffilter'];
+		$fworker_type = $_SESSION['worker_type'];
+		$datefilter = $_SESSION['datefilter'];
+		$jobfilter = $_SESSION['job'];
+		$kycfilter = $_SESSION['kycfilter'];
+		$csv = $_SESSION['district'] . "-KYC_VERIFIED" . date('Y-m-d') . '_' . ".csv";
 
+		if ($print = 1) {
+			$records = $this->data_model->kyc_failed_data($config['per_page'] = '', $page = 0, $dfilter, $ffilter, $kycfilter, $fworker_type, $jobfilter, $print);
+		}
+		//print_r($records);
+		$f = fopen('php://memory', 'w');
+		$delimiter = ",";
+		$fields = array(
+
+			'NO',
+			'Reference',
+			'Worker Type',
+			'National ID',
+			'Name  ',
+			'MNO Registered Name ',
+			'JOb ',
+			'KYC Status ',
+			'Mobile Number',
+			'Facility',
+			'District'
+
+		);
+		fputcsv($f, $fields, $delimiter);
+		$i = 1;
+		foreach ($records as $staff) {
+			if ($staff->hw_type == 'chw') {
+				$wtype = "Community Health worker";
+			} else {
+				$wtype = "Ministry Health worker";
+			}
+			$data = array(
+				$i++,
+				@$staff->reference,
+				ucwords($wtype),
+				ucwords($staff->national_id),
+				ucwords($staff->customer_name),
+				ucwords($staff->mno_registered_name),
+				ucwords($staff->job),
+				ucwords($staff->kyc_status),
+				ucwords(@$staff->mobile_number),
+				ucwords($staff->facility),
+				ucwords($staff->district)
+
+			);
+
+			fputcsv($f, $data, $delimiter);
+		}
+		// Move back to beginning of file 
+		fseek($f, 0);
+
+		// Set headers to download file rather than displayed 
+		header('Content-Type: text/csv');
+		header('Content-Disposition: attachment; filename="' . $csv . '";');
+		header("Pragma: no-cache");
+		header("Expires: 0");
+
+		//output all remaining data on a file pointer 
+		fpassthru($f);
+
+		exit;
+	}
+	public function kyc_verified()
+	{
 		$dfilter = $_SESSION['dfilter'] = "";
 		$ffilter = $_SESSION['ffilter'] = "";
 		$fworker_type = $_SESSION['worker_type'] = "";
@@ -399,6 +468,100 @@ class Data extends MX_Controller
 		//print_r($data);	
 		echo Modules::run('templates/main', $data);
 	}
+
+	public function kyc_failed()
+
+	{
+
+		$dfilter = $_SESSION['dfilter'] = "";
+		$ffilter = $_SESSION['ffilter'] = "";
+		$fworker_type = $_SESSION['worker_type'] = "";
+		@$print = $_GET['print'];
+		if (!empty($this->input->get('district'))) {
+			$district = urldecode($this->input->get('district'));
+			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
+		} else {
+			$dfilter = "";
+		}
+
+
+
+		if (!empty($this->input->get('facility'))) {
+			$facility = urldecode($this->input->get('facility'));
+			$ffilter = $_SESSION['ffilter'] = " and facility = '$facility'";
+		} else {
+			$ffilter = "";
+		}
+
+		if (!empty($this->input->get('worker_type'))) {
+			$worker_type = $this->input->get('worker_type');
+			$fworker_type = $_SESSION['worker_type'] = "and hw_type = '$worker_type'";
+		} else {
+			$fworker_type = "";
+		}
+
+		if (!empty($this->input->get('job'))) {
+			$job = urldecode($this->input->get('job'));
+			$fjob = $_SESSION['job'] = "and job = '$job'";
+		} else {
+			$fjob = "";
+		}
+
+		// $kycs = $this->input->get('kyc_status');
+		// $kyc = implode("','", $kycs);
+		// //$kyc =  implode(',', array_map('add_quotes', $kycs));
+		// if (!empty($kyc)) {
+
+		// 	$quot = "'";
+		// 	$kycfilter = $_SESSION['kycfilter'] = " and kyc_status in  ($quot$kyc$quot)";
+		// } else {
+		// 	$kycfilter = "";
+		// }
+
+
+
+		$this->load->library('pagination');
+		$data['uptitle']      = 'KYC Failed Data Report';
+		$data['title']      = 'KYC Failed Data Report';
+		$data['module'] 	= "data";
+		$data['view']   	= "kyc_failed_data";
+		$data['jobs'] = $this->data_model->get_jobs();
+		$config = array();
+		$config['base_url'] = base_url('data/kyc_failed');
+		$data['total_rows'] = $config['total_rows'] = $this->kyc_count_rows($dfilter, $ffilter, $fworker_type, $fjob);
+		$config['per_page'] = 50; //records per page
+		$config['uri_segment'] = 3; //segment in url  
+		//pagination links styling
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['attributes'] = ['class' => 'page-link'];
+		$config['first_link'] = true;
+		$config['last_link'] = true;
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['first_link'] = 'First';
+		$config['last_link'] = 'Last';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = 'Next';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+		$config['use_page_numbers'] = false;
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
+		$data['links'] = $this->pagination->create_links();
+		$data['files'] = $this->data_model->kyc_failed_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $fjob, $print);
+		//print_r($config['total_rows']);
+
+		//print_r($data);	
+		echo Modules::run('templates/main', $data);
+	}
 	public function count_rows($dfilter, $ffilter, $fworker_type)
 	{
 
@@ -415,6 +578,18 @@ class Data extends MX_Controller
 		}
 
 		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type,r.job,r.national_id FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') $dfilter $kycstatus $ffilter $fworker_type $fjob");
+		return $query->num_rows();
+	}
+	public function kyc_failed_count_rows($dfilter, $ffilter,  $fworker_type, $fjob)
+
+	{
+		if (empty($dfilter)) {
+			$kycstatus = "WHERE kyc_status IS NOT NULL";
+		} else {
+			$kycstatus = "and kyc_status IS NOT NULL";
+		}
+
+		$query = $this->db->query("SELECT v.*,r.birth_date,r.district,r.facility,r.hw_type,r.job,r.national_id FROM validated_numbers v JOIN records_json_report r ON v.reference=r.reference and kyc_status not in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH') $dfilter $kycstatus $ffilter $fworker_type $fjob");
 		return $query->num_rows();
 	}
 	function generate_users()
@@ -962,6 +1137,78 @@ class Data extends MX_Controller
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
 		$data['links'] = $this->pagination->create_links();
 		$data['files'] = $this->data_model->mtn_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
+		//print_r($config['total_rows']);
+		echo Modules::run('templates/main', $data);
+	}
+
+	public function uncategorised_data()
+	{
+		@$print = $_GET['print'];
+		$dfilter = $_SESSION['dfilter'] = "";
+		$ffilter = $_SESSION['ffilter'] = "";
+		$fworker_type = $_SESSION['worker_type'] = "";
+		if (!empty($this->input->post('district'))) {
+			$district = $this->input->post('district');
+			$dfilter = $_SESSION['dfilter'] = "WHERE district like '$district%'";
+		} else {
+			$dfilter = "";
+		}
+
+
+
+		if (!empty($this->input->post('facility'))) {
+			$facility = $this->input->post('facility');
+			$_SESSION['ffilter'] = " and facility like '$facility%'";
+		} else {
+			$ffilter = "";
+		}
+
+		if (!empty($this->input->post('worker_type'))) {
+			$worker_type = $this->input->post('worker_type');
+			$fworker_type = $_SESSION['worker_type'] = "and hw_type like '$worker_type%'";
+		} else {
+			$fworker_type = "";
+		}
+
+
+
+		$this->load->library('pagination');
+		$data['uptitle']      = 'Uncategorised Data';
+		$data['title']      = 'Uncategorised Data';
+		$data['module'] 	= "data";
+		$data['view']   	= "telcom_data";
+		$config = array();
+		$config['base_url'] = base_url('data/uncategorised_data');
+		$data['total_rows'] = $config['total_rows'] = $this->processed_count_rows($dfilter, $ffilter, $fworker_type, 'uncategorised_clients');
+		$config['per_page'] = 50; //records per page
+		$config['uri_segment'] = 3; //segment in url  
+		//pagination links styling
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['attributes'] = ['class' => 'page-link'];
+		$config['first_link'] = true;
+		$config['last_link'] = true;
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['first_link'] = 'First';
+		$config['last_link'] = 'Last';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = 'Next';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+		$config['use_page_numbers'] = false;
+		$this->pagination->initialize($config);
+		$data['form'] = 'uncategorised_data';
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; //default starting point for limits 
+		$data['links'] = $this->pagination->create_links();
+		$data['files'] = $this->data_model->uncategorised_data($config['per_page'], $page, $dfilter, $ffilter, $fworker_type, $print);
 		//print_r($config['total_rows']);
 		echo Modules::run('templates/main', $data);
 	}

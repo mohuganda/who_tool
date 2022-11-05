@@ -17,7 +17,7 @@ $kyc_status = Modules::run("data/kyc_status");
 
             <div class="card-tools">
 
-                <form class="form-horizontal" action="<?php echo base_url() ?>data/kyc_verified" method="get">
+                <form class="form-horizontal" action="<?php echo base_url() ?>data/kyc_failed_csv" method="get">
                     <div class="row">
 
 
@@ -83,9 +83,9 @@ $kyc_status = Modules::run("data/kyc_status");
 
                         <div class="form-group col-md-4">
                             <label for="aw_description">
-                                Search </label>
-                            <input type="text" name="search" placeholder="Search Name">
-
+                                Search  </label>
+                                <input type="text" name="search" placeholder="Search Name">
+                           
                         </div>
 
 

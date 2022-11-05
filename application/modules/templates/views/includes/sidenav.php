@@ -90,7 +90,7 @@
 
         <?php if (in_array('35', $permissions)) { ?>
           <li class="nav-item">
-            <a href="<?php echo base_url(); ?>data/kyc_verified" class="nav-link">
+            <a href="<?php echo base_url(); ?>data/kyc_failed" class="nav-link">
               <i class="fa fa-th"></i>
               <p>
                 Mismatched Numbers
