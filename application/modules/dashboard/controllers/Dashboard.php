@@ -84,12 +84,22 @@ class Dashboard extends MX_Controller
 	}
 	public function data_status()
 	{
-		$fdata = array();
+
 		$data['Total Collection'] = $this->db->query("SELECT distinct reference from records_json")->num_rows();
 		$data['Total Cleaned Data'] = $this->db->query("SELECT distinct reference from records_json_report")->num_rows();
-		$data['Total KYC Verified Data'] =
-			$data['total_verified'] = $this->db->query("SELECT reference FROM validated_numbers WHERE kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
-		array_push($fdata, $data);
+		$data['Total KYC Verified Data'] = $this->db->query("SELECT reference FROM validated_numbers WHERE kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
+
+		$fdata = array(
+			array(
+				"Total Collection" => $data['Total Collection']
+			),
+			array(
+				"Total Clean Data" => $data['Total Collection']
+			), array(
+				"'Total KYC Verified Data'" => $data['Total KYC Verified Data']
+			)
+
+		);
 
 		echo json_encode($fdata);
 	}
