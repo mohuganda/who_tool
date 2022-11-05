@@ -186,6 +186,8 @@ $kyc_status = Modules::run("data/kyc_status");
                                                     <?php endforeach; ?>
                                                 </select>
 
+                                                <input type="hidden" name="reference" value="<?php echo $staff->reference ?>">
+
                                                 <div class="form-group col-md-12">
                                                     <label for="aw_description">
                                                         DISTRICT </label>
