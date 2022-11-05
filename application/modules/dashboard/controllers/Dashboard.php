@@ -101,6 +101,8 @@ class Dashboard extends MX_Controller
 
 		);
 
-		echo json_encode($fdata, true);
+		print_r($fdata);
+
+		// echo json_encode($fdata, true);
 	}
 }
