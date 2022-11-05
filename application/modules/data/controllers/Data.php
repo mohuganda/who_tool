@@ -778,7 +778,7 @@ class Data extends MX_Controller
 		);
 
 		$this->db->where("reference", "$reference");
-		$query = $this->db->update("validated_numbers", "$insert");
+		$query = $this->db->update("validated_numbers", $insert);
 
 		$query2 = $this->update_district($insert2, $reference);
 
@@ -793,7 +793,7 @@ class Data extends MX_Controller
 	public function update_district($insert2, $reference)
 	{
 		$this->db->where("reference", "$reference");
-		$query = $this->db->update("records_json_report", "$insert2");
+		$query = $this->db->update("records_json_report", $insert2);
 		if ($query) {
 
 			return "UPDATED";
