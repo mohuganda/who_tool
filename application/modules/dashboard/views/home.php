@@ -241,7 +241,7 @@
            <div class="card-body">
 
              <div id="app">
-               <table id="vuedata_table" class="table" style="width:100%">
+               <table id="vuedata_table" class="table table-striped table-bordered nowrap" style="width:100%">
                  <thead>
                    <tr>
                      <th>#</th>
@@ -253,7 +253,7 @@
                  <tbody>
 
                    <tr v-for='district in districts'>
-                     <td>{{1++}}</td>
+                     <td>{{}}</td>
                      <td>{{district.district}}</td>
                      <td>{{district.datas}}</td>
 
@@ -299,7 +299,7 @@
          axios.get('<?php echo base_url() ?>dashboard/kyc_verified_table')
            .then(function(response) {
              app.districts = response.data;
-             console.log(response.data);
+             //console.log(response.data);
              setTimeout(() => {
                $('#vuedata_table').DataTable(
 
