@@ -246,7 +246,7 @@
 
                <div class="table" style="overflow-x:auto;">
 
-                 <table class="table table-responsive"> id="example" style="width:100%">
+                 <table class="table table-responsive" id="example" style="width:100%">
                    <thead>
                      <tr>
                        <th>No</th>
