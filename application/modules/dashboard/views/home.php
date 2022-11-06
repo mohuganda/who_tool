@@ -239,44 +239,36 @@
              </div>
            </div><!-- /.card-header -->
            <div class="card-body">
-             <?php
-              $records = Modules::run("dashboard/kyc_verified_table");
-              $i = 1;
-              foreach ($records as $row) : ?>
 
-               <table class="table table-responive" id="mytable" style="width:100%">
-                 <thead>
-                   <tr>
-                     <th>No</th>
-                     <th>District</th>
-                     <th>Records</th>
-                     <!-- <th>Target</th>
+
+             <table class="table table-responive" id="mytable" style="width:100%">
+               <thead>
+                 <tr>
+                   <th>No</th>
+                   <th>District</th>
+                   <th>Records</th>
+                   <!-- <th>Target</th>
                        <th>Status</th> -->
 
-                   </tr>
-                 </thead>
-                 <tbody>
-                   <tr>
-                     <?php
-                      $i = 1;
-
-                      foreach ($records as $row) :
-
-
-                      ?>
-
-                       <td label="No"><?php echo $i++ ?></td>
-                       <td label="District"><?php echo $row->district ?></td>
-                       <td label="Records"> <?php echo ucwords($row->datas); ?> </td>
-
-                   </tr>
-                 <?php endforeach; ?>
-                 </tbody>
-               </table>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <?php
+                    $records = Modules::run("dashboard/kyc_verified_table");
+                    $i = 1;
+                    foreach ($records as $row) : ?>
 
 
-             <?php endforeach;
-              ?>
+                     <td label="No"><?php echo $i++ ?></td>
+                     <td label="District"><?php echo $row->district ?></td>
+                     <td label="Records"> <?php echo ucwords($row->datas); ?> </td>
+
+                 </tr>
+               <?php endforeach; ?>
+               </tbody>
+             </table>
+
 
            </div>
            <!-- /.card -->
