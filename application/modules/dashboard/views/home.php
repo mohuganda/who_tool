@@ -244,42 +244,40 @@
               $i = 1;
               foreach ($records as $row) : ?>
 
-               <div class="table" style="overflow-x:auto;">
-
-                 <table class="table" id="example" style="width:100%">
-                   <thead>
-                     <tr>
-                       <th>No</th>
-                       <th>District</th>
-                       <th>Records</th>
-                       <!-- <th>Target</th>
+               <table class="table table-responive" id="mytable" style="width:100%">
+                 <thead>
+                   <tr>
+                     <th>No</th>
+                     <th>District</th>
+                     <th>Records</th>
+                     <!-- <th>Target</th>
                        <th>Status</th> -->
 
-                     </tr>
-                   </thead>
-                   <tbody>
-                     <tr>
-                       <?php
-                        $i = 1;
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
+                     <?php
+                      $i = 1;
 
-                        foreach ($records as $row) :
-
-
-                        ?>
-
-                         <td label="No"><?php echo $i++ ?></td>
-                         <td label="District"><?php echo $row->district ?></td>
-                         <td label="Records"> <?php echo ucwords($row->datas); ?> </td>
-
-                     </tr>
-                   <?php endforeach; ?>
-                   </tbody>
-                 </table>
+                      foreach ($records as $row) :
 
 
-               <?php endforeach;
-                ?>
-               </div><!-- /.card-body -->
+                      ?>
+
+                       <td label="No"><?php echo $i++ ?></td>
+                       <td label="District"><?php echo $row->district ?></td>
+                       <td label="Records"> <?php echo ucwords($row->datas); ?> </td>
+
+                   </tr>
+                 <?php endforeach; ?>
+                 </tbody>
+               </table>
+
+
+             <?php endforeach;
+              ?>
+
            </div>
            <!-- /.card -->
 
