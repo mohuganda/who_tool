@@ -97,4 +97,9 @@ class Dashboard extends MX_Controller
 
 		echo json_encode($data, FALSE);
 	}
+	public function kyc_verified_table()
+	{
+		$verified = $this->db->query("SELECT district, count(reference) as datas from records_json_report WHERE district IS NOT NULL  group by district")->result();
+		return $verified;
+	}
 }

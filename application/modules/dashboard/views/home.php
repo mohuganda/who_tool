@@ -239,16 +239,48 @@
              </div>
            </div><!-- /.card-header -->
            <div class="card-body">
-             <div class="tab-content p-0">
-               <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
-                 <div id="" height="300" style="height: 450px;"></div>
-               </div>
+             <?php
+              $records = Modules::run("dashboard/kyc_verified_table");
+              $i = 1;
+              foreach ($records as $row) : ?>
 
-             </div>
-           </div><!-- /.card-body -->
-         </div>
-         <!-- /.card -->
+               <div class="table" style="overflow-x:auto;">
+
+                 <table id="example" style="width:100%">
+                   <thead>
+                     <tr>
+                       <th>No</th>
+                       <th>District</th>
+                       <th>Records</th>
+                       <!-- <th>Target</th>
+                       <th>Status</th> -->
+
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <?php
+                      $i = 1;
+
+                      foreach ($records as $row) :
+
+
+                      ?>
+
+                       <td label="No"><?php echo $i++ ?></td>
+                       <td label="District"><?php echo $row->district ?></td>
+                       <td label="Records"> <?php echo ucwords($row->datas); ?> </td>
+                   
+                       </tr>
+                     <?php endforeach; ?>
+                   </tbody>
+                 </table>
+
+
+               <?php endforeach;
+                ?>
+               </div><!-- /.card-body -->
+           </div>
+           <!-- /.card -->
 
 
        </section>
