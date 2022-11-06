@@ -253,7 +253,7 @@
                  <tbody>
 
                    <tr v-for='(district,i) in districts' :key="district">
-                     <td>{{}}</td>
+                     <td>{{i+1}}</td>
                      <td>{{district.district}}</td>
                      <td>{{district.datas}}</td>
 
