@@ -391,6 +391,12 @@ class Data extends MX_Controller
 		} else {
 			$dfilter = "";
 		}
+		if ($_SESSION['role'] != 10) {
+			$district = $_SESSION['district'];
+			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
+		} else {
+			$dfilter = "";
+		}
 
 
 
