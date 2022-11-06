@@ -246,7 +246,7 @@
                    <tr>
                      <th>#</th>
                      <th>District</th>
-                     <th>Community HW</th>
+                     <th>Records</th>
 
                    </tr>
                  </thead>
