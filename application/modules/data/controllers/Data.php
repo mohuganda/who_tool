@@ -388,16 +388,12 @@ class Data extends MX_Controller
 		if (!empty($this->input->get('district'))) {
 			$district = urldecode($this->input->get('district'));
 			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
-		} else {
-			$dfilter = "";
-		}
-		if ($_SESSION['role'] != 10) {
+		} else if ($_SESSION['role'] != 10) {
 			$district = $_SESSION['district'];
 			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
 		} else {
 			$dfilter = "";
 		}
-
 
 
 		if (!empty($this->input->get('facility'))) {
