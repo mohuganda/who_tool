@@ -322,8 +322,8 @@ Form
       color: #fff;
       line-height: 40px;
       text-align: center;
-      background-color: #006cb5;
-      border: 1px #006cb5 solid;
+      background-color: #A1D066;
+      border: 1px #A1D066 solid;
       opacity: 1;
       cursor: pointer;
     }
@@ -493,7 +493,7 @@ Credits
 
 
 
-          <button type='submit' title='Login'>LOGIN<i class="i-login"></i></button>
+          <button type='submit' class="btn btn-default" title='Login'>LOGIN<i class="i-login"></i></button>
         </form>
       </div>
     </div>
