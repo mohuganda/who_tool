@@ -410,7 +410,7 @@
                 }
 
               );
-            }, 0);
+            }, 300);
 
           })
           .catch(function(error) {
