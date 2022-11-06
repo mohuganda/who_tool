@@ -45,6 +45,7 @@ $permissions = $userdata['permissions'];
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-avatar@latest/dist/avatar.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/css/fullcalendar.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/responsive2.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/custom.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">

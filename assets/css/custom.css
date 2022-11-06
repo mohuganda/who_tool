@@ -55,7 +55,8 @@ body {
     overflow-y: auto;
 }
 
-.callout.callout-success {
+
+/* .callout.callout-success {
     border-left-color: #207597 !important;
 }
 
@@ -64,7 +65,7 @@ page-item.active .page-link {
     color: #fff;
     background-color: #1d80b9;
     border-color: #1d80b9;
-}
+} */
 
 .select2-close-mask {
     z-index: 2099;
@@ -74,7 +75,8 @@ page-item.active .page-link {
     z-index: 3051;
 }
 
-.dash-icon {
+
+/* .dash-icon {
     color: #37989d;
     font-size: 15px;
     margin-right: 4px;
@@ -83,7 +85,7 @@ page-item.active .page-link {
 .fa-circle {
     color: #37989d;
     font-size: 6px !important;
-}
+} */
 
 .nav-drop {
     font-size: 10px;
@@ -197,7 +199,7 @@ body::-webkit-scrollbar-thumb {
     position: absolute;
     left: 60%;
     top: 50%;
-    background-image: url("<?php echo base_url() ?>assets/images/loader.gif");
+    background-image: url("assets/images/loader.gif");
     z-index: 9999;
     background-repeat: no-repeat;
     background-position: center;
