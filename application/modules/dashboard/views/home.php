@@ -150,7 +150,7 @@
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px; align-items:center; justify-content:center;">
-                 <span id="enrolloader"></span>
+                 <!-- <span id="enrolloader"></span> -->
                  <div id="enrollment" height="300" style="height: 450px;"></div>
                </div>
 
