@@ -174,8 +174,10 @@ class Data_model extends CI_Model
 	{
 		$new_value = $data['value'];
 		$old_value = $data['job'];
+		$data = array("job" => "$new_value");
+		$this->db->where("job", "$old_value");
+		$query = $this->db->update("records_json_report", $data);
 
-		$query = $this->db->query("UPDATE records_json_report SET job='$new_value'  WHERE job='$old_value'");
 		if ($query) {
 			$message = "Succesfully Mapped";
 		} else {
