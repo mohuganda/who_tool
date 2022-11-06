@@ -30,7 +30,6 @@
                   <input type="text" name="username" placeholder="username" />
                   <input type="password" name="password" placeholder="password" />
                   <button>login</button>
-                  <p class="message">Not registered? <a href="#">Create an account</a></p>
                 </form>
               </div>
             </div>
