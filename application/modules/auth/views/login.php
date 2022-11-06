@@ -27,7 +27,7 @@
                       </p>
                     </a>
                   </li>
-                  <p style="color:blue;"><?php echo $this->session->flashdata('msg'); ?></p>
+                  <p style="color:red;"><?php echo $this->session->flashdata('msg'); ?></p>
                   <input type="text" name="username" placeholder="username" />
                   <input type="password" name="password" placeholder="password" />
                   <button>login</button>
