@@ -122,8 +122,8 @@
            <div class="card-body">
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
-               <div class="chart" id="record_breakdown" style="height: 450px;">
-
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
+                 <div id="record_breakdown" style="height: 400px;"></div>
                </div>
 
              </div>
@@ -148,130 +148,131 @@
            </div><!-- /.card-header -->
            <div class="card-body">
              <div class="tab-content p-0">
+               <!-- Morris chart - Sales -->
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px; align-items:center; justify-content:center;">
+                 <span id="enrolloader"></span>
+                 <div id="enrollment" height="300" style="height: 450px;"></div>
+               </div>
 
-               <!-- <span id="enrolloader"></span> -->
-               <div id="enrollment" height="300" style="height: 450px;"></div>
+             </div>
+           </div><!-- /.card-body -->
+         </div>
+         <!-- /.card -->
+
+
+       </section>
+
+
+
+       <section class="col-lg-6 connectedSortable">
+         <!-- Custom tabs (Charts with tabs)-->
+         <div class="card">
+           <div class="card-header">
+             <h3 class="card-title">
+             </h3>
+             <div class="card-tools">
+               <ul class="nav nav-pills ml-auto">
+                 <!-- <li class="nav-item">
+                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                    </li> -->
+               </ul>
+             </div>
+           </div><!-- /.card-header -->
+           <div class="card-body">
+             <div class="tab-content p-0">
+               <!-- Morris chart - Sales -->
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
+                 <div id="enrollment_by_mno" style="height: 450px;"></div>
+               </div>
+
+             </div>
+           </div><!-- /.card-body -->
+         </div>
+         <!-- /.card -->
+       </section>
+
+
+       <section class="col-lg-6 connectedSortable">
+         <!-- Custom tabs (Charts with tabs)-->
+         <div class="card">
+           <div class="card-header">
+             <h3 class="card-title">
+             </h3>
+             <div class="card-tools">
+               <ul class="nav nav-pills ml-auto">
+                 <!-- <li class="nav-item">
+                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                    </li> -->
+               </ul>
+             </div>
+           </div><!-- /.card-header -->
+           <div class="card-body">
+             <div class="tab-content p-0">
+               <!-- Morris chart - Sales -->
+               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
+                 <div id="data_status" style="height: 450px;"></div>
+               </div>
+
+             </div>
+           </div><!-- /.card-body -->
+         </div>
+         <!-- /.card -->
+       </section>
+
+
+       <section class="col-lg-12 connectedSortable">
+         <!-- Custom tabs (Charts with tabs)-->
+         <div class="card">
+           <div class="card-header">
+             <h3 class="card-title">
+             </h3>
+             <div class="card-tools">
+               <ul class="nav nav-pills ml-auto">
+
+               </ul>
+             </div>
+           </div><!-- /.card-header -->
+           <div class="card-body">
+
+             <div id="app">
+               <table id="vuedata_table" class="table table-striped table-bordered nowrap" style="width:100% !important">
+                 <thead>
+                   <tr>
+                     <th>#</th>
+                     <th>District</th>
+                     <th>Records</th>
+
+                   </tr>
+                 </thead>
+                 <tbody>
+
+                   <tr v-for='(district,i) in districts' :key="district">
+                     <td label="ID">{{i+1}}</td>
+                     <td label="District">{{district.district}}</td>
+                     <td label="Records">{{district.datas}}</td>
+
+
+                   </tr>
+
+                 </tbody>
+               </table>
              </div>
 
+
            </div>
-         </div><!-- /.card-body -->
+           <!-- /.card -->
+
+
+       </section>
      </div>
-     <!-- /.card -->
-
-
- </section>
-
-
-
- <section class="col-lg-6 connectedSortable">
-   <!-- Custom tabs (Charts with tabs)-->
-   <div class="card">
-     <div class="card-header">
-       <h3 class="card-title">
-       </h3>
-       <div class="card-tools">
-         <ul class="nav nav-pills ml-auto">
-           <!-- <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li> -->
-         </ul>
-       </div>
-     </div><!-- /.card-header -->
-     <div class="card-body">
-       <div class="tab-content p-0">
-         <!-- Morris chart - Sales -->
-         <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
-           <div id="enrollment_by_mno" style="height: 450px;"></div>
-         </div>
-
-       </div>
-     </div><!-- /.card-body -->
-   </div>
-   <!-- /.card -->
- </section>
-
-
- <section class="col-lg-6 connectedSortable">
-   <!-- Custom tabs (Charts with tabs)-->
-   <div class="card">
-     <div class="card-header">
-       <h3 class="card-title">
-       </h3>
-       <div class="card-tools">
-         <ul class="nav nav-pills ml-auto">
-           <!-- <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li> -->
-         </ul>
-       </div>
-     </div><!-- /.card-header -->
-     <div class="card-body">
-       <div class="tab-content p-0">
-         <!-- Morris chart - Sales -->
-         <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
-           <div id="data_status" style="height: 450px;"></div>
-         </div>
-
-       </div>
-     </div><!-- /.card-body -->
-   </div>
-   <!-- /.card -->
- </section>
-
-
- <section class="col-lg-12 connectedSortable">
-   <!-- Custom tabs (Charts with tabs)-->
-   <div class="card">
-     <div class="card-header">
-       <h3 class="card-title">
-       </h3>
-       <div class="card-tools">
-         <ul class="nav nav-pills ml-auto">
-
-         </ul>
-       </div>
-     </div><!-- /.card-header -->
-     <div class="card-body">
-
-       <div id="app">
-         <table id="vuedata_table" class="table table-striped table-bordered nowrap" style="width:100% !important">
-           <thead>
-             <tr>
-               <th>#</th>
-               <th>District</th>
-               <th>Records</th>
-
-             </tr>
-           </thead>
-           <tbody>
-
-             <tr v-for='(district,i) in districts' :key="district">
-               <td label="ID">{{i+1}}</td>
-               <td label="District">{{district.district}}</td>
-               <td label="Records">{{district.datas}}</td>
-
-
-             </tr>
-
-           </tbody>
-         </table>
-       </div>
-
-
-     </div>
-     <!-- /.card -->
-
-
- </section>
- </div>
- <!-- /.row (main row) -->
- </div><!-- /.container-fluid -->
+     <!-- /.row (main row) -->
+   </div><!-- /.container-fluid -->
  </section>
  <!-- /.content -->
 
