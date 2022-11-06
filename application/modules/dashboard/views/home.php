@@ -299,7 +299,7 @@
          axios.get('<?php echo base_url() ?>dashboard/kyc_verified_table')
            .then(function(response) {
              app.districts = response.data;
-             //console.log(response.data);
+             console.log(response.data);
              setTimeout(() => {
                $('#vuedata_table').DataTable(
 
