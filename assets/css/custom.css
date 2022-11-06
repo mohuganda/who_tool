@@ -217,6 +217,6 @@ legend {
     padding: 5px 10px;
 }
 
-section {
+.chart {
     overflow: auto;
 }
