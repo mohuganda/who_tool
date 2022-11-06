@@ -122,8 +122,8 @@
            <div class="card-body">
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
-               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px;">
-                 <div id="record_breakdown" style="height: 400px;"></div>
+               <div class="chart" id="record_breakdown" style="position: relative; height: 450px;">
+
                </div>
 
              </div>
@@ -150,7 +150,7 @@
              <div class="tab-content p-0">
                <!-- Morris chart - Sales -->
                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 450px; align-items:center; justify-content:center;">
-                 <span id="enrolloader"></span>
+                 <!-- <span id="enrolloader"></span> -->
                  <div id="enrollment" height="300" style="height: 450px;"></div>
                </div>
 
@@ -253,9 +253,9 @@
                  <tbody>
 
                    <tr v-for='(district,i) in districts' :key="district">
-                     <td>{{i+1}}</td>
-                     <td>{{district.district}}</td>
-                     <td>{{district.datas}}</td>
+                     <td label="ID">{{i+1}}</td>
+                     <td label="District">{{district.district}}</td>
+                     <td label="Records">{{district.datas}}</td>
 
 
                    </tr>
