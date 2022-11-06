@@ -246,7 +246,7 @@
 
                <div class="table" style="overflow-x:auto;">
 
-                 <table id="example" style="width:100%">
+                 <table class="table table-responsive"> id="example" style="width:100%">
                    <thead>
                      <tr>
                        <th>No</th>
@@ -269,7 +269,7 @@
                        <td label="No"><?php echo $i++ ?></td>
                        <td label="District"><?php echo $row->district ?></td>
                        <td label="Records"> <?php echo ucwords($row->datas); ?> </td>
-                   
+
                        </tr>
                      <?php endforeach; ?>
                    </tbody>
