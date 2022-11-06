@@ -13,7 +13,7 @@
             <div class="login-page">
 
               <div class="form">
-                <form class="login-form">
+                <form class="login-form" action="<?php echo base_url() ?>auth/login" method="post">
                   <div class="items" style="display:flex; text-align:center; justify-content:center;">
 
                     <img src="<?php echo base_url(); ?>assets/img/MOH.png" width="120" height="120">
