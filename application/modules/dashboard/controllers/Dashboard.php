@@ -88,9 +88,11 @@ class Dashboard extends MX_Controller
 		$total = $this->db->query("SELECT distinct reference from records_json")->num_rows();
 		$Cleaned = $this->db->query("SELECT distinct reference from records_json_report where status='Clean'")->num_rows();
 		$verified = $this->db->query("SELECT reference FROM validated_numbers WHERE kyc_status in ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
+		$pendingkyc = $this->db->query("SELECT reference FROM validated_numbers WHERE kyc_status  NOT IN ('MATCH','CLOSE MATCH','POSSIBLE MATCH','VERIFIED MATCH')")->num_rows();
 
-		$data['keys'] = array("Total Collection", "Total Clean Data", "Total KYC Verified Data");
-		$data['values'] = array(intval($total), intval($Cleaned), intval($verified));
+
+		$data['keys'] = array("Total Collection", "Total Clean Data", "Total KYC Verified Data", "Total pending KYC");
+		$data['values'] = array(intval($total), intval($Cleaned), intval($verified), intval($pendingkyc));
 
 
 		echo json_encode($data, FALSE);

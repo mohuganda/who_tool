@@ -93,7 +93,7 @@
             <a href="<?php echo base_url(); ?>data/kyc_failed" class="nav-link">
               <i class="fa fa-th"></i>
               <p>
-                KYC Failed Data
+                KYC Pending Data
               </p>
             </a>
           </li>
