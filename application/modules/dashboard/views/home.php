@@ -252,8 +252,8 @@
                  </thead>
                  <tbody>
 
-                   <tr v-for='district in districts' :key="index">
-                     <td>{{index+1}}</td>
+                   <tr v-for='district in districts' :key="district">
+                     <td>{{district+1}}</td>
                      <td>{{district.district}}</td>
                      <td>{{district.datas}}</td>
 
