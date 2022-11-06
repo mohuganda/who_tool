@@ -15,18 +15,18 @@
               <div class="form">
                 <form class="login-form">
                   <div class="items" style="display:flex; text-align:center; justify-content:center;">
-                    <li class="nav-item" style="list-style-type: none;">
-                      <a href="<?php echo base_url() ?>assets/MoH_iHRIS_Update_Toolv1-4.apk" target="_blank" class="nav-link">
-
-                        <p>
-                          Download iHRIS Update Tool Application
-                        </p>
-                      </a>
-                    </li>
 
                     <img src="<?php echo base_url(); ?>assets/img/MOH.png" width="120" height="120">
                     <p style="color:blue;"><?php echo $this->session->flashdata('msg'); ?></p>
                   </div>
+                  <li class="nav-item" style="list-style-type: none;">
+                    <a href="<?php echo base_url() ?>assets/MoH_iHRIS_Update_Toolv1-4.apk" target="_blank" class="nav-link">
+
+                      <p>
+                        Download iHRIS Update Tool Application
+                      </p>
+                    </a>
+                  </li>
                   <input type="text" name="username" placeholder="username" />
                   <input type="password" name="password" placeholder="password" />
                   <button>login</button>
