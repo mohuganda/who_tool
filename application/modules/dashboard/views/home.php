@@ -20,7 +20,7 @@
  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
  <!-- Main content -->
- <section class="content" ng-controller="DashboardCtrl" style="background-image: url('assets/MOH.png');">
+ <section class="content" ng-controller="DashboardCtrl" style="background-image: url('/assets/MOH.png');">
    <div class="container-fluid">
      <!-- Main row -->
      <div class="row">
