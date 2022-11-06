@@ -199,7 +199,7 @@ body::-webkit-scrollbar-thumb {
     position: absolute;
     left: 60%;
     top: 50%;
-    background-image: url("assets/images/loader.gif");
+    background-image: url("/assets/images/loader.gif");
     z-index: 9999;
     background-repeat: no-repeat;
     background-position: center;
