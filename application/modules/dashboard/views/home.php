@@ -246,7 +246,7 @@
 
                <div class="table" style="overflow-x:auto;">
 
-                 <table class="table table-responsive" id="example" style="width:100%">
+                 <table class="table" id="example" style="width:100%">
                    <thead>
                      <tr>
                        <th>No</th>
@@ -258,20 +258,21 @@
                      </tr>
                    </thead>
                    <tbody>
-                     <?php
-                      $i = 1;
+                     <tr>
+                       <?php
+                        $i = 1;
 
-                      foreach ($records as $row) :
+                        foreach ($records as $row) :
 
 
-                      ?>
+                        ?>
 
-                       <td label="No"><?php echo $i++ ?></td>
-                       <td label="District"><?php echo $row->district ?></td>
-                       <td label="Records"> <?php echo ucwords($row->datas); ?> </td>
+                         <td label="No"><?php echo $i++ ?></td>
+                         <td label="District"><?php echo $row->district ?></td>
+                         <td label="Records"> <?php echo ucwords($row->datas); ?> </td>
 
-                       </tr>
-                     <?php endforeach; ?>
+                     </tr>
+                   <?php endforeach; ?>
                    </tbody>
                  </table>
 
