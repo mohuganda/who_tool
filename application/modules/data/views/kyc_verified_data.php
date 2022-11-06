@@ -21,7 +21,7 @@ $kyc_status = Modules::run("data/kyc_status");
                     <div class="row">
 
 
-                        <?php print_r($this->session->userdata());
+                        <?php //print_r($this->session->userdata());
                         ?>
                         <div class="form-group col-md-4">
                             <label for="aw_description">
