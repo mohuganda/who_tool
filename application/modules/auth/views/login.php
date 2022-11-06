@@ -468,7 +468,7 @@ Credits
 
       <div class='box-login'>
 
-        <h2 style="margin: 0 auto !important; color:#000;">iHRIS MOBILE UPDATE TOOL</h2>
+        <h1 style="margin: 0 auto !important; color:#000;">DIGITAL FINANCE ENROLLMENT DATA</h1>
         <li class="nav-item" style="list-style-type: none;">
           <a href="<?php echo base_url() ?>assets/MoH_iHRIS_Update_Toolv1-4.apk" target="_blank" class="nav-link">
 
