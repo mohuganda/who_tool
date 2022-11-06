@@ -241,7 +241,7 @@
            <div class="card-body">
 
              <div id="app">
-               <table id="vuedata_table" class="table table-striped table-bordered nowrap" style="width:100%">
+               <table id="vuedata_table" class="table table-striped table-bordered nowrap" style="width:100% !important">
                  <thead>
                    <tr>
                      <th>#</th>
