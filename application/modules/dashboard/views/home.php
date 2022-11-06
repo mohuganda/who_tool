@@ -313,8 +313,8 @@
                    "autoWidth": false,
                    "responsive": true,
                    lengthMenu: [
-                     [25, 50, 100, 150, -1],
-                     ['25', '50', '100', '150', '200', 'Show all']
+                     [10, 20, 30, 150, -1],
+                     ['10', '20', '40', '50', '150', 'Show all']
                    ],
 
                    buttons: [
