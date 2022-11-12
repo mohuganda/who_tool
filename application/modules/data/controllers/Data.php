@@ -385,13 +385,15 @@ class Data extends MX_Controller
 		$ffilter = $_SESSION['ffilter'] = "";
 		$fworker_type = $_SESSION['worker_type'] = "";
 		@$print = $_GET['print'];
-		if (!empty($this->input->get('district'))) {
+		if (!empty($this->input->get('district'))||(isset($_SESSION['district']))) {
 			$district = urldecode($this->input->get('district'));
 			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
-		} else if (($_SESSION['role'] != 'sadmin')|| ($_SESSION['role'] !="Data Administrator")){
+		} 
+		/*else if (($_SESSION['role'] != 'sadmin')|| ($_SESSION['role'] !="Data Administrator")){
 			$district = $_SESSION['district'];
 			$dfilter = $_SESSION['dfilter'] = "WHERE district ='$district'";
-		} else {
+		} */
+		else {
 			$dfilter = "";
 		}
 
