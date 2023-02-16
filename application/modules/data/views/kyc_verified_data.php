@@ -285,4 +285,39 @@ $kyc_status = Modules::run("data/kyc_status");
             ]
         });
     });
+    
+    
+        $(".kyc_form").submit(function(e) {
+
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+            console.log(formData);
+            var url = "<?php echo base_url(); ?>data/update_kyc";
+            $.ajax({
+                    url: url,
+                    method: 'post',
+                    data: formData,
+                    success: function(result) {
+
+
+                        setTimeout(function() {
+                            $('.status').html(result);
+                            $.notify(result, 'info');
+                            $('.status').html('');
+                            $('.clear').click();
+                        }, 1000);
+
+
+                    }
+
+
+
+                }
+
+            ); //ajax
+
+        }); //form submit
+        console.log(formData);
+    });
 </script>
