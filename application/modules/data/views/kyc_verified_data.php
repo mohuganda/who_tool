@@ -26,7 +26,7 @@ $kyc_status = Modules::run("data/kyc_status");
                         <div class="form-group col-md-4">
                             <label for="aw_description">
                                 Districts </label>
-                            <select name="district" class="form-control select2_multiple sdistrict" style="width:100%;" onChange="getFacs($(this).val());" multiple="multiple">
+                            <select name="district" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());" multiple="multiple">
                                 <option value="" disabled selected>DISTRICT</option>
                                 <option value="">ALL</option>
                                 <?php
