@@ -278,6 +278,8 @@ $linkquery = $url; // Outputs: Full URL
 <script>
     $(function() {
         $('.select2').select2()
+        $('.select2_multiple').select2({
+        multiple: true;})
         $('.select2dist').select2({
             dropdownParent: "#switch"
         });
