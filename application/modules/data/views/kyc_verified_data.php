@@ -121,10 +121,12 @@ $kyc_status = Modules::run("data/kyc_status");
                         <th>Worker Category</th>
                         <th>National ID</th>
                         <th label="Customer Name">Customer Name</th>
+                        <th>Image</th>
                         <th label="Network Provider Registered Name">Network Provider Registered Name </th>
                         <th label="Position">Position </th>
                         <th label="Kyc Status">KYC Status </th>
                         <th label="Mobile Number">Primary Mobile Number </th>
+                        <th label="Facility ">Birth Place </th>
                         <th label="Facility ">Facility </th>
                         <th label="Ditrict">District</th>
 
@@ -148,10 +150,13 @@ $kyc_status = Modules::run("data/kyc_status");
                                                     }  ?></td>
                         <td label="National ID"> <?php echo ucwords($staff->national_id); ?> </td>
                         <td label="Name"> <?php echo ucwords($staff->customer_name); ?> </td>
+                        <td><img src="data:image/png;base64,<?php if (!empty($staff->person_photo)) echo $staff->person_photo; ?> " alt="Img" class="img-circle" style="width:160px; height:90px;" />
+                        </td>
                         <td label="MNO Name"> <?php echo ucwords($staff->mno_registered_name); ?> </td>
                         <td label="Primary Phone Number"><?php echo $staff->job ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->kyc_status ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->mobile_number ?></td>
+                        <td label="Primary Phone Number"><?php echo $staff->birth_place ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->facility ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->district ?></td>
 

@@ -76,6 +76,16 @@
             </a>
           </li> -->
         <?php } ?>
+            <?php if (in_array('14', $permissions)) { ?>
+          <li class="nav-item">
+            <a href="<?php echo base_url(); ?>data/add_data" class="nav-link">
+              <i class="fa fa-th"></i>
+              <p>
+                New Health Worker
+              </p>
+            </a>
+          </li>
+        <?php } ?>
 
         <?php if (in_array('14', $permissions)) { ?>
           <li class="nav-item">
