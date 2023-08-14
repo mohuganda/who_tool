@@ -263,6 +263,7 @@ class Data extends MX_Controller
 			'JOb ',
 			'KYC Status ',
 			'Mobile Number',
+			'Birth Place',
 			'Facility',
 			'District'
 
@@ -285,6 +286,7 @@ class Data extends MX_Controller
 				ucwords($staff->job),
 				ucwords($staff->kyc_status),
 				ucwords(@$staff->mobile_number),
+				ucwords($staff->birth_place),
 				ucwords($staff->facility),
 				ucwords($staff->district)
 
