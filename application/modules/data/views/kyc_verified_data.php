@@ -150,7 +150,7 @@ $kyc_status = Modules::run("data/kyc_status");
                                                     }  ?></td>
                         <td label="National ID"> <?php echo ucwords($staff->national_id); ?> </td>
                         <td label="Name"> <?php echo ucwords($staff->customer_name); ?> </td>
-                        <td><img src="data:image/png;base64,<?php if (!empty($staff->person_photo)) echo $staff->person_photo; ?> " alt="Img" class="img-circle" style="width:160px; height:90px;" />
+                        <td><img src="data:image/png;base64,<?php if (!empty($staff->person_photo)) echo $staff->person_photo; ?> " alt="Img" class="img-circle" style="width:160px;" />
                         </td>
                         <td label="MNO Name"> <?php echo ucwords($staff->mno_registered_name); ?> </td>
                         <td label="Primary Phone Number"><?php echo $staff->job ?></td>
