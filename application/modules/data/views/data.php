@@ -24,7 +24,7 @@ $facilities = Modules::run("auth/getFacilities");
                         <div class="form-group col-md-4">
                             <label for="aw_description">
                                 District </label>
-                            <select name="district" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());">
+                            <select name="district" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());" multiple>
                                 <option value="" disabled selected>DISTRICT</option>
                                 <option value="">ALL</option>
                                 <?php foreach ($districts as $district) :

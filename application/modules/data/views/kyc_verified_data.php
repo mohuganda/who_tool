@@ -26,8 +26,7 @@ $kyc_status = Modules::run("data/kyc_status");
                         <div class="form-group col-md-4">
                             <label for="aw_description">
                                 Districts </label>
-                            <select name="district" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());">
-                                <option value="" disabled selected>DISTRICT</option>
+                            <select name="district[]" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());" multiple="multiple">
                                 <option value="">ALL</option>
                                 <?php
                                 if ($_SESSION['role'] != "District Administrator") {
@@ -129,7 +128,8 @@ $kyc_status = Modules::run("data/kyc_status");
                         <th label="Facility ">Birth Place </th>
                         <th label="Facility ">Facility </th>
                         <th label="Ditrict">District</th>
-
+                        <th label="Update">#
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -159,6 +159,103 @@ $kyc_status = Modules::run("data/kyc_status");
                         <td label="Primary Phone Number"><?php echo $staff->birth_place ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->facility ?></td>
                         <td label="Primary Phone Number"><?php echo $staff->district ?></td>
+                        <td><button type="button" class="btn bt-sm bg-gray-dark color-pale" data-toggle="modal" data-target="#m<?php echo str_replace(' ', '', $staff->reference); ?>">
+                                Update
+                         </button></td>
+
+                        <!-- The Modal -->
+                        <form class="kyc_form" method="post" action="">
+                            <div class="modal" id="m<?php echo str_replace(' ', '', $staff->reference); ?>">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Update KYC FOR: <?php echo ucwords($staff->customer_name); ?></h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <span class="kyc_loader"></span>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class=" modal-body">
+                                            <div class="form-group col-md-12">
+                                                <label for="aw_description">
+                                                    KYC STATUS </label>
+                                                <select class="form-control" name="kyc_status" required>
+                                                    <?php $kycs = array('MATCH', 'CLOSE MATCH', 'POSSIBLE MATCH', 'VERIFIED MATCH', 'DOES NOT MATCH');
+                                                    foreach ($kycs as $kyc) : ?>
+                                                        <option value="<?php echo $kyc; ?>" <?php if ($kyc == $staff->kyc_status) {
+                                                                                                echo "selected";
+                                                                                            } ?>><?php echo $kyc; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+
+                                                <input type="hidden" name="reference" value="<?php echo $staff->reference ?>">
+
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        DISTRICT </label>
+                                                    <select name="district" class="form-control select2" style="width:100%;" required>
+                                                        <option value="<?php echo $staff->district; ?>" selected> <?php echo $staff->district; ?></option>
+
+                                                        <?php
+
+                                                        foreach ($districts as $district) :
+                                                        ?>
+                                                            <option value="<?php echo $district->district; ?>"><?php echo $district->district; ?></option>
+                                                        <?php endforeach; ?>
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        MOBILE OPERATOR </label>
+                                                    <select name="operator" class="form-control select2" style="width:100%;" required>
+                                                        <option value="<?php echo $staff->primary_mobile_operator; ?>" selected> <?php echo $staff->primary_mobile_operator; ?></option>
+                                                        <option value="MTN">MTN</option>
+                                                        <option value="AIRTEL">AIRTEL</option>
+                                                        <option value="UTL">UTL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        OFFICIAL / CLIENT NAME </label>
+                                                    <input type="text" class="form-control" name="customer_name" value="<?php echo $staff->customer_name ?>" readonly>
+
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        NETWORK REGISTERED NAME </label>
+                                                    <input type="text" class="form-control" name="registered_name" value="<?php echo $staff->mno_registered_name ?>">
+
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        PRIMARY MOBILE MONEY NUMBER </label>
+                                                    <input type="text" class="form-control" name="mobile_number" value="<?php echo $staff->mobile_number ?>">
+
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="aw_description">
+                                                        CURRENT JOB </label>
+                                                    <input type="text" class="form-control" name="job" value="<?php echo $staff->job ?>">
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class=" modal-footer">
+                                                <button type="Submit" class="btn bt-sm bg-gray-dark color-pale">Update</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </form>
+                        <!-- The Modal -->
 
                         </tr>
                     <?php endforeach; ?>
@@ -191,5 +288,40 @@ $kyc_status = Modules::run("data/kyc_status");
 
             ]
         });
+    });
+    
+    
+        $(".kyc_form").submit(function(e) {
+
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+            console.log(formData);
+            var url = "<?php echo base_url(); ?>data/update_kyc";
+            $.ajax({
+                    url: url,
+                    method: 'post',
+                    data: formData,
+                    success: function(result) {
+
+
+                        setTimeout(function() {
+                            $('.status').html(result);
+                            $.notify(result, 'info');
+                            $('.status').html('');
+                            $('.clear').click();
+                        }, 1000);
+
+
+                    }
+
+
+
+                }
+
+            ); //ajax
+
+        }); //form submit
+        console.log(formData);
     });
 </script>
