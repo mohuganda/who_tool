@@ -120,6 +120,7 @@ $kyc_status = Modules::run("data/kyc_status");
                         <th>Worker Category</th>
                         <th>National ID</th>
                         <th label="Customer Name">Customer Name</th>
+                        <th label="Customer Name">Date of Birth</th>
                         <th>Image</th>
                         <th label="Network Provider Registered Name">Network Provider Registered Name </th>
                         <th label="Position">Position </th>
@@ -150,6 +151,7 @@ $kyc_status = Modules::run("data/kyc_status");
                                                     }  ?></td>
                         <td label="National ID"> <?php echo ucwords($staff->national_id); ?> </td>
                         <td label="Name"> <?php echo ucwords($staff->customer_name); ?> </td>
+                        <td label="Name"> <?php echo ucwords($staff->birth_date); ?> </td>
                         <td><img src="data:image/png;base64,<?php if (!empty($staff->person_photo)) echo $staff->person_photo; ?> " alt="Img" style="width:100px;" />
                         </td>
                         <td label="MNO Name"> <?php echo ucwords($staff->mno_registered_name); ?> </td>
@@ -161,7 +163,7 @@ $kyc_status = Modules::run("data/kyc_status");
                         <td label="Primary Phone Number"><?php echo $staff->district ?></td>
                         <td><button type="button" class="btn bt-sm bg-gray-dark color-pale" data-toggle="modal" data-target="#m<?php echo str_replace(' ', '', $staff->reference); ?>">
                                 Update
-                         </button></td>
+                            </button></td>
 
                         <!-- The Modal -->
                         <form class="kyc_form" method="post" action="">
@@ -289,39 +291,39 @@ $kyc_status = Modules::run("data/kyc_status");
             ]
         });
     });
-    
-    
-        $(".kyc_form").submit(function(e) {
-
-            e.preventDefault();
-
-            var formData = $(this).serialize();
-            console.log(formData);
-            var url = "<?php echo base_url(); ?>data/update_kyc";
-            $.ajax({
-                    url: url,
-                    method: 'post',
-                    data: formData,
-                    success: function(result) {
 
 
-                        setTimeout(function() {
-                            $('.status').html(result);
-                            $.notify(result, 'info');
-                            $('.status').html('');
-                            $('.clear').click();
-                        }, 1000);
+    $(".kyc_form").submit(function(e) {
+
+        e.preventDefault();
+
+        var formData = $(this).serialize();
+        console.log(formData);
+        var url = "<?php echo base_url(); ?>data/update_kyc";
+        $.ajax({
+                url: url,
+                method: 'post',
+                data: formData,
+                success: function(result) {
 
 
-                    }
-
+                    setTimeout(function() {
+                        $('.status').html(result);
+                        $.notify(result, 'info');
+                        $('.status').html('');
+                        $('.clear').click();
+                    }, 1000);
 
 
                 }
 
-            ); //ajax
 
-        }); //form submit
-        console.log(formData);
+
+            }
+
+        ); //ajax
+
+    }); //form submit
+    console.log(formData);
     });
 </script>
